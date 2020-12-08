@@ -1,0 +1,22 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import Button from './Button.component';
+
+<Meta title="Components/Button" component={Button} />
+
+# Standard
+
+<Story name="Standard">
+  <Button>Here is a primary button!</Button>
+  <br />
+  <br />
+  <Button variant="secondary">Here is a secondary button!</Button>
+</Story>
+
+# Loading
+
+<Story name="Loading">
+  <Button loading>Here is a primary button!</Button>
+  <br />
+  <br />
+  <Button loading variant="secondary">Here is a secondary button!</Button>
+</Story>
