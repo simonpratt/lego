@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { ControlGroup } from '../..';
 
 import Button from '../../components/Button/Button.component';
 import Input from '../../components/Input/Input.component';
@@ -29,29 +30,16 @@ const Container = styled.div`
   background-color: ${(props) => props.theme.colours.overlayBackground};
 `;
 
-const StyledForm = styled.form`
+const ContentContainer = styled.div`
+  background-color: ${(props) => props.theme.colours.background};
+
   width: 600px;
   padding: 48px;
 
-  background-color: ${(props) => props.theme.colours.background};
-
   ${responsive.useStylesFor('mobile').andSmaller(`
-    width: 90vw;
-    padding: 24px;
-  `)};
-
-  & > * {
-    padding-bottom: 8px;
-  }
-`;
-
-const RegisterContainer = styled.div`
-  width: 600px;
-  padding-top: 24px;
-
-  ${responsive.useStylesFor('mobile').andSmaller(`
-    width: 90vw;
-    padding: 24px;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
   `)};
 `;
 
@@ -64,20 +52,23 @@ const LoginScreen = ({ loading, handleLogin, handleRegister, error }: LoginScree
 
   return (
     <Container>
-      <StyledForm onSubmit={handleSubmit}>
-
-        <Input name='email' placeholder='Email' type='text' value={value.email} onChange={handleChange} />
-        <Input name='password' placeholder='Password' type='password' value={value.password} onChange={handleChange} />
-
-        <div>
-          <Button type='submit' loading={loading}>
-            Login
-          </Button>
-        </div>
-      </StyledForm>
-      <RegisterContainer>
-        <Button onClick={handleRegister}>Register</Button>
-      </RegisterContainer>
+      <ContentContainer>
+        <form onSubmit={handleSubmit}>
+          <ControlGroup>
+            <Input name='email' placeholder='Email' type='text' value={value.email} onChange={handleChange} />
+            <Input
+              name='password'
+              placeholder='Password'
+              type='password'
+              value={value.password}
+              onChange={handleChange}
+            />
+            <Button type='submit' loading={loading}>
+              Login
+            </Button>
+          </ControlGroup>
+        </form>
+      </ContentContainer>
     </Container>
   );
 };
