@@ -1,17 +1,18 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import getThemeVariantColours from '../../theme/helpers/getThemeVariantColours';
-import { IPropsWithTheme, ColourVariant } from '../../theme/theme.types';
+import { ColourVariant } from '../../theme/theme.types';
 
 export interface ButtonProps {
   children: React.ReactChild;
   fillWidth?: boolean;
   loading?: boolean;
-  variant: ColourVariant;
-  onClick: () => void;
+  variant?: ColourVariant;
+  type?: 'submit';
+  onClick?: () => void;
 }
 
-interface InternalButtonProps extends IPropsWithTheme {
+interface InternalButtonProps {
   variant: ColourVariant;
 }
 
@@ -20,6 +21,8 @@ const StyledButton = styled.button<InternalButtonProps>`
   outline: none;
   box-shadow: none;
   border: none;
+
+  cursor: pointer;
 
   padding: 0 24px;
   font-size: 14px;
@@ -59,9 +62,9 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
   }
 `;
 
-const Button = ({ children, loading, variant = 'primary', onClick }: ButtonProps) => {
+const Button = ({ children, loading, variant = 'primary', type, onClick }: ButtonProps) => {
   return (
-    <StyledButton variant={variant} onClick={onClick}>
+    <StyledButton variant={variant} type={type} onClick={onClick}>
       {loading ? <ButtonSpinner variant={variant} /> : children}
     </StyledButton>
   );

@@ -1,22 +1,20 @@
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 import React from 'react';
 import styled from 'styled-components';
-import { IPropsWithTheme } from '../../theme/theme.types';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
 
-const InputContainer = styled.div<IPropsWithTheme>`
+const InputContainer = styled.div`
   font-family: ${(props) => props.theme.fonts.default};
-  padding: 8px 0;
 `;
 
-const InputLabel = styled.label<IPropsWithTheme>`
+const InputLabel = styled.label`
   display: block;
   padding-bottom: 8px;
 
   color: ${(props) => getThemeControlColours(props.theme).font};
 `;
 
-const StyledInput = styled.input<IPropsWithTheme>`
+const StyledInput = styled.input`
   outline: none;
   box-shadow: none;
 
@@ -44,8 +42,8 @@ const StyledInput = styled.input<IPropsWithTheme>`
 `;
 
 export interface IInputProps {
-  label: string;
   name: string;
+  label?: string;
   placeholder?: string;
   type: string;
   value: string;

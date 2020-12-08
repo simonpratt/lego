@@ -93,5 +93,5 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
   },
-  ignorePatterns: ['node_modules', 'dist', '.prettierrc.js', 'src/serviceWorker.js', 'src/react-app-env.d.ts'],
+  ignorePatterns: ['node_modules', 'build', '.prettierrc.js'],
 };

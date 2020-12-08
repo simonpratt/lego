@@ -1,6 +1,6 @@
-import { ITheme } from '../theme.types';
+import { DefaultTheme } from 'styled-components';
 
-export default (theme: ITheme) => {
+export default (theme: DefaultTheme) => {
   return {
     border: theme.colours.controlBorder,
     borderFocus: theme.colours.controlBorderFocus,

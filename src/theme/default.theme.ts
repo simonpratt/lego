@@ -1,19 +1,45 @@
+import { DefaultTheme } from 'styled-components';
 import colours from '../colours/colours';
-import { ITheme } from './theme.types';
 
-const theme: ITheme = {
+const theme: DefaultTheme = {
   name: 'default',
   colours: {
-    primary: colours.grey70,
-    secondary: colours.yellow,
-    textOnPrimary: colours.grey10,
-    textOnSecondary: colours.grey90,
+    background: colours.grey10,
+    overlayBackground: colours.grey50,
+
+    primary: {
+      main: colours.grey70,
+      contrastText: colours.grey10,
+    },
+    secondary: {
+      main: colours.yellow,
+      contrastText: colours.grey90,
+    },
+
+    defaultFont: colours.grey90,
 
     controlBorder: colours.grey20,
     controlBorderFocus: colours.grey50,
     controlBorderHover: colours.grey30,
     controlFont: colours.grey90,
     controlPlaceholder: colours.grey30,
+
+    statusInfo: {
+      main: colours.blue,
+      highlightText: colours.blue,
+    },
+    statusSuccess: {
+      main: colours.green,
+      highlightText: colours.green,
+    },
+    statusWarn: {
+      main: colours.yellow,
+      highlightText: colours.yellow,
+    },
+    statusDanger: {
+      main: colours.red,
+      highlightText: colours.red,
+    },
   },
   fonts: {
     default: `'Roboto', sans-serif`,
