@@ -11,11 +11,16 @@ export interface NotificationProps {
   onAction?: () => void;
 }
 
-const NotificationContainer = styled.div<{ colour: string }>`
+interface NotificationContainerProps {
+  colour: string;
+}
+
+const NotificationContainer = styled.div<NotificationContainerProps>`
   padding: 12px;
   background-color: white;
 
-  font-family: ${(props) => props.theme.fonts.default};
+  font-family: ${(props) => props.theme.fonts.default.family};
+  font-size: ${(props) => props.theme.fonts.default.size};
 
   border-left: solid 3px ${(props) => props.colour};
   box-shadow: 1px 1px 2px #0000000f;

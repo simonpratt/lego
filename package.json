@@ -2,15 +2,20 @@
   "name": "@dtdot/lego",
   "version": "1.0.0",
   "description": "Some reusable components for building my applications",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "build": "npx babel src --out-dir build --extensions '.ts,.tsx'",
     "start": "start-storybook -p 6006",
+    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "type-check": "tsc"
   },
   "author": "Simon Pratt <19920260+simonpratt@users.noreply.github.com>",
   "license": "ISC",
+  "files": [
+    "build"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.12.8",
     "@babel/core": "^7.12.9",

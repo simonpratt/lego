@@ -1,7 +1,71 @@
 version: 2.1
-orbs:
-  node: circleci/node@3.0.0
+
+executors:
+  build-agent:
+    docker:
+      - image: circleci/node:10
+    working_directory: /tmp/lego
+  docker-machine:
+    machine: true
+    working_directory: /tmp/lego
+
+jobs:
+  test:
+    executor: build-agent
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run type-check
+
+  build:
+    executor: build-agent
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm run build
+      - persist_to_workspace:
+          root: /tmp/lego
+          paths:
+            - build
+            - package.json
+
+  publish-beta:
+    executor: docker-machine
+    steps:
+      - attach_workspace:
+          at: /tmp/lego
+      - run: printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
+      - run: npm whoami
+      - run: npm publish --tag beta
+
+  publish-latest:
+    executor: docker-machine
+    steps:
+      - attach_workspace:
+          at: /tmp/lego
+      - run: printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
+      - run: npm whoami
+      - run: npm publish --tag
+
 workflows:
-  node-tests:
+  development:
     jobs:
-      - node/test
+      - test
+      - build
+      - publish-beta:
+          requires:
+            - test
+            - build
+          context: npm_publish
+          filters:
+            tags:
+              only: v*-*
+      - publish-latest:
+          requires:
+            - test
+            - build
+          context: npm_publish
+          filters:
+            tags:
+              only: v*

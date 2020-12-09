@@ -123,7 +123,7 @@ const LoginScreen = ({ loading, error, handleLogin, handleRegister }: LoginScree
         <Spacer size='6x' />
 
         <CreateAccountMessage>
-          Don't have an account? <CreateAccountButton onClick={handleRegister}>sign up now</CreateAccountButton>
+          {`Don't have an account?`} <CreateAccountButton onClick={handleRegister}>sign up now</CreateAccountButton>
         </CreateAccountMessage>
       </ContentContainer>
     </Container>
