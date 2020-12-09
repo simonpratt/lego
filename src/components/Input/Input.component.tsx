@@ -3,15 +3,13 @@ import React from 'react';
 import styled from 'styled-components';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
 
-const InputContainer = styled.div`
-  font-family: ${(props) => props.theme.fonts.default};
-`;
-
 const InputLabel = styled.label`
   display: block;
   padding-bottom: 8px;
 
   color: ${(props) => getThemeControlColours(props.theme).font};
+  font-family: ${(props) => props.theme.fonts.default.family};
+  font-size: ${(props) => props.theme.fonts.default.size};
 `;
 
 const StyledInput = styled.input`
@@ -22,8 +20,11 @@ const StyledInput = styled.input`
   height: 48px;
   padding: 0 12px;
 
-  font-size: 16px;
+  font-family: ${(props) => props.theme.fonts.default.family};
+  font-size: ${(props) => props.theme.fonts.default.size};
+
   color: ${(props) => getThemeControlColours(props.theme).font};
+  background-color: ${(props) => getThemeControlColours(props.theme).background};
 
   border: 1px solid ${(props) => getThemeControlColours(props.theme).border};
   border-radius: 2px;
@@ -52,10 +53,10 @@ export interface IInputProps {
 
 const Input = ({ label, name, placeholder, type, value, onChange }: IInputProps) => {
   return (
-    <InputContainer>
+    <div>
       {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
       <StyledInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
-    </InputContainer>
+    </div>
   );
 };
 

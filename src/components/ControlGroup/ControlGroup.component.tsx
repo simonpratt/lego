@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 export interface ControlGroupProps {
-  children: React.ReactChildren;
-  stacked: boolean;
+  children: React.ReactNode;
 }
 
-const ControlGroupContainer = styled.div<Pick<ControlGroupProps, 'stacked'>>`
+const ControlGroupContainer = styled.div`
   & > * {
     margin-bottom: 8px;
 
@@ -16,8 +15,8 @@ const ControlGroupContainer = styled.div<Pick<ControlGroupProps, 'stacked'>>`
   }
 `;
 
-const ControlGroup = ({ children, stacked }: ControlGroupProps) => {
-  return <ControlGroupContainer stacked={stacked}>{children}</ControlGroupContainer>;
+const ControlGroup = ({ children }: ControlGroupProps) => {
+  return <ControlGroupContainer>{children}</ControlGroupContainer>;
 };
 
 export default ControlGroup;

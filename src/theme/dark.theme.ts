@@ -3,7 +3,7 @@ import { DefaultTheme } from 'styled-components';
 const theme: DefaultTheme = {
   name: 'dark',
   colours: {
-    background: 'lightblue',
+    background: 'red',
     overlayBackground: 'red',
 
     primary: {
@@ -17,6 +17,7 @@ const theme: DefaultTheme = {
 
     defaultFont: 'red',
 
+    controlBackground: 'red',
     controlBorder: 'red',
     controlBorderFocus: 'red',
     controlBorderHover: 'red',
@@ -41,7 +42,14 @@ const theme: DefaultTheme = {
     },
   },
   fonts: {
-    default: `'Roboto', sans-serif`,
+    default: {
+      family: `'Roboto', sans-serif`,
+      size: '16px',
+    },
+    heading: {
+      family: `'Roboto', sans-serif`,
+      size: '36px',
+    },
   },
 };
 

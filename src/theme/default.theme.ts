@@ -18,6 +18,7 @@ const theme: DefaultTheme = {
 
     defaultFont: colours.grey90,
 
+    controlBackground: colours.white,
     controlBorder: colours.grey20,
     controlBorderFocus: colours.grey50,
     controlBorderHover: colours.grey30,
@@ -42,7 +43,14 @@ const theme: DefaultTheme = {
     },
   },
   fonts: {
-    default: `'Roboto', sans-serif`,
+    default: {
+      family: `'Roboto', sans-serif`,
+      size: '16px',
+    },
+    heading: {
+      family: `'Roboto', sans-serif`,
+      size: '36px',
+    },
   },
 };
 

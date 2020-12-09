@@ -11,6 +11,11 @@ interface IStatus {
   highlightText: string;
 }
 
+interface IFont {
+  family: string;
+  size: string;
+}
+
 declare module 'styled-components' {
   export interface DefaultTheme {
     name: string;
@@ -23,6 +28,7 @@ declare module 'styled-components' {
 
       defaultFont: string;
 
+      controlBackground: string;
       controlBorder: string;
       controlBorderFocus: string;
       controlBorderHover: string;
@@ -35,7 +41,8 @@ declare module 'styled-components' {
       statusDanger: IStatus;
     };
     fonts: {
-      default: string;
+      default: IFont;
+      heading: IFont;
     };
   }
 }

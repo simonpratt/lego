@@ -1,5 +1,5 @@
 {
-  "name": "lego",
+  "name": "@dtdot/lego",
   "version": "1.0.0",
   "description": "Some reusable components for building my applications",
   "main": "index.js",

@@ -2,6 +2,7 @@ import { DefaultTheme } from 'styled-components';
 
 export default (theme: DefaultTheme) => {
   return {
+    background: theme.colours.background,
     border: theme.colours.controlBorder,
     borderFocus: theme.colours.controlBorderFocus,
     borderHover: theme.colours.controlBorderHover,
