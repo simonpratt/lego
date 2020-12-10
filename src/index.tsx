@@ -5,3 +5,5 @@ export { default as Input } from './components/Input/Input.component';
 
 export { default as LoginScreen } from './screens/Login/Login.screen';
 export { default as RegisterScreen } from './screens/Register/Register.screen';
+
+export { default as Themes } from './theme/themes';
