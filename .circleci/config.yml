@@ -16,7 +16,6 @@ jobs:
       - checkout
       - run: npm ci
       - run: npm run lint
-      - run: npm run type-check
 
   build:
     executor: build-agent
@@ -24,7 +23,6 @@ jobs:
       - checkout
       - run: npm ci
       - run: npm run build
-      - run: npm run generate-types
       - persist_to_workspace:
           root: /tmp/lego
           paths:

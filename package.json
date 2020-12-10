@@ -4,14 +4,12 @@
   "description": "Some reusable components for building my applications",
   "main": "build/index.js",
   "scripts": {
-    "build": "npx babel src --out-dir build --extensions '.ts,.tsx'",
+    "build": "tsc",
     "start": "start-storybook -p 6006",
     "watch": "npm run build -- --watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "type-check": "tsc",
-    "generate-types": "tsc"
+    "build-storybook": "build-storybook"
   },
   "author": "Simon Pratt <19920260+simonpratt@users.noreply.github.com>",
   "license": "ISC",
