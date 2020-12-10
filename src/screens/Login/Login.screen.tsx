@@ -15,9 +15,9 @@ export interface LoginData {
 
 export interface LoginScreenProps {
   handleLogin: (data: LoginData) => void;
-  handleRegister: () => void;
-  loading: boolean;
-  error: string;
+  onRegisterClicked: () => void;
+  loading?: boolean;
+  error?: string;
 }
 
 const ErrorText = styled.div`
@@ -83,10 +83,15 @@ const ContentContainer = styled.div`
     width: 100%;
     height: 100%;
     padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 128px;
   `)};
 `;
 
-const LoginScreen = ({ loading, error, handleLogin, handleRegister }: LoginScreenProps) => {
+const LoginScreen = ({ loading, error, handleLogin, onRegisterClicked }: LoginScreenProps) => {
   const { values, handleChange, handleSubmit } = useForm<LoginData>(handleLogin, {});
   const value = {
     email: values.email || '',
@@ -123,7 +128,7 @@ const LoginScreen = ({ loading, error, handleLogin, handleRegister }: LoginScree
         <Spacer size='6x' />
 
         <CreateAccountMessage>
-          {`Don't have an account?`} <CreateAccountButton onClick={handleRegister}>sign up now</CreateAccountButton>
+          {`Don't have an account?`} <CreateAccountButton onClick={onRegisterClicked}>sign up now</CreateAccountButton>
         </CreateAccountMessage>
       </ContentContainer>
     </Container>
