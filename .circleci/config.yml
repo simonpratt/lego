@@ -51,8 +51,14 @@ jobs:
 workflows:
   development:
     jobs:
-      - test
-      - build
+      - test:
+          filters:
+            tags:
+              only: /.+/
+      - build:
+          filters:
+            tags:
+              only: /.+/
       - publish-beta:
           requires:
             - test
