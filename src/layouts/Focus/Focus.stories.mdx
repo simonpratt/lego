@@ -1,0 +1,16 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { FocusLayout, Heading, Input, Spacer, Text } from '../..'
+
+<Meta title="Layouts/Focus" component={FocusLayout} />
+
+# Standard
+
+<Story name="Standard">
+  <FocusLayout>
+    <Heading>Lets get setup..</Heading>
+    <Spacer size="4x" />
+    <Text>Enter your name here. This will be used to identify you when connecting with friends</Text>
+    <Spacer size="2x" />
+    <Input name="name" placeholder="name"></Input>
+  </FocusLayout>
+</Story>

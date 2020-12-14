@@ -46,10 +46,12 @@ const defaultTheme: DefaultTheme = {
     default: {
       family: `'Roboto', sans-serif`,
       size: '16px',
+      weight: '400',
     },
     heading: {
       family: `'Roboto', sans-serif`,
       size: '36px',
+      weight: '500',
     },
   },
 };

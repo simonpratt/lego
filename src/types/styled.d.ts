@@ -14,6 +14,7 @@ interface IStatus {
 interface IFont {
   family: string;
   size: string;
+  weight: string;
 }
 
 declare module 'styled-components' {
