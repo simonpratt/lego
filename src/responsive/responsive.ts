@@ -63,4 +63,18 @@ function useStylesFor(screenSize: ScreenSize): IStyleBoundFunctions {
   };
 }
 
-export default { useStylesFor };
+function getWidthFor(screenSize: ScreenSize): string {
+  if (!screenSize) {
+    return '';
+  }
+
+  const screenDefinition = responsiveScreens[screenSize];
+
+  if (!screenDefinition) {
+    return '';
+  }
+
+  return `${screenDefinition.max}px`;
+}
+
+export default { useStylesFor, getWidthFor };

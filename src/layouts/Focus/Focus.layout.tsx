@@ -25,7 +25,11 @@ const FocusOuter = styled.div`
 `;
 
 const FocusInner = styled.div`
-  max-width: 460px;
+  width: ${responsive.getWidthFor('mobile')};
+
+  ${responsive.useStylesFor('mobile').andSmaller(`
+    width: 100%;
+  `)};
 `;
 
 const FocusLayout = ({ children }: FocusLayoutProps) => {
