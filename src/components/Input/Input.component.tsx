@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
+import useFormNode from '../Form/useFormNode.hook';
 
 const InputLabel = styled.label`
   display: block;
@@ -46,16 +47,24 @@ export interface IInputProps {
   name: string;
   label?: string;
   placeholder?: string;
-  type: string;
-  value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  type?: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ label, name, placeholder, type, value, onChange }: IInputProps) => {
+const Input = ({ label, name, placeholder, type = 'text', value, onChange }: IInputProps) => {
+  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+
   return (
     <div>
       {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
-      <StyledInput type={type} name={name} placeholder={placeholder} value={value} onChange={onChange} />
+      <StyledInput
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value || contextValue}
+        onChange={onChange || contextOnChange}
+      />
     </div>
   );
 };

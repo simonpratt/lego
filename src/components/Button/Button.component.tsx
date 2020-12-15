@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { keyframes } from 'styled-components';
 import getThemeVariantColours from '../../theme/helpers/getThemeVariantColours';
 import { ColourVariant } from '../../theme/theme.types';
+import ButtonContext, { ButtonContextProps } from './Button.context';
 
 export interface ButtonProps {
   children: React.ReactChild;
-  fillWidth?: boolean;
   loading?: boolean;
   variant?: ColourVariant;
   type?: 'submit';
   onClick?: () => void;
 }
 
-interface InternalButtonProps {
+interface InternalButtonProps extends ButtonContextProps {
   variant: ColourVariant;
 }
 
@@ -33,7 +33,11 @@ const StyledButton = styled.button<InternalButtonProps>`
   background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).background};
 
   border-radius: 2px;
-  width: 100%;
+
+  // Props defined by the context
+  width: ${(props) => props.width};
+  align-self: ${(props) => props.alignSelf};
+  margin-top: ${(props) => props.marginTop};
 `;
 
 const spinAnimation = keyframes`
@@ -63,8 +67,17 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
 `;
 
 const Button = ({ children, loading, variant = 'primary', type, onClick }: ButtonProps) => {
+  const { width, alignSelf, marginTop } = useContext(ButtonContext);
+
   return (
-    <StyledButton variant={variant} type={type} onClick={onClick}>
+    <StyledButton
+      width={width}
+      alignSelf={alignSelf}
+      marginTop={marginTop}
+      variant={variant}
+      type={type}
+      onClick={onClick}
+    >
       {loading ? <ButtonSpinner variant={variant} /> : children}
     </StyledButton>
   );

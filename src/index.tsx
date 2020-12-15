@@ -1,6 +1,7 @@
 export { default as Alert } from './components/Alert/Alert.component';
 export { default as Button } from './components/Button/Button.component';
 export { default as ControlGroup } from './components/ControlGroup/ControlGroup.component';
+export { default as Form } from './components/Form/Form.component';
 export { default as Input } from './components/Input/Input.component';
 export { default as Heading } from './components/Heading/Heading.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
@@ -18,3 +19,5 @@ export { default as Themes } from './theme/themes';
 export { RegisterData } from './screens/Register/Register.screen';
 export { LoginData } from './screens/Login/Login.screen';
 export { VerificationData } from './screens/Verification/Verification.screen';
+
+export { ButtonProps as ButtonProps } from './components/Button/Button.component';

@@ -80,13 +80,11 @@ const LoginScreen = ({ loading, error, handleLogin, onRegisterClicked }: LoginSc
             value={value.password}
             onChange={handleChange}
           />
+          <ControlGroup.Spacer />
+          <Button type='submit' loading={loading}>
+            Login
+          </Button>
         </ControlGroup>
-
-        <Spacer size='2x' />
-
-        <Button type='submit' loading={loading}>
-          Login
-        </Button>
       </form>
 
       <Spacer size='6x' />

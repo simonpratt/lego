@@ -55,13 +55,11 @@ const VerificationScreen = ({ message, loading, error, handleVerification }: Ver
         <ControlGroup>
           <ErrorText>{error}</ErrorText>
           <Input name='code' placeholder='code' type='text' value={value.code} onChange={handleChange} />
+          <ControlGroup.Spacer />
+          <Button type='submit' loading={loading}>
+            Verify
+          </Button>
         </ControlGroup>
-
-        <Spacer size='2x' />
-
-        <Button type='submit' loading={loading}>
-          Verify
-        </Button>
       </form>
     </EmphasisLayout>
   );

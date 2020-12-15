@@ -54,13 +54,11 @@ const RegisterScreen = ({ loading, error, handleRegister }: RegisterScreenProps)
             value={value.password}
             onChange={handleChange}
           />
+          <ControlGroup.Spacer />
+          <Button type='submit' loading={loading}>
+            Create Account
+          </Button>
         </ControlGroup>
-
-        <Spacer size='2x' />
-
-        <Button type='submit' loading={loading}>
-          Create Account
-        </Button>
       </form>
     </EmphasisLayout>
   );
