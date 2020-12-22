@@ -7,6 +7,8 @@ const HeadingContainer = styled.h2`
   font-weight: ${(props) => props.theme.fonts.heading.weight};
 
   color: ${(props) => props.theme.colours.defaultFont};
+
+  margin: 0;
 `;
 
 export interface HeadingProps {

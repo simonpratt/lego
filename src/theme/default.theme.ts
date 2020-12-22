@@ -51,7 +51,7 @@ const defaultTheme: DefaultTheme = {
     heading: {
       family: `'Roboto', sans-serif`,
       size: '36px',
-      weight: '500',
+      weight: '400',
     },
   },
 };
