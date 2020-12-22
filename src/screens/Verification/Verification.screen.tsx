@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '../../components/Button/Button.component';
 import ControlGroup from '../../components/ControlGroup/ControlGroup.component';
+import Form from '../../components/Form/Form.component';
 import Heading from '../../components/Heading/Heading.component';
 import Input from '../../components/Input/Input.component';
 import Spacer from '../../components/Spacer/Spacer.component';
-import useForm from '../../hooks/useForm';
 import EmphasisLayout from '../../layouts/Emphasis/Emphasis.layout';
 
 export interface VerificationData {
@@ -38,10 +38,7 @@ const MessageContainer = styled.div`
 `;
 
 const VerificationScreen = ({ message, loading, error, handleVerification }: VerificationScreenProps) => {
-  const { values, handleChange, handleSubmit } = useForm<VerificationData>(handleVerification, {});
-  const value = {
-    code: values.code || '',
-  };
+  const [value, setValue] = useState<VerificationData>({ code: '' });
 
   return (
     <EmphasisLayout>
@@ -51,16 +48,16 @@ const VerificationScreen = ({ message, loading, error, handleVerification }: Ver
 
       <Spacer size='2x' />
 
-      <form onSubmit={handleSubmit}>
+      <Form value={value} onChange={setValue} onSubmit={() => handleVerification(value)}>
         <ControlGroup>
           <ErrorText>{error}</ErrorText>
-          <Input name='code' placeholder='code' type='text' value={value.code} onChange={handleChange} />
+          <Input name='code' placeholder='code' type='text' />
           <ControlGroup.Spacer />
           <Button type='submit' loading={loading}>
             Verify
           </Button>
         </ControlGroup>
-      </form>
+      </Form>
     </EmphasisLayout>
   );
 };

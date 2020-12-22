@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import Button from '../../components/Button/Button.component';
 import ControlGroup from '../../components/ControlGroup/ControlGroup.component';
+import Form from '../../components/Form/Form.component';
 import Heading from '../../components/Heading/Heading.component';
 import Input from '../../components/Input/Input.component';
 import Spacer from '../../components/Spacer/Spacer.component';
-import useForm from '../../hooks/useForm';
 import EmphasisLayout from '../../layouts/Emphasis/Emphasis.layout';
 
 export interface RegisterData {
@@ -31,11 +31,7 @@ const ErrorText = styled.div`
 `;
 
 const RegisterScreen = ({ loading, error, handleRegister }: RegisterScreenProps) => {
-  const { values, handleChange, handleSubmit } = useForm<RegisterData>(handleRegister, {});
-  const value = {
-    email: values.email || '',
-    password: values.password || '',
-  };
+  const [value, setValue] = useState<RegisterData>({ email: '', password: '' });
 
   return (
     <EmphasisLayout>
@@ -43,23 +39,17 @@ const RegisterScreen = ({ loading, error, handleRegister }: RegisterScreenProps)
 
       <Spacer size='4x' />
 
-      <form onSubmit={handleSubmit}>
+      <Form value={value} onChange={setValue} onSubmit={() => handleRegister(value)}>
         <ControlGroup>
           <ErrorText>{error}</ErrorText>
-          <Input name='email' placeholder='Email' type='text' value={value.email} onChange={handleChange} />
-          <Input
-            name='password'
-            placeholder='Password'
-            type='password'
-            value={value.password}
-            onChange={handleChange}
-          />
+          <Input name='email' placeholder='Email' type='text' />
+          <Input name='password' placeholder='Password' type='password' />
           <ControlGroup.Spacer />
           <Button type='submit' loading={loading}>
             Create Account
           </Button>
         </ControlGroup>
-      </form>
+      </Form>
     </EmphasisLayout>
   );
 };
