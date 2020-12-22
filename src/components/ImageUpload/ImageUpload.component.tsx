@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import FileContext from '../../contexts/File.context';
 import useFormNode from '../Form/useFormNode.hook';
@@ -11,38 +11,25 @@ export type ImageUploadMode = 'fill' | 'form';
 interface ImageUploadProps {
   name: string;
   value?: string;
-  mode: ImageUploadMode;
   onChange?: (value: string) => void;
   uploadFn?: (file: File) => Promise<string>;
 }
 
-const UploadContainer = styled.div<Pick<ImageUploadProps, 'mode'>>`
+const UploadContainer = styled.div`
   position: relative;
   height: 100%;
   min-height: 144px;
   width: 100%;
   background-color: ${(props) => props.theme.colours.controlBackground};
 
-  ${(props) =>
-    props.mode === 'fill' &&
-    css`
-      height: 100%;
-      width: 100%;
-    `}
-
-  ${(props) =>
-    props.mode === 'form' &&
-    css`
-      height: 144px;
-      width: 144px;
-    `}
-
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
-  font-size: 72px;
+  font-size: 48px;
   color: lightgreen;
   color: ${(props) => props.theme.colours.controlFont};
   border: solid thin ${(props) => props.theme.colours.controlBorder};
@@ -72,7 +59,7 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const ImageUpload = ({ name, value, mode = 'form', onChange }: ImageUploadProps) => {
+const ImageUpload = ({ name, value, onChange }: ImageUploadProps) => {
   const { upload, getUrl } = useContext(FileContext);
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
   const inputRef = useRef<any>();
@@ -102,7 +89,7 @@ const ImageUpload = ({ name, value, mode = 'form', onChange }: ImageUploadProps)
 
   if (!internalValue) {
     return (
-      <UploadContainer mode={mode} onClick={handleUploadClicked}>
+      <UploadContainer onClick={handleUploadClicked}>
         <FontAwesomeIcon icon={faCloudUploadAlt} />
         <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} />
       </UploadContainer>

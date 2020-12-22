@@ -21,4 +21,6 @@ export { RegisterData } from './screens/Register/Register.screen';
 export { LoginData } from './screens/Login/Login.screen';
 export { VerificationData } from './screens/Verification/Verification.screen';
 
+export { default as FileContext } from './contexts/File.context';
+
 export { ButtonProps as ButtonProps } from './components/Button/Button.component';
