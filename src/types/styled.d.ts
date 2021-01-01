@@ -44,6 +44,7 @@ declare module 'styled-components' {
     fonts: {
       default: IFont;
       heading: IFont;
+      subHeading: IFont;
     };
   }
 }

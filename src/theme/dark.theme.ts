@@ -52,6 +52,11 @@ const darkTheme: DefaultTheme = {
       size: '36px',
       weight: '500',
     },
+    subHeading: {
+      family: `'Roboto', sans-serif`,
+      size: '24px',
+      weight: '400',
+    },
   },
 };
 

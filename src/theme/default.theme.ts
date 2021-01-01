@@ -53,6 +53,11 @@ const defaultTheme: DefaultTheme = {
       size: '36px',
       weight: '400',
     },
+    subHeading: {
+      family: `'Roboto', sans-serif`,
+      size: '24px',
+      weight: '400',
+    },
   },
 };
 
