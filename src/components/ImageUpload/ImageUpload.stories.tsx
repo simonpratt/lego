@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Meta } from '@storybook/react/types-6-0';
-import { Button, ControlGroup, FocusLayout, Heading, ImageUpload, Spacer, Text } from '../..';
+import { Button, Card, ControlGroup, FocusLayout, Heading, ImageUpload, LiveInput, Spacer, Text } from '../..';
 import colours from '../../colours/colours';
 import FileContext from '../../contexts/File.context';
 
@@ -55,6 +55,17 @@ export const InALayout = () => (
       <Button>Next</Button>
     </ControlGroup>
   </FocusLayout>
+);
+
+export const InACard = () => (
+  <Card size='sm'>
+    <Card.Media>
+      <ImageUpload name='profile' />
+    </Card.Media>
+    <Card.Content>
+      <LiveInput name='name' placeholder='Name' />
+    </Card.Content>
+  </Card>
 );
 
 export default {

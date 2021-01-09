@@ -20,7 +20,7 @@ const UploadContainer = styled.div`
   height: 100%;
   min-height: 144px;
   width: 100%;
-  background-color: ${(props) => props.theme.colours.controlBackground};
+  background-color: ${(props) => props.theme.colours.uploadBackground};
 
   height: 100%;
   width: 100%;
@@ -30,17 +30,7 @@ const UploadContainer = styled.div`
 
   cursor: pointer;
   font-size: 48px;
-  color: lightgreen;
-  color: ${(props) => props.theme.colours.controlFont};
-  border: solid thin ${(props) => props.theme.colours.controlBorder};
-
-  &:hover {
-    border-color: ${(props) => props.theme.colours.controlBorderHover};
-  }
-
-  &:focus {
-    border-color: ${(props) => props.theme.colours.controlBorderFocus};
-  }
+  color: ${(props) => props.theme.colours.uploadIcon};
 `;
 
 const HiddenInput = styled.input`

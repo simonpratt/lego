@@ -24,6 +24,9 @@ const darkTheme: DefaultTheme = {
     controlFont: 'red',
     controlPlaceholder: 'red',
 
+    uploadBackground: 'red',
+    uploadIcon: 'red',
+
     cardBackground: 'red',
 
     statusInfo: {

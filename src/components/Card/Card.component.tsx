@@ -8,7 +8,7 @@ import CardSpacer from './_CardSpacer.component';
 
 export interface CardProps {
   children: React.ReactNode;
-  size: CardSize;
+  size?: CardSize;
 }
 
 interface CardOuterProps {
@@ -47,7 +47,7 @@ const CardOuter = styled.div<CardOuterProps>`
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
 `;
 
-const Card = ({ children, size }: CardProps) => {
+const Card = ({ children, size = 'sm' }: CardProps) => {
   return (
     <CardContext.Provider value={{ size }}>
       <CardOuter size={size}>{children}</CardOuter>

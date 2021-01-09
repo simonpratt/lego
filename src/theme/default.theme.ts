@@ -25,6 +25,9 @@ const defaultTheme: DefaultTheme = {
     controlFont: colours.grey90,
     controlPlaceholder: colours.grey30,
 
+    uploadBackground: colours.grey20,
+    uploadIcon: colours.grey10,
+
     cardBackground: colours.white,
 
     statusInfo: {

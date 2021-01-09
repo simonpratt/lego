@@ -36,6 +36,9 @@ declare module 'styled-components' {
       controlFont: string;
       controlPlaceholder: string;
 
+      uploadBackground: string;
+      uploadIcon: string;
+
       cardBackground: string;
 
       statusInfo: IStatus;
