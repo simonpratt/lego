@@ -36,6 +36,8 @@ declare module 'styled-components' {
       controlFont: string;
       controlPlaceholder: string;
 
+      cardBackground: string;
+
       statusInfo: IStatus;
       statusSuccess: IStatus;
       statusWarn: IStatus;

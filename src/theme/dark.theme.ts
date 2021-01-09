@@ -24,6 +24,8 @@ const darkTheme: DefaultTheme = {
     controlFont: 'red',
     controlPlaceholder: 'red',
 
+    cardBackground: 'red',
+
     statusInfo: {
       main: 'red',
       highlightText: 'red',

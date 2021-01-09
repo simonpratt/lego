@@ -25,6 +25,8 @@ const defaultTheme: DefaultTheme = {
     controlFont: colours.grey90,
     controlPlaceholder: colours.grey30,
 
+    cardBackground: colours.white,
+
     statusInfo: {
       main: colours.blue,
       highlightText: colours.blue,
