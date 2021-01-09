@@ -6,7 +6,7 @@ import CardContent from './_CardContent.component';
 import CardMedia from './_CardMedia.component';
 import CardSpacer from './_CardSpacer.component';
 
-export interface CardProps {
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   size?: CardSize;
 }
@@ -47,10 +47,12 @@ const CardOuter = styled.div<CardOuterProps>`
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
 `;
 
-const Card = ({ children, size = 'sm' }: CardProps) => {
+const Card = ({ children, size = 'sm', ...props }: CardProps) => {
   return (
     <CardContext.Provider value={{ size }}>
-      <CardOuter size={size}>{children}</CardOuter>
+      <CardOuter size={size} {...props}>
+        {children}
+      </CardOuter>
     </CardContext.Provider>
   );
 };
