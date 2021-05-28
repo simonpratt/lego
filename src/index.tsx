@@ -15,6 +15,7 @@ export { default as LoginScreen } from './screens/Login/Login.screen';
 export { default as RegisterScreen } from './screens/Register/Register.screen';
 export { default as VerificationScreen } from './screens/Verification/Verification.screen';
 
+export { default as ActionLayout } from './layouts/Action/Action.layout';
 export { default as EmphasisLayout } from './layouts/Emphasis/Emphasis.layout';
 export { default as FocusLayout } from './layouts/Focus/Focus.layout';
 
