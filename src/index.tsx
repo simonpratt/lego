@@ -9,6 +9,7 @@ export { default as Input } from './components/Input/Input.component';
 export { default as Heading } from './components/Heading/Heading.component';
 export { default as LiveInput } from './components/LiveInput/LiveInput.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
+export { default as SquareButton } from './components/SquareButton/SquareButton.component';
 export { default as Text } from './components/Text/Text.component';
 
 export { default as LoginScreen } from './screens/Login/Login.screen';
