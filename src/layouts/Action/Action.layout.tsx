@@ -12,6 +12,11 @@ export interface ActionLayoutTextProps {
   children: React.ReactNode;
 }
 
+export interface ActionLayoutContentProps {
+  children: React.ReactNode;
+  left?: boolean;
+}
+
 const ActionLayoutContainer = styled.div`
   padding: 32px 16px;
 
@@ -21,17 +26,30 @@ const ActionLayoutContainer = styled.div`
   `}
 `;
 
+const ActionLayoutInner = styled.div`
+  ${responsive.useStylesFor('tablet').andLarger`
+    width: 100%;
+    max-width: 600px;
+  `}
+`;
+
 const ActionLayoutTextContainer = styled.div`
   ${responsive.useStylesFor('tablet').andLarger`
     margin-right: 128px;
   `}
 `;
 
-const ActionLayoutContent = styled.div`
+const ActionLayoutContentOuter = styled.div<ActionLayoutContentProps>`
   margin-top: 32px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+
+  ${(props) =>
+    props.left
+      ? ''
+      : `
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  `}
 `;
 
 const ActionLayoutText = (props: ActionLayoutTextProps) => (
@@ -40,9 +58,15 @@ const ActionLayoutText = (props: ActionLayoutTextProps) => (
   </ActionLayoutTextContainer>
 );
 
+const ActionLayoutContent = (props: ActionLayoutContentProps) => {
+  const { left, children } = props;
+
+  return <ActionLayoutContentOuter left={left}>{children}</ActionLayoutContentOuter>;
+};
+
 const ActionLayout = (props: ActionLayoutProps) => (
   <ActionLayoutContainer>
-    <div>{props.children}</div>
+    <ActionLayoutInner>{props.children}</ActionLayoutInner>
   </ActionLayoutContainer>
 );
 

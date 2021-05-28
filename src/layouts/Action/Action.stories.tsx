@@ -11,6 +11,15 @@ export const Standard = () => (
   </ActionLayout>
 );
 
+export const LeftAligned = () => (
+  <ActionLayout>
+    <ActionLayout.Text>Lets find something to eat...</ActionLayout.Text>
+    <ActionLayout.Content left>
+      <Button variant='secondary'>Get Started</Button>
+    </ActionLayout.Content>
+  </ActionLayout>
+);
+
 export default {
   title: 'Layouts/Action',
   component: ActionLayout,
