@@ -1,6 +1,6 @@
 {
   "name": "@dtdot/lego",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Some reusable components for building my applications",
   "main": "build/index.js",
   "scripts": {
