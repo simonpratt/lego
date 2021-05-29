@@ -9,10 +9,12 @@ import CardSpacer from './_CardSpacer.component';
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   size?: CardSize;
+  padded?: boolean;
 }
 
 interface CardOuterProps {
   size: CardSize;
+  padded?: boolean;
 }
 
 const CardOuter = styled.div<CardOuterProps>`
@@ -43,14 +45,15 @@ const CardOuter = styled.div<CardOuterProps>`
     }
   }}
 
+  padding: ${(props) => (props.padded ? '16px' : 0)};
   background-color: ${(props) => props.theme.colours.cardBackground};
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
 `;
 
-const Card = ({ children, size = 'sm', ...props }: CardProps) => {
+const Card = ({ children, padded, size = 'sm', ...props }: CardProps) => {
   return (
     <CardContext.Provider value={{ size }}>
-      <CardOuter size={size} {...props}>
+      <CardOuter size={size} padded={padded} {...props}>
         {children}
       </CardOuter>
     </CardContext.Provider>

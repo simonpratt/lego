@@ -28,6 +28,7 @@ declare module 'styled-components' {
       secondary: IPalette;
 
       defaultFont: string;
+      defaultBorder: string;
 
       controlBackground: string;
       controlBorder: string;

@@ -17,6 +17,7 @@ const defaultTheme: DefaultTheme = {
     },
 
     defaultFont: colours.grey90,
+    defaultBorder: colours.grey20,
 
     controlBackground: colours.white,
     controlBorder: colours.grey20,

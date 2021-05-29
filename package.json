@@ -25,7 +25,9 @@
     "@storybook/addon-essentials": "^6.1.10",
     "@storybook/addon-links": "^6.1.10",
     "@storybook/react": "^6.1.10",
+    "@types/identicon.js": "^2.3.0",
     "@types/react": "^17.0.0",
+    "@types/spark-md5": "^3.0.2",
     "@types/styled-components": "^5.1.4",
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
@@ -51,6 +53,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.13"
+    "@fortawesome/react-fontawesome": "^0.1.13",
+    "identicon.js": "^2.3.3",
+    "spark-md5": "^3.0.1"
   }
 }
