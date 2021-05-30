@@ -41,10 +41,10 @@ const StyledText = styled(Text)`
 `;
 
 const CopyInput = styled.input`
-  height: 1px;
-  width: 1px;
   opacity: 0;
   position: absolute;
+  left: -9999px;
+  top: -9999px;
 `;
 
 const QrCode = ({ value }: QrCodeProps) => {
@@ -87,7 +87,7 @@ const QrCode = ({ value }: QrCodeProps) => {
           </Toast>
         </ToastContainer>
       )}
-      <CopyInput ref={inputRef} value={value} />
+      <CopyInput readOnly ref={inputRef} value={value} />
       <StyledCanvas ref={ref} />
     </Container>
   );
