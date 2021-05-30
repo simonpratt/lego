@@ -47,7 +47,7 @@ const QrCode = ({ value }: QrCodeProps) => {
       window.clearTimeout(hintTimeoutRef.current);
     }
 
-    const result = await navigator.permissions.query({ name: 'clipboard-write' });
+    const result = await navigator.permissions.query({ name: 'clipboard-write' } as any);
     if (!(result.state === 'granted' || result.state === 'prompt')) {
       return;
     }
