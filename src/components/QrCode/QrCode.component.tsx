@@ -25,6 +25,9 @@ const ToastContainer = styled.div`
 
   display: flex;
   justify-content: center;
+
+  pointer-events: none;
+  touch-action: none;
 `;
 
 const Toast = styled.div`
@@ -49,6 +52,7 @@ const QrCode = ({ value }: QrCodeProps) => {
 
     const result = await navigator.permissions.query({ name: 'clipboard-write' } as any);
     if (!(result.state === 'granted' || result.state === 'prompt')) {
+      console.warn('Copy to clipboard not supported');
       return;
     }
 
@@ -62,12 +66,14 @@ const QrCode = ({ value }: QrCodeProps) => {
 
   useEffect(() => {
     if (ref.current) {
-      QRCode.toCanvas(ref.current, value);
+      QRCode.toCanvas(ref.current, value, {
+        width: 132,
+      });
     }
   }, [value]);
 
   return (
-    <Container>
+    <Container onClick={() => showHint()}>
       {copiedHint && (
         <ToastContainer>
           <Toast>
@@ -75,7 +81,7 @@ const QrCode = ({ value }: QrCodeProps) => {
           </Toast>
         </ToastContainer>
       )}
-      <StyledCanvas onClick={() => showHint()} ref={ref} />
+      <StyledCanvas ref={ref} />
     </Container>
   );
 };
