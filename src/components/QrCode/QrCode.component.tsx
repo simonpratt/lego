@@ -40,8 +40,17 @@ const StyledText = styled(Text)`
   color: ${(props) => props.theme.colours.secondary.contrastText};
 `;
 
+const CopyInput = styled.input`
+  height: 1px;
+  width: 1px;
+  opacity: 0;
+  position: absolute;
+`;
+
 const QrCode = ({ value }: QrCodeProps) => {
   const ref = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const hintTimeoutRef = useRef<any>();
   const [copiedHint, setCopiedHint] = useState(false);
 
@@ -50,13 +59,10 @@ const QrCode = ({ value }: QrCodeProps) => {
       window.clearTimeout(hintTimeoutRef.current);
     }
 
-    const result = await navigator.permissions.query({ name: 'clipboard-write' } as any);
-    if (!(result.state === 'granted' || result.state === 'prompt')) {
-      console.warn('Copy to clipboard not supported');
-      return;
+    if (inputRef?.current) {
+      inputRef.current.select();
+      document.execCommand('copy');
     }
-
-    navigator.clipboard.writeText(value);
 
     setCopiedHint(true);
     hintTimeoutRef.current = setTimeout(() => {
@@ -81,6 +87,7 @@ const QrCode = ({ value }: QrCodeProps) => {
           </Toast>
         </ToastContainer>
       )}
+      <CopyInput ref={inputRef} value={value} />
       <StyledCanvas ref={ref} />
     </Container>
   );
