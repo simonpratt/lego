@@ -31,6 +31,11 @@ const defaultTheme: DefaultTheme = {
 
     cardBackground: colours.white,
 
+    menuBackground: colours.white,
+    menuFont: '#8898a8',
+    menuHoverBackground: '#f9f9f9',
+    menuActive: colours.grey90,
+
     statusInfo: {
       main: colours.blue,
       highlightText: colours.blue,
@@ -64,6 +69,10 @@ const defaultTheme: DefaultTheme = {
       size: '24px',
       weight: '400',
     },
+  },
+  shadows: {
+    small: '0px 0px 2px rgba(0, 0, 0, 0.15)',
+    medium: '0px 0px 4px rgba(0, 0, 0, 0.15)',
   },
 };
 

@@ -42,6 +42,11 @@ declare module 'styled-components' {
 
       cardBackground: string;
 
+      menuBackground: string;
+      menuFont: string;
+      menuHoverBackground: string;
+      menuActive: string;
+
       statusInfo: IStatus;
       statusSuccess: IStatus;
       statusWarn: IStatus;
@@ -51,6 +56,10 @@ declare module 'styled-components' {
       default: IFont;
       heading: IFont;
       subHeading: IFont;
+    };
+    shadows: {
+      small: string;
+      medium: string;
     };
   }
 }

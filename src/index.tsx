@@ -1,3 +1,5 @@
+export { default as BodyStyle } from './global/BodyStyle.component';
+
 export { default as Alert } from './components/Alert/Alert.component';
 export { default as Button } from './components/Button/Button.component';
 export { default as Card } from './components/Card/Card.component';
@@ -8,6 +10,7 @@ export { default as ImageUpload } from './components/ImageUpload/ImageUpload.com
 export { default as Input } from './components/Input/Input.component';
 export { default as Heading } from './components/Heading/Heading.component';
 export { default as LiveInput } from './components/LiveInput/LiveInput.component';
+export { default as Menu } from './components/Menu/Menu.component';
 export { default as ProfileImage } from './components/ProfileImage/ProfileImage.component';
 export { default as QrCode } from './components/QrCode/QrCode.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
@@ -32,3 +35,5 @@ export { VerificationData } from './screens/Verification/Verification.screen';
 export { default as FileContext } from './contexts/File.context';
 
 export { ButtonProps as ButtonProps } from './components/Button/Button.component';
+
+export { default as menuHelpers } from './components/Menu/menu.helpers';

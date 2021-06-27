@@ -30,6 +30,11 @@ const darkTheme: DefaultTheme = {
 
     cardBackground: 'red',
 
+    menuBackground: 'red',
+    menuFont: 'red',
+    menuHoverBackground: 'red',
+    menuActive: 'red',
+
     statusInfo: {
       main: 'red',
       highlightText: 'red',
@@ -63,6 +68,10 @@ const darkTheme: DefaultTheme = {
       size: '24px',
       weight: '400',
     },
+  },
+  shadows: {
+    small: '0px 0px 2px rgba(0, 0, 0, 0.15)',
+    medium: '0px 0px 4px rgba(0, 0, 0, 0.15)',
   },
 };
 
