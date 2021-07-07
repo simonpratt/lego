@@ -37,3 +37,4 @@ export { default as FileContext } from './contexts/File.context';
 export { ButtonProps as ButtonProps } from './components/Button/Button.component';
 
 export { default as menuHelpers } from './components/Menu/menu.helpers';
+export { default as responsive } from './responsive/responsive';
