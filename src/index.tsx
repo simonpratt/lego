@@ -6,6 +6,8 @@ export { default as Card } from './components/Card/Card.component';
 export { default as CardGroup } from './components/Card/CardGroup.component';
 export { default as ControlGroup } from './components/ControlGroup/ControlGroup.component';
 export { default as Form } from './components/Form/Form.component';
+export { default as Notification } from './components/Notification/Notification.component';
+export { default as Notifications } from './components/Notifications/Notifications.component';
 export { default as ImageUpload } from './components/ImageUpload/ImageUpload.component';
 export { default as Input } from './components/Input/Input.component';
 export { default as Heading } from './components/Heading/Heading.component';

@@ -30,6 +30,8 @@ declare module 'styled-components' {
       defaultFont: string;
       defaultBorder: string;
 
+      secondaryFont: string;
+
       controlBackground: string;
       controlBorder: string;
       controlBorderFocus: string;

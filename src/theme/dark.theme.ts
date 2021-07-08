@@ -18,6 +18,8 @@ const darkTheme: DefaultTheme = {
     defaultFont: 'red',
     defaultBorder: 'red',
 
+    secondaryFont: 'red',
+
     controlBackground: 'red',
     controlBorder: 'red',
     controlBorderFocus: 'red',

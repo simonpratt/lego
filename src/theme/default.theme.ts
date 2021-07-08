@@ -19,6 +19,8 @@ const defaultTheme: DefaultTheme = {
     defaultFont: colours.grey90,
     defaultBorder: colours.grey20,
 
+    secondaryFont: colours.grey50,
+
     controlBackground: colours.white,
     controlBorder: colours.grey20,
     controlBorderFocus: colours.grey50,
