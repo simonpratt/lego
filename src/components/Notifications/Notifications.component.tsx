@@ -14,7 +14,7 @@ const NotificationContainer = styled.div`
   z-index: 2;
 
   ${responsive.useStylesFor('mobile').andSmaller(`
-    bottom: 20px;
+    bottom: 80px;
     left: 20px;
 
     width: calc(100% - 40px);
