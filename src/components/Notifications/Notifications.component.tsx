@@ -4,11 +4,21 @@ import styled from 'styled-components';
 import { animated, useTransition } from 'react-spring';
 
 import { Notification, Spacer } from '../..';
+import responsive from '../../responsive/responsive';
 
 const NotificationContainer = styled.div`
   position: fixed;
   bottom: 20px;
   left: 270px;
+
+  z-index: 2;
+
+  ${responsive.useStylesFor('mobile').andSmaller(`
+    bottom: 20px;
+    left: 20px;
+
+    width: calc(100% - 40px);
+  `)}
 `;
 
 export type NotificationVariant = 'info' | 'success' | 'warn' | 'danger';
