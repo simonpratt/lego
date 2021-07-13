@@ -47,7 +47,7 @@ const CardOuter = styled.div<CardOuterProps>`
 
   padding: ${(props) => (props.padded ? '16px' : 0)};
   background-color: ${(props) => props.theme.colours.cardBackground};
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.15);
+  box-shadow: ${(props) => props.theme.shadows.small};
 `;
 
 const Card = ({ children, padded, size = 'sm', ...props }: CardProps) => {

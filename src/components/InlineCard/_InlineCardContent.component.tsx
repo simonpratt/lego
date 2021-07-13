@@ -1,20 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export interface CardContentProps {
+export interface InlineCardContentProps {
   children: React.ReactNode;
 }
 
-const ContentInner = styled.div`
-  padding: 0 16px;
-
-  &:first-child {
-    padding-top: 16px;
-  }
-
-  &:last-child {
-    padding-bottom: 16px;
-  }
+const ContentContainer = styled.div`
+  height: 100%;
+  padding: 8px;
 
   font-family: ${(props) => props.theme.fonts.default.family};
   font-weight: ${(props) => props.theme.fonts.default.weight};
@@ -22,8 +15,8 @@ const ContentInner = styled.div`
   color: ${(props) => props.theme.colours.defaultFont};
 `;
 
-const CardContent = ({ children }: CardContentProps) => {
-  return <ContentInner>{children}</ContentInner>;
+const InlineCardContent = ({ children }: InlineCardContentProps) => {
+  return <ContentContainer>{children}</ContentContainer>;
 };
 
-export default CardContent;
+export default InlineCardContent;
