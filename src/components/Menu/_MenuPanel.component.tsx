@@ -5,30 +5,52 @@ import responsive from '../../responsive/responsive';
 import { getMaxSize, PanelSize } from './_MenuContent.component';
 import MenuContentContext from './_MenuContent.context';
 
-interface MenuPageInnerProps {
+interface MenuPanelDivProps {
   panelSize: PanelSize;
 }
 
-const MenuPageInner = styled.div<MenuPageInnerProps>`
+const MenuPanelDiv = styled.div<MenuPanelDivProps>`
   background-color: ${(props) => props.theme.colours.background};
   box-shadow: ${(props) => props.theme.shadows.medium};
   border-radius: 2px;
   min-height: calc(100vh - 16px);
-  flex-grow: 1;
+  margin-right: 8px;
+
+  ${(props) => {
+    switch (props.panelSize) {
+      case 'sm':
+        return `
+          max-width: 550px;
+          min-width: 300px;
+        `;
+      case 'md':
+      default:
+        return `
+          max-width: 700px;
+          min-width: 450px;
+        `;
+    }
+  }}
 
   ${(props) =>
     responsive.useStylesFor(getMaxSize(props.panelSize)).andSmaller(`
+    max-width: unset;
+    min-width: unset;
     min-height: unset;
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 8px;
   `)}
 `;
 
-export interface MenuPageProps {
+export interface MenuPanelProps {
   children: React.ReactNode;
 }
-const MenuPage = ({ children }: MenuPageProps) => {
+
+const MenuPanel = ({ children }: MenuPanelProps) => {
   const { panelSize } = useContext(MenuContentContext);
 
-  return <MenuPageInner panelSize={panelSize}>{children}</MenuPageInner>;
+  return <MenuPanelDiv panelSize={panelSize}>{children}</MenuPanelDiv>;
 };
 
-export default MenuPage;
+export default MenuPanel;

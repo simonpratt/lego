@@ -1,8 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import MenuContent from './_MenuContent.component';
 import MenuHeading from './_MenuHeading.component';
 import MenuItem from './_MenuItem.component';
 import MenuPage from './_MenuPage.component';
+import MenuPanel from './_MenuPanel.component';
 
 const MenuOuter = styled.div`
   position: fixed;
@@ -26,5 +28,7 @@ const Menu = ({ children }: MenuProps) => {
 Menu.Page = MenuPage;
 Menu.Heading = MenuHeading;
 Menu.Item = MenuItem;
+Menu.Content = MenuContent;
+Menu.Panel = MenuPanel;
 
 export default Menu;
