@@ -8,6 +8,12 @@ export interface InlineCardMediaProps {
 const MediaContainer = styled.div`
   width: 128px;
   height: 64px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const InlineCardMedia = ({ children }: InlineCardMediaProps) => {

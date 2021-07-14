@@ -1,13 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Meta } from '@storybook/react/types-6-0';
 import { Card, CardGroup, LiveInput } from '../..';
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
 
 export const Standard = () => (
   <CardGroup>
@@ -18,7 +11,7 @@ export const Standard = () => (
     </Card>
     <Card size='sm'>
       <Card.Media>
-        <Image src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
+        <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
       </Card.Media>
 
       <Card.Content>
@@ -32,19 +25,19 @@ export const Sizes = () => (
   <CardGroup>
     <Card size='sm'>
       <Card.Media>
-        <Image src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
+        <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
       </Card.Media>
       <Card.Content>A small card!</Card.Content>
     </Card>
     <Card size='md'>
       <Card.Media>
-        <Image src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
+        <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
       </Card.Media>
       <Card.Content>A medium card..</Card.Content>
     </Card>
     <Card size='lg'>
       <Card.Media>
-        <Image src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
+        <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
       </Card.Media>
       <Card.Content>A large card.</Card.Content>
     </Card>
