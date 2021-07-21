@@ -14,6 +14,13 @@ export const Standard = () => (
 
       <InlineCard.Content>Some more content</InlineCard.Content>
     </InlineCard>
+    <InlineCard
+      onClick={() => {
+        console.log('Clicked');
+      }}
+    >
+      <InlineCard.Content>Clickable card</InlineCard.Content>
+    </InlineCard>
   </InlineCardGroup>
 );
 

@@ -7,6 +7,7 @@ export interface InlineCardMediaProps {
 
 const MediaContainer = styled.div`
   width: 128px;
+  min-width: 128px;
   height: 64px;
 
   img {
