@@ -16,9 +16,12 @@ const darkTheme: DefaultTheme = {
     },
 
     defaultFont: 'red',
-    defaultBorder: 'red',
-
     secondaryFont: 'red',
+    tertiaryFont: 'red',
+
+    tertiaryFontHover: 'red',
+
+    defaultBorder: 'red',
 
     controlBackground: 'red',
     controlBorder: 'red',
