@@ -14,6 +14,7 @@ export { default as InlineCardGroup } from './components/InlineCard/InlineCardGr
 export { default as Input } from './components/Input/Input.component';
 export { default as Heading } from './components/Heading/Heading.component';
 export { default as LiveInput } from './components/LiveInput/LiveInput.component';
+export { default as Loader } from './components/Loader/Loader.component';
 export { default as Menu } from './components/Menu/Menu.component';
 export { default as Modal } from './components/Modal/Modal.component';
 export { default as ProfileImage } from './components/ProfileImage/ProfileImage.component';

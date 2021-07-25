@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import { Loader } from '../..';
 import responsive from '../../responsive/responsive';
 import ModalContext from './_Modal.context';
 import ModalBody from './_ModalBody.component';
@@ -13,6 +14,7 @@ export type ModalSize = 'sm' | 'md' | 'lg';
 export interface ModalProps {
   children: React.ReactNode;
   size?: ModalSize;
+  loading?: boolean;
   onClose: () => void;
 }
 
@@ -30,6 +32,7 @@ const getResponsiveSize = (size: ModalSize) => {
 
 const animationDistance = 30;
 const bottomPadding = 50;
+const loadingHeight = 64;
 
 const Overlay = styled(motion.div)`
   position: fixed;
@@ -71,7 +74,7 @@ interface ModalOuterProps {
   size: ModalSize;
 }
 
-const ModalOuter = styled.div<ModalOuterProps>`
+const ModalOuter = styled(motion.div)<ModalOuterProps>`
   background-color: white;
   border-radius: 4px;
   margin: 32px 0 128px 0;
@@ -83,6 +86,7 @@ const ModalOuter = styled.div<ModalOuterProps>`
   font-weight: ${(props) => props.theme.fonts.default.weight};
 
   width: ${(props) => responsive.getWidthFor(getResponsiveSize(props.size))};
+  overflow: hidden;
 
   ${(props) =>
     responsive.useStylesFor(getResponsiveSize(props.size)).andSmaller(`
@@ -91,7 +95,17 @@ const ModalOuter = styled.div<ModalOuterProps>`
   `)}
 `;
 
-const Modal = ({ children, size, onClose }: ModalProps) => {
+const SpinnerContainer = styled.div`
+  display: flex;
+  height: ${loadingHeight}px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+`;
+
+const Modal = ({ children, size, loading, onClose }: ModalProps) => {
   const handleModalClick = (event: SyntheticEvent) => {
     (event as any).modalClicked = true;
   };
@@ -115,8 +129,15 @@ const Modal = ({ children, size, onClose }: ModalProps) => {
         <ScrollContainer>
           <ModalContext.Provider value={{ onClose }}>
             <ModalWrapper size={size || 'md'}>
-              <ModalOuter size={size || 'md'} onClick={handleModalClick}>
-                {children}
+              <ModalOuter
+                transition={{ type: 'spring', bounce: 0, duration: 0.6 }}
+                initial={{ height: loading ? loadingHeight : 'auto' }}
+                animate={{ height: loading ? loadingHeight : 'auto' }}
+                size={size || 'md'}
+                onClick={handleModalClick}
+              >
+                {!loading && children}
+                {loading && <SpinnerContainer><Loader /></SpinnerContainer>}
               </ModalOuter>
             </ModalWrapper>
           </ModalContext.Provider>

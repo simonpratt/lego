@@ -4,12 +4,25 @@ import { Modal, Button } from '../..';
 
 export const Standard = () => {
   const [open, setOpen] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+    setLoading(true);
+
+    setTimeout(() => setLoading(false), 2000);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setLoading(false);
+  };
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open</Button>
+      <Button onClick={handleOpen}>Open</Button>
       {open && (
-        <Modal size='sm' onClose={() => setOpen(false)}>
+        <Modal size='sm' onClose={handleClose} loading={loading}>
           <Modal.Header header='Small modal' subHeader="This one shouldn't scroll" />
           <Modal.Body>
             <p>
@@ -17,6 +30,7 @@ export const Standard = () => {
               turpis. Nunc dictum pretium felis a vulputate. Aliquam bibendum ex sed sapien rutrum accumsan. Curabitur
               sed mi arcu.
             </p>
+            <br />
           </Modal.Body>
         </Modal>
       )}
