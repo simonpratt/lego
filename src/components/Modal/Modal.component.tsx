@@ -1,6 +1,8 @@
 import React, { SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import responsive from '../../responsive/responsive';
 import ModalContext from './_Modal.context';
 import ModalBody from './_ModalBody.component';
@@ -26,16 +28,26 @@ const getResponsiveSize = (size: ModalSize) => {
   }
 };
 
-const Overlay = styled.div`
+const animationDistance = 30;
+const bottomPadding = 50;
+
+const Overlay = styled(motion.div)`
   position: fixed;
-  top: 0;
+  top: -${animationDistance}px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: calc(100% + ${animationDistance}px + ${bottomPadding}px);
+
+  padding-top: ${animationDistance}px;
+  padding-bottom: ${bottomPadding}px;
 
   background-color: #00000050;
-  overflow: auto;
   z-index: 100;
+`;
+
+const ScrollContainer = styled.div`
+  overflow: auto;
+  height: 100%;
 `;
 
 interface ModalWrapperProps {
@@ -63,7 +75,6 @@ const ModalOuter = styled.div<ModalOuterProps>`
   background-color: white;
   border-radius: 4px;
   margin: 32px 0 128px 0;
-  /* align-self: center; */
 
   color: ${(props) => props.theme.colours.defaultFont};
 
@@ -92,15 +103,26 @@ const Modal = ({ children, size, onClose }: ModalProps) => {
   };
 
   return ReactDOM.createPortal(
-    <Overlay onClick={handleOverlayClick}>
-      <ModalContext.Provider value={{ onClose }}>
-        <ModalWrapper size={size || 'md'}>
-          <ModalOuter size={size || 'md'} onClick={handleModalClick}>
-            {children}
-          </ModalOuter>
-        </ModalWrapper>
-      </ModalContext.Provider>
-    </Overlay>,
+    <AnimatePresence>
+      <Overlay
+        key={'modal'}
+        initial={{ opacity: 0, y: animationDistance }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: animationDistance }}
+        transition={{ type: 'spring', bounce: 0, duration: 0.6 }}
+        onClick={handleOverlayClick}
+      >
+        <ScrollContainer>
+          <ModalContext.Provider value={{ onClose }}>
+            <ModalWrapper size={size || 'md'}>
+              <ModalOuter size={size || 'md'} onClick={handleModalClick}>
+                {children}
+              </ModalOuter>
+            </ModalWrapper>
+          </ModalContext.Provider>
+        </ScrollContainer>
+      </Overlay>
+    </AnimatePresence>,
     document.body,
   );
 };
