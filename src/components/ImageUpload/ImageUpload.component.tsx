@@ -31,6 +31,7 @@ const UploadContainer = styled.div`
 
 const UploadInnerContainer = styled.div`
   height: 100%;
+  min-height: 144px;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
