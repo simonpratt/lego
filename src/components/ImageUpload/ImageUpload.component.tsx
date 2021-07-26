@@ -1,7 +1,8 @@
 import React, { useContext, useRef } from 'react';
-import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { faCloudUploadAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import FileContext from '../../contexts/File.context';
 import useFormNode from '../Form/useFormNode.hook';
@@ -12,25 +13,45 @@ interface ImageUploadProps {
   name: string;
   value?: string;
   onChange?: (value: string) => void;
+  onSearch?: () => void;
   uploadFn?: (file: File) => Promise<string>;
 }
 
 const UploadContainer = styled.div`
   position: relative;
-  height: 100%;
   min-height: 144px;
-  width: 100%;
   background-color: ${(props) => props.theme.colours.uploadBackground};
 
   height: 100%;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  cursor: pointer;
   font-size: 48px;
   color: ${(props) => props.theme.colours.uploadIcon};
+`;
+
+const UploadInnerContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+const IconContainer = styled(motion.div)`
+  flex-grow: 1;
+  margin: 8px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const UploadVerticalDivider = styled.div`
+  margin: 8px 0;
+  width: 2px;
+  height: calc(100% - 16px);
+  top: 10%;
+  background-color: ${(props) => props.theme.colours.uploadIcon};
 `;
 
 const HiddenInput = styled.input`
@@ -49,7 +70,7 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const ImageUpload = ({ name, value, onChange }: ImageUploadProps) => {
+const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
   const { upload, getUrl } = useContext(FileContext);
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
   const inputRef = useRef<any>();
@@ -80,7 +101,19 @@ const ImageUpload = ({ name, value, onChange }: ImageUploadProps) => {
   if (!internalValue) {
     return (
       <UploadContainer onClick={handleUploadClicked}>
-        <FontAwesomeIcon icon={faCloudUploadAlt} />
+        <UploadInnerContainer>
+          <IconContainer whileHover={{ scale: 1.05 }}>
+            <FontAwesomeIcon icon={faCloudUploadAlt} />
+          </IconContainer>
+          {onSearch && (
+            <>
+              <UploadVerticalDivider />
+              <IconContainer whileHover={{ scale: 1.05 }}>
+                <FontAwesomeIcon icon={faSearch} />
+              </IconContainer>
+            </>
+          )}
+        </UploadInnerContainer>
         <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} />
       </UploadContainer>
     );

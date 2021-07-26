@@ -1,7 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Meta } from '@storybook/react/types-6-0';
-import { Button, Card, ControlGroup, FocusLayout, Heading, ImageUpload, LiveInput, Spacer, Text } from '../..';
+import {
+  Button,
+  Card,
+  CardGroup,
+  ControlGroup,
+  FocusLayout,
+  Heading,
+  ImageUpload,
+  LiveInput,
+  Spacer,
+  Text,
+} from '../..';
 import colours from '../../colours/colours';
 import FileContext from '../../contexts/File.context';
 
@@ -58,14 +69,29 @@ export const InALayout = () => (
 );
 
 export const InACard = () => (
-  <Card size='sm'>
-    <Card.Media>
-      <ImageUpload name='profile' />
-    </Card.Media>
-    <Card.Content>
-      <LiveInput name='name' placeholder='Name' />
-    </Card.Content>
-  </Card>
+  <CardGroup>
+    <Card size='sm'>
+      <Card.Media>
+        <ImageUpload name='profile' />
+      </Card.Media>
+      <Card.Content>
+        <LiveInput name='name' placeholder='Name' />
+      </Card.Content>
+    </Card>
+    <Card size='sm'>
+      <Card.Media>
+        <ImageUpload
+          name='profile'
+          onSearch={() => {
+            console.log('search');
+          }}
+        />
+      </Card.Media>
+      <Card.Content>
+        <LiveInput name='name' placeholder='Name' />
+      </Card.Content>
+    </Card>
+  </CardGroup>
 );
 
 export default {
