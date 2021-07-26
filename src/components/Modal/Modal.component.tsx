@@ -135,7 +135,11 @@ const Modal = ({ children, size, loading, onClose }: ModalProps) => {
                 onClick={handleModalClick}
               >
                 {!loading && children}
-                {loading && <SpinnerContainer><Loader /></SpinnerContainer>}
+                {loading && (
+                  <SpinnerContainer>
+                    <Loader />
+                  </SpinnerContainer>
+                )}
               </ModalOuter>
             </ModalWrapper>
           </ModalContext.Provider>
