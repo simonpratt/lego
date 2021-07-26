@@ -101,15 +101,15 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
 
   if (!internalValue) {
     return (
-      <UploadContainer onClick={handleUploadClicked}>
+      <UploadContainer>
         <UploadInnerContainer>
-          <IconContainer whileHover={{ scale: 1.05 }}>
+          <IconContainer whileHover={{ scale: 1.05 }} onClick={handleUploadClicked}>
             <FontAwesomeIcon icon={faCloudUploadAlt} />
           </IconContainer>
           {onSearch && (
             <>
               <UploadVerticalDivider />
-              <IconContainer whileHover={{ scale: 1.05 }}>
+              <IconContainer whileHover={{ scale: 1.05 }} onClick={onSearch}>
                 <FontAwesomeIcon icon={faSearch} />
               </IconContainer>
             </>
