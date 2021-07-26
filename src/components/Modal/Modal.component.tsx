@@ -101,8 +101,6 @@ const SpinnerContainer = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-
-  color: black;
 `;
 
 const Modal = ({ children, size, loading, onClose }: ModalProps) => {
