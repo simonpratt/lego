@@ -51,6 +51,7 @@ const UploadVerticalDivider = styled.div`
   margin: 8px 0;
   width: 2px;
   height: calc(100% - 16px);
+  min-height: calc(144px - 16px);
   top: 10%;
   background-color: ${(props) => props.theme.colours.uploadIcon};
 `;
