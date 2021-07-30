@@ -3,57 +3,49 @@ import { DefaultTheme } from 'styled-components';
 const darkTheme: DefaultTheme = {
   name: 'dark',
   colours: {
-    background: 'red',
-    overlayBackground: 'red',
+    background: '#424448',
+    overlayBackground: '#a4caf9',
 
     primary: {
-      main: 'red',
-      contrastText: 'red',
+      main: '#61a4f5',
+      contrastText: '#191919',
     },
     secondary: {
-      main: 'red',
-      contrastText: 'red',
+      main: '#424448',
+      contrastText: '#e2e2e2',
     },
 
-    defaultFont: 'red',
-    secondaryFont: 'red',
-    tertiaryFont: 'red',
+    defaultFont: '#e2e2e2',
+    secondaryFont: '#adabab',
+    secondaryFontHover: '##989898',
 
-    tertiaryFontHover: 'red',
+    defaultBorder: '#989898',
 
-    defaultBorder: 'red',
+    controlBackground: '#5e6167',
+    controlBorder: '#565656',
+    controlBorderFocus: '#4289de',
+    controlBorderHover: '#4a4949',
+    controlPlaceholder: '#949494',
 
-    controlBackground: 'red',
-    controlBorder: 'red',
-    controlBorderFocus: 'red',
-    controlBorderHover: 'red',
-    controlFont: 'red',
-    controlPlaceholder: 'red',
+    uploadBackground: '#5e6167',
+    uploadIcon: '#e2e2e2',
 
-    uploadBackground: 'red',
-    uploadIcon: 'red',
-
-    cardBackground: 'red',
-
-    menuBackground: 'red',
-    menuFont: 'red',
-    menuHoverBackground: 'red',
-    menuActive: 'red',
+    cardBackground: '#494b50',
 
     statusInfo: {
-      main: 'red',
+      main: '#83bfff',
       highlightText: 'red',
     },
     statusSuccess: {
-      main: 'red',
+      main: '#8ddaa9',
       highlightText: 'red',
     },
     statusWarn: {
-      main: 'red',
+      main: '#f1a374',
       highlightText: 'red',
     },
     statusDanger: {
-      main: 'red',
+      main: '#e87a7a',
       highlightText: 'red',
     },
   },

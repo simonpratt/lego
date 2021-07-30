@@ -17,10 +17,8 @@ const defaultTheme: DefaultTheme = {
     },
 
     defaultFont: colours.grey90,
-    secondaryFont: colours.grey50,
-    tertiaryFont: colours.grey30,
-
-    tertiaryFontHover: colours.grey35,
+    secondaryFont: colours.grey35,
+    secondaryFontHover: colours.grey40,
 
     defaultBorder: colours.grey20,
 
@@ -28,18 +26,12 @@ const defaultTheme: DefaultTheme = {
     controlBorder: colours.grey20,
     controlBorderFocus: colours.grey50,
     controlBorderHover: colours.grey30,
-    controlFont: colours.grey90,
     controlPlaceholder: colours.grey30,
 
     uploadBackground: colours.grey20,
     uploadIcon: colours.grey10,
 
     cardBackground: colours.white,
-
-    menuBackground: colours.white,
-    menuFont: '#8898a8',
-    menuHoverBackground: '#f9f9f9',
-    menuActive: colours.grey90,
 
     statusInfo: {
       main: colours.blue,

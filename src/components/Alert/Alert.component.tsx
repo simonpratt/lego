@@ -64,7 +64,7 @@ const CountContainer = styled.div<CountContainerProps>`
   width: 24px;
   border: 2px solid ${(props) => props.colour};
   border-radius: 50%;
-  background-color: white;
+  background-color: ${(props) => props.theme.colours.cardBackground};
 `;
 
 const Alert = ({ variant, message, count, action, onAction }: AlertProps) => {

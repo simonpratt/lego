@@ -22,7 +22,7 @@ interface MenuContentOuterProps {
 const MenuContentOuter = styled.div<MenuContentOuterProps>`
   display: flex;
 
-  background-color: ${(props) => props.theme.colours.menuBackground};
+  background-color: ${(props) => props.theme.colours.cardBackground};
   margin-left: 250px;
 
   min-height: 100vh;

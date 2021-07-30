@@ -47,10 +47,10 @@ const IconClickableArea = styled.div`
   padding: 4px;
   cursor: pointer;
 
-  color: ${(props) => props.theme.colours.tertiaryFont};
+  color: ${(props) => props.theme.colours.secondaryFont};
 
   &:hover {
-    color: ${(props) => props.theme.colours.tertiaryFontHover};
+    color: ${(props) => props.theme.colours.secondaryFontHover};
   }
 `;
 

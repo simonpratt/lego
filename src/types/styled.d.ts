@@ -29,9 +29,7 @@ declare module 'styled-components' {
 
       defaultFont: string;
       secondaryFont: string;
-      tertiaryFont: string;
-
-      tertiaryFontHover: string;
+      secondaryFontHover: string;
 
       defaultBorder: string;
 
@@ -39,18 +37,12 @@ declare module 'styled-components' {
       controlBorder: string;
       controlBorderFocus: string;
       controlBorderHover: string;
-      controlFont: string;
       controlPlaceholder: string;
 
       uploadBackground: string;
       uploadIcon: string;
 
       cardBackground: string;
-
-      menuBackground: string;
-      menuFont: string;
-      menuHoverBackground: string;
-      menuActive: string;
 
       statusInfo: IStatus;
       statusSuccess: IStatus;

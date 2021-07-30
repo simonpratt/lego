@@ -19,19 +19,19 @@ const MenuItemDiv = styled.div<MenuItemDivProps>`
   font-family: ${(props) => props.theme.fonts.default.family};
   font-weight: ${(props) => props.theme.fonts.default.weight};
   font-size: ${(props) => props.theme.fonts.default.size};
-  color: ${(props) => props.theme.colours.menuFont};
+  color: ${(props) => props.theme.colours.secondaryFont};
 
   cursor: pointer;
   border-radius: 0 2px 2px 0;
 
   &:hover {
-    background-color: #f9f9f9;
+    background-color: ${(props) => props.theme.colours.background};
   }
 
   ${(props) =>
     props.active &&
     `
-    color: ${props.theme.colours.menuActive};
+    color: ${props.theme.colours.defaultFont};
   `}
 `;
 
@@ -45,7 +45,7 @@ const MenuIconContainer = styled.div`
 const MenuActiveBar = styled.div`
   height: 38px;
   width: 4px;
-  background-color: ${(props) => props.theme.colours.menuActive};
+  background-color: ${(props) => props.theme.colours.defaultFont};
 `;
 
 const MenuActivePlaceholder = styled.div`

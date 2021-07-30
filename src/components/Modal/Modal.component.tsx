@@ -75,7 +75,7 @@ interface ModalOuterProps {
 }
 
 const ModalOuter = styled(motion.div)<ModalOuterProps>`
-  background-color: white;
+  background-color: ${(props) => props.theme.colours.cardBackground};
   border-radius: 4px;
   margin: 32px 0 128px 0;
 

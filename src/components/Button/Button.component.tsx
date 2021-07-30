@@ -27,7 +27,7 @@ const StyledButton = styled.button<InternalButtonProps>`
   padding: 0 24px;
 
   font-size: ${(props) => props.theme.fonts.default.size};
-  font: ${(props) => props.theme.fonts.default.family};
+  font-family: ${(props) => props.theme.fonts.default.family};
 
   color: ${(props) => getThemeVariantColours(props.variant, props.theme).font};
   background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).background};
