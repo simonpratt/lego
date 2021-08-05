@@ -21,7 +21,7 @@ const MenuPanelDiv = styled.div<MenuPanelDivProps>`
       case 'sm':
         return `
           max-width: 550px;
-          min-width: 300px;
+          min-width: 240px;
         `;
       case 'md':
       default:
