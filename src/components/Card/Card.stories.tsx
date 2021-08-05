@@ -8,6 +8,8 @@ export const Standard = () => (
       <Card.Content>Some content</Card.Content>
       <Card.Spacer />
       <Card.Content>Some more content...</Card.Content>
+      <Card.Spacer />
+      <Card.SubContent>Some sub content...</Card.SubContent>
     </Card>
     <Card size='sm'>
       <Card.Media>

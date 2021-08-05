@@ -5,6 +5,7 @@ import CardContext, { CardSize } from './Card.context';
 import CardContent from './_CardContent.component';
 import CardMedia from './_CardMedia.component';
 import CardSpacer from './_CardSpacer.component';
+import CardSubContent from './_CardSubContent.component';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -68,6 +69,7 @@ const Card = ({ children, padded, size = 'sm', ...props }: CardProps) => {
 };
 
 Card.Content = CardContent;
+Card.SubContent = CardSubContent;
 Card.Media = CardMedia;
 Card.Spacer = CardSpacer;
 
