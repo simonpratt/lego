@@ -20,6 +20,13 @@ interface CardOuterProps {
 const CardOuter = styled.div<CardOuterProps>`
   ${(props) => {
     switch (props.size) {
+      case 'xs':
+        return `
+          width: 240px;
+          ${responsive.useStylesFor('mobile').andSmaller(`
+            width: 100%;
+          `)}
+        `;
       case 'sm':
         return `
           width: ${responsive.getWidthFor('mobile')};

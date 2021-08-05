@@ -11,7 +11,6 @@ interface MenuPageInnerProps {
 
 const MenuPageInner = styled.div<MenuPageInnerProps>`
   background-color: ${(props) => props.theme.colours.background};
-  box-shadow: ${(props) => props.theme.shadows.medium};
   border-radius: 2px;
   min-height: calc(100vh - 16px);
   flex-grow: 1;

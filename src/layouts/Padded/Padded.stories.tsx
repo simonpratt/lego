@@ -8,6 +8,12 @@ export const Standard = () => (
   </div>
 );
 
+export const Small = () => (
+  <div style={{ backgroundColor: 'white' }}>
+    <PaddedLayout.Small>some content....</PaddedLayout.Small>
+  </div>
+);
+
 export default {
   title: 'Layouts/Padded',
   component: PaddedLayout,
