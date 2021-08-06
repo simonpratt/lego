@@ -11,7 +11,6 @@ interface MenuPanelDivProps {
 
 const MenuPanelDiv = styled.div<MenuPanelDivProps>`
   background-color: ${(props) => props.theme.colours.background};
-  box-shadow: ${(props) => props.theme.shadows.medium};
   border-radius: 2px;
   min-height: calc(100vh - 16px);
   margin-right: 8px;

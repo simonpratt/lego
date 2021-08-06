@@ -3,12 +3,25 @@ import styled from 'styled-components';
 import ButtonContext from '../Button/Button.context';
 import ControlGroupSpacer from './_ControlGroupSpacer.component';
 
-export type ControlGroupVariation = 'focus' | 'submission';
+export type ControlGroupVariation = 'focus' | 'submission' | 'comfortable';
 
 export interface ControlGroupProps {
   children: React.ReactNode;
   variation?: ControlGroupVariation;
 }
+
+const ComfortableContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 16px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
 
 const SubmissionContainer = styled.div`
   display: flex;
@@ -55,6 +68,19 @@ const ControlGroup = ({ children, variation = 'focus' }: ControlGroupProps) => {
     return (
       <ButtonContext.Provider value={buttonContextValue}>
         <SubmissionContainer>{children}</SubmissionContainer>
+      </ButtonContext.Provider>
+    );
+  }
+
+  if (variation === 'comfortable') {
+    const buttonContextValue = {
+      alignSelf: 'flex-end',
+      marginTop: '24px',
+    };
+
+    return (
+      <ButtonContext.Provider value={buttonContextValue}>
+        <ComfortableContainer>{children}</ComfortableContainer>
       </ButtonContext.Provider>
     );
   }

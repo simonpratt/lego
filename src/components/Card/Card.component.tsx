@@ -16,6 +16,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 interface CardOuterProps {
   size: CardSize;
   padded?: boolean;
+  usePointer?: boolean;
 }
 
 const CardOuter = styled.div<CardOuterProps>`
@@ -53,15 +54,17 @@ const CardOuter = styled.div<CardOuterProps>`
     }
   }}
 
+  cursor: ${(props) => (props.usePointer ? 'cursor' : 'default')};
+
   padding: ${(props) => (props.padded ? '16px' : 0)};
   background-color: ${(props) => props.theme.colours.cardBackground};
   box-shadow: ${(props) => props.theme.shadows.small};
 `;
 
-const Card = ({ children, padded, size = 'sm', ...props }: CardProps) => {
+const Card = ({ children, padded, size = 'sm', onClick, ...props }: CardProps) => {
   return (
     <CardContext.Provider value={{ size }}>
-      <CardOuter size={size} padded={padded} {...props}>
+      <CardOuter size={size} padded={padded} onClick={onClick} usePointer={!!onClick} {...props}>
         {children}
       </CardOuter>
     </CardContext.Provider>

@@ -26,6 +26,16 @@ export const Submission = () => (
   </>
 );
 
+export const Spaced = () => (
+  <>
+    <ControlGroup variation='comfortable'>
+      <Input label='username' placeholder='username' name='username' />
+      <Input label='password' placeholder='password' name='password' />
+      <Button>Submit</Button>
+    </ControlGroup>
+  </>
+);
+
 export default {
   title: 'Components/ControlGroup',
   component: ControlGroup,
