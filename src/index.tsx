@@ -19,6 +19,7 @@ export { default as Menu } from './components/Menu/Menu.component';
 export { default as Modal } from './components/Modal/Modal.component';
 export { default as ProfileImage } from './components/ProfileImage/ProfileImage.component';
 export { default as QrCode } from './components/QrCode/QrCode.component';
+export { default as SubHeading } from './components/SubHeading/SubHeading.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
 export { default as SquareButton } from './components/SquareButton/SquareButton.component';
 export { default as Table } from './components/Table/Table.component';

@@ -13,6 +13,7 @@ import {
   menuHelpers,
 } from '../..';
 import { faCalendarAlt, faCogs, faHamburger } from '@fortawesome/free-solid-svg-icons';
+import SubHeading from '../SubHeading/SubHeading.component';
 
 export const Standard = () => {
   const [route, setRoute] = useState('/eat');
@@ -94,8 +95,10 @@ export const WithPanel = () => {
       <Menu.Content>
         <Menu.Panel>
           <PaddedLayout>
-            <ControlGroup>
+            <ControlGroup variation='comfortable'>
+              <SubHeading>You</SubHeading>
               <Input label='Income' name='name' placeholder='30,000' />
+              <SubHeading>Loan</SubHeading>
               <Input label='Deposit' name='name' placeholder='10,000' />
               <Input label='Interest Rate' name='name' placeholder='4%' />
             </ControlGroup>
