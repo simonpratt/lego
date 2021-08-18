@@ -30,6 +30,7 @@ export { default as RegisterScreen } from './screens/Register/Register.screen';
 export { default as VerificationScreen } from './screens/Verification/Verification.screen';
 
 export { default as ActionLayout } from './layouts/Action/Action.layout';
+export { default as ColumnLayout } from './layouts/Column/Column.layout';
 export { default as EmphasisLayout } from './layouts/Emphasis/Emphasis.layout';
 export { default as FocusLayout } from './layouts/Focus/Focus.layout';
 export { default as PaddedLayout } from './layouts/Padded/Padded.layout';

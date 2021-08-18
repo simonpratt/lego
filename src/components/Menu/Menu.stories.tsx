@@ -92,7 +92,7 @@ export const WithPanel = () => {
           Manage
         </Menu.Item>
       </Menu>
-      <Menu.Content>
+      <Menu.Content panelSize='md'>
         <Menu.Panel>
           <PaddedLayout>
             <ControlGroup variation='comfortable'>
