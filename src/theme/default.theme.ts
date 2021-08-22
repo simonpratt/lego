@@ -35,19 +35,19 @@ const defaultTheme: DefaultTheme = {
 
     statusInfo: {
       main: colours.blue,
-      highlightText: colours.blue,
+      contrast: colours.blue,
     },
     statusSuccess: {
       main: colours.green,
-      highlightText: colours.green,
+      contrast: colours.green,
     },
     statusWarn: {
       main: colours.yellow,
-      highlightText: colours.yellow,
+      contrast: colours.yellow,
     },
     statusDanger: {
       main: colours.red,
-      highlightText: colours.red,
+      contrast: colours.red,
     },
   },
   fonts: {

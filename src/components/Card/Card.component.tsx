@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import responsive from '../../responsive/responsive';
 import CardContext, { CardSize } from './Card.context';
 import CardContent from './_CardContent.component';
+import CardHeader from './_CardHeader.component';
 import CardMedia from './_CardMedia.component';
 import CardSpacer from './_CardSpacer.component';
 import CardSubContent from './_CardSubContent.component';
@@ -75,5 +76,6 @@ Card.Content = CardContent;
 Card.SubContent = CardSubContent;
 Card.Media = CardMedia;
 Card.Spacer = CardSpacer;
+Card.Header = CardHeader;
 
 export default Card;

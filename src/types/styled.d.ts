@@ -8,7 +8,7 @@ interface IPalette {
 
 interface IStatus {
   main: string;
-  highlightText: string;
+  contrast: string;
 }
 
 interface IFont {

@@ -34,19 +34,19 @@ const darkTheme: DefaultTheme = {
 
     statusInfo: {
       main: '#83bfff',
-      highlightText: 'red',
+      contrast: '#191919',
     },
     statusSuccess: {
       main: '#8ddaa9',
-      highlightText: 'red',
+      contrast: '#191919',
     },
     statusWarn: {
       main: '#f1a374',
-      highlightText: 'red',
+      contrast: '#191919',
     },
     statusDanger: {
       main: '#e87a7a',
-      highlightText: 'red',
+      contrast: '#191919',
     },
   },
   fonts: {

@@ -1,6 +1,7 @@
 export { default as BodyStyle } from './global/BodyStyle.component';
 
 export { default as Alert } from './components/Alert/Alert.component';
+export { default as Badge } from './components/Badge/Badge.component';
 export { default as Button } from './components/Button/Button.component';
 export { default as Card } from './components/Card/Card.component';
 export { default as CardGroup } from './components/Card/CardGroup.component';

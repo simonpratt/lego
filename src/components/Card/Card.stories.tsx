@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Card, CardGroup, LiveInput } from '../..';
+import { Card, CardGroup, LiveInput, Badge } from '../..';
 
 export const Standard = () => (
   <CardGroup>
@@ -42,6 +42,23 @@ export const Sizes = () => (
         <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
       </Card.Media>
       <Card.Content>A large card.</Card.Content>
+    </Card>
+  </CardGroup>
+);
+
+export const CardHeader = () => (
+  <CardGroup>
+    <Card size='sm'>
+      <Card.Header
+        image='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg'
+        heading='Mario & Luigi'
+        subHeading='mario@gmail.com'
+        meta={<Badge variant='success'>approved</Badge>}
+      />
+      <Card.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </Card.Content>
     </Card>
   </CardGroup>
 );
