@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const ContentContainer = styled.div``;
+import ContentHeader from './_ContentHeader.component';
 
-const ContentHeader = styled.div`
-  padding: 16px;
-`;
+const ContentContainer = styled.div``;
 
 const ContentContent = styled.div`
   padding: 16px;
@@ -16,7 +14,12 @@ export interface ContentLayoutProps {
 }
 
 const ContentLayout = ({ children }: ContentLayoutProps) => {
-  return <ContentContainer>{children}</ContentContainer>;
+  return (
+    <ContentContainer>
+      <div>{children}</div>
+      <div>meta</div>
+    </ContentContainer>
+  );
 };
 
 ContentLayout.Header = ContentHeader;

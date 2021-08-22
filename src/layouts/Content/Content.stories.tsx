@@ -1,12 +1,12 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { ContentLayout, Heading } from '../..';
+import { ContentLayout, Heading, Button } from '../..';
 import CardGroup from '../../components/Card/CardGroup.component';
 import Card from '../../components/Card/Card.component';
 
 export const Standard = () => (
   <ContentLayout>
-    <ContentLayout.Header>
+    <ContentLayout.Header actions={<Button>Add</Button>}>
       <Heading>Some content...</Heading>
     </ContentLayout.Header>
     <ContentLayout.Content>
