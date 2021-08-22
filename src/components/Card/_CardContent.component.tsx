@@ -7,6 +7,7 @@ export interface CardContentProps {
 
 const ContentInner = styled.div`
   padding: 0 16px;
+  margin-bottom: 4px;
 
   &:first-child {
     padding-top: 16px;
@@ -14,6 +15,7 @@ const ContentInner = styled.div`
 
   &:last-child {
     padding-bottom: 16px;
+    margin-bottom: 0;
   }
 
   font-family: ${(props) => props.theme.fonts.default.family};
