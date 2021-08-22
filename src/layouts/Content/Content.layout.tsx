@@ -14,12 +14,7 @@ export interface ContentLayoutProps {
 }
 
 const ContentLayout = ({ children }: ContentLayoutProps) => {
-  return (
-    <ContentContainer>
-      <div>{children}</div>
-      <div>meta</div>
-    </ContentContainer>
-  );
+  return <ContentContainer>{children}</ContentContainer>;
 };
 
 ContentLayout.Header = ContentHeader;
