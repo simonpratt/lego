@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Button, Menu, Notifications, Text } from '../..';
+import { Button, FocusLayout, Menu, Modal, Notifications, PaddedLayout, Text } from '../..';
 import { INotification } from './Notifications.component';
-import FocusLayout from '../../layouts/Focus/Focus.layout';
 
-/* eslint-disable no-alert */
+/* eslint-disable no-alert, no-console */
 
 export const Standard = () => {
   const notifications: INotification[] = [
@@ -90,6 +89,44 @@ export const Interactive = () => {
             Clear
           </Button>
         </FocusLayout>
+      </Menu.Page>
+    </>
+  );
+};
+
+export const OverModal = () => {
+  const notifications: INotification[] = [
+    {
+      id: '123',
+      message: 'User saved!',
+      variant: 'success',
+    },
+    {
+      id: '456',
+      message: 'Error validating form',
+      variant: 'danger',
+    },
+  ];
+
+  return (
+    <>
+      <Notifications notifications={notifications} />
+      <Menu>
+        <Menu.Heading>Something Tasty</Menu.Heading>
+      </Menu>
+      <Menu.Page>
+        <Modal
+          onClose={() => {
+            console.log('close..');
+          }}
+        >
+          <Modal.Header header='A test modal' />
+          <Modal.Body>
+            <PaddedLayout>
+              <Text>Some text...</Text>
+            </PaddedLayout>
+          </Modal.Body>
+        </Modal>
       </Menu.Page>
     </>
   );

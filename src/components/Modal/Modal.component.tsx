@@ -8,6 +8,7 @@ import responsive from '../../responsive/responsive';
 import ModalContext from './_Modal.context';
 import ModalBody from './_ModalBody.component';
 import ModalHeader from './_ModalHeader.component';
+import zIndexConstants from '../../constants/zIndex.constants';
 
 export type ModalSize = 'sm' | 'md' | 'lg';
 
@@ -45,7 +46,7 @@ const Overlay = styled(motion.div)`
   padding-bottom: ${bottomPadding}px;
 
   background-color: #00000050;
-  z-index: 100;
+  z-index: ${zIndexConstants.modalOverlay};
 `;
 
 const ScrollContainer = styled.div`
@@ -61,7 +62,7 @@ const ModalWrapper = styled.div<ModalWrapperProps>`
   display: flex;
   justify-content: center;
 
-  z-index: 110;
+  z-index: ${zIndexConstants.modalContent};
 
   ${(props) =>
     responsive.useStylesFor(getResponsiveSize(props.size)).andSmaller(`

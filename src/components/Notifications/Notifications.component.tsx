@@ -5,13 +5,14 @@ import { animated, useTransition } from 'react-spring';
 
 import { Notification, Spacer } from '../..';
 import responsive from '../../responsive/responsive';
+import zIndexConstants from '../../constants/zIndex.constants';
 
 const NotificationContainer = styled.div`
   position: fixed;
   bottom: 20px;
   left: 270px;
 
-  z-index: 2;
+  z-index: ${zIndexConstants.notifications};
 
   ${responsive.useStylesFor('mobile').andSmaller(`
     bottom: 80px;

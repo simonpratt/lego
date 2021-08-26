@@ -27,7 +27,17 @@ export const Variants = () => (
   </>
 );
 
-export const WithCount = () => <Notification variant='info' count={5} message='This is a notification with a count' />;
+export const WithCount = () => (
+  <>
+    <Notification variant='info' count={5} message='This is a notification with a count' />
+    <br />
+    <Notification variant='success' count={5} message='This is a notification with a count' />
+    <br />
+    <Notification variant='warn' count={5} message='This is a notification with a count' />
+    <br />
+    <Notification variant='danger' count={5} message='This is a notification with a count' />
+  </>
+);
 
 export const WithAction = () => (
   <Notification
