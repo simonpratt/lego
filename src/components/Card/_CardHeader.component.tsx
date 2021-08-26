@@ -18,6 +18,7 @@ const LeftContainer = styled.div`
 const ImageContainer = styled.div`
   width: 36px;
   height: 36px;
+  margin-right: 8px;
 `;
 
 const Image = styled.img`
@@ -28,19 +29,19 @@ const Image = styled.img`
 `;
 
 const TextContainer = styled.div`
-  padding: 0 8px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 `;
 
 const MetaContainer = styled.div`
+  margin-left: 8px;
   display: flex;
   align-items: center;
 `;
 
 export interface CardHeaderProps {
-  image: string;
+  image?: string;
   heading: string;
   subHeading: string;
   meta?: React.ReactNode;
@@ -50,9 +51,11 @@ const CardHeader = ({ image, heading, subHeading, meta }: CardHeaderProps) => {
   return (
     <HeaderRow>
       <LeftContainer>
-        <ImageContainer>
-          <Image src={image} />
-        </ImageContainer>
+        {image && (
+          <ImageContainer>
+            <Image src={image} />
+          </ImageContainer>
+        )}
         <TextContainer>
           <div>
             <Text>{heading}</Text>

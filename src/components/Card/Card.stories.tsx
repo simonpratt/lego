@@ -63,6 +63,20 @@ export const CardHeader = () => (
         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </Card.Content>
     </Card>
+    <Card size='sm'>
+      <Card.Header
+        heading='Mario & Luigi'
+        subHeading='mario@gmail.com'
+        meta={<Badge variant='success'>approved</Badge>}
+      />
+      <Card.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </Card.Content>
+      <Card.Content>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </Card.Content>
+    </Card>
   </CardGroup>
 );
 

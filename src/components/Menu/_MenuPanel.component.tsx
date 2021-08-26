@@ -19,14 +19,16 @@ const MenuPanelDiv = styled.div<MenuPanelDivProps>`
     switch (props.panelSize) {
       case 'sm':
         return `
-          max-width: 550px;
-          min-width: 240px;
+          // max-width: 550px;
+          // min-width: 240px;
+          width: 380px;
         `;
       case 'md':
       default:
         return `
-          max-width: 700px;
-          min-width: 450px;
+          // max-width: 700px;
+          // min-width: 450px;
+          width: 560px;
         `;
     }
   }}

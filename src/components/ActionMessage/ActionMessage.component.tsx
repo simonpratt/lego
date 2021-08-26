@@ -4,7 +4,7 @@ import { Button, Spacer, SubHeading, Text } from '../..';
 
 const ActionMessageContainer = styled.div`
   width: 100%;
-  padding: 100px 32px;
+  padding: 64px 0;
 
   display: flex;
   flex-direction: column;
