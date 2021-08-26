@@ -16,6 +16,7 @@ interface StyledButtonProps {
 const StyledButton = styled.button<StyledButtonProps>`
   height: 128px;
   width: 128px;
+  line-height: 128px;
 
   outline: none;
   box-shadow: none;
