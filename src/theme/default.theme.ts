@@ -9,10 +9,12 @@ const defaultTheme: DefaultTheme = {
 
     primary: {
       main: colours.grey70,
+      hover: 'red',
       contrastText: colours.grey10,
     },
     secondary: {
       main: colours.yellow,
+      hover: 'red',
       contrastText: colours.grey90,
     },
 

@@ -3,6 +3,7 @@ import 'styled-components';
 
 interface IPalette {
   main: string;
+  hover: string;
   contrastText: string;
 }
 

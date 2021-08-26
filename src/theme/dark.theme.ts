@@ -8,10 +8,12 @@ const darkTheme: DefaultTheme = {
 
     primary: {
       main: '#61a4f5',
+      hover: '#83b7f7',
       contrastText: '#191919',
     },
     secondary: {
       main: '#424448',
+      hover: '#4b4e54',
       contrastText: '#e2e2e2',
     },
 

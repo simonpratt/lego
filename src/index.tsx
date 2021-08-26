@@ -4,6 +4,7 @@ export { default as ActionMessage } from './components/ActionMessage/ActionMessa
 export { default as Alert } from './components/Alert/Alert.component';
 export { default as Badge } from './components/Badge/Badge.component';
 export { default as Button } from './components/Button/Button.component';
+export { default as ButtonGroup } from './components/ButtonGroup/ButtonGroup.component';
 export { default as Card } from './components/Card/Card.component';
 export { default as CardGroup } from './components/Card/CardGroup.component';
 export { default as ControlGroup } from './components/ControlGroup/ControlGroup.component';

@@ -38,6 +38,10 @@ const StyledButton = styled.button<InternalButtonProps>`
   width: ${(props) => props.width};
   align-self: ${(props) => props.alignSelf};
   margin-top: ${(props) => props.marginTop};
+
+  &:hover {
+    background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).hover};
+  }
 `;
 
 const spinAnimation = keyframes`

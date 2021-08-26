@@ -9,6 +9,10 @@ const ActionMessageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  span {
+    text-align: center;
+  }
 `;
 
 export interface ActionMessageProps {

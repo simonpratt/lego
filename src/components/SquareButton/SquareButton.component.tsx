@@ -32,6 +32,10 @@ const StyledButton = styled.button<StyledButtonProps>`
   background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).background};
 
   border-radius: 2px;
+
+  &:hover {
+    background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).hover};
+  }
 `;
 
 const SquareButton = ({ children, variant = 'primary', onClick }: SquareButtonProps) => {
