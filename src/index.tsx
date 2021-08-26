@@ -1,5 +1,6 @@
 export { default as BodyStyle } from './global/BodyStyle.component';
 
+export { default as ActionMessage } from './components/ActionMessage/ActionMessage.component';
 export { default as Alert } from './components/Alert/Alert.component';
 export { default as Badge } from './components/Badge/Badge.component';
 export { default as Button } from './components/Button/Button.component';
