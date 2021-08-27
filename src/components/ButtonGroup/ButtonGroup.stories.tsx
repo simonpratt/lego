@@ -20,9 +20,9 @@ export const TwoPrimary = () => (
 
 export const SquareButtons = () => (
   <ButtonGroup>
-    <SquareButton>One</SquareButton>
-    <SquareButton>Two</SquareButton>
-    <SquareButton>Three</SquareButton>
+    <SquareButton>The first button in the group</SquareButton>
+    <SquareButton>Middle one</SquareButton>
+    <SquareButton>Last..</SquareButton>
   </ButtonGroup>
 );
 

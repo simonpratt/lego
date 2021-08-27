@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ButtonGroupDiv = styled.div`
+  display: flex;
+
   & > * {
     margin-right: 8px;
 
