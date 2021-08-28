@@ -1,13 +1,17 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { SquareButton } from '../..';
-import ButtonGroup from '../ButtonGroup/ButtonGroup.component';
 
 export const Standard = () => (
-  <ButtonGroup>
-    <SquareButton variant='secondary'>Cancel</SquareButton>
-    <SquareButton>Create</SquareButton>
-  </ButtonGroup>
+  <>
+    <SquareButton>Primary</SquareButton>
+    <br />
+    <br />
+    <SquareButton variant='secondary'>A Secondary Button</SquareButton>
+    <br />
+    <br />
+    <SquareButton variant='tertiary'>A Tertiary Square Button</SquareButton>
+  </>
 );
 
 export default {

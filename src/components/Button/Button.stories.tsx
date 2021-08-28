@@ -8,6 +8,9 @@ export const Standard = () => (
     <br />
     <br />
     <Button variant='secondary'>Here is a secondary button!</Button>
+    <br />
+    <br />
+    <Button variant='tertiary'>Here is a tertiary button!</Button>
   </>
 );
 
