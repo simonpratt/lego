@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import FormStateContext from './FormState.context';
 
 function useFormNode(key: string) {
   const { value, onChange } = useContext(FormStateContext);
 
-  const internalOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const internalOnChange = (_value: any) => {
     if (onChange) {
-      onChange(key, e.target.value);
+      onChange(key, _value);
     }
   };
 

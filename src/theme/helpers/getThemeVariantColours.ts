@@ -5,16 +5,16 @@ export default (variant: ColourVariant, theme: DefaultTheme) => {
   switch (variant) {
     case 'secondary':
       return {
-        background: theme.colours.secondary.main,
+        main: theme.colours.secondary.main,
         hover: theme.colours.secondary.hover,
-        font: theme.colours.secondary.contrastText,
+        contrastText: theme.colours.secondary.contrastText,
       };
     case 'primary':
     default:
       return {
-        background: theme.colours.primary.main,
+        main: theme.colours.primary.main,
         hover: theme.colours.primary.hover,
-        font: theme.colours.primary.contrastText,
+        contrastText: theme.colours.primary.contrastText,
       };
   }
 };

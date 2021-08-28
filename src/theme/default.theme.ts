@@ -17,6 +17,11 @@ const defaultTheme: DefaultTheme = {
       hover: 'red',
       contrastText: colours.grey90,
     },
+    tertiary: {
+      main: colours.yellow,
+      hover: 'red',
+      contrastText: colours.grey90,
+    },
 
     defaultFont: colours.grey90,
     secondaryFont: colours.grey35,

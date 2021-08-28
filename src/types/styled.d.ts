@@ -27,6 +27,7 @@ declare module 'styled-components' {
 
       primary: IPalette;
       secondary: IPalette;
+      tertiary: IPalette;
 
       defaultFont: string;
       secondaryFont: string;

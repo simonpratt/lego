@@ -29,8 +29,8 @@ const StyledButton = styled.button<InternalButtonProps>`
   font-size: ${(props) => props.theme.fonts.default.size};
   font-family: ${(props) => props.theme.fonts.default.family};
 
-  color: ${(props) => getThemeVariantColours(props.variant, props.theme).font};
-  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).background};
+  color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
+  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).main};
 
   border-radius: 2px;
 
@@ -61,9 +61,9 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
     height: 24px;
     margin: 10px;
     border-radius: 50%;
-    border: 2px solid ${(props) => getThemeVariantColours(props.variant, props.theme).font};
-    border-color: ${(props) => getThemeVariantColours(props.variant, props.theme).font} transparent
-      ${(props) => getThemeVariantColours(props.variant, props.theme).font} transparent;
+    border: 2px solid ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
+    border-color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText} transparent
+      ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText} transparent;
     animation-name: ${spinAnimation};
     animation-duration: 1.2s;
     animation-iteration-count: infinite;

@@ -49,11 +49,21 @@ export interface IInputProps {
   placeholder?: string;
   type?: string;
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: any) => void;
 }
 
 const Input = ({ label, name, placeholder, type = 'text', value, onChange }: IInputProps) => {
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+
+    if (contextOnChange) {
+      contextOnChange(e.target.value);
+    }
+  };
 
   return (
     <div>
@@ -63,7 +73,7 @@ const Input = ({ label, name, placeholder, type = 'text', value, onChange }: IIn
         name={name}
         placeholder={placeholder}
         value={value || contextValue}
-        onChange={onChange || contextOnChange}
+        onChange={handleChange}
       />
     </div>
   );

@@ -16,6 +16,11 @@ const darkTheme: DefaultTheme = {
       hover: '#4b4e54',
       contrastText: '#e2e2e2',
     },
+    tertiary: {
+      main: '#4b4e54',
+      hover: '#575b63',
+      contrastText: '#e2e2e2',
+    },
 
     defaultFont: '#e2e2e2',
     secondaryFont: '#adabab',

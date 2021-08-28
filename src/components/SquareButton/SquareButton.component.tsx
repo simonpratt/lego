@@ -28,8 +28,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   font-size: ${(props) => props.theme.fonts.default.size};
   font: ${(props) => props.theme.fonts.default.family};
 
-  color: ${(props) => getThemeVariantColours(props.variant, props.theme).font};
-  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).background};
+  color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
+  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).main};
 
   border-radius: 2px;
 

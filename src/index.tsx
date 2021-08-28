@@ -8,6 +8,7 @@ export { default as ButtonGroup } from './components/ButtonGroup/ButtonGroup.com
 export { default as Card } from './components/Card/Card.component';
 export { default as CardGroup } from './components/Card/CardGroup.component';
 export { default as ControlGroup } from './components/ControlGroup/ControlGroup.component';
+export { default as FancyCheckbox } from './components/FancyCheckbox/FancyCheckbox.component';
 export { default as Form } from './components/Form/Form.component';
 export { default as Notification } from './components/Notification/Notification.component';
 export { default as Notifications } from './components/Notifications/Notifications.component';
@@ -33,6 +34,7 @@ export { default as RegisterScreen } from './screens/Register/Register.screen';
 export { default as VerificationScreen } from './screens/Verification/Verification.screen';
 
 export { default as ActionLayout } from './layouts/Action/Action.layout';
+export { default as CenteredLayout } from './layouts/Centered/Centered.layout';
 export { default as ColumnLayout } from './layouts/Column/Column.layout';
 export { default as ContentLayout } from './layouts/Content/Content.layout';
 export { default as EmphasisLayout } from './layouts/Emphasis/Emphasis.layout';
