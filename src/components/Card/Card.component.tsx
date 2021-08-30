@@ -23,6 +23,10 @@ interface CardOuterProps {
 const CardOuter = styled.div<CardOuterProps>`
   ${(props) => {
     switch (props.size) {
+      case 'fill':
+        return `
+          width: 100%;
+        `;
       case 'xs':
         return `
           width: 240px;

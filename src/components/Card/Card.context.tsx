@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-export type CardSize = 'xs' | 'sm' | 'md' | 'lg';
+export type CardSize = 'fill' | 'xs' | 'sm' | 'md' | 'lg';
 
 interface CardContextProps {
   size: CardSize;
