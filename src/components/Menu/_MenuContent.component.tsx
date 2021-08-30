@@ -37,12 +37,13 @@ const MenuContentOuter = styled.div<MenuContentOuterProps>`
 export interface MenuContentProps {
   children: React.ReactNode;
   panelSize?: PanelSize;
+  independentScroll?: boolean;
 }
 
-const MenuContent = ({ panelSize, children }: MenuContentProps) => {
+const MenuContent = ({ panelSize = 'md', independentScroll = false, children }: MenuContentProps) => {
   return (
-    <MenuContentContext.Provider value={{ panelSize: panelSize || 'md' }}>
-      <MenuContentOuter panelSize={panelSize || 'md'}>{children}</MenuContentOuter>
+    <MenuContentContext.Provider value={{ panelSize, independentScroll }}>
+      <MenuContentOuter panelSize={panelSize}>{children}</MenuContentOuter>
     </MenuContentContext.Provider>
   );
 };

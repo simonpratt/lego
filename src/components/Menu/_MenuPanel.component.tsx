@@ -7,6 +7,7 @@ import MenuContentContext from './_MenuContent.context';
 
 interface MenuPanelDivProps {
   panelSize: PanelSize;
+  independentScroll: boolean;
 }
 
 const MenuPanelDiv = styled.div<MenuPanelDivProps>`
@@ -42,6 +43,26 @@ const MenuPanelDiv = styled.div<MenuPanelDivProps>`
     margin-right: 0;
     margin-bottom: 8px;
   `)}
+
+  ${(props) =>
+    props.independentScroll &&
+    `
+    max-height: calc(100vh - 16px);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${props.theme.colours.secondaryFont};
+      outline: 1px solid slategrey;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+  `}
 `;
 
 export interface MenuPanelProps {
@@ -49,9 +70,13 @@ export interface MenuPanelProps {
 }
 
 const MenuPanel = ({ children }: MenuPanelProps) => {
-  const { panelSize } = useContext(MenuContentContext);
+  const { panelSize, independentScroll } = useContext(MenuContentContext);
 
-  return <MenuPanelDiv panelSize={panelSize}>{children}</MenuPanelDiv>;
+  return (
+    <MenuPanelDiv panelSize={panelSize} independentScroll={independentScroll}>
+      {children}
+    </MenuPanelDiv>
+  );
 };
 
 export default MenuPanel;

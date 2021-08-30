@@ -7,6 +7,7 @@ import MenuContentContext from './_MenuContent.context';
 
 interface MenuPageInnerProps {
   panelSize: PanelSize;
+  independentScroll: boolean;
 }
 
 const MenuPageInner = styled.div<MenuPageInnerProps>`
@@ -19,15 +20,39 @@ const MenuPageInner = styled.div<MenuPageInnerProps>`
     responsive.useStylesFor(getMaxSize(props.panelSize)).andSmaller(`
     min-height: unset;
   `)}
+
+  ${(props) =>
+    props.independentScroll &&
+    `
+    max-height: calc(100vh - 16px);
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: ${props.theme.colours.secondaryFont};
+      outline: 1px solid slategrey;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+  `}
 `;
 
 export interface MenuPageProps {
   children: React.ReactNode;
 }
 const MenuPage = ({ children }: MenuPageProps) => {
-  const { panelSize } = useContext(MenuContentContext);
+  const { panelSize, independentScroll } = useContext(MenuContentContext);
 
-  return <MenuPageInner panelSize={panelSize}>{children}</MenuPageInner>;
+  return (
+    <MenuPageInner panelSize={panelSize} independentScroll={independentScroll}>
+      {children}
+    </MenuPageInner>
+  );
 };
 
 export default MenuPage;
