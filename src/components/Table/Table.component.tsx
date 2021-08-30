@@ -1,10 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import TableContext, { TableVariant } from './_Table.context';
+import TableRow from './_TableRow.component';
+
 export type TableCellVariant = 'tight';
 
 export interface TableProps {
   children: React.ReactNode;
+  variant?: TableVariant;
 }
 
 export interface TableCellProps {
@@ -26,16 +30,12 @@ const TableCell = styled.td<TableCellProps>`
   height: 36px;
 `;
 
-const TableRow = styled.tr`
-  box-shadow: 0px 1px 0px 0px ${(props) => props.theme.colours.defaultBorder};
-
-  &:last-child {
-    box-shadow: none;
-  }
-`;
-
-const Table = ({ children }: TableProps) => {
-  return <StyledTable>{children}</StyledTable>;
+const Table = ({ children, variant = 'regular' }: TableProps) => {
+  return (
+    <TableContext.Provider value={{ variant }}>
+      <StyledTable>{children}</StyledTable>
+    </TableContext.Provider>
+  );
 };
 
 Table.Row = TableRow;

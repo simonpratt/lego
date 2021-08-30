@@ -27,6 +27,7 @@ const darkTheme: DefaultTheme = {
     secondaryFontHover: '##989898',
 
     defaultBorder: '#989898',
+    faintBorder: '#cccccc1f',
 
     controlBackground: '#5e6167',
     controlBorder: '#565656',

@@ -28,6 +28,7 @@ const defaultTheme: DefaultTheme = {
     secondaryFontHover: colours.grey40,
 
     defaultBorder: colours.grey20,
+    faintBorder: colours.grey20,
 
     controlBackground: colours.white,
     controlBorder: colours.grey20,

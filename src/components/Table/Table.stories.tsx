@@ -42,6 +42,24 @@ export const InCard = () => (
   </Card>
 );
 
+export const InContentCard = () => (
+  <Card size='sm'>
+    <Card.Header heading='Sed do eiusmod' subHeading='Labore et dolore magna' />
+    <Card.Content>
+      <Table variant='soft'>
+        <Table.Row>
+          <Table.Cell>Hungry Caterpillar</Table.Cell>
+          <Table.Cell>Ready</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Fainting Lama</Table.Cell>
+          <Table.Cell>Pending</Table.Cell>
+        </Table.Row>
+      </Table>
+    </Card.Content>
+  </Card>
+);
+
 export default {
   title: 'Components/Table',
   component: Table,

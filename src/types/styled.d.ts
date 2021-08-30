@@ -34,6 +34,7 @@ declare module 'styled-components' {
       secondaryFontHover: string;
 
       defaultBorder: string;
+      faintBorder: string;
 
       controlBackground: string;
       controlBorder: string;
