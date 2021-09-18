@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import responsive from '../../responsive/responsive';
 import CardContext, { CardSize } from './Card.context';
+import CardActions from './_CardActions.component';
 import CardContent from './_CardContent.component';
 import CardHeader from './_CardHeader.component';
 import CardMedia from './_CardMedia.component';
@@ -19,6 +20,14 @@ interface CardOuterProps {
   padded?: boolean;
   usePointer?: boolean;
 }
+
+const CardActions = styled.div`
+  width: 100%;
+`;
+
+const CardInner = styled.div`
+  width: 100%;
+`;
 
 const CardOuter = styled.div<CardOuterProps>`
   ${(props) => {
@@ -59,7 +68,9 @@ const CardOuter = styled.div<CardOuterProps>`
     }
   }}
 
-  cursor: ${(props) => (props.usePointer ? 'cursor' : 'default')};
+  position: relative;
+
+  cursor: ${(props) => (props.usePointer ? 'pointer' : 'default')};
 
   padding: ${(props) => (props.padded ? '16px' : 0)};
   background-color: ${(props) => props.theme.colours.cardBackground};
@@ -67,15 +78,19 @@ const CardOuter = styled.div<CardOuterProps>`
 `;
 
 const Card = ({ children, padded, size = 'sm', onClick, ...props }: CardProps) => {
+  const actionsRef = useRef(null);
+
   return (
-    <CardContext.Provider value={{ size }}>
+    <CardContext.Provider value={{ size, actionsRef: actionsRef.current }}>
       <CardOuter size={size} padded={padded} onClick={onClick} usePointer={!!onClick} {...props}>
-        {children}
+        <CardActions ref={actionsRef} />
+        <CardInner>{children}</CardInner>
       </CardOuter>
     </CardContext.Provider>
   );
 };
 
+Card.Actions = CardActions;
 Card.Content = CardContent;
 Card.SubContent = CardSubContent;
 Card.Media = CardMedia;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Card, CardGroup, LiveInput, Badge } from '../..';
+import CardActions from './_CardActions.component';
 
 export const Standard = () => (
   <CardGroup>
@@ -78,6 +79,35 @@ export const CardHeader = () => (
       </Card.Content>
     </Card>
   </CardGroup>
+);
+
+export const Clickable = () => (
+  <CardGroup>
+    <Card size='sm' onClick={() => console.log('test')}>
+      <Card.Content>Some content</Card.Content>
+      <Card.Spacer />
+      <Card.Content>Some more content...</Card.Content>
+      <Card.Spacer />
+      <Card.SubContent>Some sub content...</Card.SubContent>
+    </Card>
+  </CardGroup>
+);
+
+export const WithActions = () => (
+  <>
+  <br />
+  <br />
+  <CardGroup>
+    <Card size='sm' onClick={() => console.log('test')}>
+      <CardActions />
+      <Card.Content>Some content</Card.Content>
+      <Card.Spacer />
+      <Card.Content>Some more content...</Card.Content>
+      <Card.Spacer />
+      <Card.SubContent>Some sub content...</Card.SubContent>
+    </Card>
+  </CardGroup>
+  </>
 );
 
 export default {
