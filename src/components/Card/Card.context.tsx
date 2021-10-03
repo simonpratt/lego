@@ -4,12 +4,14 @@ export type CardSize = 'fill' | 'xs' | 'sm' | 'md' | 'lg';
 
 interface CardContextProps {
   size: CardSize;
-  actionsRef: any;
+  actionsRef?: HTMLDivElement;
+  showActions: boolean;
 }
 
 const CardContext = createContext<CardContextProps>({
   size: 'lg',
   actionsRef: undefined,
+  showActions: false,
 });
 
 export default CardContext;

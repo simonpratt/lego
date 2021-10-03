@@ -1,7 +1,8 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Card, CardGroup, LiveInput, Badge } from '../..';
-import CardActions from './_CardActions.component';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 export const Standard = () => (
   <CardGroup>
@@ -95,18 +96,25 @@ export const Clickable = () => (
 
 export const WithActions = () => (
   <>
-  <br />
-  <br />
-  <CardGroup>
-    <Card size='sm' onClick={() => console.log('test')}>
-      <CardActions />
-      <Card.Content>Some content</Card.Content>
-      <Card.Spacer />
-      <Card.Content>Some more content...</Card.Content>
-      <Card.Spacer />
-      <Card.SubContent>Some sub content...</Card.SubContent>
-    </Card>
-  </CardGroup>
+    <br />
+    <br />
+    <CardGroup>
+      <Card size='sm' onClick={() => console.log('Card Clicked')}>
+        <Card.Actions>
+          <Card.Action onClick={() => console.log('Edit Clicked')}>
+            <FontAwesomeIcon icon={faPen} />
+          </Card.Action>
+          <Card.Action onClick={() => console.log('Delete Clicked')}>
+            <FontAwesomeIcon icon={faTrash} />
+          </Card.Action>
+        </Card.Actions>
+        <Card.Content>Some content</Card.Content>
+        <Card.Spacer />
+        <Card.Content>Some more content...</Card.Content>
+        <Card.Spacer />
+        <Card.SubContent>Some sub content...</Card.SubContent>
+      </Card>
+    </CardGroup>
   </>
 );
 
