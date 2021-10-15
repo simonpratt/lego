@@ -60,6 +60,8 @@ declare module 'styled-components' {
     shadows: {
       small: string;
       medium: string;
+      large: string;
+      xlarge: string;
     };
   }
 }

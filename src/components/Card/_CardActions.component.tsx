@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { SyntheticEvent, useContext } from 'react';
+import React, { SyntheticEvent, useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 import CardContext from './Card.context';
@@ -26,7 +26,7 @@ const ActionContainer = styled.div`
   padding: 4px;
   border-radius: 4px 4px 0 0;
 
-  box-shadow: ${props => props.theme.shadows.medium};
+  box-shadow: ${props => props.theme.shadows.xlarge};
 
   margin-right: 8px;
   cursor: pointer;
@@ -37,7 +37,15 @@ export interface CardActionsProps {
 }
 
 export const CardActions = ({ children }: CardActionsProps) => {
-  const { actionsRef, showActions } = useContext(CardContext);
+  const { actionsRef, showActions, setHasActions } = useContext(CardContext);
+
+  useEffect(() => {
+    setHasActions(true);
+
+    return () => {
+      setHasActions(false);
+    }
+  }, [setHasActions])
 
   if (!showActions) {
     return null;
@@ -50,7 +58,7 @@ export const CardActions = ({ children }: CardActionsProps) => {
   return createPortal(
     <AnimatePresence>
       <ActionsContainer
-        key={'modal'}
+        key={'actions-container'}
         initial={{ y: actionsHeight }}
         animate={{ y: 0 }}
         exit={{ y: actionsHeight }}
@@ -79,7 +87,6 @@ export const CardAction = ({ children, onClick }: CardActionProps) => {
 
   return (
     <ActionContainer onClick={handleClick}>
-      {/* <FontAwesomeIcon icon={faPen} /> */}
       {children}
     </ActionContainer>
   );

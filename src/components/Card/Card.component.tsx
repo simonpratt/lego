@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import responsive from '../../responsive/responsive';
 import CardContext, { CardSize } from './Card.context';
 import { CardActions, CardAction } from './_CardActions.component';
@@ -24,13 +24,8 @@ interface CardOuterProps {
 }
 
 const CardActionsContainer = styled.div`
-  /* width: 100%; */
-  /* height: 32px; */
-
   position: absolute;
-  /* top: -32px; */
   top: -32px;
-  /* z-index: 0; */
 `;
 
 const CardInner = styled.div`
@@ -94,6 +89,8 @@ const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
   const actionsRef = useRef<HTMLDivElement>(null);
   const [htmlActionsRef, setHtmlActionsRef] = useState<any>();
   const [showActions, setShowActions] = useState(false);
+  const [hasActions, setHasActions] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     if (actionsRef.current) {
@@ -112,10 +109,16 @@ const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
   };
 
   return (
-    <CardContext.Provider value={{ size, actionsRef: htmlActionsRef, showActions }}>
+    <CardContext.Provider value={{ size, actionsRef: htmlActionsRef, showActions, setHasActions }}>
       <CardOuter
         onHoverStart={() => setShowActions(true)}
         onHoverEnd={() => setShowActions(false)}
+        key={'actions-container'}
+        transition={{ type: 'spring', bounce: 0, duration: 0.6 }}
+        whileHover={hasActions ? {
+          scale: 1.005,
+          boxShadow: theme.shadows.xlarge
+        } : {}}
         size={size}
         padded={padded}
         onClick={handleClick}

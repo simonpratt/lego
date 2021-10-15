@@ -78,6 +78,8 @@ const defaultTheme: DefaultTheme = {
   shadows: {
     small: '0px 0px 2px rgba(0, 0, 0, 0.15)',
     medium: '0px 0px 4px rgba(0, 0, 0, 0.15)',
+    large: '0px 0px 8px rgba(0, 0, 0, 0.15)',
+    xlarge: '0px 0px 16px rgba(0, 0, 0, 0.25)',
   },
 };
 

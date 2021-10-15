@@ -6,12 +6,14 @@ interface CardContextProps {
   size: CardSize;
   actionsRef?: HTMLDivElement;
   showActions: boolean;
+  setHasActions: (hasActions: boolean) => void;
 }
 
 const CardContext = createContext<CardContextProps>({
   size: 'lg',
   actionsRef: undefined,
   showActions: false,
+  setHasActions: () => {},
 });
 
 export default CardContext;
