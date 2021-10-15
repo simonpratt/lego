@@ -26,6 +26,8 @@ const ActionContainer = styled.div`
   padding: 4px;
   border-radius: 4px 4px 0 0;
 
+  box-shadow: ${props => props.theme.shadows.medium};
+
   margin-right: 8px;
   cursor: pointer;
 `;

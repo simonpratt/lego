@@ -108,11 +108,62 @@ export const WithActions = () => (
             <FontAwesomeIcon icon={faTrash} />
           </Card.Action>
         </Card.Actions>
-        <Card.Content>Some content</Card.Content>
-        <Card.Spacer />
-        <Card.Content>Some more content...</Card.Content>
-        <Card.Spacer />
-        <Card.SubContent>Some sub content...</Card.SubContent>
+        <Card.Header
+        heading='Mario & Luigi'
+        subHeading='mario@gmail.com'
+        meta={<Badge variant='success'>approved</Badge>}
+      />
+      <Card.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </Card.Content>
+      <Card.Content>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </Card.Content>
+      </Card>
+      <Card size='sm' onClick={() => console.log('Card Clicked')}>
+        <Card.Actions>
+          <Card.Action onClick={() => console.log('Edit Clicked')}>
+            <FontAwesomeIcon icon={faPen} />
+          </Card.Action>
+          <Card.Action onClick={() => console.log('Delete Clicked')}>
+            <FontAwesomeIcon icon={faTrash} />
+          </Card.Action>
+        </Card.Actions>
+        <Card.Header
+        heading='Mario & Luigi'
+        subHeading='mario@gmail.com'
+        meta={<Badge variant='success'>approved</Badge>}
+      />
+      <Card.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </Card.Content>
+      <Card.Content>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </Card.Content>
+      </Card>
+      <Card size='sm' onClick={() => console.log('Card Clicked')}>
+        <Card.Actions>
+          <Card.Action onClick={() => console.log('Edit Clicked')}>
+            <FontAwesomeIcon icon={faPen} />
+          </Card.Action>
+          <Card.Action onClick={() => console.log('Delete Clicked')}>
+            <FontAwesomeIcon icon={faTrash} />
+          </Card.Action>
+        </Card.Actions>
+        <Card.Header
+        heading='Mario & Luigi'
+        subHeading='mario@gmail.com'
+        meta={<Badge variant='success'>approved</Badge>}
+      />
+      <Card.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </Card.Content>
+      <Card.Content>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </Card.Content>
       </Card>
     </CardGroup>
   </>

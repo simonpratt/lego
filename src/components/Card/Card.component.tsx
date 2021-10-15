@@ -81,6 +81,10 @@ const CardOuter = styled(motion.div)<CardOuterProps>`
     }
   }}
 
+  &:hover {
+    z-index: 1;
+  }
+
   position: relative;
   cursor: ${(props) => (props.usePointer ? 'pointer' : 'default')};
   padding: ${(props) => (props.padded ? '16px' : 0)};
