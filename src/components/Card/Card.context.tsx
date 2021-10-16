@@ -13,6 +13,7 @@ const CardContext = createContext<CardContextProps>({
   size: 'lg',
   actionsRef: undefined,
   showActions: false,
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   setHasActions: () => {},
 });
 

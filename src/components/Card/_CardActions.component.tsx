@@ -26,7 +26,7 @@ const ActionContainer = styled.div`
   padding: 4px;
   border-radius: 4px 4px 0 0;
 
-  box-shadow: ${props => props.theme.shadows.xlarge};
+  box-shadow: ${(props) => props.theme.shadows.xlarge};
 
   margin-right: 8px;
   cursor: pointer;
@@ -44,8 +44,8 @@ export const CardActions = ({ children }: CardActionsProps) => {
 
     return () => {
       setHasActions(false);
-    }
-  }, [setHasActions])
+    };
+  }, [setHasActions]);
 
   if (!showActions) {
     return null;
@@ -85,9 +85,5 @@ export const CardAction = ({ children, onClick }: CardActionProps) => {
     }
   };
 
-  return (
-    <ActionContainer onClick={handleClick}>
-      {children}
-    </ActionContainer>
-  );
+  return <ActionContainer onClick={handleClick}>{children}</ActionContainer>;
 };

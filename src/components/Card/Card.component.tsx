@@ -115,10 +115,14 @@ const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
         onHoverEnd={() => setShowActions(false)}
         key={'actions-container'}
         transition={{ type: 'spring', bounce: 0, duration: 0.6 }}
-        whileHover={hasActions ? {
-          scale: 1.005,
-          boxShadow: theme.shadows.xlarge
-        } : {}}
+        whileHover={
+          hasActions
+            ? {
+                scale: 1.005,
+                boxShadow: theme.shadows.xlarge,
+              }
+            : {}
+        }
         size={size}
         padded={padded}
         onClick={handleClick}
