@@ -21,6 +21,7 @@ const UploadContainer = styled.div`
   position: relative;
   min-height: 144px;
   background-color: ${(props) => props.theme.colours.uploadBackground};
+  border: 1px solid #565656;
 
   height: 100%;
   width: 100%;

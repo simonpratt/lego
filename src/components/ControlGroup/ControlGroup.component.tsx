@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ButtonContext from '../Button/Button.context';
-import SubHeading from '../SubHeading/SubHeading.component';
+import Heading from '../Heading/Heading.component';
 import ControlGroupSpacer from './_ControlGroupSpacer.component';
 
 export type ControlGroupVariation = 'focus' | 'submission' | 'comfortable';
@@ -15,9 +15,13 @@ const ComfortableContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  ${SubHeading} {
+  ${Heading.SubHeading} {
     margin-top: 16px;
     margin-bottom: 16px;
+  }
+
+  ${Heading.FormHeading} {
+    margin-top: 32px;
   }
 
   & > * {

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import FormHeading from './_FormHeading.component';
+import SubHeading from './_SubHeading.component';
 
 const HeadingContainer = styled.h2`
   font-family: ${(props) => props.theme.fonts.heading.family};
@@ -16,5 +18,8 @@ export interface HeadingProps {
 }
 
 const Heading = ({ children }: HeadingProps) => <HeadingContainer>{children}</HeadingContainer>;
+
+Heading.SubHeading = SubHeading;
+Heading.FormHeading = FormHeading;
 
 export default Heading;
