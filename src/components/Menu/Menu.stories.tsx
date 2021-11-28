@@ -12,7 +12,6 @@ import {
   Button,
   menuHelpers,
   ContentLayout,
-  SubHeading,
 } from '../..';
 import { faCalendarAlt, faCogs, faHamburger } from '@fortawesome/free-solid-svg-icons';
 
@@ -97,9 +96,9 @@ export const WithPanel = () => {
         <Menu.Panel>
           <PaddedLayout>
             <ControlGroup variation='comfortable'>
-              <SubHeading>You</SubHeading>
+              <Heading.SubHeading>You</Heading.SubHeading>
               <Input label='Income' name='name' placeholder='30,000' />
-              <SubHeading>Loan</SubHeading>
+              <Heading.SubHeading>Loan</Heading.SubHeading>
               <Input label='Deposit' name='name' placeholder='10,000' />
               <Input label='Interest Rate' name='name' placeholder='4%' />
             </ControlGroup>

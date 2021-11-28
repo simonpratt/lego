@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Spacer, SubHeading, Text } from '../..';
+import { Button, Heading, Spacer, Text } from '../..';
 
 const ActionMessageContainer = styled.div`
   width: 100%;
@@ -26,7 +26,7 @@ const ActionMessage = ({ header, info, action, onAction }: ActionMessageProps) =
   return (
     <ActionMessageContainer>
       <div>
-        <SubHeading>{header}</SubHeading>
+        <Heading.SubHeading>{header}</Heading.SubHeading>
       </div>
       {info && (
         <>
