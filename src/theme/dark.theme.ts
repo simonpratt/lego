@@ -7,7 +7,7 @@ const darkTheme: DefaultTheme = {
     overlayBackground: '#a4caf9',
 
     primary: {
-      main: '#61a4f5',
+      main: '#94b8e3', // #61a4f5
       hover: '#83b7f7',
       contrastText: '#191919',
     },
