@@ -5,7 +5,7 @@ import InlineCardContent from './_InlineCardContent.component';
 import InlineCardMedia from './_InlineCardMedia.component';
 import InlineCardMeta from './_InlineCardMeta.component';
 
-export type InlineCardSize = 'xs' | 'sm' | 'md' | 'lg';
+export type InlineCardSize = 'fill' | 'xs' | 'sm' | 'md' | 'lg';
 
 interface CardOuterProps {
   usePointer: boolean;
@@ -24,6 +24,10 @@ const CardOuter = styled.div<CardOuterProps>`
 
   ${(props) => {
     switch (props.size) {
+      case 'fill':
+        return `
+          width: 100%;
+        `;
       case 'xs':
         return `
           width: 360px;
