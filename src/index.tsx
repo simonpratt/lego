@@ -21,10 +21,12 @@ export { default as LiveInput } from './components/LiveInput/LiveInput.component
 export { default as Loader } from './components/Loader/Loader.component';
 export { default as Menu } from './components/Menu/Menu.component';
 export { default as Modal } from './components/Modal/Modal.component';
+export { default as PageHeader } from './components/PageHeader/PageHeader.component';
 export { default as ProfileImage } from './components/ProfileImage/ProfileImage.component';
 export { default as QrCode } from './components/QrCode/QrCode.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
 export { default as SquareButton } from './components/SquareButton/SquareButton.component';
+export { default as Swimlane } from './components/Swimlane/Swimlane.component';
 export { default as Table } from './components/Table/Table.component';
 export { default as Text } from './components/Text/Text.component';
 

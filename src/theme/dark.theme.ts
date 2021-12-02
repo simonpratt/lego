@@ -65,7 +65,7 @@ const darkTheme: DefaultTheme = {
     },
     heading: {
       family: `'Roboto', sans-serif`,
-      size: '36px',
+      size: '28px',
       weight: '500',
     },
     subHeading: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { InlineCard, InlineCardGroup } from '../..';
+import { Badge, InlineCard, InlineCardGroup } from '../..';
 
 export const Standard = () => (
   <InlineCardGroup>
@@ -20,6 +20,9 @@ export const Standard = () => (
       }}
     >
       <InlineCard.Content>Clickable card</InlineCard.Content>
+      <InlineCard.Meta>
+        <Badge variant='info'>Clickable</Badge>
+      </InlineCard.Meta>
     </InlineCard>
   </InlineCardGroup>
 );

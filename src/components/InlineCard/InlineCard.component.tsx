@@ -1,10 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { responsive } from '../..';
 import InlineCardContent from './_InlineCardContent.component';
 import InlineCardMedia from './_InlineCardMedia.component';
+import InlineCardMeta from './_InlineCardMeta.component';
+
+export type InlineCardSize = 'xs' | 'sm' | 'md' | 'lg';
 
 interface CardOuterProps {
   usePointer: boolean;
+  size?: InlineCardSize;
 }
 
 const CardOuter = styled.div<CardOuterProps>`
@@ -16,15 +21,50 @@ const CardOuter = styled.div<CardOuterProps>`
 
   background-color: ${(props) => props.theme.colours.cardBackground};
   box-shadow: ${(props) => props.theme.shadows.small};
+
+  ${(props) => {
+    switch (props.size) {
+      case 'xs':
+        return `
+          width: 360px;
+          ${responsive.useStylesFor('mobile').andSmaller(`
+            width: 100%;
+          `)}
+        `;
+      case 'sm':
+        return `
+          width: ${responsive.getWidthFor('mobile')};
+          ${responsive.useStylesFor('mobile').andSmaller(`
+            width: 100%;
+          `)}
+        `;
+      case 'md':
+        return `
+          width: ${responsive.getWidthFor('tablet')};
+          ${responsive.useStylesFor('tablet').andSmaller(`
+            width: 100%;
+          `)}
+        `;
+      case 'lg':
+      default:
+        return `
+          width: ${responsive.getWidthFor('desktop')};
+          ${responsive.useStylesFor('desktop').andSmaller(`
+            width: 100%;
+          `)}
+        `;
+    }
+  }}
 `;
 
 export interface InlineCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
+  size?: InlineCardSize;
 }
 
-const InlineCard = ({ children, onClick }: InlineCardProps) => {
+const InlineCard = ({ children, size, onClick }: InlineCardProps) => {
   return (
-    <CardOuter usePointer={!!onClick} onClick={onClick}>
+    <CardOuter size={size} usePointer={!!onClick} onClick={onClick}>
       {children}
     </CardOuter>
   );
@@ -32,5 +72,6 @@ const InlineCard = ({ children, onClick }: InlineCardProps) => {
 
 InlineCard.Media = InlineCardMedia;
 InlineCard.Content = InlineCardContent;
+InlineCard.Meta = InlineCardMeta;
 
 export default InlineCard;

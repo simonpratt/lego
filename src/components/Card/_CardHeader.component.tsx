@@ -43,7 +43,7 @@ const MetaContainer = styled.div`
 export interface CardHeaderProps {
   image?: string;
   heading: string;
-  subHeading: string;
+  subHeading?: string;
   meta?: React.ReactNode;
 }
 

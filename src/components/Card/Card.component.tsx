@@ -46,7 +46,7 @@ const CardOuter = styled(motion.div)<CardOuterProps>`
         `;
       case 'xs':
         return `
-          width: 240px;
+          width: 360px;
           ${responsive.useStylesFor('mobile').andSmaller(`
             width: 100%;
           `)}

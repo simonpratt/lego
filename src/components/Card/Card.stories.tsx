@@ -27,6 +27,12 @@ export const Standard = () => (
 
 export const Sizes = () => (
   <CardGroup>
+    <Card size='xs'>
+      <Card.Media>
+        <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
+      </Card.Media>
+      <Card.Content>An extra small card!</Card.Content>
+    </Card>
     <Card size='sm'>
       <Card.Media>
         <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
