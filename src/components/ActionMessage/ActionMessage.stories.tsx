@@ -22,8 +22,8 @@ export const InPanel = () => (
     <Menu>
       <Menu.Heading>Action Message</Menu.Heading>
     </Menu>
-    <Menu.Content panelSize='sm'>
-      <Menu.Panel>
+    <Menu.Content>
+      <Menu.Panel panelSize='sm'>
         <ActionMessage
           header='Create an asset'
           info="It looks like you don't have any assets, create one to get started"

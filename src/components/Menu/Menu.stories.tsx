@@ -92,8 +92,8 @@ export const WithPanel = () => {
           Manage
         </Menu.Item>
       </Menu>
-      <Menu.Content panelSize='md'>
-        <Menu.Panel>
+      <Menu.Content>
+        <Menu.Panel panelSize='md'>
           <PaddedLayout>
             <ControlGroup variation='comfortable'>
               <Heading.SubHeading>You</Heading.SubHeading>
@@ -150,8 +150,8 @@ export const IndependentScrolling = () => {
           Manage
         </Menu.Item>
       </Menu>
-      <Menu.Content panelSize='sm' independentScroll>
-        <Menu.Panel>
+      <Menu.Content>
+        <Menu.Panel panelSize='sm' scrollable>
           <PaddedLayout>
             <Text>
               Suspendisse sit amet pellentesque nisi. Quisque eget velit sit amet mauris tincidunt dictum id et ex.
@@ -181,7 +181,7 @@ export const IndependentScrolling = () => {
             </Text>
           </PaddedLayout>
         </Menu.Panel>
-        <Menu.Page>
+        <Menu.Page scrollable>
           <ContentLayout>
             <ContentLayout.Content size='sm'>
               <Text>

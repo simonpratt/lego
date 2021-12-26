@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import responsive from '../../responsive/responsive';
-import { getMaxSize, PanelSize } from './_MenuContent.component';
-import MenuContentContext from './_MenuContent.context';
+
+export type PanelSize = 'sm' | 'md';
 
 interface MenuPanelDivProps {
   panelSize: PanelSize;
-  independentScroll: boolean;
+  scrollable?: boolean;
 }
 
 const MenuPanelDiv = styled.div<MenuPanelDivProps>`
@@ -34,8 +34,7 @@ const MenuPanelDiv = styled.div<MenuPanelDivProps>`
     }
   }}
 
-  ${(props) =>
-    responsive.useStylesFor(getMaxSize(props.panelSize)).andSmaller(`
+  ${responsive.useStylesFor('tablet').andSmaller(`
     max-width: unset;
     min-width: unset;
     min-height: unset;
@@ -44,10 +43,11 @@ const MenuPanelDiv = styled.div<MenuPanelDivProps>`
     margin-bottom: 8px;
   `)}
 
-  ${(props) =>
-    props.independentScroll &&
-    `
-    max-height: calc(100vh - 16px);
+${(props) =>
+    responsive.useStylesFor('desktop').andLarger(
+      props.scrollable
+        ? `
+        max-height: calc(100vh - 16px);
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -62,18 +62,20 @@ const MenuPanelDiv = styled.div<MenuPanelDivProps>`
     &::-webkit-scrollbar-track {
       box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
-  `}
+        `
+        : ``,
+    )}
 `;
 
 export interface MenuPanelProps {
   children: React.ReactNode;
+  scrollable?: boolean;
+  panelSize: PanelSize;
 }
 
-const MenuPanel = ({ children }: MenuPanelProps) => {
-  const { panelSize, independentScroll } = useContext(MenuContentContext);
-
+const MenuPanel = ({ children, scrollable, panelSize = 'sm' }: MenuPanelProps) => {
   return (
-    <MenuPanelDiv panelSize={panelSize} independentScroll={independentScroll}>
+    <MenuPanelDiv panelSize={panelSize} scrollable={scrollable}>
       {children}
     </MenuPanelDiv>
   );

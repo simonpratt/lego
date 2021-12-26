@@ -1,13 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import responsive from '../../responsive/responsive';
-import { getMaxSize, PanelSize } from './_MenuContent.component';
-import MenuContentContext from './_MenuContent.context';
 
 interface MenuPageInnerProps {
-  panelSize: PanelSize;
-  independentScroll: boolean;
+  scrollable?: boolean;
 }
 
 const MenuPageInner = styled.div<MenuPageInnerProps>`
@@ -16,14 +13,14 @@ const MenuPageInner = styled.div<MenuPageInnerProps>`
   min-height: calc(100vh - 16px);
   flex-grow: 1;
 
-  ${(props) =>
-    responsive.useStylesFor(getMaxSize(props.panelSize)).andSmaller(`
+  ${responsive.useStylesFor('tablet').andSmaller(`
     min-height: unset;
   `)}
 
   ${(props) =>
-    props.independentScroll &&
-    `
+    responsive.useStylesFor('desktop').andLarger(
+      props.scrollable
+        ? `
     max-height: calc(100vh - 16px);
     overflow-y: auto;
 
@@ -39,20 +36,18 @@ const MenuPageInner = styled.div<MenuPageInnerProps>`
     &::-webkit-scrollbar-track {
       box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
-  `}
+  `
+        : ``,
+    )}
 `;
 
 export interface MenuPageProps {
   children: React.ReactNode;
+  scrollable?: boolean;
 }
-const MenuPage = ({ children }: MenuPageProps) => {
-  const { panelSize, independentScroll } = useContext(MenuContentContext);
 
-  return (
-    <MenuPageInner panelSize={panelSize} independentScroll={independentScroll}>
-      {children}
-    </MenuPageInner>
-  );
+const MenuPage = ({ children, scrollable }: MenuPageProps) => {
+  return <MenuPageInner scrollable={scrollable}>{children}</MenuPageInner>;
 };
 
 export default MenuPage;
