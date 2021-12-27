@@ -1,17 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Meta } from '@storybook/react/types-6-0';
 import { InlineCard, Badge, Swimlane, CenteredLayout } from '../../';
-
-const CardWrapper = styled.div`
-  margin: 8px;
-`;
+import InlineCardGroup from '../InlineCard/InlineCardGroup.component';
 
 export const Standard = () => {
   return (
     <>
       <Swimlane label='Jobs'>
-        <CardWrapper>
+        <InlineCardGroup wrap>
           <InlineCard size='xs'>
             <InlineCard.Content center>
               <CenteredLayout>Jim{`'`}s Mowing</CenteredLayout>
@@ -20,10 +16,10 @@ export const Standard = () => {
               <Badge variant='success'>Full Time</Badge>
             </InlineCard.Meta>
           </InlineCard>
-        </CardWrapper>
+        </InlineCardGroup>
       </Swimlane>
       <Swimlane label='Properties'>
-        <CardWrapper>
+        <InlineCardGroup wrap>
           <InlineCard size='xs'>
             <InlineCard.Content center>
               <CenteredLayout>33 Oak Street</CenteredLayout>
@@ -32,8 +28,7 @@ export const Standard = () => {
               <Badge variant='success'>Primary</Badge>
             </InlineCard.Meta>
           </InlineCard>
-        </CardWrapper>
-        <CardWrapper>
+
           <InlineCard size='xs'>
             <InlineCard.Content center>
               <CenteredLayout>402 Main Street</CenteredLayout>
@@ -42,8 +37,7 @@ export const Standard = () => {
               <Badge variant='info'>Investment</Badge>
             </InlineCard.Meta>
           </InlineCard>
-        </CardWrapper>
-        <CardWrapper>
+
           <InlineCard size='xs'>
             <InlineCard.Content center>
               <CenteredLayout>12 Heart Avenue</CenteredLayout>
@@ -52,10 +46,10 @@ export const Standard = () => {
               <Badge variant='info'>Investment</Badge>
             </InlineCard.Meta>
           </InlineCard>
-        </CardWrapper>
+        </InlineCardGroup>
       </Swimlane>
       <Swimlane label='Investments'>
-        <CardWrapper>
+        <InlineCardGroup wrap>
           <InlineCard size='xs'>
             <InlineCard.Content center>
               <CenteredLayout>ASX 200</CenteredLayout>
@@ -64,8 +58,7 @@ export const Standard = () => {
               <Badge variant='info'>Index Fund</Badge>
             </InlineCard.Meta>
           </InlineCard>
-        </CardWrapper>
-        <CardWrapper>
+
           <InlineCard size='xs'>
             <InlineCard.Content center>
               <CenteredLayout>AMP Super</CenteredLayout>
@@ -74,7 +67,95 @@ export const Standard = () => {
               <Badge variant='info'>Super Fund</Badge>
             </InlineCard.Meta>
           </InlineCard>
-        </CardWrapper>
+        </InlineCardGroup>
+      </Swimlane>
+    </>
+  );
+};
+
+export const LotsOfCards = () => {
+  return (
+    <>
+      <Swimlane label='An Example'>
+        <InlineCardGroup wrap>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#1</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#2</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#3</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#4</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#5</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#6</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#7</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#8</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs'>
+            <InlineCard.Content center>
+              <CenteredLayout>Card</CenteredLayout>
+            </InlineCard.Content>
+            <InlineCard.Meta>
+              <Badge variant='success'>#9</Badge>
+            </InlineCard.Meta>
+          </InlineCard>
+          <InlineCard size='xs' onClick={() => console.log('add')}>
+            <InlineCard.Content center>
+              <CenteredLayout>Add</CenteredLayout>
+            </InlineCard.Content>
+          </InlineCard>
+        </InlineCardGroup>
       </Swimlane>
     </>
   );
