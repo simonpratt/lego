@@ -1,5 +1,8 @@
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import styled from 'styled-components';
+import responsive from '../../responsive/responsive';
 
 const MenuHeadingDiv = styled.div`
   padding-right: 32px;
@@ -7,6 +10,7 @@ const MenuHeadingDiv = styled.div`
 
   width: 100%;
   text-align: center;
+  max-width: 450px;
 `;
 
 const MenuHeadingInner = styled.div`
@@ -25,13 +29,38 @@ const MenuHeadingInner = styled.div`
   font-size: 20px;
 `;
 
+const MenuToggle = styled.div`
+  margin-right: 16px;
+  cursor: pointer;
+  color: ${(props) => props.theme.colours.primary.contrastText};
+  fill: ${(props) => props.theme.colours.primary.contrastText};
+
+  ${responsive.useStylesFor('desktop').andLarger(`
+    display: none;
+    `)}
+`;
+
 export interface MenuHeadingProps {
   children: React.ReactNode;
+  onOpen?: () => void;
+  onClose?: () => void;
+  isOpen?: boolean;
 }
 
-const MenuHeading = ({ children }: MenuHeadingProps) => (
+const MenuHeading = ({ children, onOpen, onClose, isOpen }: MenuHeadingProps) => (
   <MenuHeadingDiv>
-    <MenuHeadingInner>{children}</MenuHeadingInner>
+    <MenuHeadingInner>
+      {isOpen ? (
+        <MenuToggle onClick={onClose}>
+          <FontAwesomeIcon icon={faBars} />
+        </MenuToggle>
+      ) : (
+        <MenuToggle onClick={onOpen}>
+          <FontAwesomeIcon icon={faBars} />
+        </MenuToggle>
+      )}
+      {children}
+    </MenuHeadingInner>
   </MenuHeadingDiv>
 );
 

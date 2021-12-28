@@ -13,6 +13,16 @@ const MenuContentOuter = styled.div`
 
   ${responsive.useStylesFor('tablet').andSmaller(`
     flex-direction: column;
+    margin-left: 0;
+  `)}
+`;
+
+const TopFiller = styled.div`
+  height: 64px;
+  background-color: ${(props) => props.theme.colours.cardBackground};
+
+  ${responsive.useStylesFor('desktop').andLarger(`
+    display: none;
   `)}
 `;
 
@@ -21,7 +31,12 @@ export interface MenuContentProps {
 }
 
 const MenuContent = ({ children }: MenuContentProps) => {
-  return <MenuContentOuter>{children}</MenuContentOuter>;
+  return (
+    <MenuContentOuter>
+      <TopFiller></TopFiller>
+      {children}
+    </MenuContentOuter>
+  );
 };
 
 export default MenuContent;

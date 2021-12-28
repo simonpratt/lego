@@ -20,8 +20,7 @@ export const Standard = () => {
 
   return (
     <>
-      <Menu>
-        <Menu.Heading>Something Tasty</Menu.Heading>
+      <Menu heading='Something Tasty'>
         <Menu.Item
           icon={faHamburger}
           active={menuHelpers.isActiveItem([/\/eat/g], route)}
@@ -68,8 +67,7 @@ export const WithPanel = () => {
 
   return (
     <>
-      <Menu>
-        <Menu.Heading>Something Tasty</Menu.Heading>
+      <Menu heading='Something Tasty'>
         <Menu.Item
           icon={faHamburger}
           active={menuHelpers.isActiveItem([/\/eat/g], route)}
@@ -126,8 +124,7 @@ export const IndependentScrolling = () => {
 
   return (
     <>
-      <Menu>
-        <Menu.Heading>Something Tasty</Menu.Heading>
+      <Menu heading='Something Tasty'>
         <Menu.Item
           icon={faHamburger}
           active={menuHelpers.isActiveItem([/\/eat/g], route)}
