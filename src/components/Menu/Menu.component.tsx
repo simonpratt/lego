@@ -97,7 +97,7 @@ const MobileMenuNav = ({ children }: MobileMenuNavProps) => {
 };
 
 export interface MenuProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   heading: string;
 }
 

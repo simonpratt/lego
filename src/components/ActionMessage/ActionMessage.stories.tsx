@@ -19,9 +19,7 @@ export const Standard = () => (
 
 export const InPanel = () => (
   <>
-    <Menu>
-      <Menu.Heading>Action Message</Menu.Heading>
-    </Menu>
+    <Menu heading='Action Message'></Menu>
     <Menu.Content>
       <Menu.Panel panelSize='sm'>
         <ActionMessage

@@ -22,9 +22,7 @@ export const Standard = () => {
   return (
     <>
       <Notifications notifications={notifications} />
-      <Menu>
-        <Menu.Heading>Something Tasty</Menu.Heading>
-      </Menu>
+      <Menu heading='Something Tasty'></Menu>
       <Menu.Page>
         <FocusLayout>
           <Text>Content...</Text>
@@ -74,9 +72,7 @@ export const Interactive = () => {
   return (
     <>
       <Notifications notifications={notifications} />
-      <Menu>
-        <Menu.Heading>Something Tasty</Menu.Heading>
-      </Menu>
+      <Menu heading='Something Tasty'></Menu>
       <Menu.Page>
         <FocusLayout>
           <Button onClick={() => addNotification(successNotification)}>Save user</Button>
@@ -111,9 +107,7 @@ export const OverModal = () => {
   return (
     <>
       <Notifications notifications={notifications} />
-      <Menu>
-        <Menu.Heading>Something Tasty</Menu.Heading>
-      </Menu>
+      <Menu heading='Something Tasty'></Menu>
       <Menu.Page>
         <Modal
           onClose={() => {
