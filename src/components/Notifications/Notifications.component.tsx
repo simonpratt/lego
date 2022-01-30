@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 import React from 'react';
 import styled from 'styled-components';
-import { animated, useTransition } from 'react-spring';
 
 import { Notification, Spacer } from '../..';
 import responsive from '../../responsive/responsive';
 import zIndexConstants from '../../constants/zIndex.constants';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const NotificationContainer = styled.div`
   position: fixed;
@@ -38,31 +38,28 @@ interface NotificationsProps {
 }
 
 const Notifications = ({ notifications }: NotificationsProps) => {
-  const transitions = useTransition(notifications, (item) => item.id, {
-    from: { transform: 'translateX(-300px)', opacity: 0 },
-    enter: { transform: 'translateX(0px)', opacity: 1 },
-    leave: { transform: 'translateX(300px)', opacity: 0 },
-    config: {
-      tension: 280,
-      mass: 0.2,
-      friction: 10,
-    },
-  });
-
   return (
     <NotificationContainer>
-      {transitions.map(({ item, props, key }) => (
-        <animated.div key={key} style={props}>
-          <Spacer size='1x' />
-          <Notification
-            variant={item.variant}
-            message={item.message}
-            action={item.action}
-            onAction={item.onAction}
-            count={item.count}
-          ></Notification>
-        </animated.div>
-      ))}
+      <AnimatePresence>
+        {notifications.map((notification) => (
+          <motion.div
+            transition={{ type: 'spring', duration: 0.4, bounce: 0 }}
+            initial={{ x: -300, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: 300, opacity: 0 }}
+            key={notification.id}
+          >
+            <Spacer size='1x' />
+            <Notification
+              variant={notification.variant}
+              message={notification.message}
+              action={notification.action}
+              onAction={notification.onAction}
+              count={notification.count}
+            ></Notification>
+          </motion.div>
+        ))}
+      </AnimatePresence>
     </NotificationContainer>
   );
 };
