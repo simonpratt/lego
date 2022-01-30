@@ -1,7 +1,8 @@
 import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import useMeasure from 'react-use-measure';
 
 import { responsive } from '../..';
 import getThemeStatusColour from '../../theme/helpers/getThemeStatusColour';
@@ -110,14 +111,18 @@ const InlineCard = ({
 }: InlineCardProps) => {
   const theme = useTheme();
   const x = useMotionValue(0);
+  const [ref, bounds] = useMeasure();
   const xInput = [-70, 0];
   const gestureLeftTheme = getThemeStatusColour(gestureLeftVariant || 'info', theme);
+
+  const [gestureLeftActivated, setGestureLeftActivated] = useState(false);
 
   const opacity = useTransform(x, xInput, ['1', '0']);
 
   const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, panInfo: PanInfo) => {
     // approx xInputMin * 3
     if (panInfo.offset.x < -180 && onGestureLeft) {
+      setGestureLeftActivated(true);
       onGestureLeft();
     }
   };
@@ -132,7 +137,10 @@ const InlineCard = ({
       <CardOuter
         drag={onGestureLeft ? 'x' : undefined}
         onDragEnd={handleDragEnd}
+        ref={ref}
         style={{ x }}
+        animate={{ x: gestureLeftActivated ? -bounds.width : undefined, opacity: gestureLeftActivated ? 0 : undefined }}
+        // animate={{ x: '-100%' }}
         dragConstraints={{ left: 0, right: 0 }}
         usePointer={!!onClick}
         onClick={onClick}
