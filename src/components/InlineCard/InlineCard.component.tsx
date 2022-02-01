@@ -112,7 +112,7 @@ const InlineCard = ({
   const theme = useTheme();
   const x = useMotionValue(0);
   const [ref, bounds] = useMeasure();
-  const xInput = [-70, 0];
+  const xInput = [-50, 0];
   const gestureLeftTheme = getThemeStatusColour(gestureLeftVariant || 'info', theme);
 
   const [gestureLeftActivated, setGestureLeftActivated] = useState(false);
@@ -140,7 +140,6 @@ const InlineCard = ({
         ref={ref}
         style={{ x }}
         animate={{ x: gestureLeftActivated ? -bounds.width : undefined, opacity: gestureLeftActivated ? 0 : undefined }}
-        // animate={{ x: '-100%' }}
         dragConstraints={{ left: 0, right: 0 }}
         usePointer={!!onClick}
         onClick={onClick}
