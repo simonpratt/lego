@@ -1,19 +1,11 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
+import { StyledInput } from '../Input/Input.component';
 import { FocusContext } from './_FocusContext';
 
-const PlainInput = styled.input`
-  background-color: transparent;
-  outline: none;
-  border: none;
-
-  margin: 2px 0;
-  padding: 6px;
-
-  background-color: ${(props) => getThemeControlColours(props.theme).background};
-  color: ${(props) => getThemeControlColours(props.theme).font};
+const InputContainer = styled.div`
+  padding: 2px 0;
 `;
 
 interface LiveListRowProps {
@@ -38,25 +30,20 @@ const LiveListRow = ({ id, value, onChange }: LiveListRowProps) => {
     });
   }, [id, registerFocusable, deregisterFocusable]);
 
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, [inputRef]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
   };
 
   return (
-    <div>
-      <PlainInput
+    <InputContainer>
+      <StyledInput
         onFocus={() => onFocus(id)}
         onBlur={() => onBlur(id)}
-        id={id}
         ref={inputRef}
         value={value}
         onChange={handleChange}
       />
-    </div>
+    </InputContainer>
   );
 };
 

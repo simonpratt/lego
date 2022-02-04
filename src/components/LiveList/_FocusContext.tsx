@@ -32,6 +32,7 @@ export interface FocusContextProviderProps {
 
 const FocusContextProvider = ({ children }: FocusContextProviderProps) => {
   const focusRef = useRef<string>();
+  const focusRequest = useRef<string>();
   const subscribersRef = useRef<SubscriberMap>({});
 
   const getFocused = () => {
@@ -42,6 +43,7 @@ const FocusContextProvider = ({ children }: FocusContextProviderProps) => {
     const subscribers = subscribersRef.current;
     const matchingSubscriber = subscribers[id];
 
+    focusRequest.current = id;
     if (matchingSubscriber) {
       matchingSubscriber();
     }
@@ -59,6 +61,10 @@ const FocusContextProvider = ({ children }: FocusContextProviderProps) => {
 
   const registerFocusable = useCallback((id: string, focus: () => void) => {
     subscribersRef.current[id] = focus;
+
+    if (focusRequest.current === id) {
+      focus();
+    }
   }, []);
 
   const deregisterFocusable = useCallback((id: string) => {
@@ -81,7 +87,7 @@ const FocusContextProvider = ({ children }: FocusContextProviderProps) => {
   );
 };
 
-function FocusContextControllerHOC(WrappedComponent: any) {
+function FocusContextProviderHOC(WrappedComponent: any) {
   const HocComponent = (props: any) => {
     return (
       <FocusContextProvider>
@@ -93,4 +99,4 @@ function FocusContextControllerHOC(WrappedComponent: any) {
   return HocComponent;
 }
 
-export { FocusContext, FocusContextProvider, FocusContextControllerHOC };
+export { FocusContext, FocusContextProvider, FocusContextProviderHOC };

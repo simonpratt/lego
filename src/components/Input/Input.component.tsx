@@ -13,7 +13,7 @@ const InputLabel = styled.label`
   font-size: ${(props) => props.theme.fonts.default.size};
 `;
 
-const StyledInput = styled.input`
+export const StyledInput = styled.input`
   outline: none;
   box-shadow: none;
 
@@ -50,10 +50,12 @@ export interface IInputProps {
   type?: string;
   value?: string;
   onChange?: (value: any) => void;
+  onFocus?: () => void;
+  onBlur?: () => void;
 }
 
-const Input = ({ label, name, placeholder, type = 'text', value, onChange }: IInputProps) => {
-  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+const Input = ({ label, name, placeholder, type = 'text', value, onChange, onFocus, onBlur }: IInputProps) => {
+  const { value: contextValue, onChange: contextOnChange } = useFormNode<string>(name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -74,6 +76,8 @@ const Input = ({ label, name, placeholder, type = 'text', value, onChange }: IIn
         placeholder={placeholder}
         value={value || contextValue}
         onChange={handleChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
     </div>
   );

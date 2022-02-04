@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Heading, LiveList, Spacer } from '../..';
+import { ControlGroup, Form, Heading, ImageUpload, Input, LiveList, Spacer } from '../..';
 
 const exampleLiveListValue = [
   { id: '6f974464-d592-4271-b3ae-2821fffce258', value: '500g chicken' },
@@ -16,6 +16,21 @@ export const Standard = () => {
       <Spacer size='1x' />
       <LiveList value={value} onChange={setValue} />
     </>
+  );
+};
+
+export const InForm = () => {
+  const [value, setValue] = useState({});
+
+  return (
+    <Form value={value} onChange={setValue}>
+      <ControlGroup variation='comfortable'>
+        <ImageUpload name='image' />
+        <Input name='name' placeholder='Something tasty..' />
+        <Heading.FormHeading>Ingredients</Heading.FormHeading>
+        <LiveList name='ingredients' value={value} onChange={setValue} />
+      </ControlGroup>
+    </Form>
   );
 };
 
