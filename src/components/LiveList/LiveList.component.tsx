@@ -1,10 +1,36 @@
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect } from 'react';
+import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
 import useKeypress from '../../hooks/useKeyPress';
 import useFormNode from '../Form/useFormNode.hook';
 import { FocusContext, FocusContextProviderHOC } from './_FocusContext';
 import LiveListRow from './_LiveListRow';
+
+const AddRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  margin-top: 4px;
+`;
+
+const AddRowInner = styled.div`
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  color: ${(props) => props.theme.colours.defaultFont};
+  font-family: ${(props) => props.theme.fonts.default.family};
+  font-size: ${(props) => props.theme.fonts.default.size};
+`;
+
+const IconContainer = styled.div`
+  padding-right: 4px;
+`;
 
 interface LiveListValue {
   id: string;
@@ -72,6 +98,22 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
     onChange(value.map((v) => (v.id === updateId ? { ...v, value: updateValue } : v)));
   };
 
+  const handleRowRemove = (id: string) => {
+    if (value.length === 1) {
+      const withValueCleared = [...value];
+      value[0].value = '';
+      onChange(withValueCleared);
+      return;
+    }
+
+    onChange(value.filter((val) => val.id !== id));
+  };
+
+  const handleRowAdd = () => {
+    const newItem = { id: uuidv4(), value: '' };
+    onChange([...value, newItem]);
+  };
+
   if (!value?.length) {
     return null;
   }
@@ -84,8 +126,17 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
           id={val.id}
           value={val.value}
           onChange={(newVal) => handleRowChange(val.id, newVal)}
+          onRemove={() => handleRowRemove(val.id)}
         />
       ))}
+      <AddRow>
+        <AddRowInner onClick={handleRowAdd}>
+          <IconContainer>
+            <FontAwesomeIcon icon={faPlusCircle} />
+          </IconContainer>
+          add
+        </AddRowInner>
+      </AddRow>
     </div>
   );
 };
