@@ -7,7 +7,7 @@ interface LiveInputProps {
   placeholder: string;
   type?: string;
   value?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: string) => void;
 }
 
 const StyledInput = styled.input`
@@ -25,7 +25,17 @@ const StyledInput = styled.input`
 `;
 
 const LiveInput = ({ name, type = 'text', placeholder, value, onChange }: LiveInputProps) => {
-  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+  const { value: contextValue, onChange: contextOnChange } = useFormNode<string>(name);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+
+    if (contextOnChange) {
+      contextOnChange(e.target.value);
+    }
+  };
 
   return (
     <div>
@@ -34,7 +44,7 @@ const LiveInput = ({ name, type = 'text', placeholder, value, onChange }: LiveIn
         type={type}
         value={value || contextValue}
         placeholder={placeholder}
-        onChange={onChange || contextOnChange}
+        onChange={handleChange}
       />
     </div>
   );
