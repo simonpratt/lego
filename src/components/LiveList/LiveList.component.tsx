@@ -1,5 +1,6 @@
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,11 +18,12 @@ const AddRow = styled.div`
   margin-top: 4px;
 `;
 
-const AddRowInner = styled.div`
+const AddRowInner = styled(motion.div)`
   padding: 4px;
   display: flex;
   align-items: center;
   cursor: pointer;
+  overflow: hidden;
 
   color: ${(props) => props.theme.colours.defaultFont};
   font-family: ${(props) => props.theme.fonts.default.family};
@@ -36,6 +38,10 @@ interface LiveListValue {
   id: string;
   value: string;
 }
+
+const addVariants = {
+  hover: { scale: 1.05 },
+};
 
 export interface LiveListProps {
   name: string;
@@ -130,7 +136,7 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
         />
       ))}
       <AddRow>
-        <AddRowInner onClick={handleRowAdd}>
+        <AddRowInner style={{ scale: 1 }} whileHover='hover' variants={addVariants} onClick={handleRowAdd}>
           <IconContainer>
             <FontAwesomeIcon icon={faPlusCircle} />
           </IconContainer>

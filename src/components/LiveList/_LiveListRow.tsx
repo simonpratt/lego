@@ -37,6 +37,7 @@ const removeVariants = {
   hover: { opacity: 1, x: -10 },
   focus: { opacity: 1, x: -10 },
 };
+
 interface LiveListRowProps {
   id: string;
   value: string;
