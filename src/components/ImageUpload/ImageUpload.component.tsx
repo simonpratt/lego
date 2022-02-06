@@ -94,7 +94,7 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
       }
 
       if (contextOnChange) {
-        contextOnChange({ target: { value: url } } as any);
+        contextOnChange(url);
       }
     }
   };
