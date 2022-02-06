@@ -32,6 +32,7 @@ export const InputStyles = css`
   width: 100%;
   height: ${INPUT_HEIGHT}px;
   padding: 0 12px;
+  scroll-margin-bottom: 100px;
 
   font-family: ${(props) => props.theme.fonts.default.family};
   font-size: ${(props) => props.theme.fonts.default.size};
