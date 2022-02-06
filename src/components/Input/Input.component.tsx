@@ -2,14 +2,14 @@
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
 import useFormNode from '../Form/useFormNode.hook';
 
 export const INPUT_HEIGHT = 48;
 
-const InputContainer = styled.div`
+const InputContainer = styled(motion.div)`
   position: relative;
   margin: 2px 0;
 
@@ -59,6 +59,16 @@ const StyledInput = styled(motion.input)`
   ${InputStyles}
 `;
 
+const ErrorMessage = styled(motion.div)`
+  position: absolute;
+  left: 38px;
+  bottom: 0;
+
+  font-family: ${(props) => props.theme.fonts.default.family};
+  font-size: ${(props) => props.theme.fonts.default.size};
+  color: ${(props) => props.theme.colours.statusDanger.main};
+`;
+
 const ErrorContainer = styled(motion.div)`
   position: absolute;
   left: 0;
@@ -86,10 +96,15 @@ const errorVariants = {
 
 const inputVariants = {
   error: { paddingLeft: '38px' },
+  errorFocus: { paddingLeft: '38px', paddingBottom: '18px' },
+};
+
+const messageVariants = {
+  errorFocus: { opacity: 1, y: -4 },
 };
 
 export interface IInputProps {
-  name: string;
+  name?: string;
   label?: string;
   placeholder?: string;
   type?: string;
@@ -100,17 +115,10 @@ export interface IInputProps {
   onBlur?: () => void;
 }
 
-const Input = ({
-  label,
-  name,
-  placeholder,
-  type = 'text',
-  value,
-  error: propsError,
-  onChange,
-  onFocus,
-  onBlur,
-}: IInputProps) => {
+const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref: React.Ref<HTMLInputElement>) {
+  const { label, name, placeholder, type = 'text', value, error: propsError, onChange, onFocus, onBlur } = props;
+
+  const [isFocused, setIsFocused] = useState(false);
   const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode(name);
 
   const error = contextError || propsError;
@@ -125,12 +133,28 @@ const Input = ({
     }
   };
 
+  const handleFocus = () => {
+    setIsFocused(true);
+
+    if (onFocus) {
+      onFocus();
+    }
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+
+    if (onBlur) {
+      onBlur();
+    }
+  };
+
   return (
     <div>
       {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
-      <InputContainer>
+      <InputContainer animate={error ? (isFocused ? 'errorFocus' : 'error') : undefined}>
         <StyledInput
-          animate={error ? 'error' : undefined}
+          ref={ref}
           variants={inputVariants}
           transition={{ type: 'spring', duration: 0.3 }}
           type={type}
@@ -138,8 +162,8 @@ const Input = ({
           placeholder={placeholder}
           value={value || contextValue}
           onChange={handleChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}
@@ -151,9 +175,18 @@ const Input = ({
             <FontAwesomeIcon icon={faExclamationCircle} />
           </ErrorInner>
         </ErrorContainer>
+        {error && (
+          <ErrorMessage
+            style={{ opacity: 0, y: 0 }}
+            variants={messageVariants}
+            transition={{ type: 'spring', duration: 0.3 }}
+          >
+            {error}
+          </ErrorMessage>
+        )}
       </InputContainer>
     </div>
   );
-};
+});
 
 export default Input;

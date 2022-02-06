@@ -1,7 +1,7 @@
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -49,21 +49,35 @@ export interface LiveListProps {
   onChange?: (value: LiveListValue[]) => void;
 }
 
-const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveListProps) => {
+const defaultValue = [{ id: uuidv4(), value: '' }];
+
+const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveListProps) => {
   const { getFocused, requestFocus } = useContext(FocusContext);
   const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode<
     LiveListValue[],
     Record<string, string>
   >(name);
 
-  const value = contextValue || inputValue;
-  const onChange = contextOnChange || inputOnChange;
+  const value = contextValue || inputValue || defaultValue;
+
+  const wrappedOnChange = useCallback(
+    (val: LiveListValue[]) => {
+      if (propsOnChange) {
+        propsOnChange(val);
+      }
+
+      if (contextOnChange) {
+        contextOnChange(val);
+      }
+    },
+    [propsOnChange, contextOnChange],
+  );
 
   useEffect(() => {
     if (!value?.length) {
-      onChange([{ id: uuidv4(), value: '' }]);
+      wrappedOnChange([{ id: uuidv4(), value: '' }]);
     }
-  }, [value, onChange]);
+  }, [value, wrappedOnChange]);
 
   useKeypress('Enter', () => {
     const focusedId = getFocused();
@@ -73,7 +87,7 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
 
     const newValue = [...value];
     newValue.splice(focusedIndex + 1, 0, newItem);
-    onChange(newValue);
+    wrappedOnChange(newValue);
 
     requestFocus(newItem.id);
   });
@@ -93,7 +107,7 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
     const focusedIndex = value.findIndex((val) => val.id === focusedId);
     const prevId = focusedIndex > 0 ? value[focusedIndex - 1].id : undefined;
 
-    onChange(value.filter((val) => val.id !== focusedId));
+    wrappedOnChange(value.filter((val) => val.id !== focusedId));
 
     if (prevId) {
       // Timeout to prevent deleting the last char of the previous row
@@ -104,23 +118,23 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
   });
 
   const handleRowChange = (updateId: string, updateValue: string) => {
-    onChange(value.map((v) => (v.id === updateId ? { ...v, value: updateValue } : v)));
+    wrappedOnChange(value.map((v) => (v.id === updateId ? { ...v, value: updateValue } : v)));
   };
 
   const handleRowRemove = (id: string) => {
     if (value.length === 1) {
       const withValueCleared = [...value];
       value[0].value = '';
-      onChange(withValueCleared);
+      wrappedOnChange(withValueCleared);
       return;
     }
 
-    onChange(value.filter((val) => val.id !== id));
+    wrappedOnChange(value.filter((val) => val.id !== id));
   };
 
   const handleRowAdd = () => {
     const newItem = { id: uuidv4(), value: '' };
-    onChange([...value, newItem]);
+    wrappedOnChange([...value, newItem]);
   };
 
   if (!value?.length) {

@@ -59,7 +59,7 @@ export interface FancyCheckboxProps {
 }
 
 const FancyCheckbox = ({ name, label, options, value, onChange }: FancyCheckboxProps) => {
-  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+  const { value: contextValue, onChange: contextOnChange } = useFormNode<string | number>(name);
 
   const handleChange = (_value: string | number) => {
     if (onChange) {
