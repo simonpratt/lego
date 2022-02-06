@@ -105,6 +105,10 @@ const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveList
     }
 
     const focusedIndex = value.findIndex((val) => val.id === focusedId);
+    if (focusedIndex === 0) {
+      return;
+    }
+
     const prevId = focusedIndex > 0 ? value[focusedIndex - 1].id : undefined;
 
     wrappedOnChange(value.filter((val) => val.id !== focusedId));

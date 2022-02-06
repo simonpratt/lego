@@ -85,7 +85,7 @@ const LiveListRow = ({ id, value, error, onChange, onRemove }: LiveListRowProps)
         onFocus={handleFocus}
         onBlur={handleBlur}
         ref={inputRef}
-        value={value}
+        value={value || ''}
         error={error}
         onChange={handleChange}
       />

@@ -68,6 +68,17 @@ export const WithValidation = () => {
   );
 };
 
+export const EmptyList = () => {
+  const [value, setValue] = useState({});
+  return (
+    <>
+      <Heading.FormHeading>Ingredients</Heading.FormHeading>
+      <Spacer size='1x' />
+      <LiveList value={value} onChange={setValue} />
+    </>
+  );
+};
+
 export default {
   title: 'Components/LiveList',
   component: LiveList,
