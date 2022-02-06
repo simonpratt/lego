@@ -51,7 +51,10 @@ export interface LiveListProps {
 
 const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveListProps) => {
   const { getFocused, requestFocus } = useContext(FocusContext);
-  const { value: contextValue, onChange: contextOnChange } = useFormNode<LiveListValue[]>(name);
+  const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode<
+    LiveListValue[],
+    Record<string, string>
+  >(name);
 
   const value = contextValue || inputValue;
   const onChange = contextOnChange || inputOnChange;
@@ -131,6 +134,7 @@ const LiveList = ({ value: inputValue, name, onChange: inputOnChange }: LiveList
           key={val.id}
           id={val.id}
           value={val.value}
+          error={contextError ? contextError[val.id] : undefined}
           onChange={(newVal) => handleRowChange(val.id, newVal)}
           onRemove={() => handleRowRemove(val.id)}
         />

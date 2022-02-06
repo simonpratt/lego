@@ -25,7 +25,7 @@ const StyledInput = styled.input`
 `;
 
 const LiveInput = ({ name, type = 'text', placeholder, value, onChange }: LiveInputProps) => {
-  const { value: contextValue, onChange: contextOnChange } = useFormNode<string>(name);
+  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {

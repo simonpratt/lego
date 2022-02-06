@@ -75,7 +75,7 @@ const Image = styled.img`
 
 const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
   const { upload, getUrl } = useContext(FileContext);
-  const { value: contextValue, onChange: contextOnChange } = useFormNode<string>(name);
+  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
   const inputRef = useRef<any>();
 
   const handleUploadClicked = () => {

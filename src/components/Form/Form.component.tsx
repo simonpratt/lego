@@ -3,13 +3,14 @@ import React from 'react';
 import FormStateContext from './FormState.context';
 
 interface FormProps {
-  value: any;
+  value: Record<string, any>;
+  errors?: Record<string, any>;
   onChange: (value: any) => void;
   onSubmit?: () => void;
   children: React.ReactNode;
 }
 
-const Form = ({ value, onChange, onSubmit, children }: FormProps) => {
+const Form = ({ value, errors = {}, onChange, onSubmit, children }: FormProps) => {
   const onChangeFn = (key: string, fieldValue: any) => {
     onChange({
       ...value,
@@ -27,6 +28,7 @@ const Form = ({ value, onChange, onSubmit, children }: FormProps) => {
 
   const contextValue = {
     value,
+    errors,
     onChange: onChangeFn,
   };
 

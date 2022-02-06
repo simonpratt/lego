@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import FormStateContext from './FormState.context';
 
-function useFormNode<T>(key: string) {
-  const { value, onChange } = useContext(FormStateContext);
+function useFormNode<T = string, K = string>(key: string) {
+  const { value, errors, onChange } = useContext(FormStateContext);
 
   const internalOnChange = (_value: T) => {
     if (onChange) {
@@ -11,9 +11,11 @@ function useFormNode<T>(key: string) {
   };
 
   const internalValue = value[key];
+  const internalError = errors[key];
 
   return {
     value: internalValue as T,
+    error: internalError as K | undefined,
     onChange: internalOnChange,
   };
 }

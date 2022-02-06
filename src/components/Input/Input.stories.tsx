@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { Input, ControlGroup } from '../..';
+import { Button, ButtonGroup, Input, ControlGroup, Spacer } from '../..';
 
 export const Standard = () => (
   <ControlGroup>
@@ -15,6 +15,31 @@ export const WithoutLabels = () => (
     <Input name='two' placeholder='Another input' />
   </ControlGroup>
 );
+
+export const WithError = () => {
+  const [error, setError] = useState<string | undefined>('Input has an error!');
+
+  const clear = () => {
+    setError(undefined);
+  };
+
+  const validate = () => {
+    setError('Input has an error!');
+  };
+
+  return (
+    <>
+      <ControlGroup>
+        <Input name='one' error={error} placeholder='A standard input' />
+      </ControlGroup>
+      <Spacer size='2x' />
+      <ButtonGroup>
+        <Button onClick={clear}>Clear</Button>
+        <Button onClick={validate}>Set Errors</Button>
+      </ButtonGroup>
+    </>
+  );
+};
 
 export default {
   title: 'Components/Input',
