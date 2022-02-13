@@ -53,10 +53,11 @@ const defaultValue = [{ id: uuidv4(), value: '' }];
 
 const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveListProps) => {
   const { getFocused, requestFocus } = useContext(FocusContext);
-  const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode<
-    LiveListValue[],
-    Record<string, string>
-  >(name);
+  const {
+    value: contextValue,
+    error: contextError,
+    onChange: contextOnChange,
+  } = useFormNode<LiveListValue[], Record<string, string>>(name);
 
   const value = contextValue || inputValue || defaultValue;
 
