@@ -1,3 +1,5 @@
+import useWindowDimensions from '../hooks/useWindowDimensions';
+
 export type ScreenSize = 'mobile' | 'tablet' | 'desktop' | 'wide';
 
 const responsiveScreens = {
@@ -75,6 +77,22 @@ function getWidthFor(screenSize: ScreenSize): string {
   }
 
   return `${screenDefinition.max}px`;
+}
+
+export function useIsScreenSize(screenSize: ScreenSize): boolean {
+  const { width } = useWindowDimensions();
+
+  if (!screenSize) {
+    return false;
+  }
+
+  const screenDefinition = responsiveScreens[screenSize];
+
+  if (!screenDefinition) {
+    return false;
+  }
+
+  return width >= screenDefinition.min && width <= screenDefinition.max;
 }
 
 export default { useStylesFor, getWidthFor };

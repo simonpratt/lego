@@ -32,6 +32,8 @@ const MenuMobile = styled.div`
   width: 100%;
   padding: 8px 0;
 
+  z-index: 1;
+
   ${responsive.useStylesFor('desktop').andLarger(`
     display: none;
   `)}

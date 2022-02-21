@@ -22,6 +22,7 @@ export { default as LiveInput } from './components/LiveInput/LiveInput.component
 export { default as LiveList } from './components/LiveList/LiveList.component';
 export { default as Loader } from './components/Loader/Loader.component';
 export { default as Menu } from './components/Menu/Menu.component';
+export { default as MinimalMenu } from './components/MinimalMenu/MinimalMenu.component';
 export { default as Modal } from './components/Modal/Modal.component';
 export { default as PageHeader } from './components/PageHeader/PageHeader.component';
 export { default as ProfileImage } from './components/ProfileImage/ProfileImage.component';
