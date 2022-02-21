@@ -44,7 +44,7 @@ const MobileMinimalMenuContainer = ({ children }: MobileMinimalMenuContainerProp
     <MobileMenuBumpContext.Provider value={{ setBumpX }}>
       <MobileMinimalMenuOuter>
         <AnimatedMenuBumpContainer
-          animate={{ opacity: bumpX ? 1 : 0, x: bumpX ? bumpX - 86 / 2 : 0 }}
+          animate={{ opacity: bumpX ? 1 : 0, x: bumpX ? bumpX - 86 / 2 : undefined, y: bumpX ? 0 : 100 }}
           transition={mobileMenuDefaultTransition}
         >
           <MobileMenuBump />

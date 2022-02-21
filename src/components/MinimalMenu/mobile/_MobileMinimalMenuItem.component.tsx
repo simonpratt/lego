@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import MobileMenuBumpContext from './_MobileMenuBump.context';
 import { mobileMenuDefaultTransition } from './_MobileMenu.constants';
+import useWindowDimensions from '../../../hooks/useWindowDimensions';
 
 const ItemContainer = styled.div`
   position: relative;
@@ -30,20 +31,23 @@ export interface MobileMinimalMenuItemProps {
 }
 
 const MobileMinimalMenuItem = ({ icon, active, onClick }: MobileMinimalMenuItemProps) => {
+  const { width } = useWindowDimensions();
   const { setBumpX } = useContext(MobileMenuBumpContext);
   const itemRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (active) {
+    if (active && width > 0) {
       const left = itemRef.current?.offsetLeft;
       const center = left ? left + 48 / 2 : undefined;
       setBumpX(center);
     }
 
     return () => {
-      setBumpX(undefined);
+      if (active) {
+        setBumpX(undefined);
+      }
     };
-  }, [active, setBumpX]);
+  }, [active, setBumpX, width]);
 
   return (
     <ItemContainer onClick={onClick} ref={itemRef}>
