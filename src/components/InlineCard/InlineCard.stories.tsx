@@ -81,7 +81,7 @@ export const WithSelection = () => {
               <InlineCard.Media>
                 <img src='https://www.hakaimagazine.com/wp-content/uploads/header-bald-eagle-nests.jpg' />
               </InlineCard.Media>
-              <InlineCard.Content>A eager eagle</InlineCard.Content>
+              <InlineCard.Content>An eager eagle</InlineCard.Content>
             </InlineCard>
             <InlineCard value='lama'>
               <InlineCard.Media>
