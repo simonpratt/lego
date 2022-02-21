@@ -12,6 +12,7 @@ const MobileMinimalMenuOuter = styled.div`
 
   width: 100%;
   height: 48px;
+  z-index: 10;
 
   display: flex;
   justify-content: space-evenly;
@@ -30,7 +31,6 @@ const AnimatedMenuBumpContainer = styled(motion.div)`
   svg {
     fill: ${(props) => props.theme.colours.cardBackground};
   }
-  /* background-color: red; */
 `;
 
 export interface MobileMinimalMenuContainerProps {

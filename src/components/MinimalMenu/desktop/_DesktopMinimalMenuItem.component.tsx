@@ -57,7 +57,7 @@ const DesktopMinimalMenuItem = ({ icon, active, onClick }: DesktopMinimalMenuIte
       onClick={onClick}
     >
       <MenuIconBar
-        style={{ backgroundColor: 'grey', opacity: 0 }}
+        style={{ backgroundColor: theme.colours.cardBackground, opacity: 0 }}
         variants={barVariants}
         transition={{ type: 'spring', duration: 0.3 }}
       />

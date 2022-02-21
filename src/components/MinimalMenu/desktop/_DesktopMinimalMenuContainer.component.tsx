@@ -8,6 +8,7 @@ const DesktopMinimalMenuOuter = styled.div`
 
   width: 64px;
   height: 100%;
+  z-index: 10;
 
   background-color: ${(props) => props.theme.colours.cardBackground};
 `;
