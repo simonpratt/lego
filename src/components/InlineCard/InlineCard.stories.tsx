@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { faCheckCircle, faExclamationTriangle, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Badge, InlineCard, InlineCardGroup } from '../..';
+import { Badge, FocusLayout, Form, InlineCard, InlineCardGroup } from '../..';
+import InlineCardSelection from './InlineCardSelection.component';
 
 export const Standard = () => (
   <InlineCardGroup>
@@ -12,7 +13,6 @@ export const Standard = () => (
       <InlineCard.Media>
         <img src='https://www.jotform.com/blog/wp-content/uploads/2012/07/mario-luigi-yoschi-figures-163036.jpeg' />
       </InlineCard.Media>
-
       <InlineCard.Content>Some more content</InlineCard.Content>
     </InlineCard>
     <InlineCard
@@ -29,7 +29,7 @@ export const Standard = () => (
 );
 
 export const WithDrag = () => (
-  <div style={{ maxWidth: '400px' }}>
+  <FocusLayout>
     <InlineCardGroup>
       <InlineCard
         onGestureLeft={() => console.log('Gesture left triggered')}
@@ -60,8 +60,44 @@ export const WithDrag = () => (
         <InlineCard.Content>A danger gesture</InlineCard.Content>
       </InlineCard>
     </InlineCardGroup>
-  </div>
+  </FocusLayout>
 );
+
+export const WithSelection = () => {
+  const [value, setValue] = useState({ animals: ['lama'] });
+
+  return (
+    <FocusLayout>
+      <Form value={value} onChange={setValue}>
+        <InlineCardSelection name='animals'>
+          <InlineCardGroup>
+            <InlineCard value='camel'>
+              <InlineCard.Media>
+                <img src='http://3.bp.blogspot.com/-m2w1bFhTLMs/Uyh0xlVCluI/AAAAAAAACjw/G4IhU8b0RhY/w1200-h630-p-k-nu/368692.jpg' />
+              </InlineCard.Media>
+              <InlineCard.Content>A cranky camel</InlineCard.Content>
+            </InlineCard>
+            <InlineCard value='eagle'>
+              <InlineCard.Media>
+                <img src='https://www.hakaimagazine.com/wp-content/uploads/header-bald-eagle-nests.jpg' />
+              </InlineCard.Media>
+              <InlineCard.Content>A eager eagle</InlineCard.Content>
+            </InlineCard>
+            <InlineCard value='lama'>
+              <InlineCard.Media>
+                <img src='https://external-preview.redd.it/3KAYF01HBUX-QKwcpo89kHPzScRoZPXZN7o02JepX8E.jpg?auto=webp&s=08bbddec975a8af76de43a33001604099fb0168d' />
+              </InlineCard.Media>
+              <InlineCard.Content>A lazy lama</InlineCard.Content>
+            </InlineCard>
+            <InlineCard value='iguana'>
+              <InlineCard.Content>An invisible iguana</InlineCard.Content>
+            </InlineCard>
+          </InlineCardGroup>
+        </InlineCardSelection>
+      </Form>
+    </FocusLayout>
+  );
+};
 
 export default {
   title: 'Components/InlineCard',

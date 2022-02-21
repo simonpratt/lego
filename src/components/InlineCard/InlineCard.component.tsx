@@ -1,5 +1,5 @@
 import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import useMeasure from 'react-use-measure';
@@ -11,6 +11,8 @@ import InlineCardContent from './_InlineCardContent.component';
 import InlineCardMedia from './_InlineCardMedia.component';
 import InlineCardMeta from './_InlineCardMeta.component';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import InlineCardSelectionContext from './_InlineCardSelection.context';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export type InlineCardSize = 'fill' | 'xs' | 'sm' | 'md' | 'lg';
 export type DragVariant = Status;
@@ -92,9 +94,40 @@ const CardActionBackground = styled(motion.div)`
   pointer-events: none;
 `;
 
+const SelectChecked = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 0;
+  height: 0;
+
+  border-bottom: 48px solid transparent;
+  border-right: 48px solid ${(props) => props.theme.colours.statusInfo.main};
+`;
+
+const SelectIconContainer = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-left: 16px;
+  padding-bottom: 16px;
+
+  color: ${(props) => props.theme.colours.statusInfo.contrast};
+`;
+
 export interface InlineCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   size?: InlineCardSize;
+  value?: string;
 
   gestureLeftIcon?: IconProp;
   gestureLeftVariant?: DragVariant;
@@ -104,11 +137,16 @@ export interface InlineCardProps extends React.HTMLAttributes<HTMLDivElement> {
 const InlineCard = ({
   children,
   size,
+  value,
   onClick,
   gestureLeftIcon,
   gestureLeftVariant,
   onGestureLeft,
 }: InlineCardProps) => {
+  const { value: selectedValues, onToggle } = useContext(InlineCardSelectionContext);
+  const isSelectable = !!onToggle;
+  const isSelected = selectedValues?.length && value && selectedValues.includes(value);
+
   const theme = useTheme();
   const x = useMotionValue(0);
   const [ref, bounds] = useMeasure();
@@ -127,6 +165,16 @@ const InlineCard = ({
     }
   };
 
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (onClick) {
+      onClick(e);
+    }
+
+    if (onToggle && value) {
+      onToggle(value);
+    }
+  };
+
   return (
     <CardWrapper size={size}>
       <CardActionBackground style={{ opacity, backgroundColor: gestureLeftTheme.main }}>
@@ -141,11 +189,18 @@ const InlineCard = ({
         style={{ x }}
         animate={{ x: gestureLeftActivated ? -bounds.width : undefined, opacity: gestureLeftActivated ? 0 : undefined }}
         dragConstraints={{ left: 0, right: 0 }}
-        usePointer={!!onClick}
-        onClick={onClick}
+        usePointer={!!onClick || isSelectable}
+        onClick={handleClick}
       >
         {children}
       </CardOuter>
+      {isSelectable && isSelected ? (
+        <SelectChecked>
+          <SelectIconContainer>
+            <FontAwesomeIcon icon={faCheck} />
+          </SelectIconContainer>
+        </SelectChecked>
+      ) : null}
     </CardWrapper>
   );
 };

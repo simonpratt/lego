@@ -15,6 +15,7 @@ export { default as Notifications } from './components/Notifications/Notificatio
 export { default as ImageUpload } from './components/ImageUpload/ImageUpload.component';
 export { default as InlineCard } from './components/InlineCard/InlineCard.component';
 export { default as InlineCardGroup } from './components/InlineCard/InlineCardGroup.component';
+export { default as InlineCardSelection } from './components/InlineCard/InlineCardSelection.component';
 export { default as Input } from './components/Input/Input.component';
 export { default as Heading } from './components/Heading/Heading.component';
 export { default as LiveInput } from './components/LiveInput/LiveInput.component';
