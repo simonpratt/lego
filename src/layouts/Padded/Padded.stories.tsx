@@ -17,4 +17,7 @@ export const Small = () => (
 export default {
   title: 'Layouts/Padded',
   component: PaddedLayout,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;

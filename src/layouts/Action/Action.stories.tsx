@@ -23,4 +23,7 @@ export const LeftAligned = () => (
 export default {
   title: 'Layouts/Action',
   component: ActionLayout,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;

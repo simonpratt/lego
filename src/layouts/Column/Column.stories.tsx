@@ -11,4 +11,7 @@ export const Standard = () => (
 export default {
   title: 'Layouts/Column',
   component: ColumnLayout,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;

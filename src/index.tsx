@@ -44,6 +44,7 @@ export { default as ContentLayout } from './layouts/Content/Content.layout';
 export { default as EmphasisLayout } from './layouts/Emphasis/Emphasis.layout';
 export { default as FocusLayout } from './layouts/Focus/Focus.layout';
 export { default as PaddedLayout } from './layouts/Padded/Padded.layout';
+export { default as WidthLimitLayout } from './layouts/WidthLimit/WidthLimit.layout';
 
 export { default as Themes } from './theme/themes';
 

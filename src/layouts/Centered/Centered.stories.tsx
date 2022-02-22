@@ -11,4 +11,7 @@ export const Standard = () => (
 export default {
   title: 'Layouts/Centered',
   component: CenteredLayout,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;

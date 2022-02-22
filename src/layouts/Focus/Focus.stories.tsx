@@ -21,4 +21,7 @@ export const Standard = () => (
 export default {
   title: 'Layouts/Focus',
   component: FocusLayout,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;

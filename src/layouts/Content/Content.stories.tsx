@@ -209,4 +209,7 @@ export const Full = () => (
 export default {
   title: 'Layouts/Content',
   component: ContentLayout,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta;
