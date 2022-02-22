@@ -1,20 +1,23 @@
 import React from 'react';
-import { useIsScreenSize } from '../../responsive/responsive';
-import MobileMinimalMenuPage from './mobile/_MobileMinimalMenuPage.component';
-import DesktopMinimalMenuPage from './desktop/_DesktopMinimalMenuPage.component';
+import styled from 'styled-components';
+import responsive from '../../responsive/responsive';
+
+const MinimalMenuPageContainer = styled.div`
+  ${responsive.useStylesFor('tablet').andLarger(`
+    padding-left: 64px;
+  `)}
+
+  ${responsive.useStylesFor('mobile').andSmaller(`
+    padding-bottom: 64px;
+  `)}
+`;
 
 export interface MinimalMenuPageProps {
   children: React.ReactNode;
 }
 
 const MinimalMenuPage = ({ children }: MinimalMenuPageProps) => {
-  const isMobile = useIsScreenSize('mobile');
-
-  if (isMobile) {
-    return <MobileMinimalMenuPage>{children}</MobileMinimalMenuPage>;
-  }
-
-  return <DesktopMinimalMenuPage>{children}</DesktopMinimalMenuPage>;
+  return <MinimalMenuPageContainer>{children}</MinimalMenuPageContainer>;
 };
 
 export default MinimalMenuPage;
