@@ -17,7 +17,6 @@ interface InternalButtonProps extends ButtonContextProps {
 }
 
 const StyledButton = styled.button<InternalButtonProps>`
-  height: 48px;
   outline: none;
   box-shadow: none;
   border: none;
@@ -35,6 +34,7 @@ const StyledButton = styled.button<InternalButtonProps>`
   border-radius: 2px;
 
   // Props defined by the context
+  height: ${(props) => props.height || '48px'};
   width: ${(props) => props.width};
   align-self: ${(props) => props.alignSelf};
   margin-top: ${(props) => props.marginTop};
@@ -71,11 +71,12 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
 `;
 
 const Button = ({ children, loading, variant = 'primary', type, onClick }: ButtonProps) => {
-  const { width, alignSelf, marginTop } = useContext(ButtonContext);
+  const { width, height, alignSelf, marginTop } = useContext(ButtonContext);
 
   return (
     <StyledButton
       width={width}
+      height={height}
       alignSelf={alignSelf}
       marginTop={marginTop}
       variant={variant}
