@@ -9,6 +9,7 @@ interface InteractiveBadgeProps {
 
 const InteractiveBadge = styled(BadgeSpan)<InteractiveBadgeProps>`
   cursor: pointer;
+  margin-bottom: 8px;
 
   ${(props) =>
     props.inactive &&
@@ -19,6 +20,9 @@ const InteractiveBadge = styled(BadgeSpan)<InteractiveBadgeProps>`
 `;
 
 const BadgeSelectorOuter = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+
   ${InteractiveBadge} {
     margin-right: 8px;
   }
