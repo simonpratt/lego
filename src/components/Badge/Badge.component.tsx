@@ -7,7 +7,7 @@ interface BadgeSpanProps {
   variant: BadgeVariant;
 }
 
-const BadgeSpan = styled.span<BadgeSpanProps>`
+export const BadgeSpan = styled.span<BadgeSpanProps>`
   padding: 4px 8px;
   border-radius: 2px;
 
