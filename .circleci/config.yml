@@ -3,7 +3,7 @@ version: 2.1
 executors:
   build-agent:
     docker:
-      - image: circleci/node:16
+      - image: cimg/node:16
     working_directory: /tmp/lego
   docker-machine:
     machine: true
