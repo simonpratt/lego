@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
-import useFormNode from '../Form/useFormNode.hook';
+import useFormNode, { getValue } from '../Form/useFormNode.hook';
 
 export const INPUT_HEIGHT = 48;
 
@@ -161,7 +161,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           type={type}
           name={name}
           placeholder={placeholder}
-          value={value || contextValue}
+          value={getValue(value, contextValue)}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}

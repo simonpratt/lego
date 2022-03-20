@@ -36,7 +36,9 @@ const Table = ({ children, variant = 'regular' }: TableProps) => {
   return (
     <TableContext.Provider value={{ variant }}>
       <ButtonContext.Provider value={{ height: '24px' }}>
-        <StyledTable>{children}</StyledTable>
+        <StyledTable>
+          <tbody>{children}</tbody>
+        </StyledTable>
       </ButtonContext.Provider>
     </TableContext.Provider>
   );
