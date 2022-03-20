@@ -2,6 +2,8 @@ import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Card, ProfileImage, Table } from '../..';
 
+/* eslint-disable @typescript-eslint/no-empty-function */
+
 const fakeData = [
   {
     count: 57,
@@ -59,7 +61,7 @@ export const WithActions = () => (
         <Table.Cell>{data.count}</Table.Cell>
         <Table.Cell>{data.name}</Table.Cell>
         <Table.Cell>
-          <Table.Action text='filter' />
+          <Table.Action onClick={() => {}} text='filter' />
         </Table.Cell>
       </Table.Row>
     ))}
