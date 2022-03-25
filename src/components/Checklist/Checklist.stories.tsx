@@ -36,7 +36,7 @@ const items = [
 ];
 
 export const Standard = () => {
-  const [value, setValue] = useState<string[]>([]);
+  const [value, setValue] = useState<string[]>(['2', '4']);
   return <Checklist items={items} value={value} onChange={setValue} />;
 };
 
