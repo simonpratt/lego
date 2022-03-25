@@ -1,14 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
 import { Checklist } from '../..';
 
-export const Standard = () => (
-  <Checklist>
-    <Checklist.Item value='one'>one</Checklist.Item>
-    <Checklist.Item value='two'>two</Checklist.Item>
-    <Checklist.Item value='three'>three</Checklist.Item>
-  </Checklist>
-);
+const items = [
+  {
+    id: '1',
+    value: 'one',
+    label: 'one',
+  },
+  {
+    id: '2',
+    value: 'two',
+    label: 'two',
+  },
+  {
+    id: '3',
+    value: 'three',
+    label: 'three',
+  },
+  {
+    id: '4',
+    value: 'four',
+    label: 'four',
+  },
+  {
+    id: '5',
+    value: 'five',
+    label: 'five',
+  },
+  {
+    id: '6',
+    value: 'six',
+    label: 'six',
+  },
+];
+
+export const Standard = () => {
+  const [value, setValue] = useState<string[]>([]);
+  return <Checklist items={items} value={value} onChange={setValue} />;
+};
 
 export default {
   title: 'Components/Checklist',
