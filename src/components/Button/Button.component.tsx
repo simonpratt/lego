@@ -70,11 +70,13 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
   }
 `;
 
-const Button = ({ children, loading, variant = 'primary', type, onClick }: ButtonProps) => {
+const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
+  const { children, loading, variant = 'primary', type, onClick } = props;
   const { width, height, alignSelf, marginTop } = useContext(ButtonContext);
 
   return (
     <StyledButton
+      ref={ref}
       width={width}
       height={height}
       alignSelf={alignSelf}
@@ -86,6 +88,6 @@ const Button = ({ children, loading, variant = 'primary', type, onClick }: Butto
       {loading ? <ButtonSpinner variant={variant} /> : children}
     </StyledButton>
   );
-};
+});
 
 export default Button;
