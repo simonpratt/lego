@@ -1,6 +1,14 @@
 import { useContext } from 'react';
 import FormStateContext from './FormState.context';
 
+export const getValue = <T = string>(value: T, contextValue: T): T => {
+  if (value !== null && value !== undefined) {
+    return value;
+  }
+
+  return contextValue;
+};
+
 function useFormNode<T = string, K = string>(key?: string) {
   const { value, errors, onChange } = useContext(FormStateContext);
 

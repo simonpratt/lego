@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
-import useFormNode from '../Form/useFormNode.hook';
+import useFormNode, { getValue } from '../Form/useFormNode.hook';
 
 export const INPUT_HEIGHT = 48;
 
@@ -109,6 +109,7 @@ export interface IInputProps {
   label?: string;
   placeholder?: string;
   type?: string;
+  autoFocus?: boolean;
   value?: string;
   error?: string;
   onChange?: (value: any) => void;
@@ -117,7 +118,18 @@ export interface IInputProps {
 }
 
 const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref: React.Ref<HTMLInputElement>) {
-  const { label, name, placeholder, type = 'text', value, error: propsError, onChange, onFocus, onBlur } = props;
+  const {
+    label,
+    name,
+    placeholder,
+    type = 'text',
+    autoFocus,
+    value,
+    error: propsError,
+    onChange,
+    onFocus,
+    onBlur,
+  } = props;
 
   const [isFocused, setIsFocused] = useState(false);
   const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode(name);
@@ -161,10 +173,11 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           type={type}
           name={name}
           placeholder={placeholder}
-          value={value || contextValue}
+          value={getValue(value, contextValue)}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          autoFocus={autoFocus}
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}

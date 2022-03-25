@@ -7,7 +7,7 @@ const BodyStyle = createGlobalStyle`
       'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f6f7f9;
+    background-color: ${(props) => props.theme.colours.background};
 
     * {
       box-sizing: border-box;

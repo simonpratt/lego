@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import ButtonContext from '../Button/Button.context';
 
 import TableContext, { TableVariant } from './_Table.context';
+import TableAction from './_TableAction';
 import TableRow from './_TableRow.component';
 
 export type TableCellVariant = 'tight';
@@ -33,12 +35,17 @@ const TableCell = styled.td<TableCellProps>`
 const Table = ({ children, variant = 'regular' }: TableProps) => {
   return (
     <TableContext.Provider value={{ variant }}>
-      <StyledTable>{children}</StyledTable>
+      <ButtonContext.Provider value={{ height: '24px' }}>
+        <StyledTable>
+          <tbody>{children}</tbody>
+        </StyledTable>
+      </ButtonContext.Provider>
     </TableContext.Provider>
   );
 };
 
 Table.Row = TableRow;
 Table.Cell = TableCell;
+Table.Action = TableAction;
 
 export default Table;
