@@ -1,5 +1,9 @@
 # Usage
 
+### Preview
+
+Storybook preview is available at https://dtdot-lego.pages.dev
+
 ### Installation
 
 - Install peer dependencies
