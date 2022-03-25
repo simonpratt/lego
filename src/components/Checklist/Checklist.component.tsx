@@ -55,7 +55,7 @@ const Checklist = ({ items, value, onChange }: ChecklistProps) => {
   return (
     <LayoutGroup>
       {unCheckedItems.map((item) => (
-        <motion.div layoutId={item.id} key={item.id} transition={{ duration: 0.2 }}>
+        <motion.div layoutId={item.id} key={item.id}>
           <ChecklistItem
             label={item.label}
             value={value.includes(item.id)}
@@ -67,7 +67,7 @@ const Checklist = ({ items, value, onChange }: ChecklistProps) => {
       {checkedItems.length ? <ListDivider /> : null}
 
       {checkedItems.map((item) => (
-        <motion.div layoutId={item.id} key={item.id} transition={{ duration: 0.2 }}>
+        <motion.div layoutId={item.id} key={item.id}>
           <ChecklistItem
             label={item.label}
             value={value.includes(item.id)}
