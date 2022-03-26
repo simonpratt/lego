@@ -18,7 +18,7 @@ export interface ActionMenuProps {
   variant?: ColourVariant;
 }
 
-const offsetFn = () => [70, 4];
+const offsetFn = (): [number, number] => [70, 4];
 
 const ActionMenu = ({ items, variant }: ActionMenuProps) => {
   const [shown, setShown] = useState(false);
