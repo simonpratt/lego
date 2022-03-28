@@ -1,6 +1,6 @@
-import { DefaultTheme } from 'styled-components';
+import { LegoTheme } from './theme.types';
 
-const darkTheme: DefaultTheme = {
+const darkTheme: LegoTheme = {
   name: 'dark',
   colours: {
     background: '#424448',

@@ -1,7 +1,7 @@
-import { DefaultTheme } from 'styled-components';
 import colours from '../colours/colours';
+import { LegoTheme } from './theme.types';
 
-const defaultTheme: DefaultTheme = {
+const defaultTheme: LegoTheme = {
   name: 'default',
   colours: {
     background: colours.grey10,
