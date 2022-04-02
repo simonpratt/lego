@@ -42,20 +42,10 @@ export default function Example() {
 
 ### Documentation
 
-Lego uses storybook for documentation. This is yet to be hosted so if you need to view the documentation see [Storybook](#storybook) under [Contributing](#contributing) for details about how to run the documentation locally.
+Lego uses storybook for documentation. This documentation is hosted at https://dtdot-lego.pages.dev
 
 # Contributing
 
 ## Storybook
 
 Storybook is used both for testing as you develop and as living documentation. After cloning the repository you can run `npm start` at the root directory to host the documentation locally on port `6006`. Changes to the source will hot reload the documentation as you develop.
-
-## Linting
-
-Dependencies are:
-
-```
-npm i --save-dev eslint eslint-config-prettier eslint-plugin-prettier prettier prettier-eslint
-npm i --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
-npm i --save-dev eslint-plugin-react eslint-plugin-react-hooks
-```
