@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006 --no-open",
     "watch": "npm run build -- --watch",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "storybook": "start-storybook -p 6006",

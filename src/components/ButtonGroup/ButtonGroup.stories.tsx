@@ -11,6 +11,13 @@ export const Standard = () => (
   </ButtonGroup>
 );
 
+export const RightAligned = () => (
+  <ButtonGroup alignment='right'>
+    <Button variant='secondary'>Cancel</Button>
+    <Button>Create</Button>
+  </ButtonGroup>
+);
+
 export const TwoPrimary = () => (
   <ButtonGroup>
     <Button>No</Button>
