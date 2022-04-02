@@ -8,7 +8,7 @@ export interface ButtonProps {
   children: React.ReactChild;
   loading?: boolean;
   variant?: ColourVariant;
-  type?: 'submit';
+  type?: 'submit' | 'button';
   onClick?: () => void;
 }
 
@@ -71,7 +71,7 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
 `;
 
 const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
-  const { children, loading, variant = 'primary', type, onClick } = props;
+  const { children, loading, variant = 'primary', type = 'button', onClick } = props;
   const { width, height, alignSelf, marginTop } = useContext(ButtonContext);
 
   return (
