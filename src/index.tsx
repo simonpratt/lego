@@ -1,4 +1,6 @@
 export { default as BodyStyle } from './global/BodyStyle.component';
+export { default as DefaultThemeProvider } from './theme/providers/DefaultTheme.provider';
+export { default as DarkThemeProvider } from './theme/providers/DarkTheme.provider';
 
 export { default as ActionMenu } from './components/ActionMenu/ActionMenu.component';
 export { default as ActionMessage } from './components/ActionMessage/ActionMessage.component';
