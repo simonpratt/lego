@@ -19,9 +19,11 @@ export interface ChecklistProps {
   items: ChecklistItemProps[];
   value: string[];
   onChange: (value: string[]) => void;
+  noSplitGap?: boolean;
+  large?: boolean;
 }
 
-const Checklist = ({ items, value, onChange }: ChecklistProps) => {
+const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps) => {
   const [checkedOrder, setCheckedOrder] = useState<string[]>([]);
 
   useEffect(() => {
@@ -60,11 +62,12 @@ const Checklist = ({ items, value, onChange }: ChecklistProps) => {
             label={item.label}
             value={value.includes(item.id)}
             onChange={(checked) => handleChange(item.id, checked)}
+            large={!!large}
           />
         </motion.div>
       ))}
 
-      {checkedItems.length ? <ListDivider /> : null}
+      {checkedItems.length && !noSplitGap ? <ListDivider /> : null}
 
       {checkedItems.map((item) => (
         <motion.div layoutId={item.id} key={item.id}>
@@ -72,6 +75,7 @@ const Checklist = ({ items, value, onChange }: ChecklistProps) => {
             label={item.label}
             value={value.includes(item.id)}
             onChange={(checked) => handleChange(item.id, checked)}
+            large={!!large}
           />
         </motion.div>
       ))}

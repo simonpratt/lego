@@ -35,12 +35,13 @@ const HiddenCheckbox = styled.input`
 
 interface CheckmarkProps {
   checked: boolean;
+  large: boolean;
 }
 
 const Checkmark = styled.div<CheckmarkProps>`
   position: relative;
-  height: 24px;
-  width: 24px;
+  height: ${(props) => (props.large ? '36px' : '24px')};
+  width: ${(props) => (props.large ? '36px' : '24px')};
   margin-right: 8px;
   background-color: ${(props) => props.theme.colours.cardBackground};
 
@@ -49,10 +50,10 @@ const Checkmark = styled.div<CheckmarkProps>`
     position: absolute;
     display: ${(props) => (props.checked ? 'block' : 'none')};
 
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
+    left: ${(props) => (props.large ? '14px' : '9px')};
+    top: ${(props) => (props.large ? '7px' : '5px')};
+    width: ${(props) => (props.large ? '7px' : '5px')};
+    height: ${(props) => (props.large ? '16px' : '10px')};
     border: solid ${(props) => props.theme.colours.defaultFont};
     border-width: 0 3px 3px 0;
     -webkit-transform: rotate(45deg);
@@ -61,12 +62,16 @@ const Checkmark = styled.div<CheckmarkProps>`
   }
 `;
 
-const Strikethrough = styled.div`
+interface StrikethroughProps {
+  large: boolean;
+}
+
+const Strikethrough = styled.div<StrikethroughProps>`
   position: absolute;
   color: transparent;
   height: 1px;
 
-  margin-left: 30px;
+  margin-left: ${(props) => (props.large ? '42px' : '30px')};
   padding-right: 2px;
   padding-left: 2px;
   background-color: ${(props) => props.theme.colours.defaultBorder};
@@ -76,9 +81,10 @@ export interface ChecklistItemProps {
   label: string;
   value: boolean;
   onChange: (value: boolean) => void;
+  large: boolean;
 }
 
-const ChecklistItem = ({ label, value, onChange }: ChecklistItemProps) => {
+const ChecklistItem = ({ label, value, onChange, large }: ChecklistItemProps) => {
   const theme = useTheme();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -90,10 +96,10 @@ const ChecklistItem = ({ label, value, onChange }: ChecklistItemProps) => {
 
   return (
     <Outerlabel checked={value} whileHover={{ backgroundColor: theme.colours.cardBackground }}>
-      <Checkmark checked={value} />
+      <Checkmark checked={value} large={large} />
       {label}
       <HiddenCheckbox type='checkbox' checked={value} onChange={handleChange} />
-      {value && <Strikethrough>{label}</Strikethrough>}
+      {value && <Strikethrough large={large}>{label}</Strikethrough>}
     </Outerlabel>
   );
 };

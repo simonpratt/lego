@@ -40,6 +40,16 @@ export const Standard = () => {
   return <Checklist items={items} value={value} onChange={setValue} />;
 };
 
+export const NoGap = () => {
+  const [value, setValue] = useState<string[]>(['2', '4']);
+  return <Checklist items={items} value={value} onChange={setValue} noSplitGap />;
+};
+
+export const Large = () => {
+  const [value, setValue] = useState<string[]>(['2', '4']);
+  return <Checklist items={items} value={value} onChange={setValue} noSplitGap large />;
+};
+
 export default {
   title: 'Components/Checklist',
   component: Checklist,
