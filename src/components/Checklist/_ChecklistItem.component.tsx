@@ -95,7 +95,11 @@ const ChecklistItem = ({ label, value, onChange, large }: ChecklistItemProps) =>
   };
 
   return (
-    <Outerlabel checked={value} whileHover={{ backgroundColor: theme.colours.cardBackground }}>
+    <Outerlabel
+      checked={value}
+      whileHover={{ backgroundColor: theme.colours.cardBackground }}
+      data-cy={value ? 'checklist-item-checked' : 'checklist-item'}
+    >
       <Checkmark checked={value} large={large} />
       {label}
       <HiddenCheckbox type='checkbox' checked={value} onChange={handleChange} />

@@ -4,9 +4,10 @@ import getThemeVariantColours from '../../theme/helpers/getThemeVariantColours';
 import { ColourVariant } from '../../theme/theme.types';
 
 export interface SquareButtonProps {
-  children: React.ReactChild;
-  variant?: ColourVariant;
-  onClick?: () => void;
+  'children': React.ReactChild;
+  'variant'?: ColourVariant;
+  'onClick'?: () => void;
+  'data-cy'?: string;
 }
 
 interface StyledButtonProps {
@@ -38,9 +39,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   }
 `;
 
-const SquareButton = ({ children, variant = 'primary', onClick }: SquareButtonProps) => {
+const SquareButton = ({ children, variant = 'primary', onClick, 'data-cy': dataCy }: SquareButtonProps) => {
   return (
-    <StyledButton variant={variant} onClick={onClick}>
+    <StyledButton variant={variant} onClick={onClick} data-cy={dataCy || 'button'}>
       {children}
     </StyledButton>
   );

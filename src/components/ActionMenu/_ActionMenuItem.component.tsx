@@ -26,6 +26,7 @@ const ActionMenuItem = ({ label, onClick }: ActionMenuItemProps) => {
         style={{ backgroundColor: theme.colours.tertiary.main }}
         whileHover={{ backgroundColor: theme.colours.tertiary.hover }}
         onClick={onClick}
+        data-cy='action-menu-item'
       >
         {label}
       </ActionMenuItemOuter>

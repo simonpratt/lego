@@ -62,14 +62,14 @@ const Identicon = ({ value }: IdenticonProps) => {
 const ProfileImage = ({ name, image }: ProfileImageProps) => {
   if (image) {
     return (
-      <ImageContainer>
+      <ImageContainer data-cy='profile-image'>
         <Image src={image} />
       </ImageContainer>
     );
   }
 
   return (
-    <ImageContainer>
+    <ImageContainer data-cy='profile-image'>
       <Identicon value={name} />
     </ImageContainer>
   );

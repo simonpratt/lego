@@ -80,7 +80,7 @@ const LiveListRow = ({ id, value, error, onChange, onRemove }: LiveListRowProps)
   };
 
   return (
-    <InputContainer whileHover='hover'>
+    <InputContainer whileHover='hover' data-cy='live-list-row'>
       <Input
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -88,6 +88,7 @@ const LiveListRow = ({ id, value, error, onChange, onRemove }: LiveListRowProps)
         value={value || ''}
         error={error}
         onChange={handleChange}
+        data-cy='live-list-input'
       />
       <RemoveContainer
         animate={isFocused ? 'focus' : undefined}
@@ -95,7 +96,7 @@ const LiveListRow = ({ id, value, error, onChange, onRemove }: LiveListRowProps)
         variants={removeVariants}
         transition={{ type: 'spring', duration: 0.3 }}
       >
-        <RemoveInner onClick={onRemove}>
+        <RemoveInner onClick={onRemove} data-cy='live-list-remove'>
           <FontAwesomeIcon icon={faTimes} />
         </RemoveInner>
       </RemoveContainer>

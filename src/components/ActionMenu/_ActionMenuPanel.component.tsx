@@ -14,7 +14,7 @@ export interface ActionMenuPanelProps {
 }
 
 const ActionMenuPanel = ({ items }: ActionMenuPanelProps) => (
-  <ActionMenuPanelOuter>
+  <ActionMenuPanelOuter data-cy='action-menu-popover'>
     {items.map((item) => (
       <ActionMenuItem key={item.label} label={item.label} onClick={item.onClick} />
     ))}

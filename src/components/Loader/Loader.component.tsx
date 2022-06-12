@@ -47,7 +47,13 @@ const loadingCircleTransition = {
 
 const Loader = () => {
   return (
-    <motion.div style={loadingContainer} variants={loadingContainerVariants} initial='start' animate='end'>
+    <motion.div
+      style={loadingContainer}
+      variants={loadingContainerVariants}
+      initial='start'
+      animate='end'
+      data-cy='loader'
+    >
       <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
       <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
       <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />

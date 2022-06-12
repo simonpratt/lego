@@ -16,7 +16,7 @@ const NotificationContainer = styled.div`
 `;
 
 const Notification = (props: NotificationProps) => (
-  <NotificationContainer>
+  <NotificationContainer data-cy='notification'>
     <Alert {...props} />
   </NotificationContainer>
 );

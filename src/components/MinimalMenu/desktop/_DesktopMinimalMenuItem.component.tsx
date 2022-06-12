@@ -55,6 +55,7 @@ const DesktopMinimalMenuItem = ({ icon, active, onClick }: DesktopMinimalMenuIte
       whileHover={active ? 'hoverActive' : 'hover'}
       animate={active ? 'active' : undefined}
       onClick={onClick}
+      data-cy='menu-item'
     >
       <MenuIconBar
         style={{ backgroundColor: theme.colours.cardBackground, opacity: 0 }}

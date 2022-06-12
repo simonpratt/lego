@@ -17,13 +17,18 @@ const StyledRow = styled.tr<StyledRowProps>`
 `;
 
 export interface TableRowProps {
-  children: React.ReactNode;
+  'children': React.ReactNode;
+  'data-cy'?: string;
 }
 
-const TableRow = ({ children }: TableRowProps) => {
+const TableRow = ({ children, 'data-cy': dataCy }: TableRowProps) => {
   const { variant } = useContext(TableContext);
 
-  return <StyledRow variant={variant}>{children}</StyledRow>;
+  return (
+    <StyledRow variant={variant} data-cy={dataCy}>
+      {children}
+    </StyledRow>
+  );
 };
 
 export default TableRow;

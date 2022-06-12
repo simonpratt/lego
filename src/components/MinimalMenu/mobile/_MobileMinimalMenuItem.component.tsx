@@ -50,7 +50,7 @@ const MobileMinimalMenuItem = ({ icon, active, onClick }: MobileMinimalMenuItemP
   }, [active, setBumpX, width]);
 
   return (
-    <ItemContainer onClick={onClick} ref={itemRef}>
+    <ItemContainer onClick={onClick} ref={itemRef} data-cy='menu-item'>
       {icon && (
         <motion.div
           animate={active ? 'active' : undefined}

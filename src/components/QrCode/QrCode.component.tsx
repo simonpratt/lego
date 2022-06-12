@@ -79,7 +79,7 @@ const QrCode = ({ value }: QrCodeProps) => {
   }, [value]);
 
   return (
-    <Container onClick={() => showHint()}>
+    <Container onClick={() => showHint()} data-cy='qrcode'>
       {copiedHint && (
         <ToastContainer>
           <Toast>
@@ -87,7 +87,7 @@ const QrCode = ({ value }: QrCodeProps) => {
           </Toast>
         </ToastContainer>
       )}
-      <CopyInput readOnly ref={inputRef} value={value} />
+      <CopyInput readOnly ref={inputRef} value={value} data-cy='input-qrcode-hidden' />
       <StyledCanvas ref={ref} />
     </Container>
   );

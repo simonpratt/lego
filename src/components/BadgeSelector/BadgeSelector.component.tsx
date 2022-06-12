@@ -46,13 +46,14 @@ const BadgeSelector = ({ options, value, onChange }: BadgeSelectorProps) => {
   };
 
   return (
-    <BadgeSelectorOuter>
+    <BadgeSelectorOuter data-cy='badge-selector'>
       {options.map((option) => (
         <InteractiveBadge
           key={option.value}
           variant={option.variant}
           inactive={!value.includes(option.value)}
           onClick={() => handleClick(option.value)}
+          data-cy={value.includes(option.value) ? 'badge-selected' : 'badge'}
         >
           {option.name}
         </InteractiveBadge>

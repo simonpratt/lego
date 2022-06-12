@@ -58,13 +58,13 @@ const ModalHeader = ({ header, subHeader }: ModalHeaderProps) => {
   const { onClose } = useContext(ModalContext);
 
   return (
-    <HeaderContainer>
+    <HeaderContainer data-cy='modal-header'>
       <TextContainer>
         <HeaderText>{header}</HeaderText>
         {SubHeaderText && <SubHeaderText>{subHeader}</SubHeaderText>}
       </TextContainer>
       <IconContainer>
-        <IconClickableArea onClick={onClose}>
+        <IconClickableArea onClick={onClose} data-cy='button-modal-close'>
           <FontAwesomeIcon icon={faTimes} />
         </IconClickableArea>
       </IconContainer>

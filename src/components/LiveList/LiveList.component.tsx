@@ -147,7 +147,7 @@ const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveList
   }
 
   return (
-    <div>
+    <div data-cy='live-list'>
       {value.map((val) => (
         <LiveListRow
           key={val.id}

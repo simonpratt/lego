@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import useFormNode from '../Form/useFormNode.hook';
 
 interface LiveInputProps {
-  name: string;
-  placeholder: string;
-  type?: string;
-  value?: string;
-  onChange?: (value: string) => void;
+  'name': string;
+  'placeholder': string;
+  'type'?: string;
+  'value'?: string;
+  'onChange'?: (value: string) => void;
+  'data-cy'?: string;
 }
 
 const StyledInput = styled.input`
@@ -24,7 +25,7 @@ const StyledInput = styled.input`
   }
 `;
 
-const LiveInput = ({ name, type = 'text', placeholder, value, onChange }: LiveInputProps) => {
+const LiveInput = ({ name, type = 'text', placeholder, value, onChange, 'data-cy': dataCy }: LiveInputProps) => {
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +46,7 @@ const LiveInput = ({ name, type = 'text', placeholder, value, onChange }: LiveIn
         value={value || contextValue}
         placeholder={placeholder}
         onChange={handleChange}
+        data-cy={dataCy || 'live-input'}
       />
     </div>
   );

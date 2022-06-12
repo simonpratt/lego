@@ -51,11 +51,11 @@ const MenuHeading = ({ children, onOpen, onClose, isOpen }: MenuHeadingProps) =>
   <MenuHeadingDiv>
     <MenuHeadingInner>
       {isOpen ? (
-        <MenuToggle onClick={onClose}>
+        <MenuToggle onClick={onClose} data-cy='button-menu-close'>
           <FontAwesomeIcon icon={faBars} />
         </MenuToggle>
       ) : (
-        <MenuToggle onClick={onOpen}>
+        <MenuToggle onClick={onOpen} data-cy='button-menu-open'>
           <FontAwesomeIcon icon={faBars} />
         </MenuToggle>
       )}

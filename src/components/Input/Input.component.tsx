@@ -180,7 +180,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoFocus={autoFocus}
-          data-cy={dataCy}
+          data-cy={dataCy || 'input'}
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}

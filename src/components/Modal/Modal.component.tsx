@@ -134,6 +134,7 @@ const Modal = ({ children, size, loading, onClose }: ModalProps) => {
                 animate={{ height: loading ? loadingHeight : 'auto' }}
                 size={size || 'md'}
                 onClick={handleModalClick}
+                data-cy='modal'
               >
                 {!loading && children}
                 {loading && (

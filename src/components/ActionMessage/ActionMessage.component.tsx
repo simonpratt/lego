@@ -24,7 +24,7 @@ export interface ActionMessageProps {
 
 const ActionMessage = ({ header, info, action, onAction }: ActionMessageProps) => {
   return (
-    <ActionMessageContainer>
+    <ActionMessageContainer data-cy='action-message'>
       <div>
         <Heading.SubHeading>{header}</Heading.SubHeading>
       </div>

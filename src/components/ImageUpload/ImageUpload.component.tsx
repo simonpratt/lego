@@ -105,13 +105,13 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
     return (
       <UploadContainer>
         <UploadInnerContainer>
-          <IconContainer whileHover={{ scale: 1.05 }} onClick={handleUploadClicked}>
+          <IconContainer whileHover={{ scale: 1.05 }} onClick={handleUploadClicked} data-cy='button-image-upload'>
             <FontAwesomeIcon icon={faCloudUploadAlt} />
           </IconContainer>
           {onSearch && (
             <>
               <UploadVerticalDivider />
-              <IconContainer whileHover={{ scale: 1.05 }} onClick={onSearch}>
+              <IconContainer whileHover={{ scale: 1.05 }} onClick={onSearch} data-cy='button-image-search'>
                 <FontAwesomeIcon icon={faSearch} />
               </IconContainer>
             </>

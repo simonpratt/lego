@@ -29,7 +29,11 @@ export interface BadgeProps {
 }
 
 const Badge = ({ children, variant }: BadgeProps) => {
-  return <BadgeSpan variant={variant}>{children}</BadgeSpan>;
+  return (
+    <BadgeSpan variant={variant} data-cy='badge'>
+      {children}
+    </BadgeSpan>
+  );
 };
 
 export default Badge;

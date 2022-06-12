@@ -62,7 +62,7 @@ const ActionMenu = ({ items, variant }: ActionMenuProps) => {
 
   return (
     <>
-      <Button variant={variant} ref={setReferenceElement} onClick={() => setShown(true)}>
+      <Button variant={variant} data-cy='action-menu-button' ref={setReferenceElement} onClick={() => setShown(true)}>
         <StyledIcon icon={faEllipsisV} />
       </Button>
 

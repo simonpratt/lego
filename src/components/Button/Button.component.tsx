@@ -85,7 +85,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
       variant={variant}
       type={type}
       onClick={onClick}
-      data-cy={dataCy}
+      data-cy={dataCy || 'button'}
     >
       {loading ? <ButtonSpinner variant={variant} /> : children}
     </StyledButton>
