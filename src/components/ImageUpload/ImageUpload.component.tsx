@@ -117,7 +117,7 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
             </>
           )}
         </UploadInnerContainer>
-        <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} />
+        <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} data-cy='input-image-hidden' />
       </UploadContainer>
     );
   }
