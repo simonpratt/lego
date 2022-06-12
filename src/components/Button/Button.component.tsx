@@ -5,11 +5,12 @@ import { ColourVariant } from '../../theme/theme.types';
 import ButtonContext, { ButtonContextProps } from './Button.context';
 
 export interface ButtonProps {
-  children: React.ReactChild;
-  loading?: boolean;
-  variant?: ColourVariant;
-  type?: 'submit' | 'button';
-  onClick?: () => void;
+  'children': React.ReactChild;
+  'loading'?: boolean;
+  'variant'?: ColourVariant;
+  'type'?: 'submit' | 'button';
+  'onClick'?: () => void;
+  'data-cy'?: string;
 }
 
 interface InternalButtonProps extends ButtonContextProps {
@@ -71,7 +72,7 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
 `;
 
 const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
-  const { children, loading, variant = 'primary', type = 'button', onClick } = props;
+  const { children, loading, variant = 'primary', type = 'button', onClick, 'data-cy': dataCy } = props;
   const { width, height, alignSelf, marginTop } = useContext(ButtonContext);
 
   return (
@@ -84,6 +85,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
       variant={variant}
       type={type}
       onClick={onClick}
+      data-cy={dataCy}
     >
       {loading ? <ButtonSpinner variant={variant} /> : children}
     </StyledButton>

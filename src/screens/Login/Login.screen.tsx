@@ -68,10 +68,10 @@ const LoginScreen = ({ loading, error, handleLogin, onRegisterClicked }: LoginSc
       <Form value={value} onChange={setValue} onSubmit={() => handleLogin(value)}>
         <ControlGroup>
           <ErrorText>{error}</ErrorText>
-          <Input name='email' placeholder='Email' type='text' />
-          <Input name='password' placeholder='Password' type='password' />
+          <Input name='email' placeholder='Email' type='text' data-cy='input-email' />
+          <Input name='password' placeholder='Password' type='password' data-cy='input-password' />
           <ControlGroup.Spacer />
-          <Button type='submit' loading={loading}>
+          <Button type='submit' loading={loading} data-cy='button-login'>
             Login
           </Button>
         </ControlGroup>
@@ -80,7 +80,10 @@ const LoginScreen = ({ loading, error, handleLogin, onRegisterClicked }: LoginSc
       <Spacer size='6x' />
 
       <CreateAccountMessage>
-        {`Don't have an account?`} <CreateAccountButton onClick={onRegisterClicked}>sign up now</CreateAccountButton>
+        {`Don't have an account?`}{' '}
+        <CreateAccountButton onClick={onRegisterClicked} data-cy='button-register'>
+          sign up now
+        </CreateAccountButton>
       </CreateAccountMessage>
     </EmphasisLayout>
   );

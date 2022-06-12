@@ -105,16 +105,17 @@ const messageVariants = {
 };
 
 export interface IInputProps {
-  name?: string;
-  label?: string;
-  placeholder?: string;
-  type?: string;
-  autoFocus?: boolean;
-  value?: string;
-  error?: string;
-  onChange?: (value: any) => void;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  'name'?: string;
+  'label'?: string;
+  'placeholder'?: string;
+  'type'?: string;
+  'autoFocus'?: boolean;
+  'value'?: string;
+  'error'?: string;
+  'onChange'?: (value: any) => void;
+  'onFocus'?: () => void;
+  'onBlur'?: () => void;
+  'data-cy'?: string;
 }
 
 const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref: React.Ref<HTMLInputElement>) {
@@ -125,10 +126,11 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     type = 'text',
     autoFocus,
     value,
-    error: propsError,
+    'error': propsError,
     onChange,
     onFocus,
     onBlur,
+    'data-cy': dataCy,
   } = props;
 
   const [isFocused, setIsFocused] = useState(false);
@@ -178,6 +180,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoFocus={autoFocus}
+          data-cy={dataCy}
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}

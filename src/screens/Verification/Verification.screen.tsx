@@ -51,9 +51,9 @@ const VerificationScreen = ({ message, loading, error, handleVerification }: Ver
       <Form value={value} onChange={setValue} onSubmit={() => handleVerification(value)}>
         <ControlGroup>
           <ErrorText>{error}</ErrorText>
-          <Input name='code' placeholder='code' type='text' />
+          <Input name='code' placeholder='code' type='text' data-cy='input-verification-code' />
           <ControlGroup.Spacer />
-          <Button type='submit' loading={loading}>
+          <Button type='submit' loading={loading} data-cy='button-verify'>
             Verify
           </Button>
         </ControlGroup>
