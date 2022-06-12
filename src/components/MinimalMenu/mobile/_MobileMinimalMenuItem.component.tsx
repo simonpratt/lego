@@ -25,12 +25,13 @@ const iconContainerVariants = {
 };
 
 export interface MobileMinimalMenuItemProps {
-  icon?: IconProp;
-  active?: boolean;
-  onClick?: () => void;
+  'icon'?: IconProp;
+  'active'?: boolean;
+  'onClick'?: () => void;
+  'data-cy'?: string;
 }
 
-const MobileMinimalMenuItem = ({ icon, active, onClick }: MobileMinimalMenuItemProps) => {
+const MobileMinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: MobileMinimalMenuItemProps) => {
   const { width } = useWindowDimensions();
   const { setBumpX } = useContext(MobileMenuBumpContext);
   const itemRef = useRef<HTMLDivElement>(null);
@@ -50,7 +51,7 @@ const MobileMinimalMenuItem = ({ icon, active, onClick }: MobileMinimalMenuItemP
   }, [active, setBumpX, width]);
 
   return (
-    <ItemContainer onClick={onClick} ref={itemRef} data-cy='menu-item'>
+    <ItemContainer onClick={onClick} ref={itemRef} data-cy={dataCy || 'menu-item'}>
       {icon && (
         <motion.div
           animate={active ? 'active' : undefined}

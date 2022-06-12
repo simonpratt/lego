@@ -33,12 +33,13 @@ const iconContainerVariants = {
 };
 
 export interface DesktopMinimalMenuItemProps {
-  icon?: IconProp;
-  active?: boolean;
-  onClick?: () => void;
+  'icon'?: IconProp;
+  'active'?: boolean;
+  'onClick'?: () => void;
+  'data-cy'?: string;
 }
 
-const DesktopMinimalMenuItem = ({ icon, active, onClick }: DesktopMinimalMenuItemProps) => {
+const DesktopMinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: DesktopMinimalMenuItemProps) => {
   const theme = useTheme();
 
   const barVariants = useMemo(
@@ -55,7 +56,7 @@ const DesktopMinimalMenuItem = ({ icon, active, onClick }: DesktopMinimalMenuIte
       whileHover={active ? 'hoverActive' : 'hover'}
       animate={active ? 'active' : undefined}
       onClick={onClick}
-      data-cy='menu-item'
+      data-cy={dataCy || 'menu-item'}
     >
       <MenuIconBar
         style={{ backgroundColor: theme.colours.cardBackground, opacity: 0 }}
