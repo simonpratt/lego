@@ -122,7 +122,7 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
     );
   }
 
-  return <Image src={getUrl(internalValue)} />;
+  return <Image data-cy='uploaded-image' src={getUrl(internalValue)} />;
 };
 
 export default ImageUpload;
