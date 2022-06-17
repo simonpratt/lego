@@ -9,7 +9,7 @@ import useFormNode, { getValue } from '../Form/useFormNode.hook';
 
 export const INPUT_HEIGHT = 48;
 
-const InputContainer = styled(motion.div)`
+const InputContainer = styled.div`
   position: relative;
   margin: 2px 0;
 
@@ -164,12 +164,15 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     }
   };
 
+  const animationVariant = error ? (isFocused ? 'errorFocus' : 'error') : undefined;
+
   return (
     <div>
       {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
-      <InputContainer animate={error ? (isFocused ? 'errorFocus' : 'error') : undefined} data-cy={dataCy}>
+      <InputContainer data-cy={dataCy}>
         <StyledInput
           ref={ref}
+          animate={animationVariant}
           variants={inputVariants}
           transition={{ type: 'spring', duration: 0.3 }}
           type={type}
@@ -196,6 +199,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
         {error && (
           <ErrorMessage
             style={{ opacity: 0, y: 0 }}
+            animate={animationVariant}
             variants={messageVariants}
             transition={{ type: 'spring', duration: 0.3 }}
             data-cy='error-message'
