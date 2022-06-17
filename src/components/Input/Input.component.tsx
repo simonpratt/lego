@@ -167,7 +167,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
   return (
     <div>
       {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
-      <InputContainer animate={error ? (isFocused ? 'errorFocus' : 'error') : undefined}>
+      <InputContainer animate={error ? (isFocused ? 'errorFocus' : 'error') : undefined} data-cy={dataCy}>
         <StyledInput
           ref={ref}
           variants={inputVariants}
@@ -180,13 +180,14 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoFocus={autoFocus}
-          data-cy={dataCy || 'input'}
+          data-cy='input'
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}
           style={{ opacity: 0 }}
           variants={errorVariants}
           transition={{ type: 'spring', duration: 0.3 }}
+          data-cy='error-indicator'
         >
           <ErrorInner>
             <FontAwesomeIcon icon={faExclamationCircle} />
@@ -197,6 +198,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
             style={{ opacity: 0, y: 0 }}
             variants={messageVariants}
             transition={{ type: 'spring', duration: 0.3 }}
+            data-cy='error-message'
           >
             {error}
           </ErrorMessage>

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Meta } from '@storybook/react/types-6-0';
 import {
   Button,
+  ButtonGroup,
   Card,
   CardGroup,
   ControlGroup,
@@ -27,13 +28,48 @@ const InnerContainer = styled.div`
   height: 200px;
 `;
 
+const waitFor2s = async () => {
+  return new Promise<string>((resolve) =>
+    setTimeout(() => {
+      resolve('xxxx');
+    }, 2000),
+  );
+};
+
 export const FillMode = () => (
   <>
-    <div style={{ width: '600px', height: '300px', padding: '30px', backgroundColor: colours.grey20 }}>
-      <ImageUpload name='profile' />
-    </div>
+    <FileContext.Provider value={{ upload: waitFor2s, getUrl: () => 'xxxx' }}>
+      <div style={{ width: '600px', height: '300px', padding: '30px', backgroundColor: colours.grey20 }}>
+        <ImageUpload name='profile' />
+      </div>
+    </FileContext.Provider>
   </>
 );
+
+export const WithError = () => {
+  const [error, setError] = useState<string | undefined>('Upload has an error!');
+
+  const clear = () => {
+    setError(undefined);
+  };
+
+  const validate = () => {
+    setError('Upload has an error!');
+  };
+
+  return (
+    <>
+      <div style={{ width: '600px', height: '300px', padding: '30px', backgroundColor: colours.grey20 }}>
+        <ImageUpload name='profile' error={error} />
+      </div>
+      <Spacer size='2x' />
+      <ButtonGroup>
+        <Button onClick={clear}>Clear</Button>
+        <Button onClick={validate}>Set Errors</Button>
+      </ButtonGroup>
+    </>
+  );
+};
 
 export const WithAnImage = () => (
   <>

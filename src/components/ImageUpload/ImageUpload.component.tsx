@@ -1,20 +1,24 @@
-import React, { useContext, useRef } from 'react';
-import { faCloudUploadAlt, faSearch } from '@fortawesome/free-solid-svg-icons';
+import React, { useContext, useRef, useState } from 'react';
+import { faCloudUploadAlt, faExclamationCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 import FileContext from '../../contexts/File.context';
 import useFormNode from '../Form/useFormNode.hook';
+import Loader from '../Loader/Loader.component';
 
 export type ImageUploadMode = 'fill' | 'form';
 
 interface ImageUploadProps {
-  name: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  onSearch?: () => void;
-  uploadFn?: (file: File) => Promise<string>;
+  'name': string;
+  'value'?: string;
+  'error'?: string;
+  'uploading'?: boolean;
+  'onChange'?: (value: string) => void;
+  'onSearch'?: () => void;
+  'uploadFn'?: (file: File) => Promise<string>;
+  'data-cy'?: string;
 }
 
 const UploadContainer = styled.div`
@@ -36,6 +40,14 @@ const UploadInnerContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+`;
+
+const LoaderContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const IconContainer = styled(motion.div)`
@@ -73,10 +85,55 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
+const ErrorMessage = styled.div`
+  padding-left: 6px;
+
+  font-family: ${(props) => props.theme.fonts.default.family};
+  font-size: ${(props) => props.theme.fonts.default.size};
+  color: ${(props) => props.theme.colours.statusDanger.main};
+`;
+
+const ErrorContainer = styled(motion.div)`
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  font-size: ${(props) => props.theme.fonts.default.size};
+  color: ${(props) => props.theme.colours.statusDanger.main};
+`;
+
+const ErrorInner = styled.div`
+  width: 24px;
+  height: 24px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const errorVariants = {
+  show: { opacity: 1 },
+};
+
+const ImageUpload = ({
+  name,
+  value,
+  'error': propsError,
+  'uploading': uploadingProp,
+  onChange,
+  onSearch,
+  'data-cy': dataCy,
+}: ImageUploadProps) => {
   const { upload, getUrl } = useContext(FileContext);
-  const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+  const [uploading, setUploading] = useState(false);
+  const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode(name);
   const inputRef = useRef<any>();
+
+  const error = contextError || propsError;
 
   const handleUploadClicked = () => {
     if (inputRef && inputRef.current) {
@@ -87,23 +144,39 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && upload) {
       const file = event.target.files[0];
-      const url = await upload(file);
+      setUploading(true);
 
-      if (onChange) {
-        onChange(url);
-      }
+      try {
+        const url = await upload(file);
 
-      if (contextOnChange) {
-        contextOnChange(url);
+        if (onChange) {
+          onChange(url);
+        }
+
+        if (contextOnChange) {
+          contextOnChange(url);
+        }
+      } finally {
+        setUploading(false);
       }
     }
   };
 
   const internalValue = value ? value : contextValue;
 
+  if (uploading || uploadingProp) {
+    return (
+      <UploadContainer data-cy={dataCy}>
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
+      </UploadContainer>
+    );
+  }
+
   if (!internalValue) {
     return (
-      <UploadContainer>
+      <UploadContainer data-cy={dataCy}>
         <UploadInnerContainer>
           <IconContainer whileHover={{ scale: 1.05 }} onClick={handleUploadClicked} data-cy='button-image-upload'>
             <FontAwesomeIcon icon={faCloudUploadAlt} />
@@ -118,11 +191,29 @@ const ImageUpload = ({ name, value, onChange, onSearch }: ImageUploadProps) => {
           )}
         </UploadInnerContainer>
         <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} data-cy='input-image-hidden' />
+        {error && (
+          <ErrorContainer
+            animate={error ? 'show' : undefined}
+            style={{ opacity: 0 }}
+            variants={errorVariants}
+            transition={{ type: 'spring', duration: 0.3 }}
+            data-cy='error-indicator'
+          >
+            <ErrorInner>
+              <FontAwesomeIcon icon={faExclamationCircle} />
+            </ErrorInner>
+            <ErrorMessage data-cy='error-message'>{error}</ErrorMessage>
+          </ErrorContainer>
+        )}
       </UploadContainer>
     );
   }
 
-  return <Image data-cy='uploaded-image' src={getUrl(internalValue)} />;
+  return (
+    <div data-cy={dataCy}>
+      <Image data-cy='uploaded-image' src={getUrl(internalValue)} />
+    </div>
+  );
 };
 
 export default ImageUpload;
