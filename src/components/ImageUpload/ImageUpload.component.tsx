@@ -45,6 +45,7 @@ const UploadInnerContainer = styled.div`
 const LoaderContainer = styled.div`
   width: 100%;
   height: 100%;
+  min-height: 142px;
   display: flex;
   justify-content: center;
   align-items: center;

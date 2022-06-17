@@ -46,6 +46,14 @@ export const FillMode = () => (
   </>
 );
 
+export const Uploading = () => (
+  <>
+    <div style={{ width: '600px', height: '300px', padding: '30px', backgroundColor: colours.grey20 }}>
+      <ImageUpload name='profile' uploading />
+    </div>
+  </>
+);
+
 export const WithError = () => {
   const [error, setError] = useState<string | undefined>('Upload has an error!');
 
