@@ -159,7 +159,13 @@ const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveList
         />
       ))}
       <AddRow>
-        <AddRowInner style={{ scale: 1 }} whileHover='hover' variants={addVariants} onClick={handleRowAdd}>
+        <AddRowInner
+          style={{ scale: 1 }}
+          whileHover='hover'
+          variants={addVariants}
+          onClick={handleRowAdd}
+          data-cy='button-add-list-item'
+        >
           <IconContainer>
             <FontAwesomeIcon icon={faPlusCircle} />
           </IconContainer>
