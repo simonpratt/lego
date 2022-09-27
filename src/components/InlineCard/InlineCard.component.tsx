@@ -158,6 +158,10 @@ const InlineCard = ({
   const opacity = useTransform(x, xInput, ['1', '0']);
 
   const handleDragEnd = (e: MouseEvent | TouchEvent | PointerEvent, panInfo: PanInfo) => {
+    if (e.type === 'pointercancel') {
+      return;
+    }
+
     // approx xInputMin * 3
     if (panInfo.offset.x < -180 && onGestureLeft) {
       setGestureLeftActivated(true);
