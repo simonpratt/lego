@@ -65,6 +65,9 @@ const ErrorMessage = styled(motion.div)`
   left: 38px;
   bottom: 0;
 
+  pointer-events: none;
+  touch-action: none;
+
   font-family: ${(props) => props.theme.fonts.default.family};
   font-size: ${(props) => props.theme.fonts.default.size};
   color: ${(props) => props.theme.colours.statusDanger.main};
@@ -77,6 +80,9 @@ const ErrorContainer = styled(motion.div)`
   height: 100%;
   display: flex;
   align-items: center;
+
+  pointer-events: none;
+  touch-action: none;
 
   color: ${(props) => props.theme.colours.statusDanger.main};
 `;
