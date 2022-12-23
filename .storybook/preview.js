@@ -7,8 +7,8 @@ export const decorators = [
     <>
       <GlobalStyle />
       <DarkThemeProvider>
-      <Story />
-    </DarkThemeProvider>
+        <Story />
+      </DarkThemeProvider>
     </>
   ),
 ];

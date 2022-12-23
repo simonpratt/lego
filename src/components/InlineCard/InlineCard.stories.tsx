@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
 import { faCheckCircle, faExclamationTriangle, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Badge, FocusLayout, Form, InlineCard, InlineCardGroup } from '../..';
 import InlineCardSelection from './InlineCardSelection.component';

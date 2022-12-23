@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import styled from 'styled-components';
 
 const MenuItemOuter = styled.div`
   display: flex;

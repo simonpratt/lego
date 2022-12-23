@@ -1,9 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useRef, useState } from 'react';
 import { faCloudUploadAlt, faExclamationCircle, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
+import styled from 'styled-components';
 import FileContext from '../../contexts/File.context';
 import useFormNode from '../Form/useFormNode.hook';
 import Loader from '../Loader/Loader.component';

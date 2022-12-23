@@ -1,14 +1,13 @@
 import React, { SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import styled from 'styled-components';
 import { Loader } from '../..';
+import zIndexConstants from '../../constants/zIndex.constants';
 import responsive from '../../responsive/responsive';
 import ModalContext from './_Modal.context';
 import ModalBody from './_ModalBody.component';
 import ModalHeader from './_ModalHeader.component';
-import zIndexConstants from '../../constants/zIndex.constants';
 
 export type ModalSize = 'sm' | 'md' | 'lg';
 

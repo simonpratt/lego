@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import ButtonContext from '../Button/Button.context';
-
 import TableContext, { TableVariant } from './_Table.context';
 import TableAction from './_TableAction';
 import TableRow from './_TableRow.component';

@@ -7,9 +7,13 @@ export interface FileContextProps {
 
 const FileContext = createContext<FileContextProps>({
   // eslint-disable-next-line
-  upload: (file: File) => { throw new Error('ERROR: Upload function must be bound in a context'); },
+  upload: (file: File) => {
+    throw new Error('ERROR: Upload function must be bound in a context');
+  },
   // eslint-disable-next-line
-  getUrl: (key: string) => { throw new Error('ERROR: Get URL function must be bound in a context'); },
+  getUrl: (key: string) => {
+    throw new Error('ERROR: Get URL function must be bound in a context');
+  },
 });
 
 export default FileContext;

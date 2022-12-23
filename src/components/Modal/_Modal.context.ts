@@ -6,7 +6,7 @@ export interface ModalContextProps {
 
 const ModalContext = createContext<ModalContextProps>({
   // eslint-disable-next-line
-  onClose: () => { },
+  onClose: () => {},
 });
 
 export default ModalContext;

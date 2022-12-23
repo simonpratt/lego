@@ -1,6 +1,6 @@
+import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Meta } from '@storybook/react/types-6-0';
 import {
   Button,
   ButtonGroup,

@@ -1,8 +1,8 @@
-import React from 'react';
-import { Meta } from '@storybook/react/types-6-0';
-import { Card, CardGroup, LiveInput, Badge } from '../..';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Meta } from '@storybook/react/types-6-0';
+import React from 'react';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Card, CardGroup, LiveInput, Badge } from '../..';
 
 export const Standard = () => (
   <CardGroup>

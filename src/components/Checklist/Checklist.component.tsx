@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { motion, LayoutGroup } from 'framer-motion';
+import styled from 'styled-components';
 import ChecklistItem from './_ChecklistItem.component';
 
 const ListDivider = styled.div`

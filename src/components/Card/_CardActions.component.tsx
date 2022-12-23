@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import React, { SyntheticEvent, useContext, useEffect } from 'react';
 import { createPortal } from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import CardContext from './Card.context';
 

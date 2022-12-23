@@ -1,5 +1,5 @@
-import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React from 'react';
 import { Button, ButtonGroup, PageHeader } from '../../';
 
 export const Standard = () => {

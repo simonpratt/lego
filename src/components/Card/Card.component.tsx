@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import React, { SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
 import responsive from '../../responsive/responsive';
 import CardContext, { CardSize } from './Card.context';

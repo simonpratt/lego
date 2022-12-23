@@ -1,5 +1,5 @@
-import React from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React from 'react';
 import { Button, ControlGroup, FocusLayout, Heading, Input, Spacer, Text } from '../..';
 
 /* eslint-disable @typescript-eslint/no-empty-function */

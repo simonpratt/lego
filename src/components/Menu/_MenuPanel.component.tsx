@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import responsive from '../../responsive/responsive';
 
 export type PanelSize = 'sm' | 'md';

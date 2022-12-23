@@ -1,11 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 import React from 'react';
-import styled from 'styled-components';
-
-import { Notification, Spacer } from '../..';
-import responsive from '../../responsive/responsive';
-import zIndexConstants from '../../constants/zIndex.constants';
 import { AnimatePresence, motion } from 'framer-motion';
+import styled from 'styled-components';
+import { Notification, Spacer } from '../..';
+import zIndexConstants from '../../constants/zIndex.constants';
+import responsive from '../../responsive/responsive';
 
 const NotificationContainer = styled.div`
   position: fixed;

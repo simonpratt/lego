@@ -1,11 +1,10 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { motion } from 'framer-motion';
 import React, { useContext, useEffect, useRef, useState } from 'react';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
-
-import { FocusContext } from './_FocusContext';
 import Input from '../Input/Input.component';
+import { FocusContext } from './_FocusContext';
 
 const InputContainer = styled(motion.div)`
   position: relative;

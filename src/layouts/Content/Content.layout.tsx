@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import ContentHeader from './_ContentHeader.component';
 import ContentContent from './_ContentContent.component';
+import ContentHeader from './_ContentHeader.component';
 
 const ContentContainer = styled.div``;
 

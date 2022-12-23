@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { IActionMenuItem } from './_ActionMenu.types';
 import ActionMenuItem from './_ActionMenuItem.component';
 

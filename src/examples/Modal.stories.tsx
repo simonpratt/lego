@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
 import { Button, FancyCheckbox, Form, Input, Modal } from '../';
 import ControlGroup from '../components/ControlGroup/ControlGroup.component';
 

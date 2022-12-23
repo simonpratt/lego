@@ -1,18 +1,17 @@
-import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
-import styled, { useTheme } from 'styled-components';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import useMeasure from 'react-use-measure';
-
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
+import styled, { useTheme } from 'styled-components';
 import { responsive } from '../..';
 import getThemeStatusColour from '../../theme/helpers/getThemeStatusColour';
 import { Status } from '../../theme/theme.types';
 import InlineCardContent from './_InlineCardContent.component';
 import InlineCardMedia from './_InlineCardMedia.component';
 import InlineCardMeta from './_InlineCardMeta.component';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import InlineCardSelectionContext from './_InlineCardSelection.context';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export type InlineCardSize = 'fill' | 'xs' | 'sm' | 'md' | 'lg';
 export type DragVariant = Status;

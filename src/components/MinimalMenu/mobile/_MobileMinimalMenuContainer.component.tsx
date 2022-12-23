@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { mobileMenuDefaultTransition } from './_MobileMenu.constants';
 import MobileMenuBump from './_MobileMenuBump.component';

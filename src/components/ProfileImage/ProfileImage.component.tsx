@@ -1,8 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import IdenticonObj from 'identicon.js';
-import colours from '../../colours/colours';
 import SparkMD5 from 'spark-md5';
+import styled from 'styled-components';
+import colours from '../../colours/colours';
 
 export interface ProfileImageProps {
   name?: string;

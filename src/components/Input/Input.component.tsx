@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { motion } from 'framer-motion';
 import React, { useState } from 'react';
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
 import useFormNode, { getValue } from '../Form/useFormNode.hook';

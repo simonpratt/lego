@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
 import { Button, FocusLayout, Menu, Modal, Notifications, PaddedLayout, Text } from '../..';
 import { INotification } from './Notifications.component';
 

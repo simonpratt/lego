@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import Button from '../../components/Button/Button.component';
 import ControlGroup from '../../components/ControlGroup/ControlGroup.component';
 import Form from '../../components/Form/Form.component';

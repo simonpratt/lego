@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import responsive from '../../responsive/responsive';
-
 import CardContext, { CardSize } from './Card.context';
 
 export interface CardMediaProps {

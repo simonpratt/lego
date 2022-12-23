@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from 'framer-motion';
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import responsive from '../../responsive/responsive';
 import MenuContent from './_MenuContent.component';

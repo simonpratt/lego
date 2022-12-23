@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import React, { useContext } from 'react';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 import ModalContext from './_Modal.context';
 
 export interface ModalHeaderProps {

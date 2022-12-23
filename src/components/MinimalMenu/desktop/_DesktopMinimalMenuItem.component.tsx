@@ -1,7 +1,7 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { motion } from 'framer-motion';
 import React, { useMemo } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
 
 const ItemContainer = styled(motion.div)`

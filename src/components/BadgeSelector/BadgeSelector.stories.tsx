@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
 import { BadgeSelector } from '../..';
 import { BadgeSelectorOption } from './BadgeSelector.component';
 

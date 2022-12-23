@@ -6,7 +6,7 @@ export interface MobileMenuBumpContextProps {
 
 const MobileMenuBumpContext = createContext<MobileMenuBumpContextProps>({
   // eslint-disable-next-line
-  setBumpX: (offset?: number) => { },
+  setBumpX: (offset?: number) => {},
 });
 
 export default MobileMenuBumpContext;

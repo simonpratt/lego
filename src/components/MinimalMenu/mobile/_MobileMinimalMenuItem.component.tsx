@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useContext, useEffect, useRef } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { motion } from 'framer-motion';
-import MobileMenuBumpContext from './_MobileMenuBump.context';
-import { mobileMenuDefaultTransition } from './_MobileMenu.constants';
+import styled from 'styled-components';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
+import { mobileMenuDefaultTransition } from './_MobileMenu.constants';
+import MobileMenuBumpContext from './_MobileMenuBump.context';
 
 const ItemContainer = styled.div`
   position: relative;

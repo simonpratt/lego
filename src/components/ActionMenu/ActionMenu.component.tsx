@@ -1,10 +1,9 @@
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 import { usePopper } from 'react-popper';
-
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 import { ColourVariant } from '../../theme/theme.types';
 import Button from '../Button/Button.component';
 import { IActionMenuItem } from './_ActionMenu.types';

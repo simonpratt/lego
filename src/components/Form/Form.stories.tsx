@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
+import React, { useState } from 'react';
 import { Button, ControlGroup, Form, Input } from '../..';
 
 /* eslint-disable @typescript-eslint/no-empty-function */

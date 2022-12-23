@@ -1,9 +1,9 @@
 import React from 'react';
 import { useIsScreenSize } from '../../responsive/responsive';
-import DesktopMinimalMenuContainer from './desktop/_DesktopMinimalMenuContainer.component';
-import MobileMinimalMenuContainer from './mobile/_MobileMinimalMenuContainer.component';
 import MinimalMenuItem from './_MinimalMenuItem.component';
 import MinimalMenuPage from './_MinimalMenuPage.component';
+import DesktopMinimalMenuContainer from './desktop/_DesktopMinimalMenuContainer.component';
+import MobileMinimalMenuContainer from './mobile/_MobileMinimalMenuContainer.component';
 
 export interface MinimalMenuProps {
   children: React.ReactNode;

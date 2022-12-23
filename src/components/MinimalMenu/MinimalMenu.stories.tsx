@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
 import { Meta } from '@storybook/react/types-6-0';
-import { menuHelpers, MinimalMenu, PaddedLayout, Text } from '../..';
+import React, { useState } from 'react';
 import { faCalendarAlt, faCogs, faHamburger } from '@fortawesome/free-solid-svg-icons';
+import { menuHelpers, MinimalMenu, PaddedLayout, Text } from '../..';
 
 export const Standard = () => {
   const [route, setRoute] = useState('/eat');
