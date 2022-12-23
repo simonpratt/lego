@@ -1,13 +1,2 @@
-module.exports = {
-  semi: true,
-  singleQuote: true,
-  trailingComma: "all",
-  bracketSpacing: true,
-  arrowParens: 'always',
-  endOfLine: 'lf',
-  jsxBracketSameLine: false,
-  jsxSingleQuote: true,
-  printWidth: 120,
-  quoteProps: 'consistent',
-  tabWidth: 2,
-};
+const config = require('@dtdot/eslint-config/prettier');
+module.exports = config;
