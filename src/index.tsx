@@ -37,6 +37,7 @@ export { default as SquareButton } from './components/SquareButton/SquareButton.
 export { default as Swimlane } from './components/Swimlane/Swimlane.component';
 export { default as Table } from './components/Table/Table.component';
 export { default as Text } from './components/Text/Text.component';
+export { default as TextArea } from './components/TextArea/TextArea.component';
 
 export { default as LoginScreen } from './screens/Login/Login.screen';
 export { default as RegisterScreen } from './screens/Register/Register.screen';

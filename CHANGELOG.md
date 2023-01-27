@@ -1,3 +1,7 @@
+### v1.2.0
+
+- Added a _TextArea_ component
+
 ### v1.1.1
 
 - Added test data id for _Button_ in the loading state
