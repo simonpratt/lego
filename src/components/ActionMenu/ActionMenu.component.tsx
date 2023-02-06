@@ -13,13 +13,14 @@ const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 18px;
 `;
 export interface ActionMenuProps {
-  items: IActionMenuItem[];
-  variant?: ColourVariant;
+  'items': IActionMenuItem[];
+  'variant'?: ColourVariant;
+  'data-cy'?: string;
 }
 
 const offsetFn = (): [number, number] => [70, 4];
 
-const ActionMenu = ({ items, variant }: ActionMenuProps) => {
+const ActionMenu = ({ items, variant, 'data-cy': dataCy }: ActionMenuProps) => {
   const [shown, setShown] = useState(false);
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement>();
   const [popperElement, setPopperElement] = useState<HTMLDivElement>();
@@ -61,7 +62,12 @@ const ActionMenu = ({ items, variant }: ActionMenuProps) => {
 
   return (
     <>
-      <Button variant={variant} data-cy='action-menu-button' ref={setReferenceElement} onClick={() => setShown(true)}>
+      <Button
+        variant={variant}
+        data-cy={dataCy || 'action-menu-button'}
+        ref={setReferenceElement}
+        onClick={() => setShown(true)}
+      >
         <StyledIcon icon={faEllipsisV} />
       </Button>
 

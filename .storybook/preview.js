@@ -5,7 +5,6 @@ import { GlobalStyle } from './globalStyle';
 export const decorators = [
   (Story) => (
     <>
-      <GlobalStyle />
       <DarkThemeProvider>
         <Story />
       </DarkThemeProvider>

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ButtonContext from '../Button/Button.context';
 import TableContext, { TableVariant } from './_Table.context';
 import TableAction from './_TableAction';
+import TableActionContainer from './_TableActionContainer';
+import TableActionMenu from './_TableActionMenu';
 import TableRow from './_TableRow.component';
 
 export type TableCellVariant = 'tight';
@@ -45,6 +47,8 @@ const Table = ({ children, variant = 'regular' }: TableProps) => {
 
 Table.Row = TableRow;
 Table.Cell = TableCell;
+Table.ActionContainer = TableActionContainer;
 Table.Action = TableAction;
+Table.ActionMenu = TableActionMenu;
 
 export default Table;

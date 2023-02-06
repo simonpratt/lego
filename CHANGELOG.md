@@ -1,3 +1,9 @@
+### v1.4.0
+
+- Added `data-cy` prop to _ActionMenu_
+- Added _Table.ActionMenu_ component
+- Added _Table.ActionContainer_ component
+
 ### v1.3.0
 
 - Added `disabled` state to _Input_ component
