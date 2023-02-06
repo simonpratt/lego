@@ -54,6 +54,14 @@ export const InputStyles = css`
   &::placeholder {
     color: ${(props) => getThemeControlColours(props.theme).placeholder};
   }
+
+  &:disabled {
+    color: ${(props) => getThemeControlColours(props.theme).font};
+    opacity: 1;
+    -webkit-text-fill-color: ${(props) => getThemeControlColours(props.theme).font};
+    background-color: ${(props) => props.theme.colours.controlBackgroundDisabled};
+    border: none;
+  }
 `;
 
 const StyledInput = styled(motion.input)`
@@ -114,6 +122,7 @@ export interface IInputProps {
   'name'?: string;
   'label'?: string;
   'placeholder'?: string;
+  'disabled'?: boolean;
   'type'?: string;
   'autoFocus'?: boolean;
   'value'?: string;
@@ -129,6 +138,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     label,
     name,
     placeholder,
+    disabled,
     type = 'text',
     autoFocus,
     value,
@@ -184,6 +194,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           type={type}
           name={name}
           placeholder={placeholder}
+          disabled={disabled}
           value={getValue(value, contextValue)}
           onChange={handleChange}
           onFocus={handleFocus}

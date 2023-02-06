@@ -31,6 +31,7 @@ const defaultTheme: LegoTheme = {
     faintBorder: colours.grey20,
 
     controlBackground: colours.white,
+    controlBackgroundDisabled: colours.grey20,
     controlBorder: colours.grey20,
     controlBorderFocus: colours.grey50,
     controlBorderHover: colours.grey30,

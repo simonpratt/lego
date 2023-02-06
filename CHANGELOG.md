@@ -1,3 +1,7 @@
+### v1.3.0
+
+- Added `disabled` state to _Input_ component
+
 ### v1.2.0
 
 - Added a _TextArea_ component

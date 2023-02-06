@@ -41,6 +41,30 @@ export const WithError = () => {
   );
 };
 
+export const DisabledInput = () => {
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  return (
+    <>
+      <ControlGroup variation='comfortable'>
+        <Input name='name' placeholder='A standard input' label='Name' value='A bright orange balloon' />
+        <Input
+          name='url'
+          placeholder='A standard input'
+          label='Url'
+          value='www.balloons.com.au'
+          disabled={isDisabled}
+        />
+        <Input name='price' placeholder='A standard input' label='Price' value='$654.22' disabled={isDisabled} />
+      </ControlGroup>
+      <Spacer size='2x' />
+      <ButtonGroup>
+        <Button onClick={() => setIsDisabled(!isDisabled)}>Toggle disabled</Button>
+      </ButtonGroup>
+    </>
+  );
+};
+
 export default {
   title: 'Components/Input',
   component: Input,

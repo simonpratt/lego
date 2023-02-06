@@ -36,6 +36,7 @@ export interface LegoTheme {
     faintBorder: string;
 
     controlBackground: string;
+    controlBackgroundDisabled: string;
     controlBorder: string;
     controlBorderFocus: string;
     controlBorderHover: string;

@@ -30,6 +30,7 @@ const darkTheme: LegoTheme = {
     faintBorder: '#cccccc1f',
 
     controlBackground: '#5e6167',
+    controlBackgroundDisabled: '#47494d',
     controlBorder: '#565656',
     controlBorderFocus: '#4289de',
     controlBorderHover: '#4a4949',
