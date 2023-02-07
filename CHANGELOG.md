@@ -1,4 +1,4 @@
-### v1.4.1
+### v1.4.2
 
 - Fixed _Loader_ component animation so that it now loops correctly
 

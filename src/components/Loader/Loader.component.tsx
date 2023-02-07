@@ -44,7 +44,7 @@ const loadingCircleTransition = {
   repeat: Infinity,
   repeatType: 'reverse',
   ease: 'easeInOut',
-};
+} as any; // Framer motion isn't accepting 'repeatType' but animation breaks without it
 
 const Loader = () => {
   return (
