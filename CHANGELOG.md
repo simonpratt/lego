@@ -1,3 +1,7 @@
+### v1.4.1
+
+- Fixed _Loader_ component animation so that it now loops correctly
+
 ### v1.4.0
 
 - Added `data-cy` prop to _ActionMenu_
