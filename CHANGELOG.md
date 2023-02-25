@@ -1,3 +1,7 @@
+### v1.4.3
+
+- Change _Table.ActionContainer_ to right align contents
+
 ### v1.4.2
 
 - Fixed _Loader_ component animation so that it now loops correctly
