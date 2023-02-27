@@ -15,6 +15,12 @@ export const Standard = () => (
       </InlineCard.Media>
       <InlineCard.Content>Some more content</InlineCard.Content>
     </InlineCard>
+    <InlineCard>
+      <InlineCard.Media variant='square'>
+        <img src='https://cdn.vox-cdn.com/thumbor/-V1RcyC2HAGG6dI6i8YzvZPBqZE=/1400x1050/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/24097192/mario.png' />
+      </InlineCard.Media>
+      <InlineCard.Content>Square content</InlineCard.Content>
+    </InlineCard>
     <InlineCard
       onClick={() => {
         console.log('Clicked');

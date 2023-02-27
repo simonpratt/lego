@@ -1,3 +1,7 @@
+### V1.5.0
+
+- Added `variant` prop to _InlineCard.Media_. Initial support added for `rectangle` (default) and `square`
+
 ### v1.4.3
 
 - Change _Table.ActionContainer_ to right align contents
