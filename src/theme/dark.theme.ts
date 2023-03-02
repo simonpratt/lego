@@ -40,22 +40,27 @@ const darkTheme: LegoTheme = {
     uploadIcon: '#e2e2e2',
 
     cardBackground: '#494b50',
+    cardBackgroundSecondary: '#525459',
 
     statusInfo: {
       main: '#83bfff',
       contrast: '#191919',
+      dull: '#0070e8',
     },
     statusSuccess: {
       main: '#8ddaa9',
       contrast: '#191919',
+      dull: '#35a35d',
     },
     statusWarn: {
       main: '#f1a374',
       contrast: '#191919',
+      dull: '#c35514',
     },
     statusDanger: {
       main: '#e87a7a',
       contrast: '#191919',
+      dull: '#b51f1f',
     },
   },
   fonts: {

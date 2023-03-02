@@ -10,6 +10,7 @@ export interface IPalette {
 export interface IStatus {
   main: string;
   contrast: string;
+  dull: string;
 }
 
 export interface IFont {
@@ -46,6 +47,7 @@ export interface LegoTheme {
     uploadIcon: string;
 
     cardBackground: string;
+    cardBackgroundSecondary: string;
 
     statusInfo: IStatus;
     statusSuccess: IStatus;

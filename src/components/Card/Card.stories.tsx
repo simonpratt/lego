@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta } from '@storybook/react/types-6-0';
-import React from 'react';
+import React, { useState } from 'react';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Card, CardGroup, LiveInput, Badge } from '../..';
 
@@ -174,6 +174,44 @@ export const WithActions = () => (
     </CardGroup>
   </>
 );
+
+export const CardWithToggle = () => {
+  const [slackShown, setSlackShown] = useState(false);
+  const [discordShown, setDiscordShown] = useState(false);
+  const [telegramShown, setTelegramShown] = useState(false);
+
+  return (
+    <CardGroup>
+      <Card size='sm' onClick={() => console.log('test')}>
+        <Card.ToggleSection heading='Slack' enabled={slackShown} setEnabled={setSlackShown}>
+          <Card.Content>Some content</Card.Content>
+          <Card.Spacer />
+          <Card.Content>Some more content...</Card.Content>
+          <Card.Spacer />
+          <Card.SubContent>Some sub content...</Card.SubContent>
+        </Card.ToggleSection>
+      </Card>
+      <Card size='sm' onClick={() => console.log('test')}>
+        <Card.ToggleSection heading='Discord' enabled={discordShown} setEnabled={setDiscordShown}>
+          <Card.Content>Some content</Card.Content>
+          <Card.Spacer />
+          <Card.Content>Some more content...</Card.Content>
+          <Card.Spacer />
+          <Card.SubContent>Some sub content...</Card.SubContent>
+        </Card.ToggleSection>
+      </Card>
+      <Card size='sm' onClick={() => console.log('test')}>
+        <Card.ToggleSection heading='Telegram' enabled={telegramShown} setEnabled={setTelegramShown}>
+          <Card.Content>Some content</Card.Content>
+          <Card.Spacer />
+          <Card.Content>Some more content...</Card.Content>
+          <Card.Spacer />
+          <Card.SubContent>Some sub content...</Card.SubContent>
+        </Card.ToggleSection>
+      </Card>
+    </CardGroup>
+  );
+};
 
 export default {
   title: 'Components/Card',

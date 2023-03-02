@@ -9,6 +9,7 @@ import CardHeader from './_CardHeader.component';
 import CardMedia from './_CardMedia.component';
 import CardSpacer from './_CardSpacer.component';
 import CardSubContent from './_CardSubContent.component';
+import CardToggleSection from './_CardToggleSection.component';
 
 export interface CardProps {
   children: React.ReactNode;
@@ -136,6 +137,7 @@ const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
   );
 };
 
+Card.ToggleSection = CardToggleSection;
 Card.Actions = CardActions;
 Card.Action = CardAction;
 Card.Content = CardContent;

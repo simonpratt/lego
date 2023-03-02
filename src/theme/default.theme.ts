@@ -41,22 +41,27 @@ const defaultTheme: LegoTheme = {
     uploadIcon: colours.grey10,
 
     cardBackground: colours.white,
+    cardBackgroundSecondary: colours.white,
 
     statusInfo: {
       main: colours.blue,
       contrast: colours.blue,
+      dull: colours.blue,
     },
     statusSuccess: {
       main: colours.green,
       contrast: colours.green,
+      dull: colours.green,
     },
     statusWarn: {
       main: colours.yellow,
       contrast: colours.yellow,
+      dull: colours.yellow,
     },
     statusDanger: {
       main: colours.red,
       contrast: colours.red,
+      dull: colours.red,
     },
   },
   fonts: {

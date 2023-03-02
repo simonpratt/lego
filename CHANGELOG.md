@@ -1,3 +1,7 @@
+### V1.6.0
+
+- Added _Card.ToggleSection_ component for showing and hiding card contents
+
 ### V1.5.0
 
 - Added `variant` prop to _InlineCard.Media_. Initial support added for `rectangle` (default) and `square`
