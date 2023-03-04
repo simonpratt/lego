@@ -16,6 +16,18 @@ export const WithoutLabels = () => (
   </ControlGroup>
 );
 
+export const WithDescriptions = () => (
+  <ControlGroup variation='comfortable'>
+    <Input
+      name='botToken'
+      label='Bot Token'
+      placeholder='xx-24312-aa'
+      description='Visit www.example.com to create your bot and generate a token'
+    />
+    <Input name='chatId' label='Chat Id' placeholder='4431245' description='Enter the chatId for the desired used' />
+  </ControlGroup>
+);
+
 export const WithError = () => {
   const [error, setError] = useState<string | undefined>('Input has an error!');
 

@@ -1,3 +1,7 @@
+### V1.7.0
+
+- Added `description` prop to _Input_ component
+
 ### V1.6.0
 
 - Added _Card.ToggleSection_ component for showing and hiding card contents

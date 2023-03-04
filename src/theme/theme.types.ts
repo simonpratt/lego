@@ -42,6 +42,7 @@ export interface LegoTheme {
     controlBorderFocus: string;
     controlBorderHover: string;
     controlPlaceholder: string;
+    controlDescriptionColour: string;
 
     uploadBackground: string;
     uploadIcon: string;
@@ -55,6 +56,7 @@ export interface LegoTheme {
     statusDanger: IStatus;
   };
   fonts: {
+    emphasis: IFont;
     default: IFont;
     heading: IFont;
     subHeading: IFont;

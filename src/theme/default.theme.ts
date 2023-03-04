@@ -36,6 +36,7 @@ const defaultTheme: LegoTheme = {
     controlBorderFocus: colours.grey50,
     controlBorderHover: colours.grey30,
     controlPlaceholder: colours.grey30,
+    controlDescriptionColour: colours.grey90,
 
     uploadBackground: colours.grey20,
     uploadIcon: colours.grey10,
@@ -65,6 +66,11 @@ const defaultTheme: LegoTheme = {
     },
   },
   fonts: {
+    emphasis: {
+      family: `'Roboto', sans-serif`,
+      size: '14px',
+      weight: '400',
+    },
     default: {
       family: `'Roboto', sans-serif`,
       size: '16px',

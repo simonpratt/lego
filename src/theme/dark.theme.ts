@@ -35,6 +35,7 @@ const darkTheme: LegoTheme = {
     controlBorderFocus: '#4289de',
     controlBorderHover: '#4a4949',
     controlPlaceholder: '#949494',
+    controlDescriptionColour: '#cbcbcb',
 
     uploadBackground: '#5e6167',
     uploadIcon: '#e2e2e2',
@@ -64,6 +65,11 @@ const darkTheme: LegoTheme = {
     },
   },
   fonts: {
+    emphasis: {
+      family: `'Roboto', sans-serif`,
+      size: '14px',
+      weight: '400',
+    },
     default: {
       family: `'Roboto', sans-serif`,
       size: '16px',

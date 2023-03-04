@@ -25,6 +25,17 @@ const InputLabel = styled.label`
   font-size: ${(props) => props.theme.fonts.default.size};
 `;
 
+const InputDescription = styled.div`
+  color: ${(props) => props.theme.colours.controlDescriptionColour};
+  font-family: ${(props) => props.theme.fonts.emphasis.family};
+  font-size: ${(props) => props.theme.fonts.emphasis.size};
+  font-weight: ${(props) => props.theme.fonts.emphasis.weight};
+
+  padding-top: 4px;
+  padding-bottom: 6px;
+  font-style: italic;
+`;
+
 export const InputStyles = css`
   outline: none;
   box-shadow: none;
@@ -121,6 +132,7 @@ const messageVariants = {
 export interface IInputProps {
   'name'?: string;
   'label'?: string;
+  'description'?: string;
   'placeholder'?: string;
   'disabled'?: boolean;
   'type'?: string;
@@ -137,6 +149,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
   const {
     label,
     name,
+    description,
     placeholder,
     disabled,
     type = 'text',
@@ -225,6 +238,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           </ErrorMessage>
         )}
       </InputContainer>
+      {description && <InputDescription>{description}</InputDescription>}
     </div>
   );
 });
