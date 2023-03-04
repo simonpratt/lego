@@ -30,6 +30,7 @@ const InputDescription = styled.div`
   font-family: ${(props) => props.theme.fonts.emphasis.family};
   font-size: ${(props) => props.theme.fonts.emphasis.size};
   font-weight: ${(props) => props.theme.fonts.emphasis.weight};
+  line-height: 18px;
 
   padding-top: 4px;
   padding-bottom: 6px;
@@ -167,6 +168,8 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
 
   const error = contextError || propsError;
 
+  const splitDescription = description ? description.split('\\n').map((str) => str.trim()) : undefined;
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(e.target.value);
@@ -238,7 +241,16 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           </ErrorMessage>
         )}
       </InputContainer>
-      {description && <InputDescription>{description}</InputDescription>}
+      {splitDescription && (
+        <InputDescription>
+          {splitDescription.map((line, index) => (
+            <>
+              {index !== 0 && <br />}
+              {line}
+            </>
+          ))}
+        </InputDescription>
+      )}
     </div>
   );
 });

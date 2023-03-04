@@ -24,7 +24,12 @@ export const WithDescriptions = () => (
       placeholder='xx-24312-aa'
       description='Visit www.example.com to create your bot and generate a token'
     />
-    <Input name='chatId' label='Chat Id' placeholder='4431245' description='Enter the chatId for the desired used' />
+    <Input
+      name='chatId'
+      label='Chat Id'
+      placeholder='4431245'
+      description='Enter the chatId for the desired used. \n You can request recent conversations from the API to find this ID.'
+    />
   </ControlGroup>
 );
 

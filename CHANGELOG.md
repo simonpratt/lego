@@ -1,3 +1,7 @@
+### V1.7.1
+
+- Added support for multi-line descriptions on the _Input_ component
+
 ### V1.7.0
 
 - Added `description` prop to _Input_ component
