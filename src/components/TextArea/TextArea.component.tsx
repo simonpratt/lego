@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
+import { ControlStyles } from '../../shared/ControlStyles';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
 import useFormNode, { getValue } from '../Form/useFormNode.hook';
-import { InputStyles } from '../Input/Input.component';
 
 const TextAreaContainer = styled.div`
   position: relative;
@@ -22,7 +22,7 @@ const TextAreaLabel = styled.label`
 `;
 
 const StyledTextArea = styled(motion.textarea)`
-  ${InputStyles}
+  ${ControlStyles}
   height: initial;
   width: 100% !important;
   min-height: 144px;

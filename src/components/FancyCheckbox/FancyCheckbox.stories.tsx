@@ -32,6 +32,6 @@ export const Standard = () => {
 };
 
 export default {
-  title: 'Components/FancyCheckbox',
+  title: 'Forms/FancyCheckbox',
   component: FancyCheckbox,
 } as Meta;

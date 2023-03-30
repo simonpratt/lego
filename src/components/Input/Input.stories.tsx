@@ -83,6 +83,6 @@ export const DisabledInput = () => {
 };
 
 export default {
-  title: 'Components/Input',
+  title: 'Forms/Input',
   component: Input,
 } as Meta;

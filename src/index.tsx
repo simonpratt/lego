@@ -32,6 +32,7 @@ export { default as Modal } from './components/Modal/Modal.component';
 export { default as PageHeader } from './components/PageHeader/PageHeader.component';
 export { default as ProfileImage } from './components/ProfileImage/ProfileImage.component';
 export { default as QrCode } from './components/QrCode/QrCode.component';
+export { default as Select } from './components/Select/Select.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
 export { default as SquareButton } from './components/SquareButton/SquareButton.component';
 export { default as Swimlane } from './components/Swimlane/Swimlane.component';

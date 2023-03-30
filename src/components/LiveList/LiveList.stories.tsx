@@ -80,6 +80,6 @@ export const EmptyList = () => {
 };
 
 export default {
-  title: 'Components/LiveList',
+  title: 'Forms/LiveList',
   component: LiveList,
 } as Meta;

@@ -42,6 +42,6 @@ export const WithError = () => {
 };
 
 export default {
-  title: 'Components/TextArea',
+  title: 'Forms/TextArea',
   component: TextArea,
 } as Meta;

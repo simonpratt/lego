@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
-import styled, { css } from 'styled-components';
-import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
+import styled from 'styled-components';
+import ControlDescription from '../../shared/ControlDescription';
+import ControlLabel from '../../shared/ControlLabel';
+import { ControlStyles } from '../../shared/ControlStyles';
 import useFormNode, { getValue } from '../Form/useFormNode.hook';
-
-export const INPUT_HEIGHT = 48;
 
 const InputContainer = styled.div`
   position: relative;
@@ -16,68 +16,8 @@ const InputContainer = styled.div`
   background-color: ${(props) => props.theme.colours.controlBackground};
 `;
 
-const InputLabel = styled.label`
-  display: block;
-  padding-bottom: 8px;
-
-  color: ${(props) => getThemeControlColours(props.theme).font};
-  font-family: ${(props) => props.theme.fonts.default.family};
-  font-size: ${(props) => props.theme.fonts.default.size};
-`;
-
-const InputDescription = styled.div`
-  color: ${(props) => props.theme.colours.controlDescriptionColour};
-  font-family: ${(props) => props.theme.fonts.emphasis.family};
-  font-size: ${(props) => props.theme.fonts.emphasis.size};
-  font-weight: ${(props) => props.theme.fonts.emphasis.weight};
-  line-height: 18px;
-
-  padding-top: 4px;
-  padding-bottom: 6px;
-  font-style: italic;
-`;
-
-export const InputStyles = css`
-  outline: none;
-  box-shadow: none;
-
-  width: 100%;
-  height: ${INPUT_HEIGHT}px;
-  padding: 0 12px;
-  scroll-margin-bottom: 100px;
-
-  font-family: ${(props) => props.theme.fonts.default.family};
-  font-size: ${(props) => props.theme.fonts.default.size};
-
-  color: ${(props) => getThemeControlColours(props.theme).font};
-  background-color: ${(props) => getThemeControlColours(props.theme).background};
-
-  border: 1px solid ${(props) => getThemeControlColours(props.theme).border};
-  border-radius: 2px;
-
-  &:hover {
-    border: 1px solid ${(props) => getThemeControlColours(props.theme).borderHover};
-  }
-
-  &:focus {
-    border: 1px solid ${(props) => getThemeControlColours(props.theme).borderFocus};
-  }
-
-  &::placeholder {
-    color: ${(props) => getThemeControlColours(props.theme).placeholder};
-  }
-
-  &:disabled {
-    color: ${(props) => getThemeControlColours(props.theme).font};
-    opacity: 1;
-    -webkit-text-fill-color: ${(props) => getThemeControlColours(props.theme).font};
-    background-color: ${(props) => props.theme.colours.controlBackgroundDisabled};
-    border: none;
-  }
-`;
-
 const StyledInput = styled(motion.input)`
-  ${InputStyles}
+  ${ControlStyles}
 `;
 
 const ErrorMessage = styled(motion.div)`
@@ -200,7 +140,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
 
   return (
     <div>
-      {label && <InputLabel htmlFor={name}>{label}</InputLabel>}
+      {label && <ControlLabel htmlFor={name}>{label}</ControlLabel>}
       <InputContainer data-cy={dataCy}>
         <StyledInput
           ref={ref}
@@ -242,14 +182,14 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
         )}
       </InputContainer>
       {splitDescription && (
-        <InputDescription>
+        <ControlDescription>
           {splitDescription.map((line, index) => (
             <>
               {index !== 0 && <br />}
               {line}
             </>
           ))}
-        </InputDescription>
+        </ControlDescription>
       )}
     </div>
   );
