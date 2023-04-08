@@ -25,7 +25,7 @@ export const BadgeSpan = styled.span<BadgeSpanProps>`
   text-transform: lowercase;
 
   &:hover {
-    background-color: ${(props) => getThemeStatusColour(props.variant, props.theme).hover};
+    background-color: ${(props) => props.useHover && getThemeStatusColour(props.variant, props.theme).hover};
   }
 `;
 

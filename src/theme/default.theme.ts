@@ -48,21 +48,25 @@ const defaultTheme: LegoTheme = {
       main: colours.blue,
       contrast: colours.blue,
       dull: colours.blue,
+      hover: colours.blue,
     },
     statusSuccess: {
       main: colours.green,
       contrast: colours.green,
       dull: colours.green,
+      hover: colours.green,
     },
     statusWarn: {
       main: colours.yellow,
       contrast: colours.yellow,
       dull: colours.yellow,
+      hover: colours.yellow,
     },
     statusDanger: {
       main: colours.red,
       contrast: colours.red,
       dull: colours.red,
+      hover: colours.red,
     },
   },
   fonts: {
