@@ -11,6 +11,7 @@ export interface IStatus {
   main: string;
   contrast: string;
   dull: string;
+  hover: string;
 }
 
 export interface IFont {

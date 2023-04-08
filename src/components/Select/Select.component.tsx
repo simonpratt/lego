@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
 import ControlDescription from '../../shared/ControlDescription';
@@ -22,6 +24,16 @@ const TextContainer = styled.div`
   height: 100%;
 `;
 
+const IconContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+`;
+
 const PlaceholderText = styled.div`
   color: ${(props) => getThemeControlColours(props.theme).placeholder};
 `;
@@ -35,11 +47,13 @@ const OptionsContainer = styled.div`
   position: absolute;
   background-color: ${(props) => props.theme.colours.controlBackground};
   z-index: 10000;
+
+  box-shadow: ${(props) => props.theme.shadows.small};
 `;
 
 const Option = styled(motion.div)`
   color: ${(props) => getThemeControlColours(props.theme).font};
-  background-color: ${(props) => props.theme.colours.controlBackground};
+  background-color: ${(props) => props.theme.colours.controlBackgroundDisabled};
   height: 36px;
   display: flex;
   align-items: center;
@@ -95,6 +109,9 @@ const Select = (props: ISelectProps) => {
             {!value && placeholder && <PlaceholderText>{placeholder}</PlaceholderText>}
             {value && <ValueText>{valueLabel}</ValueText>}
           </TextContainer>
+          <IconContainer>
+            <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
+          </IconContainer>
         </SelectControl>
         {isOpen && (
           <OptionsContainer>

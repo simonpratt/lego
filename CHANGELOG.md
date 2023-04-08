@@ -1,3 +1,8 @@
+### v1.8.1
+
+- Added `actionIcon` and `onAction` to the _Badge_ component
+- Some style tweaks to _Select_ to make it look slightly better
+
 ### V1.8.0
 
 - Added _Select_ component
