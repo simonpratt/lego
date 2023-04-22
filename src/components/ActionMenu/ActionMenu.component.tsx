@@ -6,21 +6,22 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { ColourVariant } from '../../theme/theme.types';
 import Button from '../Button/Button.component';
-import { IActionMenuItem } from './_ActionMenu.types';
+import ActionMenuContext from './ActionMenu.context';
+import ActionMenuItem from './_ActionMenuItem.component';
 import ActionMenuPanel from './_ActionMenuPanel.component';
 
 const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 18px;
 `;
 export interface ActionMenuProps {
-  'items': IActionMenuItem[];
+  'children': React.ReactNode;
   'variant'?: ColourVariant;
   'data-cy'?: string;
 }
 
 const offsetFn = (): [number, number] => [70, 4];
 
-const ActionMenu = ({ items, variant, 'data-cy': dataCy }: ActionMenuProps) => {
+const ActionMenu = ({ children, variant, 'data-cy': dataCy }: ActionMenuProps) => {
   const [shown, setShown] = useState(false);
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement>();
   const [popperElement, setPopperElement] = useState<HTMLDivElement>();
@@ -52,14 +53,6 @@ const ActionMenu = ({ items, variant, 'data-cy': dataCy }: ActionMenuProps) => {
     };
   }, [handleGlobalClick, popperElement]);
 
-  const augmentedItems = items.map((item) => ({
-    ...item,
-    onClick: () => {
-      setShown(false);
-      item.onClick();
-    },
-  }));
-
   return (
     <>
       <Button
@@ -74,12 +67,16 @@ const ActionMenu = ({ items, variant, 'data-cy': dataCy }: ActionMenuProps) => {
       {shown &&
         ReactDOM.createPortal(
           <div ref={setPopperElement as any} style={styles.popper} {...attributes.popper}>
-            <ActionMenuPanel items={augmentedItems} />
+            <ActionMenuContext.Provider value={{ closeActionMenu: () => setShown(false) }}>
+              <ActionMenuPanel>{children}</ActionMenuPanel>
+            </ActionMenuContext.Provider>
           </div>,
           document.querySelector('body') as any,
         )}
     </>
   );
 };
+
+ActionMenu.Item = ActionMenuItem;
 
 export default ActionMenu;

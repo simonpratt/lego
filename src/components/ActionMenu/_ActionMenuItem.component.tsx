@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
+import ActionMenuContext from './ActionMenu.context';
 
 const ActionMenuItemOuter = styled(motion.div)`
   padding: 12px 16px;
@@ -13,22 +14,28 @@ const ActionMenuItemOuter = styled(motion.div)`
 `;
 
 export interface ActionMenuItemProps {
-  label: string;
+  children: React.ReactNode;
   onClick: () => void;
 }
 
-const ActionMenuItem = ({ label, onClick }: ActionMenuItemProps) => {
+const ActionMenuItem = ({ children, onClick }: ActionMenuItemProps) => {
   const theme = useTheme();
+  const { closeActionMenu } = useContext(ActionMenuContext);
+
+  const handleClick = () => {
+    onClick();
+    closeActionMenu();
+  };
 
   return (
     <>
       <ActionMenuItemOuter
         style={{ backgroundColor: theme.colours.tertiary.main }}
         whileHover={{ backgroundColor: theme.colours.tertiary.hover }}
-        onClick={onClick}
+        onClick={handleClick}
         data-cy='action-menu-item'
       >
-        {label}
+        {children}
       </ActionMenuItemOuter>
     </>
   );

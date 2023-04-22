@@ -37,17 +37,53 @@ const items = [
   },
 ];
 
-export const Standard = () => <ActionMenu items={items} variant='tertiary' />;
+export const Standard = () => (
+  <ActionMenu variant='tertiary'>
+    {items.map((item, index) => (
+      <ActionMenu.Item key={index} onClick={item.onClick}>
+        {item.label}
+      </ActionMenu.Item>
+    ))}
+  </ActionMenu>
+);
+
+export const Complex = () => (
+  <ActionMenu variant='tertiary'>
+    {items.map((item, index) => (
+      <ActionMenu.Item key={index} onClick={item.onClick}>
+        {item.label}
+      </ActionMenu.Item>
+    ))}
+  </ActionMenu>
+);
 
 export const Variants = () => (
   <>
-    <ActionMenu items={items} variant='primary' />
+    <ActionMenu variant='primary'>
+      {items.map((item, index) => (
+        <ActionMenu.Item key={index} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
     <br />
     <br />
-    <ActionMenu items={items} variant='secondary' />
+    <ActionMenu variant='secondary'>
+      {items.map((item, index) => (
+        <ActionMenu.Item key={index} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
     <br />
     <br />
-    <ActionMenu items={items} variant='tertiary' />
+    <ActionMenu variant='tertiary'>
+      {items.map((item, index) => (
+        <ActionMenu.Item key={index} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
   </>
 );
 
