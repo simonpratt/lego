@@ -9,7 +9,7 @@ export const Checkmark = styled.div<CheckmarkProps>`
   position: relative;
   height: ${(props) => (props.large ? '36px' : '24px')};
   width: ${(props) => (props.large ? '36px' : '24px')};
-  background-color: ${(props) => props.theme.colours.tertiary.hover};
+  background-color: ${(props) => props.theme.colours.controlBackground};
 
   &:after {
     content: '';
