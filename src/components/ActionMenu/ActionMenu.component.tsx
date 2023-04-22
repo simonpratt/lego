@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import { ColourVariant } from '../../theme/theme.types';
 import Button from '../Button/Button.component';
 import ActionMenuContext from './ActionMenu.context';
+import ActionMenuCheckbox from './_ActionMenuCheckbox.component';
 import ActionMenuItem from './_ActionMenuItem.component';
 import ActionMenuPanel from './_ActionMenuPanel.component';
 
@@ -78,5 +79,6 @@ const ActionMenu = ({ children, variant, 'data-cy': dataCy }: ActionMenuProps) =
 };
 
 ActionMenu.Item = ActionMenuItem;
+ActionMenu.Checkbox = ActionMenuCheckbox;
 
 export default ActionMenu;

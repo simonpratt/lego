@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react/types-6-0';
-import React from 'react';
+import React, { useState } from 'react';
 import { ActionMenu } from '../..';
 
 /* eslint-disable @typescript-eslint/no-empty-function */
@@ -47,15 +47,22 @@ export const Standard = () => (
   </ActionMenu>
 );
 
-export const Complex = () => (
-  <ActionMenu variant='tertiary'>
-    {items.map((item, index) => (
-      <ActionMenu.Item key={index} onClick={item.onClick}>
-        {item.label}
-      </ActionMenu.Item>
-    ))}
-  </ActionMenu>
-);
+export const Complex = () => {
+  const [checked, setChecked] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+
+  return (
+    <ActionMenu variant='tertiary'>
+      <ActionMenu.Item onClick={() => {}}>An Item</ActionMenu.Item>
+      <ActionMenu.Checkbox checked={checked} onClick={() => setChecked(!checked)}>
+        A Checkbox
+      </ActionMenu.Checkbox>
+      <ActionMenu.Checkbox checked={checked2} onClick={() => setChecked2(!checked2)}>
+        A Checkbox with some longer text
+      </ActionMenu.Checkbox>
+    </ActionMenu>
+  );
+};
 
 export const Variants = () => (
   <>

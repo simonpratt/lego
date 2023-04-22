@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
+import { Checkmark } from '../common/Checkmark.component';
 
 interface OuterLabelProps {
   checked: boolean;
@@ -33,33 +34,8 @@ const HiddenCheckbox = styled.input`
   width: 0;
 `;
 
-interface CheckmarkProps {
-  checked: boolean;
-  large: boolean;
-}
-
-const Checkmark = styled.div<CheckmarkProps>`
-  position: relative;
-  height: ${(props) => (props.large ? '36px' : '24px')};
-  width: ${(props) => (props.large ? '36px' : '24px')};
-  margin-right: 8px;
-  background-color: ${(props) => props.theme.colours.cardBackground};
-
-  &:after {
-    content: '';
-    position: absolute;
-    display: ${(props) => (props.checked ? 'block' : 'none')};
-
-    left: ${(props) => (props.large ? '14px' : '9px')};
-    top: ${(props) => (props.large ? '7px' : '5px')};
-    width: ${(props) => (props.large ? '7px' : '5px')};
-    height: ${(props) => (props.large ? '16px' : '10px')};
-    border: solid ${(props) => props.theme.colours.defaultFont};
-    border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
+const Spacer = styled.div`
+  width: 8px;
 `;
 
 interface StrikethroughProps {
@@ -101,6 +77,7 @@ const ChecklistItem = ({ label, value, onChange, large }: ChecklistItemProps) =>
       data-cy={value ? 'checklist-item-checked' : 'checklist-item'}
     >
       <Checkmark checked={value} large={large} />
+      <Spacer />
       {label}
       <HiddenCheckbox type='checkbox' checked={value} onChange={handleChange} />
       {value && <Strikethrough large={large}>{label}</Strikethrough>}

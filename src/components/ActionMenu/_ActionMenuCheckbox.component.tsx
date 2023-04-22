@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
-import ActionMenuContext from './ActionMenu.context';
+import { Checkmark } from '../common/Checkmark.component';
 
-const ActionMenuItemOuter = styled(motion.div)`
+const ActionMenuCheckboxOuter = styled(motion.div)`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 42px;
 
   padding: 0px 16px;
@@ -17,32 +18,33 @@ const ActionMenuItemOuter = styled(motion.div)`
   font-weight: ${(props) => props.theme.fonts.default.weight};
 `;
 
-export interface ActionMenuItemProps {
+const Spacer = styled.div`
+  width: 16px;
+`;
+
+export interface ActionMenuCheckboxProps {
   children: React.ReactNode;
+  checked: boolean;
   onClick: () => void;
 }
 
-const ActionMenuItem = ({ children, onClick }: ActionMenuItemProps) => {
+const ActionMenuCheckbox = ({ children, checked, onClick }: ActionMenuCheckboxProps) => {
   const theme = useTheme();
-  const { closeActionMenu } = useContext(ActionMenuContext);
-
-  const handleClick = () => {
-    onClick();
-    closeActionMenu();
-  };
 
   return (
     <>
-      <ActionMenuItemOuter
+      <ActionMenuCheckboxOuter
         style={{ backgroundColor: theme.colours.tertiary.main }}
         whileHover={{ backgroundColor: theme.colours.tertiary.hover }}
-        onClick={handleClick}
+        onClick={onClick}
         data-cy='action-menu-item'
       >
         {children}
-      </ActionMenuItemOuter>
+        <Spacer />
+        <Checkmark checked={checked} large={false} />
+      </ActionMenuCheckboxOuter>
     </>
   );
 };
 
-export default ActionMenuItem;
+export default ActionMenuCheckbox;
