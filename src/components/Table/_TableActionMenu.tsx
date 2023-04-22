@@ -8,7 +8,15 @@ export interface TableActionMenuProps {
 }
 
 const TableActionMenu = ({ items, 'data-cy': dataCy }: TableActionMenuProps) => {
-  return <ActionMenu variant='tertiary' items={items} data-cy={dataCy}></ActionMenu>;
+  return (
+    <ActionMenu variant='tertiary' data-cy={dataCy}>
+      {items.map((item) => (
+        <ActionMenu.Item key={item.label} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
+  );
 };
 
 export default TableActionMenu;
