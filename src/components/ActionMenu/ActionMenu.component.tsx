@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { ColourVariant } from '../../theme/theme.types';
@@ -11,18 +12,27 @@ import ActionMenuCheckbox from './_ActionMenuCheckbox.component';
 import ActionMenuItem from './_ActionMenuItem.component';
 import ActionMenuPanel from './_ActionMenuPanel.component';
 
+const IconWrapper = styled.div`
+  width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 18px;
 `;
 export interface ActionMenuProps {
   'children': React.ReactNode;
   'variant'?: ColourVariant;
+  'icon'?: IconProp;
   'data-cy'?: string;
 }
 
 const offsetFn = (): [number, number] => [70, 4];
 
-const ActionMenu = ({ children, variant, 'data-cy': dataCy }: ActionMenuProps) => {
+const ActionMenu = ({ children, variant, icon, 'data-cy': dataCy }: ActionMenuProps) => {
   const [shown, setShown] = useState(false);
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement>();
   const [popperElement, setPopperElement] = useState<HTMLDivElement>();
@@ -62,7 +72,9 @@ const ActionMenu = ({ children, variant, 'data-cy': dataCy }: ActionMenuProps) =
         ref={setReferenceElement}
         onClick={() => setShown(true)}
       >
-        <StyledIcon icon={faEllipsisV} />
+        <IconWrapper>
+          <StyledIcon icon={icon || faEllipsisV} />
+        </IconWrapper>
       </Button>
 
       {shown &&

@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { ActionMenu } from '../..';
 
 /* eslint-disable @typescript-eslint/no-empty-function */
@@ -52,7 +53,7 @@ export const Complex = () => {
   const [checked2, setChecked2] = useState(false);
 
   return (
-    <ActionMenu variant='tertiary'>
+    <ActionMenu variant='tertiary' icon={faCog}>
       <ActionMenu.Item onClick={() => {}}>An Item</ActionMenu.Item>
       <ActionMenu.Checkbox checked={checked} onClick={() => setChecked(!checked)}>
         A Checkbox

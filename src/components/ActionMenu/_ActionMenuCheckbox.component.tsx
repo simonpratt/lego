@@ -23,12 +23,13 @@ const Spacer = styled.div`
 `;
 
 export interface ActionMenuCheckboxProps {
-  children: React.ReactNode;
-  checked: boolean;
-  onClick: () => void;
+  'children': React.ReactNode;
+  'checked': boolean;
+  'onClick': () => void;
+  'data-cy'?: string;
 }
 
-const ActionMenuCheckbox = ({ children, checked, onClick }: ActionMenuCheckboxProps) => {
+const ActionMenuCheckbox = ({ children, checked, onClick, 'data-cy': dataCy }: ActionMenuCheckboxProps) => {
   const theme = useTheme();
 
   return (
@@ -37,7 +38,7 @@ const ActionMenuCheckbox = ({ children, checked, onClick }: ActionMenuCheckboxPr
         style={{ backgroundColor: theme.colours.tertiary.main }}
         whileHover={{ backgroundColor: theme.colours.tertiary.hover }}
         onClick={onClick}
-        data-cy='action-menu-item'
+        data-cy={dataCy || 'action-menu-checkbox'}
       >
         {children}
         <Spacer />
