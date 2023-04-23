@@ -14,6 +14,15 @@ export const Standard = () => (
   </>
 );
 
+export const Sizes = () => (
+  <>
+    <Button size='sm'>Here is a small button!</Button>
+    <br />
+    <br />
+    <Button size='md'>Here is a medium/default button!</Button>
+  </>
+);
+
 export const Loading = () => (
   <>
     <Button loading>Here is a primary button!</Button>
@@ -21,6 +30,11 @@ export const Loading = () => (
     <br />
     <Button variant='secondary' loading>
       Here is a secondary button!
+    </Button>
+    <br />
+    <br />
+    <Button size='sm' loading>
+      Here is a small button!
     </Button>
   </>
 );
