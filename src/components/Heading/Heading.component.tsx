@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import DividerHeading from './_DividerHeading.component';
 import FormHeading from './_FormHeading.component';
 import SubHeading from './_SubHeading.component';
 
@@ -21,5 +22,6 @@ const Heading = ({ children }: HeadingProps) => <HeadingContainer>{children}</He
 
 Heading.SubHeading = SubHeading;
 Heading.FormHeading = FormHeading;
+Heading.DividerHeading = DividerHeading;
 
 export default Heading;
