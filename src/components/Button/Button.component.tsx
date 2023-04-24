@@ -9,7 +9,7 @@ import ButtonContext, { ButtonContextProps } from './Button.context';
 export type ButtonSize = 'sm' | 'md';
 
 export interface ButtonProps {
-  'children': React.ReactChild;
+  'children'?: React.ReactNode;
   'loading'?: boolean;
   'variant'?: ColourVariant;
   'size'?: ButtonSize;
@@ -165,7 +165,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
         </SpinnerContainer>
       ) : (
         <ButtonInner>
-          <ButtonTextContainer size={size}>{children}</ButtonTextContainer>
+          {children && <ButtonTextContainer size={size}>{children}</ButtonTextContainer>}
           {icon && (
             <IconOuter variant={variant} size={size}>
               <FontAwesomeIcon icon={icon} />

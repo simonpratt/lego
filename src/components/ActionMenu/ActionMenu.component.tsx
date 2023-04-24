@@ -1,10 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
 import { ColourVariant } from '../../theme/theme.types';
 import Button, { ButtonSize } from '../Button/Button.component';
 import ActionMenuContext from './ActionMenu.context';
@@ -12,24 +10,6 @@ import ActionMenuCheckbox from './_ActionMenuCheckbox.component';
 import ActionMenuItem from './_ActionMenuItem.component';
 import ActionMenuPanel from './_ActionMenuPanel.component';
 
-const IconWrapper = styled.div`
-  width: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const TextIconWrapper = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const StyledIcon = styled(FontAwesomeIcon)`
-  font-size: 18px;
-`;
 export interface ActionMenuProps {
   'children': React.ReactNode;
   'variant'?: ColourVariant;
@@ -78,21 +58,12 @@ const ActionMenu = ({ children, variant, size, icon, text, 'data-cy': dataCy }: 
       <Button
         variant={variant}
         size={size}
+        icon={icon || faEllipsisV}
         data-cy={dataCy || 'action-menu-button'}
         ref={setReferenceElement}
         onClick={() => setShown(true)}
       >
-        {text ? (
-          <TextIconWrapper>
-            {text}
-            |
-            <StyledIcon icon={icon || faEllipsisV} />
-          </TextIconWrapper>
-        ) : (
-          <IconWrapper>
-            <StyledIcon icon={icon || faEllipsisV} />
-          </IconWrapper>
-        )}
+        {text}
       </Button>
 
       {shown &&
