@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import styled, { keyframes } from 'styled-components';
 import getThemeVariantColours from '../../theme/helpers/getThemeVariantColours';
 import { ColourVariant } from '../../theme/theme.types';
@@ -12,6 +14,7 @@ export interface ButtonProps {
   'variant'?: ColourVariant;
   'size'?: ButtonSize;
   'type'?: 'submit' | 'button';
+  'icon'?: IconProp;
   'onClick'?: () => void;
   'data-cy'?: string;
 }
@@ -30,14 +33,43 @@ const getButtonHeightPx = (size: ButtonSize) => {
   }
 };
 
+const getButtonPaddingPx = (size: ButtonSize) => {
+  switch (size) {
+    case 'sm':
+      return '0 12px';
+    case 'md':
+      return '0 24px';
+  }
+};
+
+const getIconContainerSizePx = (size: ButtonSize) => {
+  switch (size) {
+    case 'sm':
+      return { width: '32px', height: '32px' };
+    case 'md':
+      return { width: '48px', height: '48px' };
+  }
+};
+
+const IconOuter = styled.span<InternalButtonProps>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
+  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darker};
+
+  height: ${(props) => getIconContainerSizePx(props.size).height};
+  width: ${(props) => getIconContainerSizePx(props.size).width};
+`;
+
 const StyledButton = styled.button<InternalButtonProps>`
   outline: none;
   box-shadow: none;
   border: none;
 
   cursor: pointer;
-
-  padding: 0 24px;
+  padding: 0;
 
   font-size: ${(props) => props.theme.fonts.default.size};
   font-family: ${(props) => props.theme.fonts.default.family};
@@ -55,12 +87,29 @@ const StyledButton = styled.button<InternalButtonProps>`
 
   &:hover {
     background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).hover};
+
+    ${IconOuter} {
+      background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darkerHover};
+    }
   }
+`;
+
+const ButtonInner = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ButtonTextContainer = styled.span<{ size: ButtonSize }>`
+  padding: ${(props) => getButtonPaddingPx(props.size)};
 `;
 
 const spinAnimation = keyframes`
  0% { transform: rotate(0deg); }
  100% { transform: rotate(360deg); }
+`;
+
+const SpinnerContainer = styled.span`
+  padding: 0 24px;
 `;
 
 const ButtonSpinner = styled.div<InternalButtonProps>`
@@ -85,7 +134,16 @@ const ButtonSpinner = styled.div<InternalButtonProps>`
 `;
 
 const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
-  const { children, loading, variant = 'primary', size = 'md', type = 'button', onClick, 'data-cy': dataCy } = props;
+  const {
+    children,
+    loading,
+    variant = 'primary',
+    size = 'md',
+    type = 'button',
+    icon,
+    onClick,
+    'data-cy': dataCy,
+  } = props;
   const { width, height, alignSelf, marginTop } = useContext(ButtonContext);
 
   return (
@@ -101,7 +159,20 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
       onClick={onClick}
       data-cy={dataCy || 'button'}
     >
-      {loading ? <ButtonSpinner data-cy='button-loading-spinner' variant={variant} size={size} /> : children}
+      {loading ? (
+        <SpinnerContainer>
+          <ButtonSpinner data-cy='button-loading-spinner' variant={variant} size={size} />
+        </SpinnerContainer>
+      ) : (
+        <ButtonInner>
+          <ButtonTextContainer size={size}>{children}</ButtonTextContainer>
+          {icon && (
+            <IconOuter variant={variant} size={size}>
+              <FontAwesomeIcon icon={icon} />
+            </IconOuter>
+          )}
+        </ButtonInner>
+      )}
     </StyledButton>
   );
 });

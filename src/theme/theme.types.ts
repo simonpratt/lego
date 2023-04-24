@@ -4,6 +4,8 @@ export type Status = 'info' | 'success' | 'warn' | 'danger';
 export interface IPalette {
   main: string;
   hover: string;
+  darker: string;
+  darkerHover: string;
   contrastText: string;
 }
 

@@ -6,7 +6,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import { ColourVariant } from '../../theme/theme.types';
-import Button from '../Button/Button.component';
+import Button, { ButtonSize } from '../Button/Button.component';
 import ActionMenuContext from './ActionMenu.context';
 import ActionMenuCheckbox from './_ActionMenuCheckbox.component';
 import ActionMenuItem from './_ActionMenuItem.component';
@@ -20,19 +20,28 @@ const IconWrapper = styled.div`
   justify-content: center;
 `;
 
+const TextIconWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const StyledIcon = styled(FontAwesomeIcon)`
   font-size: 18px;
 `;
 export interface ActionMenuProps {
   'children': React.ReactNode;
   'variant'?: ColourVariant;
+  'size'?: ButtonSize;
   'icon'?: IconProp;
+  'text'?: string;
   'data-cy'?: string;
 }
 
 const offsetFn = (): [number, number] => [70, 4];
 
-const ActionMenu = ({ children, variant, icon, 'data-cy': dataCy }: ActionMenuProps) => {
+const ActionMenu = ({ children, variant, size, icon, text, 'data-cy': dataCy }: ActionMenuProps) => {
   const [shown, setShown] = useState(false);
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement>();
   const [popperElement, setPopperElement] = useState<HTMLDivElement>();
@@ -68,13 +77,22 @@ const ActionMenu = ({ children, variant, icon, 'data-cy': dataCy }: ActionMenuPr
     <>
       <Button
         variant={variant}
+        size={size}
         data-cy={dataCy || 'action-menu-button'}
         ref={setReferenceElement}
         onClick={() => setShown(true)}
       >
-        <IconWrapper>
-          <StyledIcon icon={icon || faEllipsisV} />
-        </IconWrapper>
+        {text ? (
+          <TextIconWrapper>
+            {text}
+            |
+            <StyledIcon icon={icon || faEllipsisV} />
+          </TextIconWrapper>
+        ) : (
+          <IconWrapper>
+            <StyledIcon icon={icon || faEllipsisV} />
+          </IconWrapper>
+        )}
       </Button>
 
       {shown &&

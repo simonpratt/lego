@@ -39,13 +39,33 @@ const items = [
 ];
 
 export const Standard = () => (
-  <ActionMenu variant='tertiary'>
-    {items.map((item, index) => (
-      <ActionMenu.Item key={index} onClick={item.onClick}>
-        {item.label}
-      </ActionMenu.Item>
-    ))}
-  </ActionMenu>
+  <>
+    <ActionMenu variant='tertiary'>
+      {items.map((item, index) => (
+        <ActionMenu.Item key={index} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
+    <br />
+    <br />
+    <ActionMenu size='sm' variant='tertiary'>
+      {items.map((item, index) => (
+        <ActionMenu.Item key={index} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
+    <br />
+    <br />
+    <ActionMenu size='sm' text='Settings' icon={faCog} variant='tertiary'>
+      {items.map((item, index) => (
+        <ActionMenu.Item key={index} onClick={item.onClick}>
+          {item.label}
+        </ActionMenu.Item>
+      ))}
+    </ActionMenu>
+  </>
 );
 
 export const Complex = () => {

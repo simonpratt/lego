@@ -4,23 +4,11 @@ import { ColourVariant } from '../theme.types';
 export default (variant: ColourVariant, theme: DefaultTheme) => {
   switch (variant) {
     case 'tertiary':
-      return {
-        main: theme.colours.tertiary.main,
-        hover: theme.colours.tertiary.hover,
-        contrastText: theme.colours.tertiary.contrastText,
-      };
+      return theme.colours.tertiary;
     case 'secondary':
-      return {
-        main: theme.colours.secondary.main,
-        hover: theme.colours.secondary.hover,
-        contrastText: theme.colours.secondary.contrastText,
-      };
+      return theme.colours.secondary;
     case 'primary':
     default:
-      return {
-        main: theme.colours.primary.main,
-        hover: theme.colours.primary.hover,
-        contrastText: theme.colours.primary.contrastText,
-      };
+      return theme.colours.primary;
   }
 };

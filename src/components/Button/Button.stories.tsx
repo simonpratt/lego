@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { Button } from '../..';
 
 export const Standard = () => (
@@ -20,6 +21,31 @@ export const Sizes = () => (
     <br />
     <br />
     <Button size='md'>Here is a medium/default button!</Button>
+  </>
+);
+
+export const Icons = () => (
+  <>
+    <Button size='sm' icon={faCog}>
+      Small icon button
+    </Button>
+    <Button size='sm' variant='secondary' icon={faCog}>
+      Small icon button
+    </Button>
+    <Button size='sm' variant='tertiary' icon={faCog}>
+      Small icon button
+    </Button>
+    <br />
+    <br />
+    <Button size='md' icon={faCog}>
+      Medium icon button
+    </Button>
+    <Button size='md' variant='secondary' icon={faCog}>
+      Medium icon button
+    </Button>
+    <Button size='md' variant='tertiary' icon={faCog}>
+      Medium icon button
+    </Button>
   </>
 );
 

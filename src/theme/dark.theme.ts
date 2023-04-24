@@ -1,4 +1,9 @@
+import tinycolour from 'tinycolor2';
 import { LegoTheme } from './theme.types';
+
+const primaryBase = '#94b8e3';
+const secondaryBase = '#424448';
+const tertiaryBase = '#5c5f67';
 
 const darkTheme: LegoTheme = {
   name: 'dark',
@@ -7,18 +12,24 @@ const darkTheme: LegoTheme = {
     overlayBackground: '#a4caf9',
 
     primary: {
-      main: '#94b8e3', // #61a4f5
-      hover: '#83b7f7',
+      main: primaryBase, // #61a4f5
+      hover: tinycolour(primaryBase).lighten(2).toString(),
+      darker: tinycolour(primaryBase).darken(10).toString(),
+      darkerHover: tinycolour(primaryBase).darken(10).lighten(2).toString(),
       contrastText: '#191919',
     },
     secondary: {
-      main: '#424448',
-      hover: '#4b4e54',
+      main: secondaryBase,
+      hover: tinycolour(secondaryBase).lighten(5).toString(),
+      darker: secondaryBase,
+      darkerHover: tinycolour(secondaryBase).lighten(5).toString(),
       contrastText: '#e2e2e2',
     },
     tertiary: {
-      main: '#4b4e54',
-      hover: '#575b63',
+      main: tertiaryBase,
+      hover: tinycolour(tertiaryBase).lighten(5).toString(),
+      darker: tinycolour(tertiaryBase).darken(5).toString(),
+      darkerHover: tinycolour(tertiaryBase).darken(5).lighten(5).toString(),
       contrastText: '#e2e2e2',
     },
 

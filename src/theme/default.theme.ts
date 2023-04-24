@@ -10,16 +10,22 @@ const defaultTheme: LegoTheme = {
     primary: {
       main: colours.grey70,
       hover: 'red',
+      darker: colours.grey70,
+      darkerHover: colours.grey70,
       contrastText: colours.grey10,
     },
     secondary: {
       main: colours.yellow,
       hover: 'red',
+      darker: colours.yellow,
+      darkerHover: colours.yellow,
       contrastText: colours.grey90,
     },
     tertiary: {
       main: colours.yellow,
       hover: 'red',
+      darker: colours.yellow,
+      darkerHover: colours.yellow,
       contrastText: colours.grey90,
     },
 
