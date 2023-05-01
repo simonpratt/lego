@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react/types-6-0';
 import React, { useEffect, useState } from 'react';
 import { faCalendarAlt, faCogs, faHamburger } from '@fortawesome/free-solid-svg-icons';
-import { Button, CenteredLayout, Heading, menuHelpers, MinimalMenu, PaddedLayout, Spacer, Text } from '../..';
+import { Button, CenteredLayout, Heading, menuHelpers, MinimalMenu, PaddedLayout, Spacer } from '../..';
 import LoremIpsum from '../../storyHelpers/LoremIpsum';
 
 export const Standard = () => {
@@ -27,6 +27,7 @@ export const Standard = () => {
         />
       </MinimalMenu>
       <MinimalMenu.Page>
+        <MinimalMenu.Header text='App 01' rightContent={<Button size='sm'>Save</Button>} />
         <PaddedLayout>
           <LoremIpsum />
         </PaddedLayout>
@@ -68,6 +69,11 @@ export const ShowAndHideMenu = () => {
         </MinimalMenu>
       )}
       <MinimalMenu.Page hiddenMenu={menuHidden}>
+        <PaddedLayout>
+          <Heading.SubHeading>
+            You should be able to hide the menu without loosing state on the page...
+          </Heading.SubHeading>
+        </PaddedLayout>
         <CenteredLayout>
           <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
             <Spacer size='4x' />
