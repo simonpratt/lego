@@ -59,7 +59,7 @@ const IconOuter = styled.span<InternalButtonProps>`
   color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
   background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darker};
 
-  height: ${(props) => getIconContainerSizePx(props.size).height};
+  height: ${(props) => props.height || getIconContainerSizePx(props.size).height};
   width: ${(props) => getIconContainerSizePx(props.size).width};
 `;
 
@@ -167,7 +167,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
         <ButtonInner>
           {children && <ButtonTextContainer size={size}>{children}</ButtonTextContainer>}
           {icon && (
-            <IconOuter variant={variant} size={size}>
+            <IconOuter variant={variant} size={size} height={height}>
               <FontAwesomeIcon icon={icon} />
             </IconOuter>
           )}
