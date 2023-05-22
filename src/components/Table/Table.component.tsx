@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ButtonContext from '../Button/Button.context';
 import TableContext, { TableVariant } from './_Table.context';
-import TableAction from './_TableAction';
+import TableAction, { TableActionProps } from './_TableAction';
 import TableActionContainer from './_TableActionContainer';
 import TableActionMenu from './_TableActionMenu';
 import TableRow from './_TableRow.component';
@@ -22,6 +22,11 @@ const StyledTable = styled.table`
   width: 100%;
 `;
 
+const TableHiddenActionSpan = styled.span`
+  visibility: none;
+  opacity: 0;
+`;
+
 const TableCell = styled.td<TableCellProps>`
   font-family: ${(props) => props.theme.fonts.default.family};
   font-size: ${(props) => props.theme.fonts.default.size};
@@ -31,7 +36,20 @@ const TableCell = styled.td<TableCellProps>`
 
   padding: ${(props) => (props.variant === 'tight' ? '0' : '0 16px')};
   height: 36px;
+
+  &:hover {
+    ${TableHiddenActionSpan} {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 `;
+
+const TableHiddenAction = (props: TableActionProps) => (
+  <TableHiddenActionSpan>
+    <TableAction {...props} />
+  </TableHiddenActionSpan>
+);
 
 const Table = ({ children, variant = 'regular' }: TableProps) => {
   return (
@@ -50,5 +68,6 @@ Table.Cell = TableCell;
 Table.ActionContainer = TableActionContainer;
 Table.Action = TableAction;
 Table.ActionMenu = TableActionMenu;
+Table.HiddenAction = TableHiddenAction;
 
 export default Table;

@@ -22,6 +22,7 @@ export interface ButtonProps {
 interface InternalButtonProps extends ButtonContextProps {
   variant: ColourVariant;
   size: ButtonSize;
+  iconOnly: boolean;
 }
 
 const getButtonHeightPx = (size: ButtonSize) => {
@@ -57,7 +58,10 @@ const IconOuter = styled.span<InternalButtonProps>`
   justify-content: center;
 
   color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
-  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darker};
+  background-color: ${(props) =>
+    props.iconOnly
+      ? getThemeVariantColours(props.variant, props.theme).main
+      : getThemeVariantColours(props.variant, props.theme).darker};
 
   height: ${(props) => props.height || getIconContainerSizePx(props.size).height};
   width: ${(props) => getIconContainerSizePx(props.size).width};
@@ -89,7 +93,10 @@ const StyledButton = styled.button<InternalButtonProps>`
     background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).hover};
 
     ${IconOuter} {
-      background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darkerHover};
+      background-color: ${(props) =>
+        props.iconOnly
+          ? getThemeVariantColours(props.variant, props.theme).hover
+          : getThemeVariantColours(props.variant, props.theme).darkerHover};
     }
   }
 `;
@@ -158,16 +165,17 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
       type={type}
       onClick={onClick}
       data-cy={dataCy || 'button'}
+      iconOnly={!children}
     >
       {loading ? (
         <SpinnerContainer>
-          <ButtonSpinner data-cy='button-loading-spinner' variant={variant} size={size} />
+          <ButtonSpinner data-cy='button-loading-spinner' variant={variant} size={size} iconOnly={!children} />
         </SpinnerContainer>
       ) : (
         <ButtonInner>
           {children && <ButtonTextContainer size={size}>{children}</ButtonTextContainer>}
           {icon && (
-            <IconOuter variant={variant} size={size} height={height}>
+            <IconOuter variant={variant} size={size} height={height} iconOnly={!children}>
               <FontAwesomeIcon icon={icon} />
             </IconOuter>
           )}

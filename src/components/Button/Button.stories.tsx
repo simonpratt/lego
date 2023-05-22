@@ -46,6 +46,11 @@ export const Icons = () => (
     <Button size='md' variant='tertiary' icon={faCog}>
       Medium icon button
     </Button>
+    <br />
+    <br />
+    <Button size='md' icon={faCog}></Button>
+    <Button size='md' variant='secondary' icon={faCog}></Button>
+    <Button size='md' variant='tertiary' icon={faCog}></Button>
   </>
 );
 

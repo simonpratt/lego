@@ -1,6 +1,18 @@
 import { Meta } from '@storybook/react/types-6-0';
 import React from 'react';
+import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 import { Card, ProfileImage, Table } from '../..';
+
+const HorizontalLayout = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const HSpacer = styled.span`
+  display: inline-block;
+  width: 4px;
+`;
 
 /* eslint-disable @typescript-eslint/no-empty-function */
 
@@ -92,7 +104,13 @@ export const WithActions = () => (
     {fakeData.map((data) => (
       <Table.Row key={data.name}>
         <Table.Cell>{data.count}</Table.Cell>
-        <Table.Cell>{data.name}</Table.Cell>
+        <Table.Cell>
+          <HorizontalLayout>
+            <Table.HiddenAction icon={faFilter} variant='secondary' onClick={() => {}} />
+            <HSpacer />
+            {data.name}
+          </HorizontalLayout>
+        </Table.Cell>
         <Table.Cell>
           <Table.ActionContainer>
             <Table.Action onClick={() => {}} text='filter' />
