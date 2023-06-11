@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export type SpacerSize = '0.5x' | '1x' | '2x' | '4x' | '6x';
+export type SpacerSize = '0.5x' | '1x' | '2x' | '4x' | '6x' | '8x';
 
 export interface SpacerProps {
   size: SpacerSize;
@@ -19,6 +19,8 @@ const getSpacing = (size: SpacerSize) => {
       return '32px';
     case '6x':
       return '48px';
+    case '8x':
+      return '64px';
     default:
       return 0;
   }
