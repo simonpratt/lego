@@ -6,6 +6,10 @@ export const Standard = () => {
   return <Loader />;
 };
 
+export const ForPage = () => {
+  return <Loader variant='page-loader' />;
+};
+
 export default {
   title: 'Components/Loader',
   component: Loader,

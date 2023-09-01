@@ -1,6 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import styled from 'styled-components';
 import colours from '../../colours/colours';
+
+const PageLoaderContainer = styled.div`
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+`;
 
 const loadingContainer = {
   width: '40px',
@@ -46,20 +54,34 @@ const loadingCircleTransition = {
   ease: 'easeInOut',
 } as any; // Framer motion isn't accepting 'repeatType' but animation breaks without it
 
-const Loader = () => {
-  return (
-    <motion.div
-      style={loadingContainer}
-      variants={loadingContainerVariants}
-      initial='start'
-      animate='end'
-      data-cy='loader'
-    >
-      <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-      <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-      <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-    </motion.div>
-  );
+export interface LoaderProps {
+  variant?: 'page-loader' | 'default';
+}
+
+const BaseLoader = () => (
+  <motion.div
+    style={loadingContainer}
+    variants={loadingContainerVariants}
+    initial='start'
+    animate='end'
+    data-cy='loader'
+  >
+    <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+    <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+    <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+  </motion.div>
+);
+
+const Loader = ({ variant = 'default' }: LoaderProps) => {
+  if (variant === 'page-loader') {
+    return (
+      <PageLoaderContainer>
+        <BaseLoader />
+      </PageLoaderContainer>
+    );
+  }
+
+  return <BaseLoader />;
 };
 
 export default Loader;
