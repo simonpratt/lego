@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-use-before-define
 import React from 'react';
 import FormStateContext from './FormState.context';
+import NestedFormArray from './_NestedFormArray';
 
 interface FormProps {
   value: Record<string, any>;
@@ -38,5 +39,7 @@ const Form = ({ value, errors = {}, onChange, onSubmit, children }: FormProps) =
     </FormStateContext.Provider>
   );
 };
+
+Form.NestedFormArray = NestedFormArray;
 
 export default Form;
