@@ -14,8 +14,8 @@ type UnknownSubfield = Record<string, any>;
 const NestedFormArray = ({ name, index, children }: NestedFormArrayProps) => {
   const { value, error, onChange } = useFormNode<UnknownSubfield[], UnknownSubfield[]>(name);
 
-  const safeValue = Array.from(Array(index + 1)).map((_, i) => value?.[i] || {});
-  const safeError = Array.from(Array(index + 1)).map((_, i) => error?.[i] || {});
+  const safeValue = Array.from(Array(Math.max(index + 1, value?.length || 0))).map((_, i) => value?.[i] || {});
+  const safeError = Array.from(Array(Math.max(index + 1, value?.length || 0))).map((_, i) => error?.[i] || {});
 
   const nestedValue = safeValue[index];
   const nestedErrors = safeError[index];
