@@ -15,8 +15,15 @@
   "author": "Simon Pratt <19920260+simonpratt@users.noreply.github.com>",
   "license": "ISC",
   "files": [
-    "build"
+    "build",
+    "README.md",
+    "LICENSE"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonpratt/lego.git"
+  },
+  "homepage": "https://dtdot-lego.pages.dev/",
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.7",
@@ -56,7 +63,7 @@
   "peerDependencies": {
     "react": "16 - 18",
     "react-dom": "16 - 18",
-    "styled-components": "5.x"
+    "styled-components": ">= 5"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
