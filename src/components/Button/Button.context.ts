@@ -5,6 +5,7 @@ export interface ButtonContextProps {
   height?: string;
   alignSelf?: string;
   marginTop?: string;
+  noBackground?: boolean;
 }
 
 const ButtonContext = createContext<ButtonContextProps>({
@@ -12,6 +13,7 @@ const ButtonContext = createContext<ButtonContextProps>({
   height: undefined,
   alignSelf: undefined,
   marginTop: undefined,
+  noBackground: undefined,
 });
 
 export default ButtonContext;

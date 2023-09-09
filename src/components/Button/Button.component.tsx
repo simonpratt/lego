@@ -23,6 +23,7 @@ interface InternalButtonProps extends ButtonContextProps {
   variant: ColourVariant;
   size: ButtonSize;
   iconOnly: boolean;
+  noBackground?: boolean;
 }
 
 const getButtonHeightPx = (size: ButtonSize) => {
@@ -59,7 +60,9 @@ const IconOuter = styled.span<InternalButtonProps>`
 
   color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
   background-color: ${(props) =>
-    props.iconOnly
+    props.noBackground
+      ? 'transparent'
+      : props.iconOnly
       ? getThemeVariantColours(props.variant, props.theme).main
       : getThemeVariantColours(props.variant, props.theme).darker};
 
@@ -78,8 +81,10 @@ const StyledButton = styled.button<InternalButtonProps>`
   font-size: ${(props) => props.theme.fonts.default.size};
   font-family: ${(props) => props.theme.fonts.default.family};
 
-  color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
-  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).main};
+  color: ${(props) =>
+    getThemeVariantColours(props.noBackground ? 'secondary' : props.variant, props.theme).contrastText};
+  background-color: ${(props) =>
+    props.noBackground ? 'transparent' : getThemeVariantColours(props.variant, props.theme).main};
 
   border-radius: 2px;
 
@@ -90,7 +95,8 @@ const StyledButton = styled.button<InternalButtonProps>`
   margin-top: ${(props) => props.marginTop};
 
   &:hover {
-    background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).hover};
+    background-color: ${(props) =>
+      props.noBackground ? 'transparent' : getThemeVariantColours(props.variant, props.theme).hover};
 
     ${IconOuter} {
       background-color: ${(props) =>
@@ -152,7 +158,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
     onClick,
     'data-cy': dataCy,
   } = props;
-  const { width, height, alignSelf, marginTop } = useContext(ButtonContext);
+  const { width, height, alignSelf, marginTop, noBackground } = useContext(ButtonContext);
 
   return (
     <StyledButton
@@ -161,6 +167,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
       height={height}
       alignSelf={alignSelf}
       marginTop={marginTop}
+      noBackground={noBackground}
       variant={variant}
       size={size}
       type={type}
@@ -176,7 +183,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
         <ButtonInner>
           {children && <ButtonTextContainer size={size}>{children}</ButtonTextContainer>}
           {icon && (
-            <IconOuter variant={variant} size={size} height={height} iconOnly={!children}>
+            <IconOuter noBackground={noBackground} variant={variant} size={size} height={height} iconOnly={!children}>
               <FontAwesomeIcon icon={icon} />
             </IconOuter>
           )}

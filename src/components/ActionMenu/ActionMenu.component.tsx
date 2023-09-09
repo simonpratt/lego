@@ -68,7 +68,7 @@ const ActionMenu = ({ children, variant, size, icon, text, 'data-cy': dataCy }: 
 
       {shown &&
         ReactDOM.createPortal(
-          <div ref={setPopperElement as any} style={styles.popper} {...attributes.popper}>
+          <div ref={setPopperElement as any} style={{ ...styles.popper, zIndex: 999 }} {...attributes.popper}>
             <ActionMenuContext.Provider value={{ closeActionMenu: () => setShown(false) }}>
               <ActionMenuPanel>{children}</ActionMenuPanel>
             </ActionMenuContext.Provider>

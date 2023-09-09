@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Text } from '../..';
+import ButtonContext from '../Button/Button.context';
 
 const HeaderRow = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const HeaderRow = styled.div`
   padding: 8px 16px;
   margin-bottom: 8px;
 
-  border-bottom: thin solid ${(props) => props.theme.colours.defaultBorder};
+  background-color: ${(props) => props.theme.colours.cardBackgroundSecondary};
 `;
 
 const LeftContainer = styled.div`
@@ -65,7 +66,13 @@ const CardHeader = ({ image, heading, subHeading, meta }: CardHeaderProps) => {
           </div>
         </TextContainer>
       </LeftContainer>
-      {meta && <MetaContainer>{meta}</MetaContainer>}
+      {meta && (
+        <MetaContainer>
+          <ButtonContext.Provider value={{ height: '24px', width: '24px', noBackground: true }}>
+            {meta}
+          </ButtonContext.Provider>
+        </MetaContainer>
+      )}
     </HeaderRow>
   );
 };

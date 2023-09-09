@@ -2,7 +2,40 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Card, CardGroup, LiveInput, Badge } from '../..';
+import { Card, CardGroup, LiveInput, Badge, ActionMenu } from '../..';
+
+const actionMenuItems = [
+  {
+    label: 'Angry Lama',
+    onClick: () => {
+      console.log('Item 1 clicked');
+    },
+  },
+  {
+    label: 'Frightened Frog',
+    onClick: () => {
+      console.log('Item 2 clicked');
+    },
+  },
+  {
+    label: 'Hungry Bear',
+    onClick: () => {
+      console.log('Item 3 clicked');
+    },
+  },
+  {
+    label: 'Crazy Koala',
+    onClick: () => {
+      console.log('Item 4 clicked');
+    },
+  },
+  {
+    label: 'Dizzy Snake',
+    onClick: () => {
+      console.log('Item 5 clicked');
+    },
+  },
+];
 
 export const Standard = () => (
   <CardGroup>
@@ -76,6 +109,27 @@ export const CardHeader = () => (
         heading='Mario & Luigi'
         subHeading='mario@gmail.com'
         meta={<Badge variant='success'>approved</Badge>}
+      />
+      <Card.Content>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua.
+      </Card.Content>
+      <Card.Content>
+        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </Card.Content>
+    </Card>
+    <Card size='sm'>
+      <Card.Header
+        heading='Mario & Luigi'
+        meta={
+          <ActionMenu variant='tertiary'>
+            {actionMenuItems.map((item, index) => (
+              <ActionMenu.Item key={index} onClick={item.onClick}>
+                {item.label}
+              </ActionMenu.Item>
+            ))}
+          </ActionMenu>
+        }
       />
       <Card.Content>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
