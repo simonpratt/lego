@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import { usePopper } from 'react-popper';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
@@ -44,7 +46,7 @@ const ValueText = styled.div`
 
 const OptionsContainer = styled.div`
   width: 100%;
-  position: absolute;
+  /* position: absolute; */
   background-color: ${(props) => props.theme.colours.controlBackground};
   z-index: 10000;
 
@@ -80,9 +82,13 @@ export interface ISelectProps {
 const Select = (props: ISelectProps) => {
   const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+  const [referenceElement, setReferenceElement] = useState<any>();
+  const [popperElement, setPopperElement] = useState<HTMLDivElement>();
   const { label, name, description, placeholder, 'value': propsValue, 'data-cy': dataCy, options } = props;
 
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
+
+  const { styles, attributes } = usePopper(referenceElement, popperElement, { placement: 'bottom-start' });
 
   const value = getValue(propsValue, contextValue);
 
@@ -100,10 +106,27 @@ const Select = (props: ISelectProps) => {
 
   const valueLabel = value && options.find((o) => o.value === value)?.label;
 
+  const handleGlobalClick = useCallback(
+    (event: MouseEvent) => {
+      if (!popperElement?.contains(event.target as any)) {
+        setIsOpen(false);
+      }
+    },
+    [setIsOpen, popperElement],
+  );
+
+  useEffect(() => {
+    document.addEventListener('mouseup', handleGlobalClick);
+
+    return () => {
+      document.removeEventListener('mouseup', handleGlobalClick);
+    };
+  }, [handleGlobalClick, popperElement]);
+
   return (
     <div>
       {label && <ControlLabel htmlFor={name}>{label}</ControlLabel>}
-      <ControlOuter>
+      <ControlOuter ref={setReferenceElement}>
         <SelectControl data-cy={dataCy} onClick={() => setIsOpen(!isOpen)}>
           <TextContainer>
             {!value && placeholder && <PlaceholderText>{placeholder}</PlaceholderText>}
@@ -113,20 +136,28 @@ const Select = (props: ISelectProps) => {
             <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
           </IconContainer>
         </SelectControl>
-        {isOpen && (
-          <OptionsContainer>
-            {options.map((option) => (
-              <Option
-                whileHover={{ backgroundColor: theme.colours.controlBorder }}
-                transition={{ type: 'spring', duration: 0.2 }}
-                key={option.value}
-                onClick={() => selectValue(option)}
-              >
-                {option.label}
-              </Option>
-            ))}
-          </OptionsContainer>
-        )}
+        {isOpen &&
+          ReactDOM.createPortal(
+            <div
+              ref={setPopperElement as any}
+              style={{ ...styles.popper, zIndex: 999, width: referenceElement?.offsetWidth }}
+              {...attributes.popper}
+            >
+              <OptionsContainer>
+                {options.map((option) => (
+                  <Option
+                    whileHover={{ backgroundColor: theme.colours.controlBorder }}
+                    transition={{ type: 'spring', duration: 0.2 }}
+                    key={option.value}
+                    onClick={() => selectValue(option)}
+                  >
+                    {option.label}
+                  </Option>
+                ))}
+              </OptionsContainer>
+            </div>,
+            document.querySelector('body') as any,
+          )}
       </ControlOuter>
 
       {splitDescription && (
