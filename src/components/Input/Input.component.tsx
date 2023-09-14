@@ -11,7 +11,7 @@ import useFormNode, { getValue } from '../Form/useFormNode.hook';
 
 const InputContainer = styled.div`
   position: relative;
-  margin: 2px 0;
+  border-radius: 2px;
 
   background-color: ${(props) => props.theme.colours.controlBackground};
 `;

@@ -18,7 +18,7 @@ export const ControlStyles = css`
   color: ${(props) => getThemeControlColours(props.theme).font};
   background-color: ${(props) => getThemeControlColours(props.theme).background};
 
-  border: 1px solid ${(props) => getThemeControlColours(props.theme).border};
+  border: 1px solid ${(props) => getThemeControlColours(props.theme).background};
   border-radius: 2px;
 
   &:hover {

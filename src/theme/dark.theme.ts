@@ -42,9 +42,11 @@ const darkTheme: LegoTheme = {
 
     controlBackground: '#5e6167',
     controlBackgroundDisabled: '#47494d',
-    controlBorder: '#565656',
+    controlBorder: '#595b5e',
+    // controlBorder: '#565656',
     controlBorderFocus: '#4289de',
-    controlBorderHover: '#4a4949',
+    controlBorderHover: '#686c74',
+    // controlBorderHover: '#4a4949',
     controlPlaceholder: '#949494',
     controlDescriptionColour: '#cbcbcb',
 

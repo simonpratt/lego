@@ -13,6 +13,7 @@ export { default as Card } from './components/Card/Card.component';
 export { default as CardGroup } from './components/Card/CardGroup.component';
 export { default as Checklist } from './components/Checklist/Checklist.component';
 export { default as ControlGroup } from './components/ControlGroup/ControlGroup.component';
+export { default as ControlLine } from './components/ControlLine/ControlLine.component';
 export { default as FancyCheckbox } from './components/FancyCheckbox/FancyCheckbox.component';
 export { default as Form } from './components/Form/Form.component';
 export { default as Notification } from './components/Notification/Notification.component';
