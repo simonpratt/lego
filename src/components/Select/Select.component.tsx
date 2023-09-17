@@ -1,15 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useCallback, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
-import { usePopper } from 'react-popper';
+import React, { Fragment, useState } from 'react';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { motion } from 'framer-motion';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import ControlDescription from '../../shared/ControlDescription';
 import ControlLabel from '../../shared/ControlLabel';
 import { ControlStyles } from '../../shared/ControlStyles';
 import getThemeControlColours from '../../theme/helpers/getThemeControlColours';
 import useFormNode, { getValue } from '../Form/useFormNode.hook';
+import { OptionsPopper, SelectOption } from '../common/Options.component';
 
 const ControlOuter = styled.div`
   position: relative;
@@ -44,30 +42,6 @@ const ValueText = styled.div`
   color: ${(props) => getThemeControlColours(props.theme).font};
 `;
 
-const OptionsContainer = styled.div`
-  width: 100%;
-  /* position: absolute; */
-  background-color: ${(props) => props.theme.colours.controlBackground};
-  z-index: 10000;
-
-  box-shadow: ${(props) => props.theme.shadows.small};
-`;
-
-const Option = styled(motion.div)`
-  color: ${(props) => getThemeControlColours(props.theme).font};
-  background-color: ${(props) => props.theme.colours.controlBackgroundDisabled};
-  height: 36px;
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  cursor: pointer;
-`;
-
-export type SelectOption = {
-  value: string;
-  label: string;
-};
-
 export interface ISelectProps {
   'name'?: string;
   'label'?: string;
@@ -80,48 +54,27 @@ export interface ISelectProps {
 }
 
 const Select = (props: ISelectProps) => {
-  const theme = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [referenceElement, setReferenceElement] = useState<any>();
-  const [popperElement, setPopperElement] = useState<HTMLDivElement>();
   const { label, name, description, placeholder, 'value': propsValue, 'data-cy': dataCy, options } = props;
 
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
-
-  const { styles, attributes } = usePopper(referenceElement, popperElement, { placement: 'bottom-start' });
 
   const value = getValue(propsValue, contextValue);
 
   const splitDescription = description ? description.split('\\n').map((str) => str.trim()) : undefined;
 
-  const selectValue = (option: SelectOption) => {
+  const handleSelect = (value: string) => {
     setIsOpen(false);
     if (contextOnChange) {
-      contextOnChange(option.value);
+      contextOnChange(value);
     }
     if (props.onChange) {
-      props.onChange(option.value);
+      props.onChange(value);
     }
   };
 
   const valueLabel = value && options.find((o) => o.value === value)?.label;
-
-  const handleGlobalClick = useCallback(
-    (event: MouseEvent) => {
-      if (!popperElement?.contains(event.target as any)) {
-        setIsOpen(false);
-      }
-    },
-    [setIsOpen, popperElement],
-  );
-
-  useEffect(() => {
-    document.addEventListener('mouseup', handleGlobalClick);
-
-    return () => {
-      document.removeEventListener('mouseup', handleGlobalClick);
-    };
-  }, [handleGlobalClick, popperElement]);
 
   return (
     <div>
@@ -136,37 +89,23 @@ const Select = (props: ISelectProps) => {
             <FontAwesomeIcon icon={isOpen ? faChevronUp : faChevronDown} />
           </IconContainer>
         </SelectControl>
-        {isOpen &&
-          ReactDOM.createPortal(
-            <div
-              ref={setPopperElement as any}
-              style={{ ...styles.popper, zIndex: 999, width: referenceElement?.offsetWidth }}
-              {...attributes.popper}
-            >
-              <OptionsContainer>
-                {options.map((option) => (
-                  <Option
-                    whileHover={{ backgroundColor: theme.colours.controlBorder }}
-                    transition={{ type: 'spring', duration: 0.2 }}
-                    key={option.value}
-                    onClick={() => selectValue(option)}
-                  >
-                    {option.label}
-                  </Option>
-                ))}
-              </OptionsContainer>
-            </div>,
-            document.querySelector('body') as any,
-          )}
+        {isOpen && (
+          <OptionsPopper
+            referenceElement={referenceElement}
+            options={options}
+            onSelect={handleSelect}
+            onClose={() => setIsOpen(false)}
+          />
+        )}
       </ControlOuter>
 
       {splitDescription && (
         <ControlDescription>
           {splitDescription.map((line, index) => (
-            <>
+            <Fragment key={index}>
               {index !== 0 && <br />}
               {line}
-            </>
+            </Fragment>
           ))}
         </ControlDescription>
       )}

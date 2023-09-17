@@ -8,6 +8,7 @@ import ControlDescription from '../../shared/ControlDescription';
 import ControlLabel from '../../shared/ControlLabel';
 import { ControlStyles } from '../../shared/ControlStyles';
 import useFormNode, { getValue } from '../Form/useFormNode.hook';
+import { OptionsPopper, SelectOption } from '../common/Options.component';
 
 const InputContainer = styled.div`
   position: relative;
@@ -84,6 +85,7 @@ export interface IInputProps {
   'onFocus'?: () => void;
   'onBlur'?: () => void;
   'data-cy'?: string;
+  'suggestions'?: SelectOption[];
 }
 
 const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref: React.Ref<HTMLInputElement>) {
@@ -101,14 +103,28 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     onFocus,
     onBlur,
     'data-cy': dataCy,
+    suggestions,
   } = props;
 
+  const [isOpen, setIsOpen] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
+  const [referenceElement, setReferenceElement] = useState<any>();
   const { value: contextValue, error: contextError, onChange: contextOnChange } = useFormNode(name);
 
   const error = contextError || propsError;
 
   const splitDescription = description ? description.split('\\n').map((str) => str.trim()) : undefined;
+
+  const handleSetSuggestion = (value: string) => {
+    setIsOpen(false);
+    if (onChange) {
+      onChange(value);
+    }
+
+    if (contextOnChange) {
+      contextOnChange(value);
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
@@ -136,12 +152,20 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     }
   };
 
+  const handleClick = () => {
+    setIsOpen(true);
+  };
+
   const animationVariant = error ? (isFocused ? 'errorFocus' : 'error') : undefined;
+
+  const filteredOptions = suggestions?.filter(
+    (option) => !value || option.label.toLowerCase().includes(value.toLowerCase()),
+  );
 
   return (
     <div>
       {label && <ControlLabel htmlFor={name}>{label}</ControlLabel>}
-      <InputContainer data-cy={dataCy}>
+      <InputContainer data-cy={dataCy} ref={setReferenceElement}>
         <StyledInput
           ref={ref}
           animate={animationVariant}
@@ -155,6 +179,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          onClick={handleClick}
           autoFocus={autoFocus}
           data-cy='input'
         />
@@ -190,6 +215,14 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
             </>
           ))}
         </ControlDescription>
+      )}
+      {filteredOptions && isOpen && (
+        <OptionsPopper
+          referenceElement={referenceElement}
+          options={filteredOptions}
+          onSelect={handleSetSuggestion}
+          onClose={() => setIsOpen(false)}
+        />
       )}
     </div>
   );

@@ -82,6 +82,28 @@ export const DisabledInput = () => {
   );
 };
 
+export const WithSuggestions = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <>
+      <ControlGroup variation='comfortable'>
+        <Input
+          name='url'
+          placeholder='A standard input'
+          label='Url'
+          value={value}
+          onChange={setValue}
+          suggestions={[
+            { value: 'www.google.com', label: 'Google' },
+            { value: 'www.youtube.com', label: 'Youtube' },
+          ]}
+        />
+      </ControlGroup>
+    </>
+  );
+};
+
 export default {
   title: 'Forms/Input',
   component: Input,
