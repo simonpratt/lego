@@ -16,11 +16,12 @@ export const OptionsContainer = styled.div`
 export const Option = styled(motion.div)`
   color: ${(props) => getThemeControlColours(props.theme).font};
   background-color: ${(props) => props.theme.colours.controlBackgroundDisabled};
-  height: 36px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
   cursor: pointer;
+
+  min-height: 36px;
+  padding: 6px 12px;
 `;
 
 export type SelectOption = {

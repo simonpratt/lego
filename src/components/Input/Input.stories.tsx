@@ -91,7 +91,7 @@ export const WithSuggestions = () => {
         <Input
           name='url'
           placeholder='A standard input'
-          label='Url'
+          label='URL'
           value={value}
           onChange={setValue}
           suggestions={[
@@ -99,6 +99,29 @@ export const WithSuggestions = () => {
             { value: 'www.youtube.com', label: 'Youtube' },
           ]}
         />
+        <div style={{ width: '320px' }}>
+          <Input
+            name='url'
+            placeholder='A standard input'
+            label='Full URL'
+            value={value}
+            onChange={setValue}
+            suggestions={[
+              {
+                value:
+                  'www.google.com/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt',
+                label:
+                  'www.google.com/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt',
+              },
+              {
+                value:
+                  'www.youtube.com/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt',
+                label:
+                  'www.youtube.com/lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit-sed-do-eiusmod-tempor-incididunt',
+              },
+            ]}
+          />
+        </div>
       </ControlGroup>
     </>
   );

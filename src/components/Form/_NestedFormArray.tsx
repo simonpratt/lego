@@ -20,13 +20,10 @@ const NestedFormArray = ({ name, index, children }: NestedFormArrayProps) => {
   const nestedValue = safeValue[index];
   const nestedErrors = safeError[index];
 
-  console.log('safe', safeValue);
-
   const onChangeFn = (key: string, fieldValue: string) => {
     const newValue = [
       ...safeValue.map((item: UnknownSubfield, i: number) => (i === index ? { ...item, [key]: fieldValue } : item)),
     ];
-    console.log(newValue);
     onChange && onChange(newValue);
   };
 
