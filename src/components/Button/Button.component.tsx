@@ -16,7 +16,7 @@ export interface ButtonProps {
   'type'?: 'submit' | 'button';
   'icon'?: IconProp;
   'onClick'?: () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
 interface InternalButtonProps extends ButtonContextProps {
@@ -156,7 +156,7 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
     type = 'button',
     icon,
     onClick,
-    'data-cy': dataCy,
+    'data-testid': dataTestId,
   } = props;
   const { width, height, alignSelf, marginTop, noBackground } = useContext(ButtonContext);
 
@@ -172,12 +172,12 @@ const Button = React.forwardRef(function Button(props: ButtonProps, ref: any) {
       size={size}
       type={type}
       onClick={onClick}
-      data-cy={dataCy || 'button'}
+      data-testid={dataTestId || 'button'}
       iconOnly={!children}
     >
       {loading ? (
         <SpinnerContainer>
-          <ButtonSpinner data-cy='button-loading-spinner' variant={variant} size={size} iconOnly={!children} />
+          <ButtonSpinner data-testid='button-loading-spinner' variant={variant} size={size} iconOnly={!children} />
         </SpinnerContainer>
       ) : (
         <ButtonInner>

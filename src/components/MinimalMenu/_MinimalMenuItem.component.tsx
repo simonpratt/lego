@@ -8,17 +8,17 @@ export interface MinimalMenuItemProps {
   'icon'?: IconProp;
   'active'?: boolean;
   'onClick'?: () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const MinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: MinimalMenuItemProps) => {
+const MinimalMenuItem = ({ icon, active, onClick, 'data-testid': dataTestId }: MinimalMenuItemProps) => {
   const isMobile = useIsScreenSize('mobile');
 
   if (isMobile) {
-    return <MobileMinimalMenuItem icon={icon} active={active} onClick={onClick} data-cy={dataCy} />;
+    return <MobileMinimalMenuItem icon={icon} active={active} onClick={onClick} data-testid={dataTestId} />;
   }
 
-  return <DesktopMinimalMenuItem icon={icon} active={active} onClick={onClick} data-cy={dataCy} />;
+  return <DesktopMinimalMenuItem icon={icon} active={active} onClick={onClick} data-testid={dataTestId} />;
 };
 
 export default MinimalMenuItem;

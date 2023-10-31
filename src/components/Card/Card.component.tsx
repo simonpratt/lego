@@ -128,7 +128,7 @@ const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
         padded={padded}
         onClick={handleClick}
         usePointer={!!onClick}
-        data-cy='card'
+        data-testid='card'
       >
         <CardActionsContainer ref={actionsRef} />
         <CardInner>{children}</CardInner>

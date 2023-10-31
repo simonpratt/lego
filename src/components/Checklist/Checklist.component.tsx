@@ -55,7 +55,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
   const unCheckedItems = items.filter((item) => !value.includes(item.id));
 
   return (
-    <LayoutGroup data-cy='checklist'>
+    <LayoutGroup data-testid='checklist'>
       {unCheckedItems.map((item) => (
         <motion.div layoutId={item.id} key={item.id}>
           <ChecklistItem

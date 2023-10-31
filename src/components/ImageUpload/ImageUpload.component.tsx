@@ -17,7 +17,7 @@ interface ImageUploadProps {
   'onChange'?: (value: string) => void;
   'onSearch'?: () => void;
   'uploadFn'?: (file: File) => Promise<string>;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
 const UploadContainer = styled.div`
@@ -126,7 +126,7 @@ const ImageUpload = ({
   'uploading': uploadingProp,
   onChange,
   onSearch,
-  'data-cy': dataCy,
+  'data-testid': dataTestId,
 }: ImageUploadProps) => {
   const { upload, getUrl } = useContext(FileContext);
   const [uploading, setUploading] = useState(false);
@@ -166,7 +166,7 @@ const ImageUpload = ({
 
   if (uploading || uploadingProp) {
     return (
-      <UploadContainer data-cy={dataCy}>
+      <UploadContainer data-testid={dataTestId}>
         <LoaderContainer>
           <Loader />
         </LoaderContainer>
@@ -176,33 +176,33 @@ const ImageUpload = ({
 
   if (!internalValue) {
     return (
-      <UploadContainer data-cy={dataCy}>
+      <UploadContainer data-testid={dataTestId}>
         <UploadInnerContainer>
-          <IconContainer whileHover={{ scale: 1.05 }} onClick={handleUploadClicked} data-cy='button-image-upload'>
+          <IconContainer whileHover={{ scale: 1.05 }} onClick={handleUploadClicked} data-testid='button-image-upload'>
             <FontAwesomeIcon icon={faCloudUploadAlt} />
           </IconContainer>
           {onSearch && (
             <>
               <UploadVerticalDivider />
-              <IconContainer whileHover={{ scale: 1.05 }} onClick={onSearch} data-cy='button-image-search'>
+              <IconContainer whileHover={{ scale: 1.05 }} onClick={onSearch} data-testid='button-image-search'>
                 <FontAwesomeIcon icon={faSearch} />
               </IconContainer>
             </>
           )}
         </UploadInnerContainer>
-        <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} data-cy='input-image-hidden' />
+        <HiddenInput value='' ref={inputRef} type='file' onChange={handleUpload} data-testid='input-image-hidden' />
         {error && (
           <ErrorContainer
             animate={error ? 'show' : undefined}
             style={{ opacity: 0 }}
             variants={errorVariants}
             transition={{ type: 'spring', duration: 0.3 }}
-            data-cy='error-indicator'
+            data-testid='error-indicator'
           >
             <ErrorInner>
               <FontAwesomeIcon icon={faExclamationCircle} />
             </ErrorInner>
-            <ErrorMessage data-cy='error-message'>{error}</ErrorMessage>
+            <ErrorMessage data-testid='error-message'>{error}</ErrorMessage>
           </ErrorContainer>
         )}
       </UploadContainer>
@@ -210,8 +210,8 @@ const ImageUpload = ({
   }
 
   return (
-    <div data-cy={dataCy}>
-      <Image data-cy='uploaded-image' src={getUrl(internalValue)} />
+    <div data-testid={dataTestId}>
+      <Image data-testid='uploaded-image' src={getUrl(internalValue)} />
     </div>
   );
 };

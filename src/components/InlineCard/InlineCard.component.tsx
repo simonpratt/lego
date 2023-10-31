@@ -194,7 +194,7 @@ const InlineCard = ({
         dragConstraints={{ left: 0, right: 0 }}
         usePointer={!!onClick || isSelectable}
         onClick={handleClick}
-        data-cy='inline-card'
+        data-testid='inline-card'
       >
         {children}
       </CardOuter>

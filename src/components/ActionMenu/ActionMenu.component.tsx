@@ -16,12 +16,12 @@ export interface ActionMenuProps {
   'size'?: ButtonSize;
   'icon'?: IconProp;
   'text'?: string;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
 const offsetFn = (): [number, number] => [70, 4];
 
-const ActionMenu = ({ children, variant, size, icon, text, 'data-cy': dataCy }: ActionMenuProps) => {
+const ActionMenu = ({ children, variant, size, icon, text, 'data-testid': dataTestId }: ActionMenuProps) => {
   const [shown, setShown] = useState(false);
   const [referenceElement, setReferenceElement] = useState<HTMLDivElement>();
   const [popperElement, setPopperElement] = useState<HTMLDivElement>();
@@ -59,7 +59,7 @@ const ActionMenu = ({ children, variant, size, icon, text, 'data-cy': dataCy }: 
         variant={variant}
         size={size}
         icon={icon || faEllipsisV}
-        data-cy={dataCy || 'action-menu-button'}
+        data-testid={dataTestId || 'action-menu-button'}
         ref={setReferenceElement}
         onClick={() => setShown(true)}
       >

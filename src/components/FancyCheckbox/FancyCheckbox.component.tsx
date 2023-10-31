@@ -76,13 +76,13 @@ const FancyCheckbox = ({ name, label, options, value, onChange }: FancyCheckboxP
   return (
     <div>
       {label && <FancyCheckboxLabel htmlFor={name}>{label}</FancyCheckboxLabel>}
-      <ButtonGroup data-cy='checkbox-group'>
+      <ButtonGroup data-testid='checkbox-group'>
         {options.map((option) => (
           <StyledButton
             selected={option.value === selectedValue}
             key={option.value}
             onClick={() => handleChange(option.value)}
-            data-cy={option.value === selectedValue ? 'checkbox-selected' : 'checkbox'}
+            data-testid={option.value === selectedValue ? 'checkbox-selected' : 'checkbox'}
           >
             {option.label}
           </StyledButton>

@@ -49,14 +49,14 @@ export interface ISelectProps {
   'placeholder'?: string;
   'value'?: string;
   'onChange'?: (value: any) => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
   'options': SelectOption[];
 }
 
 const Select = (props: ISelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [referenceElement, setReferenceElement] = useState<any>();
-  const { label, name, description, placeholder, 'value': propsValue, 'data-cy': dataCy, options } = props;
+  const { label, name, description, placeholder, 'value': propsValue, 'data-testid': dataTestId, options } = props;
 
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
 
@@ -80,7 +80,7 @@ const Select = (props: ISelectProps) => {
     <div>
       {label && <ControlLabel htmlFor={name}>{label}</ControlLabel>}
       <ControlOuter ref={setReferenceElement}>
-        <SelectControl data-cy={dataCy} onClick={() => setIsOpen(!isOpen)}>
+        <SelectControl data-testid={dataTestId} onClick={() => setIsOpen(!isOpen)}>
           <TextContainer>
             {!value && placeholder && <PlaceholderText>{placeholder}</PlaceholderText>}
             {value && <ValueText>{valueLabel}</ValueText>}

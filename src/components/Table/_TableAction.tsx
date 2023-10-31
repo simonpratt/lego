@@ -9,15 +9,20 @@ export interface TableActionProps {
   'variant'?: ColourVariant;
   'icon'?: IconProp;
   'onClick': () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const TableAction = ({ text, variant, icon, onClick, 'data-cy': dataCy }: TableActionProps) => {
+const TableAction = ({ text, variant, icon, onClick, 'data-testid': dataTestId }: TableActionProps) => {
   const buttonContextVal = useContext(ButtonContext);
 
   return (
     <ButtonContext.Provider value={{ ...buttonContextVal, ...(!text && icon && { width: '32px' }) }}>
-      <Button variant={variant || 'tertiary'} icon={icon} onClick={onClick} data-cy={dataCy || 'button-table-action'}>
+      <Button
+        variant={variant || 'tertiary'}
+        icon={icon}
+        onClick={onClick}
+        data-testid={dataTestId || 'button-table-action'}
+      >
         {text}
       </Button>
     </ButtonContext.Provider>

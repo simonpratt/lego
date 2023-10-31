@@ -36,10 +36,10 @@ export interface DesktopMinimalMenuItemProps {
   'icon'?: IconProp;
   'active'?: boolean;
   'onClick'?: () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const DesktopMinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: DesktopMinimalMenuItemProps) => {
+const DesktopMinimalMenuItem = ({ icon, active, onClick, 'data-testid': dataTestId }: DesktopMinimalMenuItemProps) => {
   const theme = useTheme();
 
   const barVariants = useMemo(
@@ -56,7 +56,7 @@ const DesktopMinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: De
       whileHover={active ? 'hoverActive' : 'hover'}
       animate={active ? 'active' : undefined}
       onClick={onClick}
-      data-cy={dataCy || 'menu-item'}
+      data-testid={dataTestId || 'menu-item'}
     >
       <MenuIconBar
         style={{ backgroundColor: theme.colours.cardBackground, opacity: 0 }}

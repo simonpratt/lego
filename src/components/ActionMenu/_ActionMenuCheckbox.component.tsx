@@ -26,10 +26,10 @@ export interface ActionMenuCheckboxProps {
   'children': React.ReactNode;
   'checked': boolean;
   'onClick': () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const ActionMenuCheckbox = ({ children, checked, onClick, 'data-cy': dataCy }: ActionMenuCheckboxProps) => {
+const ActionMenuCheckbox = ({ children, checked, onClick, 'data-testid': dataTestId }: ActionMenuCheckboxProps) => {
   const theme = useTheme();
 
   return (
@@ -38,7 +38,7 @@ const ActionMenuCheckbox = ({ children, checked, onClick, 'data-cy': dataCy }: A
         style={{ backgroundColor: theme.colours.tertiary.main }}
         whileHover={{ backgroundColor: theme.colours.tertiary.hover }}
         onClick={onClick}
-        data-cy={dataCy || 'action-menu-checkbox'}
+        data-testid={dataTestId || 'action-menu-checkbox'}
       >
         {children}
         <Spacer />

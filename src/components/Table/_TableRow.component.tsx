@@ -18,14 +18,14 @@ const StyledRow = styled.tr<StyledRowProps>`
 
 export interface TableRowProps {
   'children': React.ReactNode;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const TableRow = ({ children, 'data-cy': dataCy }: TableRowProps) => {
+const TableRow = ({ children, 'data-testid': dataTestId }: TableRowProps) => {
   const { variant } = useContext(TableContext);
 
   return (
-    <StyledRow variant={variant} data-cy={dataCy}>
+    <StyledRow variant={variant} data-testid={dataTestId}>
       {children}
     </StyledRow>
   );

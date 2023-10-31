@@ -72,10 +72,10 @@ const Alert = ({ variant, message, count, action, onAction }: AlertProps) => {
   const colour = getThemeStatusColour(variant, theme).main;
 
   return (
-    <AlertContainer colour={colour} data-cy='alert'>
-      <MessageContainer data-cy='alert-message'>{message}</MessageContainer>
+    <AlertContainer colour={colour} data-testid='alert'>
+      <MessageContainer data-testid='alert-message'>{message}</MessageContainer>
       {action && (
-        <ActionContainer onClick={onAction} data-cy='alert-action'>
+        <ActionContainer onClick={onAction} data-testid='alert-action'>
           {action}
         </ActionContainer>
       )}

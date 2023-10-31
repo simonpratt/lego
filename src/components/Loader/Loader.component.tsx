@@ -64,7 +64,7 @@ const BaseLoader = () => (
     variants={loadingContainerVariants}
     initial='start'
     animate='end'
-    data-cy='loader'
+    data-testid='loader'
   >
     <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
     <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />

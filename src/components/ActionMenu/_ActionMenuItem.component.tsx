@@ -20,10 +20,10 @@ const ActionMenuItemOuter = styled(motion.div)`
 export interface ActionMenuItemProps {
   'children': React.ReactNode;
   'onClick': () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const ActionMenuItem = ({ children, onClick, 'data-cy': dataCy }: ActionMenuItemProps) => {
+const ActionMenuItem = ({ children, onClick, 'data-testid': dataTestId }: ActionMenuItemProps) => {
   const theme = useTheme();
   const { closeActionMenu } = useContext(ActionMenuContext);
 
@@ -38,7 +38,7 @@ const ActionMenuItem = ({ children, onClick, 'data-cy': dataCy }: ActionMenuItem
         style={{ backgroundColor: theme.colours.tertiary.main }}
         whileHover={{ backgroundColor: theme.colours.tertiary.hover }}
         onClick={handleClick}
-        data-cy={dataCy || 'action-menu-item'}
+        data-testid={dataTestId || 'action-menu-item'}
       >
         {children}
       </ActionMenuItemOuter>

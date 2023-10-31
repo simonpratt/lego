@@ -41,10 +41,10 @@ const RegisterScreen = ({ loading, error, handleRegister }: RegisterScreenProps)
       <Form value={value} onChange={setValue} onSubmit={() => handleRegister(value)}>
         <ControlGroup>
           <ErrorText>{error}</ErrorText>
-          <Input name='email' placeholder='Email' type='text' data-cy='input-email' />
-          <Input name='password' placeholder='Password' type='password' data-cy='input-password' />
+          <Input name='email' placeholder='Email' type='text' data-testid='input-email' />
+          <Input name='password' placeholder='Password' type='password' data-testid='input-password' />
           <ControlGroup.Spacer />
-          <Button type='submit' loading={loading} data-cy='button-register'>
+          <Button type='submit' loading={loading} data-testid='button-register'>
             Create Account
           </Button>
         </ControlGroup>

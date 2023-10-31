@@ -74,7 +74,7 @@ const ChecklistItem = ({ label, value, onChange, large }: ChecklistItemProps) =>
     <Outerlabel
       checked={value}
       whileHover={{ backgroundColor: theme.colours.cardBackground }}
-      data-cy={value ? 'checklist-item-checked' : 'checklist-item'}
+      data-testid={value ? 'checklist-item-checked' : 'checklist-item'}
     >
       <Checkmark checked={value} large={large} />
       <Spacer />

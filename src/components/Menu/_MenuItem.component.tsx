@@ -61,7 +61,7 @@ export interface MenuItemProps {
 }
 
 const MenuItem = ({ children, icon, active, onClick }: MenuItemProps) => (
-  <MenuItemOuter onClick={onClick} data-cy='menu-item'>
+  <MenuItemOuter onClick={onClick} data-testid='menu-item'>
     {active ? <MenuActiveBar /> : <MenuActivePlaceholder />}
     <MenuItemDiv active={active}>
       {icon && (

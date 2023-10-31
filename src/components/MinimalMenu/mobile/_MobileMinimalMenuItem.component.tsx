@@ -28,10 +28,10 @@ export interface MobileMinimalMenuItemProps {
   'icon'?: IconProp;
   'active'?: boolean;
   'onClick'?: () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const MobileMinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: MobileMinimalMenuItemProps) => {
+const MobileMinimalMenuItem = ({ icon, active, onClick, 'data-testid': dataTestId }: MobileMinimalMenuItemProps) => {
   const { width } = useWindowDimensions();
   const { setBumpX } = useContext(MobileMenuBumpContext);
   const itemRef = useRef<HTMLDivElement>(null);
@@ -51,7 +51,7 @@ const MobileMinimalMenuItem = ({ icon, active, onClick, 'data-cy': dataCy }: Mob
   }, [active, setBumpX, width]);
 
   return (
-    <ItemContainer onClick={onClick} ref={itemRef} data-cy={dataCy || 'menu-item'}>
+    <ItemContainer onClick={onClick} ref={itemRef} data-testid={dataTestId || 'menu-item'}>
       {icon && (
         <motion.div
           animate={active ? 'active' : undefined}

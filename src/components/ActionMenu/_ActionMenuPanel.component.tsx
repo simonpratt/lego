@@ -11,7 +11,7 @@ export interface ActionMenuPanelProps {
 }
 
 const ActionMenuPanel = ({ children }: ActionMenuPanelProps) => (
-  <ActionMenuPanelOuter data-cy='action-menu-popover'>{children}</ActionMenuPanelOuter>
+  <ActionMenuPanelOuter data-testid='action-menu-popover'>{children}</ActionMenuPanelOuter>
 );
 
 export default ActionMenuPanel;

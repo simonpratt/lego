@@ -146,7 +146,7 @@ const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveList
   }
 
   return (
-    <div data-cy='live-list'>
+    <div data-testid='live-list'>
       {value.map((val) => (
         <LiveListRow
           key={val.id}
@@ -163,7 +163,7 @@ const LiveList = ({ value: inputValue, name, onChange: propsOnChange }: LiveList
           whileHover='hover'
           variants={addVariants}
           onClick={handleRowAdd}
-          data-cy='button-add-list-item'
+          data-testid='button-add-list-item'
         >
           <IconContainer>
             <FontAwesomeIcon icon={faPlusCircle} />

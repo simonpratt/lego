@@ -4,12 +4,12 @@ import { IActionMenuItem } from '../ActionMenu/_ActionMenu.types';
 
 export interface TableActionMenuProps {
   'items': IActionMenuItem[];
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
-const TableActionMenu = ({ items, 'data-cy': dataCy }: TableActionMenuProps) => {
+const TableActionMenu = ({ items, 'data-testid': dataTestId }: TableActionMenuProps) => {
   return (
-    <ActionMenu variant='tertiary' data-cy={dataCy}>
+    <ActionMenu variant='tertiary' data-testid={dataTestId}>
       {items.map((item) => (
         <ActionMenu.Item key={item.label} onClick={item.onClick}>
           {item.label}

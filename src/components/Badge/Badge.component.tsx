@@ -50,7 +50,7 @@ export interface BadgeProps {
 
 const Badge = ({ children, variant, actionIcon, onAction }: BadgeProps) => {
   return (
-    <BadgeSpan variant={variant} useHover={!!actionIcon} data-cy='badge'>
+    <BadgeSpan variant={variant} useHover={!!actionIcon} data-testid='badge'>
       {children}
       {actionIcon && (
         <ActionSpan onClick={onAction}>

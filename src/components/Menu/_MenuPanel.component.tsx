@@ -74,7 +74,7 @@ export interface MenuPanelProps {
 
 const MenuPanel = ({ children, scrollable, panelSize = 'sm' }: MenuPanelProps) => {
   return (
-    <MenuPanelDiv panelSize={panelSize} scrollable={scrollable} data-cy='menu-panel'>
+    <MenuPanelDiv panelSize={panelSize} scrollable={scrollable} data-testid='menu-panel'>
       {children}
     </MenuPanelDiv>
   );

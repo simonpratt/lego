@@ -89,7 +89,7 @@ export interface ITextAreaProps {
   'onChange'?: (value: any) => void;
   'onFocus'?: () => void;
   'onBlur'?: () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
 }
 
 const TextArea = React.forwardRef(function ForwardRefTextArea(
@@ -106,7 +106,7 @@ const TextArea = React.forwardRef(function ForwardRefTextArea(
     onChange,
     onFocus,
     onBlur,
-    'data-cy': dataCy,
+    'data-testid': dataTestId,
   } = props;
 
   const [isFocused, setIsFocused] = useState(false);
@@ -145,7 +145,7 @@ const TextArea = React.forwardRef(function ForwardRefTextArea(
   return (
     <div>
       {label && <TextAreaLabel htmlFor={name}>{label}</TextAreaLabel>}
-      <TextAreaContainer data-cy={dataCy}>
+      <TextAreaContainer data-testid={dataTestId}>
         <StyledTextArea
           ref={ref}
           animate={animationVariant}
@@ -158,14 +158,14 @@ const TextArea = React.forwardRef(function ForwardRefTextArea(
           onFocus={handleFocus}
           onBlur={handleBlur}
           autoFocus={autoFocus}
-          data-cy='text-area'
+          data-testid='text-area'
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}
           style={{ opacity: 0 }}
           variants={errorVariants}
           transition={{ type: 'spring', duration: 0.3 }}
-          data-cy='error-indicator'
+          data-testid='error-indicator'
         >
           <ErrorInner>
             <FontAwesomeIcon icon={faExclamationCircle} />
@@ -177,7 +177,7 @@ const TextArea = React.forwardRef(function ForwardRefTextArea(
             animate={animationVariant}
             variants={messageVariants}
             transition={{ type: 'spring', duration: 0.3 }}
-            data-cy='error-message'
+            data-testid='error-message'
           >
             {error}
           </ErrorMessage>

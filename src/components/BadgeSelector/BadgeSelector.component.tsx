@@ -46,7 +46,7 @@ const BadgeSelector = ({ options, value, onChange }: BadgeSelectorProps) => {
   };
 
   return (
-    <BadgeSelectorOuter data-cy='badge-selector'>
+    <BadgeSelectorOuter data-testid='badge-selector'>
       {options.map((option) => (
         <InteractiveBadge
           useHover={false}
@@ -54,7 +54,7 @@ const BadgeSelector = ({ options, value, onChange }: BadgeSelectorProps) => {
           variant={option.variant}
           inactive={!value.includes(option.value)}
           onClick={() => handleClick(option.value)}
-          data-cy={value.includes(option.value) ? 'badge-selected' : 'badge'}
+          data-testid={value.includes(option.value) ? 'badge-selected' : 'badge'}
         >
           {option.name}
         </InteractiveBadge>

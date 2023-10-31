@@ -84,7 +84,7 @@ export interface IInputProps {
   'onChange'?: (value: any) => void;
   'onFocus'?: () => void;
   'onBlur'?: () => void;
-  'data-cy'?: string;
+  'data-testid'?: string;
   'suggestions'?: SelectOption[];
 }
 
@@ -102,7 +102,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     onChange,
     onFocus,
     onBlur,
-    'data-cy': dataCy,
+    'data-testid': dataTestId,
     suggestions,
   } = props;
 
@@ -165,7 +165,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
   return (
     <div>
       {label && <ControlLabel htmlFor={name}>{label}</ControlLabel>}
-      <InputContainer data-cy={dataCy} ref={setReferenceElement}>
+      <InputContainer data-testid={dataTestId} ref={setReferenceElement}>
         <StyledInput
           ref={ref}
           animate={animationVariant}
@@ -181,14 +181,14 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           onBlur={handleBlur}
           onClick={handleClick}
           autoFocus={autoFocus}
-          data-cy='input'
+          data-testid='input'
         />
         <ErrorContainer
           animate={error ? 'show' : undefined}
           style={{ opacity: 0 }}
           variants={errorVariants}
           transition={{ type: 'spring', duration: 0.3 }}
-          data-cy='error-indicator'
+          data-testid='error-indicator'
         >
           <ErrorInner>
             <FontAwesomeIcon icon={faExclamationCircle} />
@@ -200,7 +200,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
             animate={animationVariant}
             variants={messageVariants}
             transition={{ type: 'spring', duration: 0.3 }}
-            data-cy='error-message'
+            data-testid='error-message'
           >
             {error}
           </ErrorMessage>
