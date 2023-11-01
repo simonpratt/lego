@@ -41,6 +41,7 @@ export const SelectOptions = ({ options, onSelect }: SelectOptionsProps) => {
     <OptionsContainer>
       {options.map((option) => (
         <Option
+          data-testid={`option-${option.value}`}
           whileHover={{ backgroundColor: theme.colours.controlBorder }}
           transition={{ type: 'spring', duration: 0.2 }}
           key={option.value}
@@ -83,6 +84,7 @@ export const OptionsPopper = ({ referenceElement, options, onSelect, onClose }: 
 
   return ReactDOM.createPortal(
     <div
+      data-testid='options-popper'
       ref={setPopperElement as any}
       style={{ ...styles.popper, zIndex: 999, width: referenceElement?.offsetWidth }}
       {...attributes.popper}
