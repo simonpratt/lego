@@ -46,6 +46,7 @@ const Toggle = ({ value, onChange }: ToggleProps) => {
       variants={toggleOuterVariants}
       transition={{ type: 'spring', duration: 0.3 }}
       onClick={() => onChange(!value)}
+      data-testid='toggle'
     >
       <ToggleDot
         animate={value ? 'on' : 'off'}

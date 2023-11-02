@@ -17,16 +17,23 @@ const ToggleHeaderContainer = styled.div`
 `;
 
 export interface CardToggleSectionProps {
-  children: React.ReactNode;
-  heading: string;
-  enabled: boolean;
-  setEnabled: (enabled: boolean) => void;
+  'children': React.ReactNode;
+  'heading': string;
+  'enabled': boolean;
+  'setEnabled': (enabled: boolean) => void;
+  'data-testid'?: string;
 }
 
-const CardToggleSection = ({ heading, enabled, setEnabled, children }: CardToggleSectionProps) => {
+const CardToggleSection = ({
+  heading,
+  enabled,
+  setEnabled,
+  children,
+  'data-testid': dataTestId,
+}: CardToggleSectionProps) => {
   return (
     <>
-      <ToggleHeaderContainer onClick={() => setEnabled(!enabled)}>
+      <ToggleHeaderContainer onClick={() => setEnabled(!enabled)} data-testid={dataTestId || 'card-toggle-header'}>
         <Text>{heading}</Text>
         <Toggle value={enabled} onChange={setEnabled} />
       </ToggleHeaderContainer>
