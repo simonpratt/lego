@@ -20,17 +20,18 @@ const TextContainerSecondary = styled.span`
 `;
 
 export interface TextProps {
-  children: React.ReactNode;
-  variant?: TextVariant;
+  'children': React.ReactNode;
+  'variant'?: TextVariant;
+  'data-testid'?: string;
 }
 
-const Text = ({ children, variant = 'primary' }: TextProps) => {
+const Text = ({ children, variant = 'primary', 'data-testid': dataTestId }: TextProps) => {
   switch (variant) {
     case 'secondary':
-      return <TextContainerSecondary>{children}</TextContainerSecondary>;
+      return <TextContainerSecondary data-testid={dataTestId}>{children}</TextContainerSecondary>;
     case 'primary':
     default:
-      return <TextContainer>{children}</TextContainer>;
+      return <TextContainer data-testid={dataTestId}>{children}</TextContainer>;
   }
 };
 
