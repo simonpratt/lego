@@ -124,13 +124,15 @@ const SelectIconContainer = styled.div`
 `;
 
 export interface InlineCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  size?: InlineCardSize;
-  value?: string;
+  'children': React.ReactNode;
+  'size'?: InlineCardSize;
+  'value'?: string;
 
-  gestureLeftIcon?: IconProp;
-  gestureLeftVariant?: DragVariant;
-  onGestureLeft?: () => void;
+  'gestureLeftIcon'?: IconProp;
+  'gestureLeftVariant'?: DragVariant;
+  'onGestureLeft'?: () => void;
+
+  'data-testid'?: string;
 }
 
 const InlineCard = ({
@@ -141,6 +143,7 @@ const InlineCard = ({
   gestureLeftIcon,
   gestureLeftVariant,
   onGestureLeft,
+  'data-testid': dataTestId,
 }: InlineCardProps) => {
   const { value: selectedValues, onToggle } = useContext(InlineCardSelectionContext);
   const isSelectable = !!onToggle;
@@ -194,7 +197,7 @@ const InlineCard = ({
         dragConstraints={{ left: 0, right: 0 }}
         usePointer={!!onClick || isSelectable}
         onClick={handleClick}
-        data-testid='inline-card'
+        data-testid={dataTestId || 'inline-card'}
       >
         {children}
       </CardOuter>

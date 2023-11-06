@@ -12,10 +12,11 @@ import CardSubContent from './_CardSubContent.component';
 import CardToggleSection from './_CardToggleSection.component';
 
 export interface CardProps {
-  children: React.ReactNode;
-  size?: CardSize;
-  padded?: boolean;
-  onClick?: () => void;
+  'children': React.ReactNode;
+  'size'?: CardSize;
+  'padded'?: boolean;
+  'onClick'?: () => void;
+  'data-testid'?: string;
 }
 
 interface CardOuterProps {
@@ -86,7 +87,7 @@ const CardOuter = styled(motion.div)<CardOuterProps>`
   padding: ${(props) => (props.padded ? '16px' : 0)};
 `;
 
-const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
+const Card = ({ children, padded, size = 'sm', onClick, 'data-testid': dataTestId }: CardProps) => {
   const actionsRef = useRef<HTMLDivElement>(null);
   const [htmlActionsRef, setHtmlActionsRef] = useState<any>();
   const [showActions, setShowActions] = useState(false);
@@ -128,7 +129,7 @@ const Card = ({ children, padded, size = 'sm', onClick }: CardProps) => {
         padded={padded}
         onClick={handleClick}
         usePointer={!!onClick}
-        data-testid='card'
+        data-testid={dataTestId || 'card'}
       >
         <CardActionsContainer ref={actionsRef} />
         <CardInner>{children}</CardInner>
