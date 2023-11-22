@@ -14,6 +14,10 @@ const StyledRow = styled.tr<StyledRowProps>`
   &:last-child {
     box-shadow: none;
   }
+
+  &:hover {
+    background-color: ${(props) => props.theme.colours.cardBackground};
+  }
 `;
 
 export interface TableRowProps {
