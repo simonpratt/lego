@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 import { faCheckCircle, faExclamationTriangle, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Badge, FocusLayout, Form, InlineCard, InlineCardGroup } from '../..';
+import { Badge, FocusLayout, Form, InlineCard, InlineCardGroup, Text } from '../..';
 import InlineCardSelection from './InlineCardSelection.component';
 
 export const Standard = () => (
@@ -27,6 +27,20 @@ export const Standard = () => (
       }}
     >
       <InlineCard.Content>Clickable card</InlineCard.Content>
+      <InlineCard.Meta>
+        <Badge variant='info'>Clickable</Badge>
+      </InlineCard.Meta>
+    </InlineCard>
+    <InlineCard>
+      <InlineCard.Media variant='square'>
+        <img src='https://cdn.vox-cdn.com/thumbor/-V1RcyC2HAGG6dI6i8YzvZPBqZE=/1400x1050/filters:format(png)/cdn.vox-cdn.com/uploads/chorus_asset/file/24097192/mario.png' />
+      </InlineCard.Media>
+      <InlineCard.Content>
+        <Text noWrap>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </Text>
+      </InlineCard.Content>
       <InlineCard.Meta>
         <Badge variant='info'>Clickable</Badge>
       </InlineCard.Meta>

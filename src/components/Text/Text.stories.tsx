@@ -10,6 +10,15 @@ export const Secondary = () => (
   </>
 );
 
+export const NoWrap = () => (
+  <div style={{ maxWidth: '300px' }}>
+    <Text noWrap>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    </Text>
+  </div>
+);
+
 export default {
   title: 'Components/Text',
   component: Text,

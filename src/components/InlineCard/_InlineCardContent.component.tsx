@@ -15,6 +15,8 @@ const ContentContainer = styled.div<{ center?: boolean }>`
   font-size: ${(props) => props.theme.fonts.default.size};
   color: ${(props) => props.theme.colours.defaultFont};
 
+  min-width: 0;
+
   ${(props) =>
     props.center &&
     `
