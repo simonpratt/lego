@@ -7,7 +7,7 @@ const ActionContainer = styled.div`
 
   > :first-child {
     flex-grow: 1;
-    padding-right: 3px;
+    margin-right: 3px;
   }
 `;
 
@@ -16,11 +16,11 @@ const SpacedContainer = styled.div`
 
   > * {
     flex-grow: 1;
-    padding-right: 3px;
+    margin-right: 3px;
   }
 
   > *:last-child {
-    padding-right: 0;
+    margin-right: 0;
   }
 `;
 
