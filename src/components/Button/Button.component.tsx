@@ -77,6 +77,7 @@ const StyledButton = styled.button<InternalButtonProps>`
 
   cursor: pointer;
   padding: 0;
+  margin: 0;
 
   font-size: ${(props) => props.theme.fonts.default.size};
   font-family: ${(props) => props.theme.fonts.default.family};
