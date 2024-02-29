@@ -33,6 +33,11 @@ const options = [
   },
 ];
 
+const longSelectOptions = Array.from({ length: 100 }, (_, i) => ({
+  value: i.toString(),
+  label: `Option ${i}`,
+}));
+
 export const Standard = () => {
   const [value, setValue] = useState({ one: '', two: '' });
 
@@ -52,6 +57,13 @@ export const Standard = () => {
           placeholder='Another select'
           description='Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore'
           options={options}
+        />
+        <Select
+          name='three'
+          label='Long select'
+          placeholder='Long select'
+          description='A long select that has lots of options'
+          options={longSelectOptions}
         />
       </ControlGroup>
     </Form>

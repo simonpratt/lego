@@ -86,7 +86,13 @@ export const OptionsPopper = ({ referenceElement, options, onSelect, onClose }: 
     <div
       data-testid='options-popper'
       ref={setPopperElement as any}
-      style={{ ...styles.popper, zIndex: 999, width: referenceElement?.offsetWidth }}
+      style={{
+        ...styles.popper,
+        zIndex: 999,
+        width: referenceElement?.offsetWidth,
+        maxHeight: '270px',
+        overflowY: 'auto',
+      }}
       {...attributes.popper}
     >
       <SelectOptions options={options} onSelect={onSelect} />
