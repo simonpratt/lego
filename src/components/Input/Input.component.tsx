@@ -209,10 +209,10 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
       {splitDescription && (
         <ControlDescription>
           {splitDescription.map((line, index) => (
-            <>
+            <span key={index}>
               {index !== 0 && <br />}
               {line}
-            </>
+            </span>
           ))}
         </ControlDescription>
       )}
