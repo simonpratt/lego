@@ -63,8 +63,8 @@ const IconOuter = styled.span<InternalButtonProps>`
     props.noBackground
       ? 'transparent'
       : props.iconOnly
-      ? getThemeVariantColours(props.variant, props.theme).main
-      : getThemeVariantColours(props.variant, props.theme).darker};
+        ? getThemeVariantColours(props.variant, props.theme).main
+        : getThemeVariantColours(props.variant, props.theme).darker};
 
   height: ${(props) => props.height || getIconContainerSizePx(props.size).height};
   width: ${(props) => getIconContainerSizePx(props.size).width};
