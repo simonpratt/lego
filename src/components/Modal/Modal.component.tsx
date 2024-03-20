@@ -12,10 +12,11 @@ import ModalHeader from './_ModalHeader.component';
 export type ModalSize = 'sm' | 'md' | 'lg';
 
 export interface ModalProps {
-  children: React.ReactNode;
-  size?: ModalSize;
-  loading?: boolean;
-  onClose: () => void;
+  'children': React.ReactNode;
+  'size'?: ModalSize;
+  'loading'?: boolean;
+  'onClose': () => void;
+  'data-testid'?: string;
 }
 
 const getResponsiveSize = (size: ModalSize) => {
@@ -103,7 +104,7 @@ const SpinnerContainer = styled.div`
   align-items: center;
 `;
 
-const Modal = ({ children, size, loading, onClose }: ModalProps) => {
+const Modal = ({ children, size, loading, onClose, 'data-testid': dataTestId }: ModalProps) => {
   const handleModalClick = (event: SyntheticEvent) => {
     (event as any).modalClicked = true;
   };
@@ -133,7 +134,7 @@ const Modal = ({ children, size, loading, onClose }: ModalProps) => {
                 animate={{ height: loading ? loadingHeight : 'auto' }}
                 size={size || 'md'}
                 onClick={handleModalClick}
-                data-testid='modal'
+                data-testid={dataTestId || 'modal'}
               >
                 {!loading && children}
                 {loading && (
