@@ -9,6 +9,7 @@ import ControlLabel from '../../shared/ControlLabel';
 import { ControlStyles } from '../../shared/ControlStyles';
 import useFormNode, { getValue } from '../Form/useFormNode.hook';
 import { OptionsPopper, SelectOption } from '../common/Options.component';
+import Loader from '../Loader/Loader.component';
 
 const InputContainer = styled.div`
   position: relative;
@@ -58,6 +59,17 @@ const ErrorInner = styled.div`
   cursor: pointer;
 `;
 
+const LoadingContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const errorVariants = {
   show: { opacity: 1, x: 10 },
 };
@@ -86,6 +98,7 @@ export interface IInputProps {
   'onBlur'?: () => void;
   'data-testid'?: string;
   'suggestions'?: SelectOption[];
+  'loading'?: boolean;
 }
 
 const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref: React.Ref<HTMLInputElement>) {
@@ -104,6 +117,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     onBlur,
     'data-testid': dataTestId,
     suggestions,
+    loading,
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -204,6 +218,11 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
           >
             {error}
           </ErrorMessage>
+        )}
+        {loading && (
+          <LoadingContainer>
+            <Loader size='sm' />
+          </LoadingContainer>
         )}
       </InputContainer>
       {splitDescription && (

@@ -127,6 +127,18 @@ export const WithSuggestions = () => {
   );
 };
 
+export const WithLoading = () => {
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  return (
+    <>
+      <ControlGroup variation='comfortable'>
+        <Input name='name' placeholder='A standard input' label='Name' value='A bright orange balloon' loading />
+      </ControlGroup>
+    </>
+  );
+};
+
 export default {
   title: 'Forms/Input',
   component: Input,

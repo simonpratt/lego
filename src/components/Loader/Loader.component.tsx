@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import colours from '../../colours/colours';
@@ -54,34 +54,62 @@ const loadingCircleTransition = {
   ease: 'easeInOut',
 } as any; // Framer motion isn't accepting 'repeatType' but animation breaks without it
 
-export interface LoaderProps {
-  variant?: 'page-loader' | 'default';
+export interface BaseLoaderProps {
+  size: 'sm' | 'md';
 }
 
-const BaseLoader = () => (
-  <motion.div
-    style={loadingContainer}
-    variants={loadingContainerVariants}
-    initial='start'
-    animate='end'
-    data-testid='loader'
-  >
-    <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-    <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-    <motion.span style={loadingCircle} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-  </motion.div>
-);
+export interface LoaderProps {
+  variant?: 'page-loader' | 'default';
+  size?: 'sm' | 'md';
+}
 
-const Loader = ({ variant = 'default' }: LoaderProps) => {
+const BaseLoader = ({ size }: BaseLoaderProps) => {
+  const loadingCircleWithSize = useMemo(() => {
+    const sizePx = size === 'md' ? '10px' : '5px';
+
+    return {
+      ...loadingCircle,
+      width: sizePx,
+      height: sizePx,
+    };
+  }, [size]);
+
+  const loadingContainerWithSize = useMemo(() => {
+    const widthPx = size === 'md' ? '40px' : '20px';
+    const heightPx = size === 'md' ? '26px' : '13px';
+
+    return {
+      ...loadingContainer,
+      width: widthPx,
+      height: heightPx,
+    }
+  }, [size]);
+
+  return (
+    <motion.div
+      style={loadingContainerWithSize}
+      variants={loadingContainerVariants}
+      initial='start'
+      animate='end'
+      data-testid='loader'
+    >
+      <motion.span style={loadingCircleWithSize} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+      <motion.span style={loadingCircleWithSize} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+      <motion.span style={loadingCircleWithSize} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+    </motion.div>
+  );
+};
+
+const Loader = ({ variant = 'default', size = 'md' }: LoaderProps) => {
   if (variant === 'page-loader') {
     return (
       <PageLoaderContainer>
-        <BaseLoader />
+        <BaseLoader size={size} />
       </PageLoaderContainer>
     );
   }
 
-  return <BaseLoader />;
+  return <BaseLoader size={size} />;
 };
 
 export default Loader;
