@@ -132,6 +132,14 @@ export const WithLoading = () => {
     <>
       <ControlGroup variation='comfortable'>
         <Input name='name' placeholder='A standard input' label='Name' value='A bright orange balloon' loading />
+        <Input
+          name='name'
+          placeholder='A standard input'
+          label='Name'
+          value='A bright orange balloon'
+          loading
+          loadingVariant='background'
+        />
       </ControlGroup>
     </>
   );

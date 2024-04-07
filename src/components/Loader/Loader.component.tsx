@@ -55,15 +55,16 @@ const loadingCircleTransition = {
 } as any; // Framer motion isn't accepting 'repeatType' but animation breaks without it
 
 export interface BaseLoaderProps {
+  variant?: 'default' | 'background';
   size: 'sm' | 'md';
 }
 
 export interface LoaderProps {
-  variant?: 'page-loader' | 'default';
+  variant?: 'page-loader' | 'default' | 'background';
   size?: 'sm' | 'md';
 }
 
-const BaseLoader = ({ size }: BaseLoaderProps) => {
+const BaseLoader = ({ size, variant }: BaseLoaderProps) => {
   const loadingCircleWithSize = useMemo(() => {
     const sizePx = size === 'md' ? '10px' : '5px';
 
@@ -71,8 +72,9 @@ const BaseLoader = ({ size }: BaseLoaderProps) => {
       ...loadingCircle,
       width: sizePx,
       height: sizePx,
+      backgroundColor: variant === 'default' ? colours.grey30 : colours.grey50,
     };
-  }, [size]);
+  }, [size, variant]);
 
   const loadingContainerWithSize = useMemo(() => {
     const widthPx = size === 'md' ? '40px' : '20px';
@@ -121,7 +123,7 @@ const Loader = ({ variant = 'default', size = 'md' }: LoaderProps) => {
     );
   }
 
-  return <BaseLoader size={size} />;
+  return <BaseLoader size={size} variant={variant} />;
 };
 
 export default Loader;

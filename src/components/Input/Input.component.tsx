@@ -99,6 +99,7 @@ export interface IInputProps {
   'data-testid'?: string;
   'suggestions'?: SelectOption[];
   'loading'?: boolean;
+  'loadingVariant'?: 'default' | 'background';
 }
 
 const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref: React.Ref<HTMLInputElement>) {
@@ -118,6 +119,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
     'data-testid': dataTestId,
     suggestions,
     loading,
+    loadingVariant,
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
@@ -221,7 +223,7 @@ const Input = React.forwardRef(function ForwardRefInput(props: IInputProps, ref:
         )}
         {loading && (
           <LoadingContainer>
-            <Loader size='sm' />
+            <Loader size='sm' variant={loadingVariant} />
           </LoadingContainer>
         )}
       </InputContainer>
