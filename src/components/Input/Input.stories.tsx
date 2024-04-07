@@ -128,8 +128,6 @@ export const WithSuggestions = () => {
 };
 
 export const WithLoading = () => {
-  const [isDisabled, setIsDisabled] = useState(true);
-
   return (
     <>
       <ControlGroup variation='comfortable'>

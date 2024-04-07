@@ -82,7 +82,7 @@ const BaseLoader = ({ size }: BaseLoaderProps) => {
       ...loadingContainer,
       width: widthPx,
       height: heightPx,
-    }
+    };
   }, [size]);
 
   return (
@@ -93,9 +93,21 @@ const BaseLoader = ({ size }: BaseLoaderProps) => {
       animate='end'
       data-testid='loader'
     >
-      <motion.span style={loadingCircleWithSize} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-      <motion.span style={loadingCircleWithSize} variants={loadingCircleVariants} transition={loadingCircleTransition} />
-      <motion.span style={loadingCircleWithSize} variants={loadingCircleVariants} transition={loadingCircleTransition} />
+      <motion.span
+        style={loadingCircleWithSize}
+        variants={loadingCircleVariants}
+        transition={loadingCircleTransition}
+      />
+      <motion.span
+        style={loadingCircleWithSize}
+        variants={loadingCircleVariants}
+        transition={loadingCircleTransition}
+      />
+      <motion.span
+        style={loadingCircleWithSize}
+        variants={loadingCircleVariants}
+        transition={loadingCircleTransition}
+      />
     </motion.div>
   );
 };
