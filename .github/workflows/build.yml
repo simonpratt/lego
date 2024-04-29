@@ -34,7 +34,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20.x.x
-          registry-url: ${{ secrets.NPM_REGISTRY_URL }}
       - uses: actions/download-artifact@v3
         with:
           name: build
