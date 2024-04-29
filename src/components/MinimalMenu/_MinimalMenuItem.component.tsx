@@ -16,7 +16,9 @@ const MinimalMenuItem = ({ icon, label, active, onClick, 'data-testid': dataTest
   const isMobile = useIsScreenSize('mobile');
 
   if (isMobile) {
-    return <MobileMinimalMenuItem icon={icon} label={label} active={active} onClick={onClick} data-testid={dataTestId} />;
+    return (
+      <MobileMinimalMenuItem icon={icon} label={label} active={active} onClick={onClick} data-testid={dataTestId} />
+    );
   }
 
   return <DesktopMinimalMenuItem icon={icon} active={active} onClick={onClick} data-testid={dataTestId} />;

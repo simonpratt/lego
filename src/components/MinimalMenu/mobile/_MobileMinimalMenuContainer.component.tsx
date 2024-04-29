@@ -1,9 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React from 'react';
 import styled from 'styled-components';
-import { mobileMenuDefaultTransition } from './_MobileMenu.constants';
-import MobileMenuBump from './_MobileMenuBump.component';
-import MobileMenuBumpContext from './_MobileMenuBump.context';
 
 const MobileMinimalMenuOuter = styled.div`
   position: fixed;
@@ -26,13 +22,7 @@ export interface MobileMinimalMenuContainerProps {
 }
 
 const MobileMinimalMenuContainer = ({ children }: MobileMinimalMenuContainerProps) => {
-  const [bumpX, setBumpX] = useState<number | undefined>(0);
-
-  return (
-    <MobileMenuBumpContext.Provider value={{ setBumpX }}>
-      <MobileMinimalMenuOuter>{children}</MobileMinimalMenuOuter>
-    </MobileMenuBumpContext.Provider>
-  );
+  return <MobileMinimalMenuOuter>{children}</MobileMinimalMenuOuter>;
 };
 
 export default MobileMinimalMenuContainer;
