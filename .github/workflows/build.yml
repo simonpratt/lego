@@ -37,7 +37,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: build
-      - run: npm whoami
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
