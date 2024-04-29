@@ -1,80 +1,80 @@
-version: 2.1
+# version: 2.1
 
-executors:
-  build-agent:
-    docker:
-      - image: cimg/node:18.12.1
-    working_directory: /tmp/lego
-  docker-machine:
-    machine: true
-    working_directory: /tmp/lego
+# executors:
+#   build-agent:
+#     docker:
+#       - image: cimg/node:18.12.1
+#     working_directory: /tmp/lego
+#   docker-machine:
+#     machine: true
+#     working_directory: /tmp/lego
 
-jobs:
-  test:
-    executor: build-agent
-    steps:
-      - checkout
-      - run: npm ci
-      - run: npm run lint
+# jobs:
+#   test:
+#     executor: build-agent
+#     steps:
+#       - checkout
+#       - run: npm ci
+#       - run: npm run lint
 
-  build:
-    executor: build-agent
-    steps:
-      - checkout
-      - run: npm ci
-      - run: npm run build
-      - persist_to_workspace:
-          root: /tmp/lego
-          paths:
-            - build
-            - package.json
+#   build:
+#     executor: build-agent
+#     steps:
+#       - checkout
+#       - run: npm ci
+#       - run: npm run build
+#       - persist_to_workspace:
+#           root: /tmp/lego
+#           paths:
+#             - build
+#             - package.json
 
-  publish-beta:
-    executor: docker-machine
-    steps:
-      - attach_workspace:
-          at: /tmp/lego
-      - run: printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
-      - run: npm whoami
-      - run: npm publish --access public
+#   publish-beta:
+#     executor: docker-machine
+#     steps:
+#       - attach_workspace:
+#           at: /tmp/lego
+#       - run: printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
+#       - run: npm whoami
+#       - run: npm publish --access public
 
-  publish-latest:
-    executor: docker-machine
-    steps:
-      - attach_workspace:
-          at: /tmp/lego
-      - run: printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
-      - run: npm whoami
-      - run: npm publish --access public
+#   publish-latest:
+#     executor: docker-machine
+#     steps:
+#       - attach_workspace:
+#           at: /tmp/lego
+#       - run: printf "//`node -p \"require('url').parse(process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org').host\"`/:_authToken=${NPM_TOKEN}\nregistry=${NPM_REGISTRY_URL:-https://registry.npmjs.org}\n" > .npmrc
+#       - run: npm whoami
+#       - run: npm publish --access public
 
-workflows:
-  development:
-    jobs:
-      - test:
-          filters:
-            tags:
-              only: /.+/
-      - build:
-          filters:
-            tags:
-              only: /.+/
-      - publish-beta:
-          requires:
-            - test
-            - build
-          context: npm_publish
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+\.[0-9]+\.[0-9]+-.+$/
-      - publish-latest:
-          requires:
-            - test
-            - build
-          context: npm_publish
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
+# workflows:
+#   development:
+#     jobs:
+#       - test:
+#           filters:
+#             tags:
+#               only: /.+/
+#       - build:
+#           filters:
+#             tags:
+#               only: /.+/
+#       - publish-beta:
+#           requires:
+#             - test
+#             - build
+#           context: npm_publish
+#           filters:
+#             branches:
+#               ignore: /.*/
+#             tags:
+#               only: /^v[0-9]+\.[0-9]+\.[0-9]+-.+$/
+#       - publish-latest:
+#           requires:
+#             - test
+#             - build
+#           context: npm_publish
+#           filters:
+#             branches:
+#               ignore: /.*/
+#             tags:
+#               only: /^v[0-9]+\.[0-9]+\.[0-9]+$/
