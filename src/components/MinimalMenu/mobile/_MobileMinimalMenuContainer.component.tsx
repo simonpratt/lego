@@ -11,26 +11,14 @@ const MobileMinimalMenuOuter = styled.div`
   left: 0;
 
   width: 100%;
-  height: 48px;
+  height: 56px;
   z-index: 10;
 
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 
-  background-color: ${(props) => props.theme.colours.cardBackground};
-`;
-
-const AnimatedMenuBumpContainer = styled(motion.div)`
-  position: fixed;
-  bottom: 46px;
-  left: 0;
-
-  width: 86px;
-  height: 24px;
-
-  svg {
-    fill: ${(props) => props.theme.colours.cardBackground};
-  }
+  background-color: ${(props) => props.theme.colours.background};
 `;
 
 export interface MobileMinimalMenuContainerProps {
@@ -42,15 +30,7 @@ const MobileMinimalMenuContainer = ({ children }: MobileMinimalMenuContainerProp
 
   return (
     <MobileMenuBumpContext.Provider value={{ setBumpX }}>
-      <MobileMinimalMenuOuter>
-        <AnimatedMenuBumpContainer
-          animate={{ opacity: bumpX ? 1 : 0, x: bumpX ? bumpX - 86 / 2 : undefined, y: bumpX ? 0 : 100 }}
-          transition={mobileMenuDefaultTransition}
-        >
-          <MobileMenuBump />
-        </AnimatedMenuBumpContainer>
-        {children}
-      </MobileMinimalMenuOuter>
+      <MobileMinimalMenuOuter>{children}</MobileMinimalMenuOuter>
     </MobileMenuBumpContext.Provider>
   );
 };

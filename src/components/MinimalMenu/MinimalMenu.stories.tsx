@@ -12,16 +12,19 @@ export const Standard = () => {
       <MinimalMenu>
         <MinimalMenu.Item
           icon={faHamburger}
+          label='Eat'
           active={menuHelpers.isActiveItem([/\/eat/g], route)}
           onClick={() => setRoute('/eat')}
         />
         <MinimalMenu.Item
           icon={faCalendarAlt}
+          label='Plan'
           active={menuHelpers.isActiveItem([/\/plan/g], route)}
           onClick={() => setRoute('/plan')}
         />
         <MinimalMenu.Item
           icon={faCogs}
+          label='Settings'
           active={menuHelpers.isActiveItem([/\/manage/g], route)}
           onClick={() => setRoute('/manage')}
         />
@@ -53,16 +56,19 @@ export const ShowAndHideMenu = () => {
         <MinimalMenu>
           <MinimalMenu.Item
             icon={faHamburger}
+            label='Eat'
             active={menuHelpers.isActiveItem([/\/eat/g], route)}
             onClick={() => setRoute('/eat')}
           />
           <MinimalMenu.Item
             icon={faCalendarAlt}
+            label='Plan'
             active={menuHelpers.isActiveItem([/\/plan/g], route)}
             onClick={() => setRoute('/plan')}
           />
           <MinimalMenu.Item
             icon={faCogs}
+            label='Settings'
             active={menuHelpers.isActiveItem([/\/manage/g], route)}
             onClick={() => setRoute('/manage')}
           />

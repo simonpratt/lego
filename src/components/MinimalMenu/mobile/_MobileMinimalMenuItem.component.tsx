@@ -2,15 +2,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect, useRef } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import useWindowDimensions from '../../../hooks/useWindowDimensions';
 import { mobileMenuDefaultTransition } from './_MobileMenu.constants';
 import MobileMenuBumpContext from './_MobileMenuBump.context';
+import darkTheme from '../../../theme/dark.theme';
 
 const ItemContainer = styled.div`
   position: relative;
 
-  color: ${(props) => props.theme.colours.defaultFont};
   cursor: pointer;
 
   width: 48px;
@@ -20,47 +20,51 @@ const ItemContainer = styled.div`
   align-items: center;
 `;
 
+const MotionDivContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
+const TextDiv = styled.div`
+  /* font-size: ${props => props.theme.fonts.emphasis.size}; */
+  font-size: 11px;
+  padding-top: 6px;
+`;
+
 const iconContainerVariants = {
-  active: { fontSize: '28px', y: -8 },
+  base: { color: darkTheme.colours.defaultFont },
+  active: { color: darkTheme.colours.primary.hover },
 };
 
 export interface MobileMinimalMenuItemProps {
   'icon'?: IconProp;
+  'label': string;
   'active'?: boolean;
   'onClick'?: () => void;
   'data-testid'?: string;
 }
 
-const MobileMinimalMenuItem = ({ icon, active, onClick, 'data-testid': dataTestId }: MobileMinimalMenuItemProps) => {
-  const { width } = useWindowDimensions();
-  const { setBumpX } = useContext(MobileMenuBumpContext);
-  const itemRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (active && width > 0) {
-      const left = itemRef.current?.offsetLeft;
-      const center = left ? left + 48 / 2 : undefined;
-      setBumpX(center);
-    }
-
-    return () => {
-      if (active) {
-        setBumpX(undefined);
-      }
-    };
-  }, [active, setBumpX, width]);
+const MobileMinimalMenuItem = ({
+  icon,
+  label,
+  active,
+  onClick,
+  'data-testid': dataTestId,
+}: MobileMinimalMenuItemProps) => {
+  const theme = useTheme();
 
   return (
-    <ItemContainer onClick={onClick} ref={itemRef} data-testid={dataTestId || 'menu-item'}>
+    <ItemContainer onClick={onClick} data-testid={dataTestId || 'menu-item'}>
       {icon && (
-        <motion.div
-          animate={active ? 'active' : undefined}
-          style={{ fontSize: '20px' }}
+        <MotionDivContainer
+          animate={active ? 'active' : 'base'}
           variants={iconContainerVariants}
           transition={mobileMenuDefaultTransition}
         >
           <FontAwesomeIcon icon={icon} />
-        </motion.div>
+          <TextDiv>{label}</TextDiv>
+        </MotionDivContainer>
       )}
     </ItemContainer>
   );
