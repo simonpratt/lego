@@ -2,25 +2,6 @@ import { Meta } from '@storybook/react/types-6-0';
 import React, { useState } from 'react';
 import { ActionMenu, Button, ControlGroup, ControlLine, FloatingAction, Form, Input } from '../..';
 
-const options = [
-  {
-    value: 'fireball',
-    label: 'Chinese Fireball',
-  },
-  {
-    value: 'longhorn',
-    label: 'Romanian Longhorn',
-  },
-  {
-    value: 'ridgeback',
-    label: 'Norwegian Ridgeback',
-  },
-  {
-    value: 'horntail',
-    label: 'Hungarian Horntail',
-  },
-];
-
 export const Standard = () => {
   const [value, setValue] = useState({ dragon: '' });
 
