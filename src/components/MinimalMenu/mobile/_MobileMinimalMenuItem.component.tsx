@@ -22,13 +22,18 @@ const MotionDivContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   padding-top: 3px;
 `;
 
 const TextDiv = styled.div`
-  font-size: 11px;
+  font-size: 12px;
   padding-top: 6px;
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: 22px;
 `;
 
 const iconContainerVariants = {
@@ -58,7 +63,7 @@ const MobileMinimalMenuItem = ({
         variants={iconContainerVariants}
         transition={mobileMenuDefaultTransition}
       >
-        <FontAwesomeIcon icon={icon} />
+        <StyledIcon icon={icon} />
         <TextDiv>{label}</TextDiv>
       </MotionDivContainer>
     )}

@@ -14,7 +14,7 @@ const MobileMinimalMenuOuter = styled.div`
   justify-content: space-evenly;
   align-items: center;
 
-  background-color: ${(props) => props.theme.colours.background};
+  background-color: ${(props) => props.theme.colours.cardBackground};
 `;
 
 export interface MobileMinimalMenuContainerProps {
