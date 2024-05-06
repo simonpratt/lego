@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import responsive from '../../responsive/responsive';
+import responsive, { useIsScreenSize } from '../../responsive/responsive';
+import MinimalMenuContext from './MinimalMenu.context';
 
 const MinimalMenuPageContainer = styled.div<{ hiddenMenu: boolean }>`
   ${responsive.useStylesFor('tablet').andLarger(`
@@ -28,7 +29,21 @@ export interface MinimalMenuPageProps {
 }
 
 const MinimalMenuPage = ({ children, hiddenMenu }: MinimalMenuPageProps) => {
-  return <MinimalMenuPageContainer hiddenMenu={!!hiddenMenu}>{children}</MinimalMenuPageContainer>;
+  const isMobile = useIsScreenSize('mobile');
+
+  const contextState = useMemo(
+    () => ({
+      menuExists: true,
+      isMobile,
+    }),
+    [isMobile],
+  );
+
+  return (
+    <MinimalMenuContext.Provider value={contextState}>
+      <MinimalMenuPageContainer hiddenMenu={!!hiddenMenu}>{children}</MinimalMenuPageContainer>
+    </MinimalMenuContext.Provider>
+  );
 };
 
 export default MinimalMenuPage;

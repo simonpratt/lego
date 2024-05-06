@@ -15,7 +15,7 @@ export { default as Checklist } from './components/Checklist/Checklist.component
 export { default as ControlGroup } from './components/ControlGroup/ControlGroup.component';
 export { default as ControlLine } from './components/ControlLine/ControlLine.component';
 export { default as FancyCheckbox } from './components/FancyCheckbox/FancyCheckbox.component';
-export { default as FloatingAction } from './components/FloatingAction/FloatingAction.component';
+export { default as FloatingActionButton } from './components/FloatingActionButton/FloatingActionButton.component';
 export { default as Form } from './components/Form/Form.component';
 export { default as Notification } from './components/Notification/Notification.component';
 export { default as Notifications } from './components/Notifications/Notifications.component';
