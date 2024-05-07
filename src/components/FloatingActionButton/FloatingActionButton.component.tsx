@@ -11,8 +11,8 @@ const FloatingButton = styled(motion.button)<{ variant: ColourVariant; offsetBot
   position: fixed;
   bottom: ${(props) => (props.offsetBottom ? '76px' : '20px')};
   right: 20px;
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).main};
   color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
