@@ -42,18 +42,15 @@ const FloatingActionButton: React.FC<FloatingActionButtonProps> = ({ icon, onCli
   const { menuExists, isMobile } = useContext(MinimalMenuContext);
 
   const variants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3, delay: 0.2 } },
-    exit: { opacity: 0, scale: 0 },
+    visible: { opacity: 1, scale: 1 },
     hover: { scale: 1.05 },
     tap: { scale: 0.95 },
   };
 
   return (
     <FloatingButton
-      initial='hidden'
+      initial='visible'
       animate='visible'
-      exit='exit'
       whileHover='hover'
       whileTap='tap'
       offsetBottom={menuExists && isMobile}
