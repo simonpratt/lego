@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import getThemeVariantColours from '../../theme/helpers/getThemeVariantColours';
 import { ColourVariant } from '../../theme/theme.types';
 import MinimalMenuContext from '../MinimalMenu/MinimalMenu.context';
+import zIndexConstants from '../../constants/zIndex.constants';
 
 const FloatingButton = styled(motion.button)<{ variant: ColourVariant; offsetBottom: boolean }>`
   position: fixed;
@@ -24,7 +25,7 @@ const FloatingButton = styled(motion.button)<{ variant: ColourVariant; offsetBot
   align-items: center;
   font-size: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: 999;
+  z-index: ${zIndexConstants.floatingActionButton};
 
   &:hover {
     background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darker};
