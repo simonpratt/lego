@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 const MinimalMenuHeaderContainer = styled.div<{ hiddenMenu: boolean }>``;
 
-const Header = styled.div`
-  height: 48px;
+const Header = styled.div<{ size: 'sm' | 'md' }>`
+  height: ${(props) => (props.size === 'sm' ? '48px' : '64px')};
   background-color: ${(props) => props.theme.colours.cardBackground};
 
   display: flex;
@@ -32,16 +32,18 @@ export interface MinimalMenuHeaderProps {
   text?: string;
   /* Optional JSX content to display on the righthand side */
   rightContent?: React.ReactNode;
+  /* Menu Size */
+  size?: 'sm' | 'md';
 }
 
 /**
  * A header that is designed to be nested within the page content.
  * You can use a header per page or simply use a single header for your entire application.
  */
-const MinimalMenuHeader = ({ hiddenMenu, text, rightContent }: MinimalMenuHeaderProps) => {
+const MinimalMenuHeader = ({ hiddenMenu, text, rightContent, size = 'sm' }: MinimalMenuHeaderProps) => {
   return (
     <MinimalMenuHeaderContainer hiddenMenu={!!hiddenMenu}>
-      <Header>
+      <Header size={size}>
         <HeaderItem>{text && <TitleText>{text}</TitleText>}</HeaderItem>
         <HeaderItem>{rightContent}</HeaderItem>
       </Header>

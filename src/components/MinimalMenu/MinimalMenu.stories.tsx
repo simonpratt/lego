@@ -39,6 +39,41 @@ export const Standard = () => {
   );
 };
 
+export const MediumHeader = () => {
+  const [route, setRoute] = useState('/eat');
+
+  return (
+    <>
+      <MinimalMenu>
+        <MinimalMenu.Item
+          icon={faHamburger}
+          label='Eat'
+          active={menuHelpers.isActiveItem([/\/eat/g], route)}
+          onClick={() => setRoute('/eat')}
+        />
+        <MinimalMenu.Item
+          icon={faCalendarAlt}
+          label='Plan'
+          active={menuHelpers.isActiveItem([/\/plan/g], route)}
+          onClick={() => setRoute('/plan')}
+        />
+        <MinimalMenu.Item
+          icon={faCogs}
+          label='Settings'
+          active={menuHelpers.isActiveItem([/\/manage/g], route)}
+          onClick={() => setRoute('/manage')}
+        />
+      </MinimalMenu>
+      <MinimalMenu.Page>
+        <MinimalMenu.Header size='md' text='App 01' rightContent={<Button>Save</Button>} />
+        <PaddedLayout>
+          <LoremIpsum />
+        </PaddedLayout>
+      </MinimalMenu.Page>
+    </>
+  );
+};
+
 export const ShowAndHideMenu = () => {
   const [route, setRoute] = useState('/eat');
   const [counterValue, setCounterValue] = useState(0);

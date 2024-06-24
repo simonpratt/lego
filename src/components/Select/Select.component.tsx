@@ -51,12 +51,22 @@ export interface ISelectProps {
   'onChange'?: (value: any) => void;
   'data-testid'?: string;
   'options': SelectOption[];
+  'className'?: string;
 }
 
 const Select = (props: ISelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [referenceElement, setReferenceElement] = useState<any>();
-  const { label, name, description, placeholder, 'value': propsValue, 'data-testid': dataTestId, options } = props;
+  const {
+    label,
+    name,
+    description,
+    placeholder,
+    'value': propsValue,
+    'data-testid': dataTestId,
+    options,
+    className,
+  } = props;
 
   const { value: contextValue, onChange: contextOnChange } = useFormNode(name);
 
@@ -77,7 +87,7 @@ const Select = (props: ISelectProps) => {
   const valueLabel = value && options.find((o) => o.value === value)?.label;
 
   return (
-    <div>
+    <div className={className}>
       {label && <ControlLabel htmlFor={name}>{label}</ControlLabel>}
       <ControlOuter ref={setReferenceElement}>
         <SelectControl data-testid={dataTestId} onClick={() => setIsOpen(!isOpen)}>
