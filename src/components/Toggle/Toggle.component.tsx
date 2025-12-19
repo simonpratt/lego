@@ -3,6 +3,17 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import darkTheme from '../../theme/dark.theme';
 
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+`;
+
+const Label = styled.span`
+  font-size: 14px;
+  color: ${(props) => props.theme.colours.defaultFont};
+`;
+
 const ToggleOuter = styled(motion.div)`
   width: 42px;
   height: 24px;
@@ -37,23 +48,27 @@ const toggleDotVariants = {
 export interface ToggleProps {
   value: boolean;
   onChange: (value: boolean) => void;
+  label?: string;
 }
 
-const Toggle = ({ value, onChange }: ToggleProps) => {
+const Toggle = ({ value, onChange, label }: ToggleProps) => {
   return (
-    <ToggleOuter
-      animate={value ? 'on' : 'off'}
-      variants={toggleOuterVariants}
-      transition={{ type: 'spring', duration: 0.3 }}
-      onClick={() => onChange(!value)}
-      data-testid='toggle'
-    >
-      <ToggleDot
+    <Container>
+      {label && <Label>{label}</Label>}
+      <ToggleOuter
         animate={value ? 'on' : 'off'}
-        variants={toggleDotVariants}
+        variants={toggleOuterVariants}
         transition={{ type: 'spring', duration: 0.3 }}
-      />
-    </ToggleOuter>
+        onClick={() => onChange(!value)}
+        data-testid='toggle'
+      >
+        <ToggleDot
+          animate={value ? 'on' : 'off'}
+          variants={toggleDotVariants}
+          transition={{ type: 'spring', duration: 0.3 }}
+        />
+      </ToggleOuter>
+    </Container>
   );
 };
 

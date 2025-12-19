@@ -41,6 +41,7 @@ export { default as Swimlane } from './components/Swimlane/Swimlane.component';
 export { default as Table } from './components/Table/Table.component';
 export { default as Text } from './components/Text/Text.component';
 export { default as TextArea } from './components/TextArea/TextArea.component';
+export { default as Toggle } from './components/Toggle/Toggle.component';
 
 export { default as LoginScreen } from './screens/Login/Login.screen';
 export { default as RegisterScreen } from './screens/Register/Register.screen';
@@ -64,6 +65,7 @@ export { VerificationData } from './screens/Verification/Verification.screen';
 export { default as FileContext } from './contexts/File.context';
 
 export { ButtonProps as ButtonProps } from './components/Button/Button.component';
+export { ToggleProps } from './components/Toggle/Toggle.component';
 
 export { default as menuHelpers } from './components/Menu/menu.helpers';
 export { default as responsive } from './responsive/responsive';
