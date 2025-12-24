@@ -1,3 +1,7 @@
+### v2.1.0
+
+- Added `colour` argument to `Checklist` items
+
 ### v1.8.1
 
 - Added `actionIcon` and `onAction` to the _Badge_ component
