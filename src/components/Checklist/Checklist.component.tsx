@@ -13,6 +13,7 @@ const ListDivider = styled.div`
 export interface ChecklistItemProps {
   id: string;
   label: string;
+  colour?: string; // Optional hex color for highlight effects
 }
 
 export interface ChecklistProps {
@@ -63,6 +64,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
             value={value.includes(item.id)}
             onChange={(checked) => handleChange(item.id, checked)}
             large={!!large}
+            colour={item.colour}
           />
         </motion.div>
       ))}
@@ -76,6 +78,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
             value={value.includes(item.id)}
             onChange={(checked) => handleChange(item.id, checked)}
             large={!!large}
+            colour={item.colour}
           />
         </motion.div>
       ))}

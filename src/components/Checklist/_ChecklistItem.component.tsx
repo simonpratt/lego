@@ -5,6 +5,7 @@ import { Checkmark } from '../common/Checkmark.component';
 
 interface OuterLabelProps {
   checked: boolean;
+  $highlightColour?: string;
 }
 
 const Outerlabel = styled(motion.label)<OuterLabelProps>`
@@ -20,7 +21,9 @@ const Outerlabel = styled(motion.label)<OuterLabelProps>`
   font-weight: ${(props) => props.theme.fonts.default.weight};
   color: ${(props) => (props.checked ? props.theme.colours.defaultBorder : props.theme.colours.defaultFont)};
 
-  background-color: ${(props) => props.theme.colours.background};
+  background-color: ${(props) =>
+    props.$highlightColour ? `${props.$highlightColour}20` : props.theme.colours.background};
+  border-left: ${(props) => (props.$highlightColour ? `3px solid ${props.$highlightColour}` : '3px solid transparent')};
 
   user-select: none;
   cursor: pointer;
@@ -58,9 +61,10 @@ export interface ChecklistItemProps {
   value: boolean;
   onChange: (value: boolean) => void;
   large: boolean;
+  colour?: string;
 }
 
-const ChecklistItem = ({ label, value, onChange, large }: ChecklistItemProps) => {
+const ChecklistItem = ({ label, value, onChange, large, colour }: ChecklistItemProps) => {
   const theme = useTheme();
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
@@ -73,6 +77,7 @@ const ChecklistItem = ({ label, value, onChange, large }: ChecklistItemProps) =>
   return (
     <Outerlabel
       checked={value}
+      $highlightColour={colour}
       whileHover={{ backgroundColor: theme.colours.cardBackground }}
       data-testid={value ? 'checklist-item-checked' : 'checklist-item'}
     >
