@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, LayoutGroup } from 'framer-motion';
 import styled from 'styled-components';
 import ChecklistItem from './_ChecklistItem.component';
+import { Status } from '../../theme/theme.types';
 
 const ListDivider = styled.div`
   width: 100%;
@@ -13,7 +14,7 @@ const ListDivider = styled.div`
 export interface ChecklistItemProps {
   id: string;
   label: string;
-  colour?: string; // Optional hex color for highlight effects
+  status?: Status;
 }
 
 export interface ChecklistProps {
@@ -64,7 +65,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
             value={value.includes(item.id)}
             onChange={(checked) => handleChange(item.id, checked)}
             large={!!large}
-            colour={item.colour}
+            status={item.status}
           />
         </motion.div>
       ))}
@@ -78,7 +79,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
             value={value.includes(item.id)}
             onChange={(checked) => handleChange(item.id, checked)}
             large={!!large}
-            colour={item.colour}
+            status={item.status}
           />
         </motion.div>
       ))}

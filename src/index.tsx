@@ -69,3 +69,5 @@ export { ToggleProps } from './components/Toggle/Toggle.component';
 
 export { default as menuHelpers } from './components/Menu/menu.helpers';
 export { default as responsive } from './responsive/responsive';
+
+export type { Status } from './theme/theme.types';

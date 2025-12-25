@@ -2,10 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled, { useTheme } from 'styled-components';
 import { Checkmark } from '../common/Checkmark.component';
+import { Status } from '../../theme/theme.types';
+import getThemeStatusColour from '../../theme/helpers/getThemeStatusColour';
 
 interface OuterLabelProps {
   checked: boolean;
-  $highlightColour?: string;
+  $status?: Status;
 }
 
 const Outerlabel = styled(motion.label)<OuterLabelProps>`
@@ -21,9 +23,10 @@ const Outerlabel = styled(motion.label)<OuterLabelProps>`
   font-weight: ${(props) => props.theme.fonts.default.weight};
   color: ${(props) => (props.checked ? props.theme.colours.defaultBorder : props.theme.colours.defaultFont)};
 
-  background-color: ${(props) =>
-    props.$highlightColour ? `${props.$highlightColour}20` : props.theme.colours.background};
-  border-left: ${(props) => (props.$highlightColour ? `3px solid ${props.$highlightColour}` : '3px solid transparent')};
+  background-color: ${(props) => props.theme.colours.background};
+  border-left: 3px solid transparent;
+
+  transition: border-color 0.3s ease-in-out;
 
   user-select: none;
   cursor: pointer;
@@ -61,11 +64,13 @@ export interface ChecklistItemProps {
   value: boolean;
   onChange: (value: boolean) => void;
   large: boolean;
-  colour?: string;
+  status?: Status;
 }
 
-const ChecklistItem = ({ label, value, onChange, large, colour }: ChecklistItemProps) => {
+const ChecklistItem = ({ label, value, onChange, large, status }: ChecklistItemProps) => {
   const theme = useTheme();
+  const statusColour = status ? getThemeStatusColour(status, theme) : null;
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       onChange(true);
@@ -77,9 +82,13 @@ const ChecklistItem = ({ label, value, onChange, large, colour }: ChecklistItemP
   return (
     <Outerlabel
       checked={value}
-      $highlightColour={colour}
+      $status={status}
+      style={{
+        borderLeftColor: statusColour?.main ?? 'transparent',
+      }}
       whileHover={{ backgroundColor: theme.colours.cardBackground }}
       data-testid={value ? 'checklist-item-checked' : 'checklist-item'}
+      data-highlight={status ?? undefined}
     >
       <Checkmark checked={value} large={large} />
       <Spacer />

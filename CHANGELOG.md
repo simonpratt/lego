@@ -1,4 +1,8 @@
-### v2.1.0
+### v2.3.0
+
+- Changed `colour` argument to `status` for `Checklist` items
+
+### v2.2.0
 
 - Added `colour` argument to `Checklist` items
 
