@@ -71,6 +71,10 @@ const ChecklistItem = ({ label, value, onChange, large, status }: ChecklistItemP
   const theme = useTheme();
   const statusColour = status ? getThemeStatusColour(status, theme) : null;
 
+  if (status) {
+    console.log('ChecklistItem with status:', { label, status, statusColour, borderColor: statusColour?.main });
+  }
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
       onChange(true);

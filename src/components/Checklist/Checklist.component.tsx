@@ -59,7 +59,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
   return (
     <LayoutGroup data-testid='checklist'>
       {unCheckedItems.map((item) => (
-        <motion.div layoutId={item.id} key={item.id}>
+        <motion.div layoutId={item.id} key={item.id} layout>
           <ChecklistItem
             label={item.label}
             value={value.includes(item.id)}
@@ -73,7 +73,7 @@ const Checklist = ({ items, value, onChange, noSplitGap, large }: ChecklistProps
       {checkedItems.length && !noSplitGap ? <ListDivider /> : null}
 
       {checkedItems.map((item) => (
-        <motion.div layoutId={item.id} key={item.id}>
+        <motion.div layoutId={item.id} key={item.id} layout>
           <ChecklistItem
             label={item.label}
             value={value.includes(item.id)}
