@@ -10,9 +10,10 @@ interface FloatingActionButtonProps {
   icon: IconDefinition;
   onClick: () => void;
   variant?: ColourVariant;
+  'data-testid'?: string;
 }
 
-const FloatingActionButton = ({ icon, onClick, variant = 'primary' }: FloatingActionButtonProps) => {
+const FloatingActionButton = ({ icon, onClick, variant = 'primary', 'data-testid': dataTestId }: FloatingActionButtonProps) => {
   const { contextExists, setButton } = useContext(FloatingActionButtonContext);
   const id = useMemo(() => v4(), []);
 
@@ -24,7 +25,7 @@ const FloatingActionButton = ({ icon, onClick, variant = 'primary' }: FloatingAc
   }, [icon, onClick, variant, setButton]);
 
   if (!contextExists) {
-    return <FloatingActionButtonInternal icon={icon} onClick={onClick} variant={variant} />;
+    return <FloatingActionButtonInternal icon={icon} onClick={onClick} variant={variant} data-testid={dataTestId} />;
   }
 
   return null;

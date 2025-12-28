@@ -37,9 +37,10 @@ interface FloatingActionButtonInternalProps {
   icon: IconDefinition;
   onClick: () => void;
   variant?: ColourVariant;
+  'data-testid'?: string;
 }
 
-const FloatingActionButtonInternal = ({ icon, onClick, variant = 'primary' }: FloatingActionButtonInternalProps) => {
+const FloatingActionButtonInternal = ({ icon, onClick, variant = 'primary', 'data-testid': dataTestId }: FloatingActionButtonInternalProps) => {
   const { menuExists, isMobile } = useContext(MinimalMenuContext);
   const { contextExists } = useContext(FloatingActionButtonContext);
 
@@ -63,6 +64,7 @@ const FloatingActionButtonInternal = ({ icon, onClick, variant = 'primary' }: Fl
       variants={variants}
       onClick={onClick}
       variant={variant}
+      data-testid={dataTestId}
     >
       <FontAwesomeIcon icon={icon} />
     </FloatingButton>
