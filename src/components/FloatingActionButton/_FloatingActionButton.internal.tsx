@@ -34,13 +34,18 @@ const FloatingButton = styled(motion.button)<{ variant: ColourVariant; offsetBot
 `;
 
 interface FloatingActionButtonInternalProps {
-  icon: IconDefinition;
-  onClick: () => void;
-  variant?: ColourVariant;
+  'icon': IconDefinition;
+  'onClick': () => void;
+  'variant'?: ColourVariant;
   'data-testid'?: string;
 }
 
-const FloatingActionButtonInternal = ({ icon, onClick, variant = 'primary', 'data-testid': dataTestId }: FloatingActionButtonInternalProps) => {
+const FloatingActionButtonInternal = ({
+  icon,
+  onClick,
+  variant = 'primary',
+  'data-testid': dataTestId,
+}: FloatingActionButtonInternalProps) => {
   const { menuExists, isMobile } = useContext(MinimalMenuContext);
   const { contextExists } = useContext(FloatingActionButtonContext);
 

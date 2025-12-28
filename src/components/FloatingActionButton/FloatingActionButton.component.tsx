@@ -7,13 +7,18 @@ import { v4 } from 'uuid';
 import FloatingActionButtonInternal from './_FloatingActionButton.internal';
 
 interface FloatingActionButtonProps {
-  icon: IconDefinition;
-  onClick: () => void;
-  variant?: ColourVariant;
+  'icon': IconDefinition;
+  'onClick': () => void;
+  'variant'?: ColourVariant;
   'data-testid'?: string;
 }
 
-const FloatingActionButton = ({ icon, onClick, variant = 'primary', 'data-testid': dataTestId }: FloatingActionButtonProps) => {
+const FloatingActionButton = ({
+  icon,
+  onClick,
+  variant = 'primary',
+  'data-testid': dataTestId,
+}: FloatingActionButtonProps) => {
   const { contextExists, setButton } = useContext(FloatingActionButtonContext);
   const id = useMemo(() => v4(), []);
 
