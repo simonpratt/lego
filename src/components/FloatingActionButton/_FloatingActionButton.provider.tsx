@@ -23,7 +23,13 @@ const FloatingActionButtonProvider = ({ children }: FloatingActionButtonProvider
       {children}
       <AnimatePresence>
         {fab?.icon && (
-          <FloatingActionButtonInternal key={fab.id} icon={fab.icon} onClick={fab.onClick} variant={fab.variant} />
+          <FloatingActionButtonInternal
+            key={fab.id}
+            icon={fab.icon}
+            onClick={fab.onClick}
+            variant={fab.variant}
+            data-testid={fab.dataTestId}
+          />
         )}
       </AnimatePresence>
     </FloatingActionButtonContext.Provider>

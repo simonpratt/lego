@@ -23,11 +23,11 @@ const FloatingActionButton = ({
   const id = useMemo(() => v4(), []);
 
   useEffect(() => {
-    setButton({ id, icon, onClick, variant });
+    setButton({ id, icon, onClick, variant, dataTestId });
     return () => {
       setButton(undefined);
     };
-  }, [icon, onClick, variant, setButton]);
+  }, [icon, onClick, variant, dataTestId, setButton]);
 
   if (!contextExists) {
     return <FloatingActionButtonInternal icon={icon} onClick={onClick} variant={variant} data-testid={dataTestId} />;

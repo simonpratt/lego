@@ -7,6 +7,7 @@ export interface FabProps {
   icon: IconDefinition | null;
   onClick: () => void;
   variant?: ColourVariant;
+  dataTestId?: string;
 }
 
 interface FloatingActionButtonContextProps {
