@@ -49,7 +49,6 @@ const BadgeSelector = ({ options, value, onChange }: BadgeSelectorProps) => {
     <BadgeSelectorOuter data-testid='badge-selector'>
       {options.map((option) => (
         <InteractiveBadge
-          useHover={false}
           key={option.value}
           variant={option.variant}
           inactive={!value.includes(option.value)}
