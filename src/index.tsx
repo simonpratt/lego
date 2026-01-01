@@ -36,6 +36,7 @@ export { default as ProfileImage } from './components/ProfileImage/ProfileImage.
 export { default as QrCode } from './components/QrCode/QrCode.component';
 export { default as Select } from './components/Select/Select.component';
 export { default as Spacer } from './components/Spacer/Spacer.component';
+export { default as TagSelect } from './components/TagSelect/TagSelect.component';
 export { default as SquareButton } from './components/SquareButton/SquareButton.component';
 export { default as Swimlane } from './components/Swimlane/Swimlane.component';
 export { default as Table } from './components/Table/Table.component';

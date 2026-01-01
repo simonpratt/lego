@@ -1,3 +1,8 @@
+### v2.4.0
+
+- Added _TagSelect_ component for multi-tag selection with color-coded badges
+- Updated _Badge_ component with separated action section styling
+
 ### v2.3.0
 
 - Changed `colour` argument to `status` for `Checklist` items
