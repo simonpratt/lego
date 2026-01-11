@@ -9,16 +9,50 @@ import MinimalMenuContext from '../MinimalMenu/MinimalMenu.context';
 import zIndexConstants from '../../constants/zIndex.constants';
 import FloatingActionButtonContext from './_FloatingActionButton.context';
 
-const FloatingButtonContainer = styled(motion.div)<{ offsetBottom: boolean }>`
+const FAB_SIZES = {
+  primary: {
+    width: 56,
+    height: 56,
+    fontSize: 24,
+    labelOffset: 68,
+    hoverScale: 1.1,
+    tapScale: 0.95,
+  },
+  mini: {
+    width: 40,
+    height: 40,
+    fontSize: 18,
+    labelOffset: 52,
+    hoverScale: 1.15,
+    tapScale: 0.9,
+  },
+} as const;
+
+type FabSize = keyof typeof FAB_SIZES;
+
+interface FabContainerProps {
+  bottom?: number;
+  offsetBottom?: boolean;
+}
+
+const FabContainer = styled(motion.div)<FabContainerProps>`
   position: fixed;
-  bottom: ${(props) => (props.offsetBottom ? '76px' : '20px')};
+  bottom: ${(props) => {
+    if (props.bottom !== undefined) return `${props.bottom}px`;
+    return props.offsetBottom ? '76px' : '20px';
+  }};
   right: 20px;
   z-index: ${zIndexConstants.floatingActionButton};
 `;
 
-const FloatingButton = styled(motion.button)<{ variant: ColourVariant }>`
-  width: 56px;
-  height: 56px;
+interface FabButtonProps {
+  variant: ColourVariant;
+  size: FabSize;
+}
+
+const FabButton = styled(motion.button)<FabButtonProps>`
+  width: ${(props) => FAB_SIZES[props.size].width}px;
+  height: ${(props) => FAB_SIZES[props.size].height}px;
   border-radius: 50%;
   background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).main};
   color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
@@ -28,7 +62,7 @@ const FloatingButton = styled(motion.button)<{ variant: ColourVariant }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
+  font-size: ${(props) => FAB_SIZES[props.size].fontSize}px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 
   &:hover {
@@ -36,36 +70,9 @@ const FloatingButton = styled(motion.button)<{ variant: ColourVariant }>`
   }
 `;
 
-const MiniFabContainer = styled(motion.div)<{ bottom: number }>`
-  position: fixed;
-  bottom: ${(props) => props.bottom}px;
-  right: 20px;
-  z-index: ${zIndexConstants.floatingActionButton};
-`;
-
-const MiniFabButton = styled(motion.button)<{ variant: ColourVariant }>`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).main};
-  color: ${(props) => getThemeVariantColours(props.variant, props.theme).contrastText};
-  border: none;
-  outline: none;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-
-  &:hover {
-    background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darker};
-  }
-`;
-
-const FabLabel = styled(motion.div)<{ buttonSize?: 'primary' | 'mini' }>`
+const FabLabel = styled(motion.div)<{ size: FabSize }>`
   position: absolute;
-  right: ${(props) => (props.buttonSize === 'primary' ? '68px' : '52px')};
+  right: ${(props) => FAB_SIZES[props.size].labelOffset}px;
   top: 50%;
   transform: translateY(-50%);
 
@@ -84,104 +91,35 @@ const FabLabel = styled(motion.div)<{ buttonSize?: 'primary' | 'mini' }>`
   box-shadow: ${(props) => props.theme.shadows.medium};
 `;
 
-interface FloatingActionButtonInternalProps {
+interface BaseFabProps {
   'icon': IconDefinition;
   'onClick': () => void;
   'variant'?: ColourVariant;
-  'data-testid'?: string;
   'label'?: string;
+  'size': FabSize;
+  'bottom'?: number;
+  'offsetBottom'?: boolean;
+  'staggerDelay'?: number;
+  'data-testid'?: string;
 }
 
-const FloatingActionButtonInternal = ({
+const BaseFab = ({
   icon,
   onClick,
   variant = 'primary',
-  'data-testid': dataTestId,
   label,
-}: FloatingActionButtonInternalProps) => {
-  const { menuExists, isMobile } = useContext(MinimalMenuContext);
-  const { contextExists } = useContext(FloatingActionButtonContext);
+  size,
+  bottom,
+  offsetBottom,
+  staggerDelay = 0,
+  'data-testid': dataTestId,
+}: BaseFabProps) => {
   const [showLabel, setShowLabel] = React.useState(false);
+  const { contextExists } = useContext(FloatingActionButtonContext);
+
+  const sizeConfig = FAB_SIZES[size];
 
   const variants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.3, delay: 0.2 } },
-    exit: { opacity: 0, scale: 0, transition: { duration: 0.3 } },
-    hover: { scale: 1.1 },
-    tap: { scale: 0.95 },
-  };
-
-  const labelVariants = {
-    hidden: { opacity: 0, x: 10 },
-    visible: { opacity: 1, x: 0 },
-  };
-
-  return (
-    <FloatingButtonContainer
-      offsetBottom={menuExists && isMobile}
-      initial={contextExists ? 'hidden' : 'visible'}
-      animate='visible'
-      exit='exit'
-      variants={variants}
-      onHoverStart={() => setShowLabel(true)}
-      onHoverEnd={() => setShowLabel(false)}
-    >
-      <FloatingButton
-        key='floating-button'
-        animate='visible'
-        whileHover='hover'
-        whileTap='tap'
-        variants={variants}
-        onClick={onClick}
-        variant={variant}
-        data-testid={dataTestId}
-      >
-        <FontAwesomeIcon icon={icon} />
-      </FloatingButton>
-
-      {label && (
-        <AnimatePresence>
-          {showLabel && (
-            <FabLabel
-              buttonSize='primary'
-              initial='hidden'
-              animate='visible'
-              exit='hidden'
-              variants={labelVariants}
-              transition={{ type: 'spring', duration: 0.3 }}
-            >
-              {label}
-            </FabLabel>
-          )}
-        </AnimatePresence>
-      )}
-    </FloatingButtonContainer>
-  );
-};
-
-interface MiniFabInternalProps {
-  'icon': IconDefinition;
-  'onClick': () => void;
-  'variant'?: ColourVariant;
-  'label'?: string;
-  'bottom': number;
-  'staggerDelay': number;
-  'data-testid'?: string;
-}
-
-const MiniFabInternal = ({
-  icon,
-  onClick,
-  variant = 'primary',
-  label,
-  bottom,
-  staggerDelay,
-  'data-testid': dataTestId,
-}: MiniFabInternalProps) => {
-  const [showLabel, setShowLabel] = React.useState(false);
-  const { contextExists } = useContext(FloatingActionButtonContext);
-
-  const miniFabVariants = {
     hidden: { opacity: 0, scale: 0 },
     visible: {
       opacity: 1,
@@ -199,8 +137,8 @@ const MiniFabInternal = ({
         delay: staggerDelay,
       },
     },
-    hover: { scale: 1.15 },
-    tap: { scale: 0.9 },
+    hover: { scale: sizeConfig.hoverScale },
+    tap: { scale: sizeConfig.tapScale },
   };
 
   const labelVariants = {
@@ -209,32 +147,34 @@ const MiniFabInternal = ({
   };
 
   return (
-    <MiniFabContainer
+    <FabContainer
       bottom={bottom}
+      offsetBottom={offsetBottom}
       initial={contextExists ? 'hidden' : 'visible'}
       animate='visible'
       exit='exit'
-      variants={miniFabVariants}
+      variants={variants}
       onHoverStart={() => setShowLabel(true)}
       onHoverEnd={() => setShowLabel(false)}
     >
-      <MiniFabButton
+      <FabButton
         animate='visible'
         whileHover='hover'
         whileTap='tap'
-        variants={miniFabVariants}
+        variants={variants}
         onClick={onClick}
         variant={variant}
+        size={size}
         data-testid={dataTestId}
       >
         <FontAwesomeIcon icon={icon} />
-      </MiniFabButton>
+      </FabButton>
 
       {label && (
         <AnimatePresence>
           {showLabel && (
             <FabLabel
-              buttonSize='mini'
+              size={size}
               initial='hidden'
               animate='visible'
               exit='hidden'
@@ -246,8 +186,39 @@ const MiniFabInternal = ({
           )}
         </AnimatePresence>
       )}
-    </MiniFabContainer>
+    </FabContainer>
   );
+};
+
+interface FloatingActionButtonInternalProps {
+  'icon': IconDefinition;
+  'onClick': () => void;
+  'variant'?: ColourVariant;
+  'data-testid'?: string;
+  'label'?: string;
+}
+
+const FloatingActionButtonInternal = (props: FloatingActionButtonInternalProps) => {
+  const { menuExists, isMobile } = useContext(MinimalMenuContext);
+  const { contextExists } = useContext(FloatingActionButtonContext);
+
+  return (
+    <BaseFab {...props} size='primary' offsetBottom={menuExists && isMobile} staggerDelay={contextExists ? 0.2 : 0} />
+  );
+};
+
+interface MiniFabInternalProps {
+  'icon': IconDefinition;
+  'onClick': () => void;
+  'variant'?: ColourVariant;
+  'label'?: string;
+  'bottom': number;
+  'staggerDelay': number;
+  'data-testid'?: string;
+}
+
+const MiniFabInternal = ({ bottom, staggerDelay, ...rest }: MiniFabInternalProps) => {
+  return <BaseFab {...rest} size='mini' bottom={bottom} staggerDelay={staggerDelay} />;
 };
 
 export default FloatingActionButtonInternal;
