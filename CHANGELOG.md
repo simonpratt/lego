@@ -1,3 +1,10 @@
+### v2.5.0
+
+- Added _FloatingActionButton.Secondary_ component for stacked secondary action buttons
+- Secondary FABs support optional hover labels that slide in from the right
+- Secondary FABs animate in with stagger effect (50ms delay between each)
+- Added support for multiple secondary FABs above the primary FAB
+
 ### v2.4.0
 
 - Added _TagSelect_ component for multi-tag selection with color-coded badges

@@ -10,6 +10,7 @@ interface FloatingActionButtonProps {
   'icon': IconDefinition;
   'onClick': () => void;
   'variant'?: ColourVariant;
+  'label'?: string;
   'data-testid'?: string;
 }
 
@@ -17,25 +18,67 @@ const FloatingActionButton = ({
   icon,
   onClick,
   variant = 'primary',
+  label,
   'data-testid': dataTestId,
 }: FloatingActionButtonProps) => {
-  const { contextExists, setButton } = useContext(FloatingActionButtonContext);
+  const { contextExists, setPrimaryButton } = useContext(FloatingActionButtonContext);
   const id = useMemo(() => v4(), []);
 
   useEffect(() => {
-    setButton({ id, icon, onClick, variant, dataTestId });
+    setPrimaryButton({ id, icon, onClick, variant, label, dataTestId });
     return () => {
-      setButton(undefined);
+      setPrimaryButton(undefined);
     };
-  }, [icon, onClick, variant, dataTestId, setButton]);
+  }, [icon, onClick, variant, label, dataTestId, setPrimaryButton, id]);
 
   if (!contextExists) {
-    return <FloatingActionButtonInternal icon={icon} onClick={onClick} variant={variant} data-testid={dataTestId} />;
+    return (
+      <FloatingActionButtonInternal
+        icon={icon}
+        onClick={onClick}
+        variant={variant}
+        label={label}
+        data-testid={dataTestId}
+      />
+    );
   }
 
   return null;
 };
 
+interface SecondaryFloatingActionButtonProps {
+  'icon': IconDefinition;
+  'onClick': () => void;
+  'variant'?: ColourVariant;
+  'label'?: string;
+  'data-testid'?: string;
+}
+
+const SecondaryFloatingActionButton = ({
+  icon,
+  onClick,
+  variant = 'primary',
+  label,
+  'data-testid': dataTestId,
+}: SecondaryFloatingActionButtonProps) => {
+  const { setSecondaryButtons } = useContext(FloatingActionButtonContext);
+  const id = useMemo(() => v4(), []);
+
+  useEffect(() => {
+    // Register this secondary FAB
+    setSecondaryButtons((prev) => [...prev, { id, icon, onClick, variant, label, dataTestId }]);
+
+    return () => {
+      // Unregister this secondary FAB
+      setSecondaryButtons((prev) => prev.filter((fab) => fab.id !== id));
+    };
+  }, [icon, onClick, variant, label, dataTestId, setSecondaryButtons, id]);
+
+  // Secondary FABs always return null - rendered by provider
+  return null;
+};
+
 FloatingActionButton.Provider = FloatingActionButtonProvider;
+FloatingActionButton.Secondary = SecondaryFloatingActionButton;
 
 export default FloatingActionButton;
