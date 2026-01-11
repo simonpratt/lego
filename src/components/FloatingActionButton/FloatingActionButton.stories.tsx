@@ -26,9 +26,9 @@ export const Standard = () => {
           <MinimalMenu.Item icon={faDiceFour} label='Four' active={false} onClick={() => setTab(4)} />
         </MinimalMenu>
         <MinimalMenu.Page>
-          {tab === 1 && <FloatingActionButton icon={faPlus} onClick={() => {}} />}
-          {tab === 2 && <FloatingActionButton icon={faPlus} onClick={() => {}} />}
-          {tab === 3 && <FloatingActionButton icon={faPencil} variant='tertiary' onClick={() => {}} />}
+          {tab === 1 && <FloatingActionButton icon={faPlus} onClick={() => {}} label='Add' />}
+          {tab === 2 && <FloatingActionButton icon={faPlus} onClick={() => {}} label='Add' />}
+          {tab === 3 && <FloatingActionButton icon={faPencil} variant='tertiary' onClick={() => {}} label='Edit' />}
         </MinimalMenu.Page>
       </FloatingActionButton.Provider>
     </>
@@ -67,7 +67,7 @@ export const WithSecondaryActions = () => {
         <MinimalMenu.Page>
           {tab === 1 && (
             <>
-              <FloatingActionButton icon={faPlus} onClick={() => console.log('Primary clicked')} />
+              <FloatingActionButton icon={faPlus} label='Add' onClick={() => console.log('Primary clicked')} />
               <FloatingActionButton.Secondary icon={faEdit} label='Edit' onClick={() => console.log('Edit clicked')} />
               <FloatingActionButton.Secondary
                 icon={faShare}

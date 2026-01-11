@@ -9,10 +9,14 @@ import MinimalMenuContext from '../MinimalMenu/MinimalMenu.context';
 import zIndexConstants from '../../constants/zIndex.constants';
 import FloatingActionButtonContext from './_FloatingActionButton.context';
 
-const FloatingButton = styled(motion.button)<{ variant: ColourVariant; offsetBottom: boolean }>`
+const FloatingButtonContainer = styled(motion.div)<{ offsetBottom: boolean }>`
   position: fixed;
   bottom: ${(props) => (props.offsetBottom ? '76px' : '20px')};
   right: 20px;
+  z-index: ${zIndexConstants.floatingActionButton};
+`;
+
+const FloatingButton = styled(motion.button)<{ variant: ColourVariant }>`
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -26,7 +30,6 @@ const FloatingButton = styled(motion.button)<{ variant: ColourVariant; offsetBot
   align-items: center;
   font-size: 24px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  z-index: ${zIndexConstants.floatingActionButton};
 
   &:hover {
     background-color: ${(props) => getThemeVariantColours(props.variant, props.theme).darker};
@@ -60,9 +63,9 @@ const MiniFabButton = styled(motion.button)<{ variant: ColourVariant }>`
   }
 `;
 
-const FabLabel = styled(motion.div)`
+const FabLabel = styled(motion.div)<{ buttonSize?: 'primary' | 'mini' }>`
   position: absolute;
-  right: 52px;
+  right: ${(props) => (props.buttonSize === 'primary' ? '68px' : '52px')};
   top: 50%;
   transform: translateY(-50%);
 
@@ -114,45 +117,45 @@ const FloatingActionButtonInternal = ({
   };
 
   return (
-    <>
+    <FloatingButtonContainer
+      offsetBottom={menuExists && isMobile}
+      initial={contextExists ? 'hidden' : 'visible'}
+      animate='visible'
+      exit='exit'
+      variants={variants}
+      onHoverStart={() => setShowLabel(true)}
+      onHoverEnd={() => setShowLabel(false)}
+    >
       <FloatingButton
         key='floating-button'
-        initial={contextExists ? 'hidden' : 'visible'}
         animate='visible'
-        exit='exit'
         whileHover='hover'
         whileTap='tap'
-        offsetBottom={menuExists && isMobile}
         variants={variants}
         onClick={onClick}
         variant={variant}
         data-testid={dataTestId}
-        onHoverStart={() => setShowLabel(true)}
-        onHoverEnd={() => setShowLabel(false)}
       >
         <FontAwesomeIcon icon={icon} />
       </FloatingButton>
+
       {label && (
         <AnimatePresence>
           {showLabel && (
             <FabLabel
+              buttonSize='primary'
               initial='hidden'
               animate='visible'
               exit='hidden'
               variants={labelVariants}
               transition={{ type: 'spring', duration: 0.3 }}
-              style={{
-                position: 'fixed',
-                bottom: menuExists && isMobile ? '88px' : '32px',
-                right: '88px',
-              }}
             >
               {label}
             </FabLabel>
           )}
         </AnimatePresence>
       )}
-    </>
+    </FloatingButtonContainer>
   );
 };
 
@@ -216,6 +219,7 @@ const MiniFabInternal = ({
       onHoverEnd={() => setShowLabel(false)}
     >
       <MiniFabButton
+        animate='visible'
         whileHover='hover'
         whileTap='tap'
         variants={miniFabVariants}
@@ -230,6 +234,7 @@ const MiniFabInternal = ({
         <AnimatePresence>
           {showLabel && (
             <FabLabel
+              buttonSize='mini'
               initial='hidden'
               animate='visible'
               exit='hidden'
